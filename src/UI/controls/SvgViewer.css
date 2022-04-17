@@ -1,0 +1,14 @@
+.viewport {
+    /*   margin: 50px auto; */
+    /*  width: 99%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    /*  outline: 1px solid #000; */
+    /*  box-shadow: 5px 5px #888888; */
+}
+
+.viewport>* {
+    /* max-width: 500px; */
+}

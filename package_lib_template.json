@@ -1,0 +1,18 @@
+{
+  "name": "@tuval/core",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": ["framework"],
+  "main": "tuval-core.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "author": "tuvalframework <tuvalframework@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=6.0.0"
+  }
+}

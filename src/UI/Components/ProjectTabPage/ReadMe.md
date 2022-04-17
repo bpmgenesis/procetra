@@ -1,0 +1,1 @@
+Bu tabpage proje ana sayfasını oluşturur. Diğer tablar bunun içerisinde yer alır.
