@@ -1,7 +1,7 @@
 import { TvChart } from '@tuval/components/charts';
 import { UIView, VStack, HStack, Text, Alignment } from '@tuval/forms';
 import { MetricBox } from './MetricBox';
-import { HappyPathBox2, HappyPathBox3 } from './HappyPathBox';
+import { HappyPathBox2, HappyPathBox3, HappyPathGaugeBox } from './HappyPathBox';
 
 
 export function HappyPathSection(): UIView {
@@ -9,7 +9,7 @@ export function HappyPathSection(): UIView {
         VStack(
             Text('Happy path').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'),
             HStack(
-                MetricBox({ title: 'Cases per date', value: '694', subTitle: 'Total number of cases per day' }),
+                HappyPathGaugeBox({ title: 'Happy path in percentages' }),
                 HappyPathBox2(),
                 HappyPathBox3()
             ).height('auto').spacing('10px'),

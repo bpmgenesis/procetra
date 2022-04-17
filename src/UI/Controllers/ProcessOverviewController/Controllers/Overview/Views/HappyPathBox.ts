@@ -1,13 +1,24 @@
-import { UIView, VStack, Text, Alignment, HStack, VDivider, RoundedRectangle, HDivider } from '@tuval/forms';
+import { UIView, VStack, Text, Alignment, HStack, VDivider, RoundedRectangle, HDivider, Gauge, Range } from '@tuval/forms';
 
 
-export function HappyPathBox(params: { title: string, value: string, subTitle: string }): UIView {
+export function HappyPathGaugeBox(params: { title: string }): UIView {
     return (
         VStack(
             Text(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
-            Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
-            Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'),
-        ).height('148px').backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px').alignment(Alignment.topLeading)
+            VStack(
+                Gauge(
+                    Range()
+                ).color('rgb(118,209,187)').maskColor('rgb(120,120,120,20%)')
+                    .radius(80)
+                    .stroke(10)
+                    .value(67)
+                    .height(155)
+            )
+        )
+            .height('245px')
+            .backgroundColor('rgb(255,255,255,60%)')
+            .cornerRadius('12px')
+            .shadow('0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)')
     )
 }
 
@@ -35,8 +46,17 @@ export function HappyPathBox2(): UIView {
                 ).alignment(Alignment.leading)
             ).padding('30px').width('70%'),
             Text('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'),
-            Text('of 279,020 Cases').fontFamily('Proxima Nova').fontWeight('500').fontSize('20px').foregroundColor('#888888'),
-        ).height('240px').backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px')
+            Text('of 279,020 Cases')
+                .marginBottom('15px')
+                .fontFamily('Proxima Nova')
+                .fontWeight('500')
+                .fontSize('20px')
+                .foregroundColor('#888888'),
+        )
+            .height('245px')
+            .backgroundColor('rgb(255,255,255,60%)')
+            .cornerRadius('12px')
+            .shadow('0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)')
     )
 }
 
@@ -54,7 +74,15 @@ export function HappyPathBox3(): UIView {
                 HDivider().height('1px').background('gray'),
             ).padding('30px').width('70%'),
             Text('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'),
-            Text('of 279,020 Cases').fontFamily('Proxima Nova').fontWeight('500').fontSize('20px').foregroundColor('#888888'),
-        ).height('240px').backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px')
+            Text('of 279,020 Cases')
+                .marginBottom('15px')
+                .fontFamily('Proxima Nova')
+                .fontSize('20px')
+                .foregroundColor('#888888'),
+        )
+            .height('245px')
+            .backgroundColor('rgb(255,255,255,60%)')
+            .cornerRadius('12px')
+            .shadow('0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)')
     )
 }

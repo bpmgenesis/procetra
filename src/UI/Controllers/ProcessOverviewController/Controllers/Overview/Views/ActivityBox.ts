@@ -1,14 +1,19 @@
+import { int } from '@tuval/core';
 import { UIView, VStack, Text, Alignment, Icon } from '@tuval/forms';
 
-
-export function ActivityBox(params: { activityName: string, value: string, subTitle: string }): UIView {
+export interface MVIActivityBox {
+    activityName: string;
+    casePercentage:int;
+    eventCount:int;
+}
+export function ActivityBox(params: MVIActivityBox): UIView {
     return (
         VStack(
             VStack(
-                Icon('\\f0e1').size(30),
-                Text(params.activityName).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
-                Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
-                Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'),
+                Icon('\\f0e1').size(30).foregroundColor('#14A9D5'),
+                Text(params.activityName).padding(10).fontFamily('Proxima Nova').fontWeight('500').fontSize('14px').foregroundColor('#333'),
+                Text(`In ${params.casePercentage} of cases`).fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#333'),
+                Text(`${params.casePercentage} Events`).fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888'),
             )
                 .padding('20px')
                 .backgroundColor('rgb(255,255,255,60%)')
@@ -17,7 +22,6 @@ export function ActivityBox(params: { activityName: string, value: string, subTi
         )
             .height('180px')
             .padding('10px')
-            .width('auto')
             .maxWidth('25%')
     )
 }
