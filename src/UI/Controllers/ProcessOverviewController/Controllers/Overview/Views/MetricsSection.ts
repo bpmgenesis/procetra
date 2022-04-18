@@ -1,9 +1,12 @@
 import { TvChart } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon } from '@tuval/forms';
-import { MetricBox } from './MetricBox';
+import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach } from '@tuval/forms';
+import { MetricBox, MVIMetricBox } from './MetricBox';
 
-
-export function MetricsSection(params: { chart: TvChart }): UIView {
+export interface MVIMetricSection {
+    metricBoxNodels: MVIMetricBox[];
+    chart: TvChart;
+}
+export function MetricsSection(params: MVIMetricSection): UIView {
     return (
         VStack(
             HStack(
@@ -16,17 +19,25 @@ export function MetricsSection(params: { chart: TvChart }): UIView {
                 // We prevent this stack to large more than its content
                 .height('auto'),
             HStack(
-                MetricBox({ title: 'Cases per date', value: '694', subTitle: 'Total number of cases per day' }),
-                MetricBox({ title: 'Cases per date', value: '694', subTitle: 'Total number of cases per day' }),
-                MetricBox({ title: 'Cases per date', value: '694', subTitle: 'Total number of cases per day' })
-            ).height('auto').spacing('10px'),
+                ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox) =>
+                    MetricBox(metricBoxModel),
+                )
+
+
+            ).height('200px').spacing('10px'),
             VStack(
                 Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
                 VStack(
                     params.chart
                 )
 
-            ).backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px').height('200px').alignment(Alignment.topLeading)
+            )
+                .backgroundColor('rgb(255,255,255,60%)')
+                .cornerRadius('12px')
+                .height('200px')
+                .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+                .alignment(Alignment.topLeading)
+                .tabIndex(0)
         )
             .alignment(Alignment.topLeading)
             // We want to space 10px between every vertical block

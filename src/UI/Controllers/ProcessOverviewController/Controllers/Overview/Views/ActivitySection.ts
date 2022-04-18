@@ -11,7 +11,7 @@ export function ActivitySection(activities: MVIActivityBox[]): UIView {
                 Text('Other frequent activities')
                     .marginTop('30px')
                     .paddingTop('5px')
-                    .height('38px')
+                 /*    .height('38px') */
                     .fontFamily('Proxima Nova')
                     .fontSize('20px')
                     .foregroundColor('#333333'),
@@ -30,6 +30,6 @@ export function ActivitySection(activities: MVIActivityBox[]): UIView {
         )
             .alignment(Alignment.topLeading)
             // We want to space 10px between every vertical block
-            .spacing('10px')
+            .spacing(10)
     )
 }

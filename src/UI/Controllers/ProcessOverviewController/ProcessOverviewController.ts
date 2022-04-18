@@ -1,17 +1,27 @@
 import { TvChart } from '@tuval/components/charts';
-import { int, TArray } from '@tuval/core';
+import { int } from '@tuval/core';
+import {
+    Alignment,
+    ForEach,
+    HDivider,
+    HStack,
+    Icon,
+    Spacer,
+    State,
+    TApplication,
+    Text,
+    UIButton,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
 
-
-import { UIController, UIView, Text, VStack, State, HStack, ForEach, RoundedRectangle, UIScene, Alignment, HDivider, Icon, UIButton, Spacer, TApplication, ApplicationModes, If, PositionTypes } from '@tuval/forms';
-import { EventsOverTimeChart } from '../../DataSetTabPage/StatisticTabPage/CaseOverview/Charts/EventsOverTimeChart';
 import { PageTitle } from '../../Views/PageHeader';
-
-import { PortalSideMenu, MVIPortalSideMenuItem } from '../../Views/PortalSideMenu';
+import { MVIPortalSideMenuItem, PortalSideMenu } from '../../Views/PortalSideMenu';
 import { OverviewController } from './Controllers/Overview/OverviewController';
-import { ActivitySection } from './Controllers/Overview/Views/ActivitySection';
-import { HappyPathSection } from './Controllers/Overview/Views/HappyPathSection';
-import { MetricsSection } from './Controllers/Overview/Views/MetricsSection';
 import { ThroughputTimesController } from './Controllers/ThroughputTimes/ThroughputTimesController';
+
 
 function getMax(array: any[]) {
     let max: int = 0;
@@ -133,7 +143,7 @@ export class ProcessOverviewController extends UIController {
                             )
                                 .width() // auto width
                                 .spacing(5)
-                                .visible(TApplication.ApplicationMode === ApplicationModes.Desktop),
+                                .visible(TApplication.IsDesktop),
 
                             // Portal
                             HStack(
@@ -152,7 +162,7 @@ export class ProcessOverviewController extends UIController {
                             )
                                 .spacing(30)
                                 .width() //auto width
-                                .visible(TApplication.ApplicationMode === ApplicationModes.Portal)
+                                .visible(TApplication.IsPortal)
 
                         ).alignment(Alignment.leading).spacing(10).height(),
                         HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
@@ -163,7 +173,7 @@ export class ProcessOverviewController extends UIController {
                         .padding('10px')
                         .alignment(Alignment.topLeading)
                         .spacing(10)
-                        .background(TApplication.IsPrtal ? '#f1f1f1' : '')
+                        .background(TApplication.IsPortal ? '#f1f1f1' : '')
 
 
                 )

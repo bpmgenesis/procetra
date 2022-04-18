@@ -1,12 +1,13 @@
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
-import { UIController, UIView, Text, State, UIScene, ForEach, VStack, HStack, Alignment, UIButton } from '@tuval/forms';
+import { UIController, UIView, Text, State, UIScene, ForEach, VStack, HStack, Alignment, UIButton, Icon, Fonts } from '@tuval/forms';
 import { MiningBrokerClient } from './ConnectorDialog/eBA/MiningBrokerClient';
 import { MIProjectItem } from '../Models/MIProjectItem';
 import { ListView, ListViewItem } from '../Views/ListView';
 import { MIProject } from '../Models/ProjectModel';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { OpenProjectDialog } from './OpenProjectDialog';
+import { Font } from '@tuval/graphics';
 
 export class OpenProjectDialogController extends UIController {
 
@@ -43,6 +44,10 @@ export class OpenProjectDialogController extends UIController {
         return (
             UIScene(
                 VStack(
+                    HStack(
+                        Icon('\\efd5').size(30),
+                        Text('Select Project').font(Fonts.title)
+                    ).alignment(Alignment.leading).spacing(10).height(),
                     ListView(
                         ...ForEach(this.projects, (project: MIProject) =>
                             ListViewItem(
@@ -52,7 +57,7 @@ export class OpenProjectDialogController extends UIController {
                                 .background(this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: 'white', hover: 'rgb(120,120,120,10%)' } as any)
                                 .onSelected(() => this.selectedProject = project)
                         )
-                    ).width('100%').cornerRadius('12px').border('solid 1px gray'),
+                    ).width('100%').cornerRadius('12px'),
                     HStack(
                         AcceptButton(
                             Text('OK')

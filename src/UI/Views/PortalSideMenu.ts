@@ -14,7 +14,7 @@ export interface MVIPortalSideMenuItem {
     controller: UIController
 }
 export function PortalSideMenu(params: PortalSideMenuParams): UIView {
-    if (TApplication.IsPrtal) {
+    if (TApplication.IsPortal) {
         return (
             VStack(
                 ...ForEach(params.items, (item: MVIPortalSideMenuItem, index: int) =>

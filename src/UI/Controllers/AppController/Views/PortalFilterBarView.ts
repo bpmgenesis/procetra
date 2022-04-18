@@ -1,5 +1,7 @@
-import { HStack, Text, Alignment, UIView, Icon, VStack, Spacer, VDivider,Gauge, Range } from '@tuval/forms';
+import { HStack, Text, Alignment, UIView, Icon, VStack, Spacer, VDivider, Gauge, Range } from '@tuval/forms';
 import { PortalFilterBarWidget } from './PortalFilterBarWidget';
+import { TimeLineFilter } from './TimeLineFilter';
+import { FilterView } from './FilterView';
 
 export interface PortalFilterBarViewParams {
     projectName: string
@@ -24,26 +26,27 @@ export function PortalFilterBarView(params: PortalFilterBarViewParams): UIView {
                 .cursor('pointer')
                 .height()
                 .width(),
-            Gauge(
-                Range()
-            ).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(40).stroke(7).value(67).height(75),
+            /*  Gauge(
+                 Range()
+             ).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(40).stroke(7).value(67).height(75), */
             Spacer(),
-            HStack(
-                PortalFilterBarWidget({ value: 3 }),
-                VDivider().height('70%').width(1).background('rgb(255,255,255,50%)'),
-                PortalFilterBarWidget({ value: 23 })
-            )
-                .paddingBottom('5px')
-                .width() // auto
-                .spacing(20)
-                .alignment(Alignment.leading)
+            FilterView(),
+            TimeLineFilter()
+            /*   HStack(
+                  PortalFilterBarWidget({ value: 3 }),
+                  VDivider().height('70%').width(1).background('rgb(255,255,255,50%)'),
+                  PortalFilterBarWidget({ value: 23 })
+              )
+                  .paddingBottom('5px')
+                  .width() // auto
+                  .spacing(20)
+                  .alignment(Alignment.leading) */
         )
             .paddingLeft('10px')
             .spacing(10)
             .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')
             .alignment(Alignment.leading)
             .height() // auto height
-            .minHeight('50px')
             .minHeight('50px')
             .backgroundColor('#212932')
             .foregroundColor('white')
