@@ -8,7 +8,13 @@ export function ActivitySection(activities: MVIActivityBox[]): UIView {
     return (
         VStack(
             HStack(
-                Text('Other frequent activities').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'),
+                Text('Other frequent activities')
+                    .marginTop('30px')
+                    .paddingTop('5px')
+                    .height('38px')
+                    .fontFamily('Proxima Nova')
+                    .fontSize('20px')
+                    .foregroundColor('#333333'),
                 Spacer(),
                 UIButton(
                     Icon('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' }),

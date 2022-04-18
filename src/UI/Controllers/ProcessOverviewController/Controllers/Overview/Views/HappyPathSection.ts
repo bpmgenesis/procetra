@@ -7,7 +7,13 @@ import { HappyPathBox2, HappyPathBox3, HappyPathGaugeBox } from './HappyPathBox'
 export function HappyPathSection(): UIView {
     return (
         VStack(
-            Text('Happy path').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'),
+            Text('Happy path')
+                .marginTop('30px')
+                .paddingTop('5px')
+                .height('38px')
+                .fontFamily('Proxima Nova')
+                .fontSize('20px')
+                .foregroundColor('#333333'),
             HStack(
                 HappyPathGaugeBox({ title: 'Happy path in percentages' }),
                 HappyPathBox2(),
