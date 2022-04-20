@@ -1,8 +1,16 @@
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider } from '@tuval/forms';
+import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication } from '@tuval/forms';
 import { PageTitle } from '../../../../Views/PageHeader';
-export class ProcessStatisticController extends UIController {
-    protected InitController(): void {
+import { OverviewController } from './Controllers/OverviewController';
 
+
+const constrollers = [new OverviewController]
+
+export class ProcessStatisticController extends UIController {
+
+    @State()
+    private currentController: UIController;
+    protected InitController(): void {
+        this.currentController = constrollers[0];
     }
 
     public LoadView(): UIView {
@@ -10,7 +18,7 @@ export class ProcessStatisticController extends UIController {
             UIScene(
                 VStack(
                     HStack(
-                        PageTitle('\\f0f2','Process statistics'),
+                        PageTitle('\\f0f2', 'Process statistics'),
                         Spacer(),
                         HStack(
                             ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>
@@ -22,8 +30,13 @@ export class ProcessStatisticController extends UIController {
                     ).alignment(Alignment.leading).spacing('10px').height(),
                     HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
 
+                    this.currentController
+
+
                 ).padding('10px').alignment(Alignment.topLeading).spacing('10px').height('auto')
-            ).alignment(Alignment.topLeading)
+            )
+            .background(TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(Alignment.topLeading)
         )
     }
 }

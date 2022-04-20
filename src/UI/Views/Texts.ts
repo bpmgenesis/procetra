@@ -78,19 +78,34 @@ export function Overline(value: string): UIView {
     )
 }
 
-export function RegularText(value: string):UIView {
+
+
+export function RegularText(value: string): UIView {
     return (
         Text(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('14px').lineHeight('1.42857').foregroundColor('#333')
     )
 }
 
-export function SectionHeadline(value: string):UIView {
+export function SectionTitle(value: string): UIView {
+    return (
+        RegularText(value).fontWeight('500')
+    )
+}
+
+export function SectionContent(value: string): UIView {
+    return (
+        RegularText(value)
+    )
+}
+
+
+export function SectionHeadline(value: string): UIView {
     return (
         Text(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('20px').lineHeight('1.42857').foregroundColor('#333')
     )
 }
 
-export function SectionSubHeadline(value: string):UIView {
+export function SectionSubHeadline(value: string): UIView {
     return (
         Text(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('16px').fontWeight('normal').lineHeight('1.42857').foregroundColor('#666666')
     )

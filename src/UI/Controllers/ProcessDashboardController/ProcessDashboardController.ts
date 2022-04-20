@@ -13,11 +13,15 @@ import { PaletteView } from './Views/PaletteView';
 import { MIPaletteCategory } from './Models/MIPaletteCategory';
 import { PaletteModel } from './Models/MDPalette';
 import { PageTitle } from '../../Views/PageHeader';
+import { int } from '@tuval/core';
 export class ProcessDashboardController extends UIController {
 
     private palettedata: MIPaletteCategory[];
     @State()
     private svg: DashboardView;
+
+    @State()
+    private test: int;
 
     protected InitController(): void {
 
@@ -48,14 +52,19 @@ export class ProcessDashboardController extends UIController {
         this.svg.Document.Add(rect);
 
         this.palettedata = PaletteModel;
+
+        this.test = 2;
     }
 
     public LoadView(): UIView {
         return (
             UIScene(
+                UIButton(
+                    Text('Test')
+                ).action(()=> this.test = 10),
                 VStack(
                     HStack(
-                        PageTitle('\\f0b3','Dashboard'),
+                        PageTitle('\\f0b3',this.test.toString()),
                         Spacer(),
                         HStack(
                             ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>

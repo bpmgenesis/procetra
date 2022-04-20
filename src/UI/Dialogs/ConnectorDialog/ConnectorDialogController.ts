@@ -416,12 +416,8 @@ export class ConnectorDialogController extends UIController {
                                 .wrap('wrap')
                                 .overflowY('auto'),
                             HStack(
-                                AcceptButton(
-                                    Text('OK')
-                                ).action(() => this.onOK()),
-                                CancelButton(
-                                    Text('Cancel')
-                                ).action(() => this.onCancel())
+                                AcceptButton('OK').action(() => this.onOK()),
+                                CancelButton('Cancel').action(() => this.onCancel())
                             ).alignment(Alignment.trailing).width('100%').height('50px')
                         ).width('100%')
 

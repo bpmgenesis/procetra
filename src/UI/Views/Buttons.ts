@@ -1,56 +1,58 @@
-import { UIView, UIButton, Text, UIButtonClass } from '@tuval/forms';
+import { UIView, UIButton, Text, UIButtonClass, TApplication } from '@tuval/forms';
 
-export function AcceptButton(...content: UIView[]): UIButtonClass {
+export function AcceptButton(value: string): UIButtonClass {
     return (
         UIButton(
-            ...content
+            Text(value).fontSize(TApplication.IsPortal ? '16px' : '')
         )
-            .foregroundColor('white')
+            .foregroundColor(TApplication.IsPortal ? '#eee' : 'white')
             .border({
                 default: 'solid 1px #1687D9',
                 hover: 'solid 1px #07c',
                 active: 'solid 1px #07c'
             })
             .backgroundImage({
-                default: ' linear-gradient(#32AAFF, #1994EB)',
-                hover: 'linear-gradient(#25A4FF, #028AEB)',
-                active: 'linear-gradient(#1897F2, #0182DF)'
+                default: TApplication.IsDesktop ? ' linear-gradient(#32AAFF, #1994EB)' : '',
+                hover: TApplication.IsDesktop ? 'linear-gradient(#25A4FF, #028AEB)' : '',
+                active: TApplication.IsDesktop ? 'linear-gradient(#1897F2, #0182DF)' : ''
             })
             .backgroundColor({
-                default: '#1994EB',
-                hover: '#028AEB',
+                default: TApplication.IsPortal ? '#288ae2' : '#1994EB',
+                hover: TApplication.IsPortal ? '#1a70bd' : '#028AEB',
                 active: '#0182DF'
             })
             .height('27px')
-            .minWidth('90px')
+            .minWidth(TApplication.IsPortal ? '140px' : '90px')
+            .minHeight(TApplication.IsPortal ? '33px' : '')
             .margin('8px 10px 8px 0px')
             .cornerRadius('3px')
     )
 }
 
-export function CancelButton(...content: UIView[]): UIButtonClass {
+export function CancelButton(value: string): UIButtonClass {
     return (
         UIButton(
-            ...content
+            Text(value).fontSize(TApplication.IsPortal ? '16px' : '')
         )
-            .foregroundColor('#505A64')
+            .foregroundColor(TApplication.IsPortal ? '#ddd' : '#505A64')
             .border({
-                default: 'solid 1px #C8D2DC',
-                hover: 'solid 1px #B4BEC8',
-                active: 'solid 1px #B4BEC8'
+                default: TApplication.IsPortal ? '1px solid #55606c' : 'solid 1px #C8D2DC',
+                hover: TApplication.IsPortal ? '1px solid #55606c' : 'solid 1px #B4BEC8',
+                active: TApplication.IsPortal ? '1px solid #55606c' : 'solid 1px #B4BEC8'
             })
             .backgroundImage({
-                default: 'linear-gradient(#f5faff, #ebf0f5)',
-                hover: 'linear-gradient(#f5faff, #e7ecf1)',
-                active: 'linear-gradient(#ebf0f5, #e1e6eb)'
+                default: TApplication.IsPortal ? '' : 'linear-gradient(#f5faff, #ebf0f5)',
+                hover: TApplication.IsPortal ? '' : 'linear-gradient(#f5faff, #e7ecf1)',
+                active: TApplication.IsPortal ? '' : 'linear-gradient(#ebf0f5, #e1e6eb)'
             })
             .backgroundColor({
-                default: '#EBF0F5',
-                hover: '#E7ECF1',
+                default: TApplication.IsPortal ? 'transparent' : '#EBF0F5',
+                hover: TApplication.IsPortal ? '#354251' : '#E7ECF1',
                 active: '#E1E6EB'
             })
             .height('27px')
-            .minWidth('90px')
+            .minWidth(TApplication.IsPortal ? '140px' : '90px')
+            .minHeight(TApplication.IsPortal ? '33px' : '')
             .margin('8px 10px 8px 0px')
             .cornerRadius('3px')
     )

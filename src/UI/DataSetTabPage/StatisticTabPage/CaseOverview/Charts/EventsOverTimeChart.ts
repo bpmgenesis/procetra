@@ -96,7 +96,7 @@ export class EventsOverTimeChart extends TvChart {
                 yName: 'y',
                 opacity:0.5,
                 animation: {
-                    enable:false
+                    enable:true
                 }
             },
 
