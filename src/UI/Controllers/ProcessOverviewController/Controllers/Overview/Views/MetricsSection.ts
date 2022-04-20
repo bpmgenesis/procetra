@@ -22,9 +22,9 @@ export function MetricsSection(params: MVIMetricSection): UIView {
                 ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox) =>
                     MetricBox(metricBoxModel),
                 )
-
-
-            ).height('200px').spacing('10px'),
+            )
+                .height('155px')
+                .spacing('10px'),
             VStack(
                 Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
                 VStack(

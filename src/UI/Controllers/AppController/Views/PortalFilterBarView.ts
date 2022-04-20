@@ -42,6 +42,7 @@ export function PortalFilterBarView(params: PortalFilterBarViewParams): UIView {
                   .spacing(20)
                   .alignment(Alignment.leading) */
         )
+            .zIndex(3000)
             .paddingLeft('10px')
             .spacing(10)
             .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')

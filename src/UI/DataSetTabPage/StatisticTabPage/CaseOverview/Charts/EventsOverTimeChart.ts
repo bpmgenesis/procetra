@@ -94,7 +94,10 @@ export class EventsOverTimeChart extends TvChart {
                 name: 'Median',
                 xName: 'x',
                 yName: 'y',
-                opacity:0.5
+                opacity:0.5,
+                animation: {
+                    enable:false
+                }
             },
 
         ];
