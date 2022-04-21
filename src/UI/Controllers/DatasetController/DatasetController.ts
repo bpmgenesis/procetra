@@ -57,18 +57,33 @@ export class DatasetController extends UIController {
                 controller: new ProcessDashboardController()
             },
             {
-                icon: '\\f0a4',
-                name: 'Process Explorer',
+                icon: '\\f0f8',
+                name: 'Discovery',
                 controller: new ProcessExplorerController()
             },
             {
+                icon: '\\f0a1',
+                name: 'Monitoring',
+                controller: new ProcessStatisticController()
+            },
+            {
                 icon: '\\f0f2',
-                name: 'Statistic',
+                name: 'Statistics',
                 controller: new ProcessStatisticController()
             },
             {
                 icon: '\\f13b',
                 name: 'Variant Explorer',
+                controller: new VariantExplorerController()
+            },
+            {
+                icon: '\\f096',
+                name: 'Loops',
+                controller: new CaseExplorerController()
+            },
+            {
+                icon: '\\f049',
+                name: 'Automation',
                 controller: new VariantExplorerController()
             },
             {

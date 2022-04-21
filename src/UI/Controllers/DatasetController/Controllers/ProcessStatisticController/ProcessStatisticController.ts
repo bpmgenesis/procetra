@@ -1,16 +1,17 @@
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication } from '@tuval/forms';
+import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication, _ForEach, cVertical } from '@tuval/forms';
 import { PageTitle } from '../../../../Views/PageHeader';
 import { OverviewController } from './Controllers/OverviewController';
+import { ActivityController } from './Controllers/ActivityController';
 
 
-const constrollers = [new OverviewController]
+const controllers = [new OverviewController, new ActivityController]
 
 export class ProcessStatisticController extends UIController {
 
     @State()
     private currentController: UIController;
     protected InitController(): void {
-        this.currentController = constrollers[0];
+        this.currentController = controllers[0];
     }
 
     public LoadView(): UIView {
@@ -21,22 +22,25 @@ export class ProcessStatisticController extends UIController {
                         PageTitle('\\f0f2', 'Process statistics'),
                         Spacer(),
                         HStack(
-                            ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>
+                            ..._ForEach(['Overview', 'Throughput times', 'Activities'])((name, index) =>
                                 UIButton(
                                     Text(name)
-                                ).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
+                                )
+                                    .action(() => this.currentController = controllers[index])
+                                    .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
                             )
                         ).width('auto').spacing('5px')
                     ).alignment(Alignment.leading).spacing('10px').height(),
                     HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
+                    ScrollView({ axes: cVertical })(
+                        this.currentController as any
+                    )
 
-                    this.currentController
 
-
-                ).padding('10px').alignment(Alignment.topLeading).spacing('10px').height('auto')
+                ).padding('10px').alignment(Alignment.topLeading).spacing('10px')
             )
-            .background(TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(Alignment.topLeading)
+                .background(TApplication.IsPortal ? '#f1f1f1' : '')
+                .alignment(Alignment.topLeading)
         )
     }
 }
