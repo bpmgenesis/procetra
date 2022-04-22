@@ -32,9 +32,8 @@ export function PortalSideMenu(params: PortalSideMenuParams): UIView {
                 )
 
             )
-
                 .minWidth(params.second ? '75px' : '80px')
-                .width(params.second ? '75px' : '80px')
+                .width(params.second ? 75 : 80)
                 .background(params.second ? '#52565b' : '#212932')
                 .shadow(params.second ? 'inset 24px 0 20px -20px #373b40' : '')
                 .borderBottom('2px solid #212932')
