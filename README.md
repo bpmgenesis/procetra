@@ -164,8 +164,8 @@ Bir süreç adımı ne zaman gerçekleşti? Zaman damgası size bir işlemin ne 
 Pizzayı ne zaman fırına koydunuz? Bu, "Pizzayı pişir" için başlangıç zaman damgasıdır. Fırından ne zaman çıkardınız? Bu senin bitiş zaman damgan. Bitiş zaman damganız olmadığında, pizzayı fırından çıkarmak ve bir kutuya koymak arasında ne kadar zaman kaybettiğinizi bilemezsiniz. "Pizzayı pişir" işlem adımı, "pizzayı kutuya koy" işlem adımının başlangıcına kadar sürer.
 
 # Activity
-Ne yapıldı? Bu, işlem adımlarınızın tanımlayıcısıdır. Etkinlik adları genellikle kısa ve yerindedir. Örnekler "PO Oluştur", "Fatura Gönder" vb.
+Süreç içerisinde bir veya daha fazla tekrarlanan iş parçacıklarına sürecin aktiviteleri denir. Örnekler "PO Oluştur", "Fatura Gönder" vb.
 
 Pizza  örneğimizde aktivite adları 'fırını ısıt', 'hamuru hazırla', 'malzemeyi ekle' vb. olacaktır.
 
-Daha ayrıntılı bir analiz almak için Olay Günlüğünüze daha fazla bilgi ekleyebilirsiniz. Örneğin, sizin için pizza pişiren çeşitli kişiler varsa, onları olay günlüğüne ekleyebilirsiniz. Veya birden fazla pizza yeriniz varsa bu da bir kategori olabilir. Ne kadar çok kategori eklerseniz, analizinize o kadar ayrıntılı gidebilirsiniz. CaseID, Timestamp ve Activity Name'in zorunlu olduğunu, diğer her şeyin isteğe bağlı olduğunu unutmayın. Aksi takdirde, analiz etmek istediğiniz süreçte tam bir özgürlüğe sahipsiniz.
+Daha ayrıntılı bir analiz elde etmek için Olay Günlüğünüze daha fazla bilgi ekleyebilirsiniz. Örneğin, sizin için pizza pişiren çeşitli kişiler varsa, onları olay günlüğüne ekleyebilirsiniz. Veya birden fazla pizza dükkanınız varsa bu da bir kategori olabilir. Ne kadar çok kategori eklerseniz, analizinize o kadar ayrıntılı gidebilirsiniz. CaseID, Timestamp ve Activity Name'in zorunlu olduğunu, diğer her şeyin isteğe bağlı olduğunu unutmayın.
