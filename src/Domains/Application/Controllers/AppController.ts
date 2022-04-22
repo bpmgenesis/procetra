@@ -1,12 +1,28 @@
-import { UIController, UIView, Text, UIScene, Fonts, UIButton, VStack, HDivider, Alignment, HStack, Icon, State, If, UIAnimation, TApplication, ApplicationModes, TwoColumnWithHeaderLayout, UIImage, Spacer } from '@tuval/forms';
-import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
+import { Event, foreach } from '@tuval/core';
+import {
+    Alignment,
+    HStack,
+    Icon,
+    If,
+    Spacer,
+    State,
+    TApplication,
+    Text,
+    UIButton,
+    UIController,
+    UIImage,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { ProcessMining } from '../../../Application';
-import { foreach, Event } from '@tuval/core';
+import { Resources } from '../../../Resources';
+import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { ProjectController, ProjectControllerClass } from '../../Project/Controllers/ProjectController';
 import { MIProject } from '../../Project/Models/ProjectModel';
-import { Resources } from '../../../Resources';
-import { RecentProjects } from '../Views/RecentProjects';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
+import { RecentProjects } from '../Views/RecentProjects';
 
 /* VStack(
     Text('Simple Swift Guide to largeTitle ').font(Fonts.largeTitle),
@@ -69,7 +85,7 @@ export class AppController extends UIController {
     private MainPage(): UIView {
         return UIScene(
             HStack(
-                VStack({spacing:10})(
+                VStack({ spacing: 10 })(
                     MenuButton('', '\\f064', () => this.OnNewProject()),
                     MenuButton('', '\\f06d', () => this.OnOpenProject()),
                     MenuButton('', '\\f051', () => this.OnNewProject()),
@@ -91,14 +107,14 @@ export class AppController extends UIController {
                         UIImage(Resources.Icons.ApplicationIcon).width(24).height(24),
                         Text('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'),
                         Spacer(),
-                        Icon('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(()=> this.RequestDesktop())
+                        Icon('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(() => this.RequestDesktop())
                     )
                         .fontFamily('verdana, arial, tahoma, helvetica, sans-serif')
                         .alignment(Alignment.leading)
                         .minHeight('50px')
                         .maxHeight('50px')
                         .background('rgb(208, 63, 64)'),
-                    PortalFilterBarView({projectName:this.currentProject?.project_name, selectProjectAction: () => this.OnOpenProject() })
+                    PortalFilterBarView({ projectName: this.currentProject?.project_name, selectProjectAction: () => this.OnOpenProject() })
                 ).height(),
                 this.controller
             ).alignment(Alignment.topLeading)
@@ -109,22 +125,13 @@ export class AppController extends UIController {
 
     @State()
     private showAnim: boolean;
+
     public override LoadView(): UIView {
-        if (TApplication.ApplicationMode === ApplicationModes.Desktop) {
-            return (If(this.currentProject == null, this.MainPage(), this.controller) as any
-                /*  VStack(
-                     UIButton(
-                         Text('Show')
-                     ).action(()=> this.showAnim = true),
-                     UIButton(
-                         Text('Hide')
-                     ).action(()=> this.showAnim = false),
-                     UIAnimation(
-                         Text('fsdfsdfsd')
-                     ).start(this.showAnim)
-                 ) */
+        if (TApplication.IsDesktop) {
+            return (
+                If(this.currentProject == null, this.MainPage(), this.controller) as any
             )
-        } else if (TApplication.ApplicationMode === ApplicationModes.Portal) {
+        } else if (TApplication.IsPortal) {
             return this.LoadPortalView();
         }
     }
