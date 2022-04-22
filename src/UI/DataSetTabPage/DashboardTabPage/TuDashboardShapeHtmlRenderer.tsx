@@ -4,8 +4,7 @@ import { Teact, DomHandler } from '@tuval/forms';
 import { SolidBrush, GraphicTypes } from '@tuval/graphics';
 import { as } from '@tuval/core';
 import { TuDashboardShape } from './TuDashboardShape';
-import { TuHtmlRenderer } from '../../../Svg/Xml/TuHtmlRenderer';
-import { TuView } from '../../../Svg/TuView/TuView';
+import { TuView, TuHtmlRenderer } from '@tuval/components/diagram';
 
 
 

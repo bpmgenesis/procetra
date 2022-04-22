@@ -7,7 +7,6 @@ import { float, TMath } from '@tuval/core';
 import { DfgSliders } from '../../../Logic/objects/dfg/util/sliders';
 import { FrequencyDfgGraphvizVisualizer } from '../../../Logic/visualization/dfg/frequency';
 import { PerformanceDfgGraphvizVisualizer } from '../../../Logic/visualization/dfg/performance';
-import { parse } from '../../../Svg/parser/svgparser';
 import { InductiveMiner } from '../../../Logic/algo/discovery/inductive/algorithm';
 import { ProcessTreeToPetriNetConverter } from '../../../Logic/objects/conversion/process_tree/to_petri_net';
 import { PetriNetVanillaVisualizer } from '../../../Logic/visualization/petri_net/vanilla_graphviz';

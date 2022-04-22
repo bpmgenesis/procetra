@@ -1,11 +1,10 @@
 import { _Types } from "../../../__manifest__/__types__";
 import { ClassInfo, as } from '@tuval/core';
-import { TuRectangle } from "../../../Svg/TuRectangle/TuRectangle";
+import { TuRectangle, TuView, TuHtmlRenderer } from "@tuval/components/diagram";
 import { State, DropArea, DropEventArgs } from '@tuval/forms';
 import { FregMapControl } from "../../Components/FregMapControl/FregMapControl";
 import { CGColor, CGRectangle } from '@tuval/cg';
-import { TuHtmlRenderer } from "../../../Svg/Xml/TuHtmlRenderer";
-import { TuView } from "../../../Svg/TuView/TuView";
+
 import { GraphicTypes, SolidBrush } from '@tuval/graphics';
 
 

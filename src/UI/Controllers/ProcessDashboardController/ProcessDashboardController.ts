@@ -1,14 +1,13 @@
-import { TuRectangle } from './../../../Svg/TuRectangle/TuRectangle';
+import { TuRectangle, ViewRenderingMode, TuViewSnapStyle, TuViewGridStyle} from '@tuval/components/diagram';
 import { Pens, Brushes } from '@tuval/graphics';
 import {
     UIController, UIView, Text, UIScene, VStack,
     HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, TwoColumnLayout2
 } from '@tuval/forms';
-import { ViewRenderingMode } from '../../../Svg/TuView/ViewRenderingMode';
+
 import { DashboardView } from '../../DataSetTabPage/DashboardTabPage/DashboardView';
 import { CGSize } from '@tuval/cg';
-import { TuViewSnapStyle } from '../../../Svg/TuView/TuViewSnapStyle';
-import { TuViewGridStyle } from '../../../Svg/TuGrid/TuViewGridStyle';
+
 import { PaletteView } from './Views/PaletteView';
 import { MIPaletteCategory } from './Models/MIPaletteCategory';
 import { PaletteModel } from './Models/MDPalette';

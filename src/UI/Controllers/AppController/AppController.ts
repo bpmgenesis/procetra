@@ -1,4 +1,4 @@
-import { UIController, UIView, Text, UIScene, Fonts, UIButton, VStack, HDivider, Alignment, HStack, Icon, State, If, UIAnimation, TApplication, ApplicationModes, TwoColumnWithHeaderLayout, UIImage } from '@tuval/forms';
+import { UIController, UIView, Text, UIScene, Fonts, UIButton, VStack, HDivider, Alignment, HStack, Icon, State, If, UIAnimation, TApplication, ApplicationModes, TwoColumnWithHeaderLayout, UIImage, Spacer } from '@tuval/forms';
 import { ProjectUIService } from '../../UIServices/ProjectUIService';
 import { ProcessMining } from '../../../Application';
 import { foreach, Event } from '@tuval/core';
@@ -89,7 +89,9 @@ export class AppController extends UIController {
                 VStack(
                     HStack(
                         UIImage(Resources.Icons.ApplicationIcon).width(24).height(24),
-                        Text('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white')
+                        Text('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'),
+                        Spacer(),
+                        Icon('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(()=> this.RequestDesktop())
                     )
                         .fontFamily('verdana, arial, tahoma, helvetica, sans-serif')
                         .alignment(Alignment.leading)

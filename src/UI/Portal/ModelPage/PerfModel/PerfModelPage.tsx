@@ -11,7 +11,7 @@ import { SvgViewer } from '../../../controls/SvgViewer';
 import { int, classNames, TMath, float } from '@tuval/core';
 import { PortalSideFilterControl } from '../../PortalSideControl/PortalSideFilterControl';
 import { H4 } from '../../../GeneralControls/H4';
-import { parse } from '../../../../Svg/parser/svgparser';
+//import { parse } from '../../../../Svg/parser/svgparser';
 
 declare var Viz;
 
@@ -94,7 +94,7 @@ export class PerfModelPage extends Control<PerfModelPage> {
 
             let gv = PerformanceDfgGraphvizVisualizer.apply(frequencyDfg);
             const str = Viz(gv, { format: "svg" });
-            console.log(parse(str));
+            // console.log(parse(str));
             this.svgViewer.SvgString = str;
         });
 

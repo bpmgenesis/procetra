@@ -10,6 +10,12 @@ compiled
 .awcache
 .rpt2_cache
 dist_types
+dist_node
+dist
+dist_web
+dist_wp
+fonts
+publish
 docs
 _README.md
 github.txt

@@ -1,13 +1,11 @@
-import { TuRectangle } from "../../../Svg/TuRectangle/TuRectangle";
+
 import { State, Dialog, _State, DropArea, DropEventArgs, Control, Teact } from '@tuval/forms';
 import { VariantModelPage } from "../../Portal/VariantPage/VariantModel/VariantModelPage";
-import { TuView } from "../../../Svg/TuView/TuView";
-import { ViewRenderingMode } from "../../../Svg/TuView/ViewRenderingMode";
 import { TuDashboardShapeHtmlRenderer, _TuDashboardShapeHtmlRenderer } from './TuDashboardShapeHtmlRenderer';
 import { MeanChart } from '../StatisticTabPage/ActivityOverview/Charts/MeanChart';
 import { CGRectangle, CGColor } from '@tuval/cg';
 import { is } from '@tuval/core';
-import { TuInputEventArgs } from '../../../Svg/TuInputEventArgs';
+import { TuInputEventArgs,TuView,ViewRenderingMode, TuRectangle } from '@tuval/components/diagram';
 import { ClassInfo, int } from '@tuval/core';
 import { _Types } from '../../../__manifest__/__types__';
 import { MiningBrokerClient } from "../../Dialogs/ConnectorDialog/eBA/MiningBrokerClient";

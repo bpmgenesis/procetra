@@ -7,7 +7,7 @@ import { float } from '@tuval/core';
 import { DfgSliders } from '../../../Logic/objects/dfg/util/sliders';
 import { FrequencyDfgGraphvizVisualizer } from '../../../Logic/visualization/dfg/frequency';
 import { PerformanceDfgGraphvizVisualizer } from '../../../Logic/visualization/dfg/performance';
-import { parse } from '../../../Svg/parser/svgparser';
+//import { parse } from '../../../Svg/parser/svgparser';
 
 declare var Viz;
 
@@ -32,7 +32,7 @@ export class PerformanceMapControl extends SvgViewer {
 
             let gv = PerformanceDfgGraphvizVisualizer.apply(frequencyDfg);
             const str = Viz(gv, { format: "svg" });
-            console.log(parse(str));
+            //console.log(parse(str));
             this.SvgString = str;
         });
 

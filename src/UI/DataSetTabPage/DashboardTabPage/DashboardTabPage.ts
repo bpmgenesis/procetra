@@ -2,12 +2,10 @@ import { TTabPage, DomHandler, Button, ScrollPanel, TSplitter, LayoutPanel, Sizi
 import { IDataSet } from '../../../Bussiness/IDataSet';
 import { MiningDashboard } from './MiningDashboard';
 import { int, Convert, typeOf, EventBus } from '@tuval/core';
-import { TuView } from '../../../Svg/TuView/TuView';
-import { ViewRenderingMode } from '../../../Svg/TuView/ViewRenderingMode';
+import { TuView,ViewRenderingMode, TuViewSnapStyle, TuViewGridStyle,TuRectangleButton, Types } from '@tuval/components/diagram';
+
 import { CGSize } from '@tuval/cg';
-import { TuViewSnapStyle } from '../../../Svg/TuView/TuViewSnapStyle';
-import { TuViewGridStyle } from '../../../Svg/TuGrid/TuViewGridStyle';
-import { TuRectangleButton } from '../../../Svg/TuRectangle/TuRectangleButton';
+
 import { Pens, Brushes } from '@tuval/graphics';
 import { TuDashboardShape } from './TuDashboardShape';
 import { DashboardView } from './DashboardView';
@@ -15,7 +13,7 @@ import { ListPalette } from './ListPalette';
 import { FlexLayout } from '../../controls/layout/FlexLayout';
 import { JustifyContents } from '../../controls/layout/JustifyContents';
 import { _Types } from '../../../__manifest__/__types__';
-import { Types } from '../../../Svg/types';
+
 import { TdiFregMapShape } from './TdiFregMapShape';
 import { TdiActivitySlider } from './Shapes/TdiActivitySlider';
 import { TdiConnectionSlider } from './Shapes/TdiConnectionSlider';

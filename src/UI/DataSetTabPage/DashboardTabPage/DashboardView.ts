@@ -1,14 +1,9 @@
-import { DragEventArgs } from "../../../Svg/Forms/DragEventArgs";
-import { IDataObject } from "../../../Svg/Forms/IDataObject";
-import { ITuCollection } from "../../../Svg/ITuCollection";
-import { TuView } from "../../../Svg/TuView/TuView";
+
+import { TuView,DragEventArgs,IDataObject,ITuCollection, TuObject, Types, TuText, Middle } from "@tuval/components/diagram";
 import { CGPoint, CGSize, CGColor } from '@tuval/cg';
 import { Activator, typeOf, Type } from '@tuval/core';
 import { TuDashboardShape } from './TuDashboardShape';
-import { TuObject } from "../../../Svg/TuObject/TuObject";
-import { Types } from "../../../Svg/types";
-import { TuText } from "../../../Svg/TuText/TuText";
-import { Middle } from "../../../Svg/Spot";
+
 import { _Types } from "../../../__manifest__/__types__";
 import { TdiActivityMeanDurationChart } from './Shapes/TdiActivityMeanDurationChart';
 import { TdiActivityMedianDurationChart } from "./Shapes/TdiActivityMedianDurationChart";

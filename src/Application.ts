@@ -1,5 +1,3 @@
-import './Svg/SvgMesurements';
-
 import { instance as container, TStorage, TuvalStorage } from '@tuval/core';
 import { TApplication } from '@tuval/forms';
 

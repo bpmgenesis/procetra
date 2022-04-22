@@ -1,6 +1,6 @@
 import { Control, Teact, DomHandler, TComponent, State, ComponentCollection } from '@tuval/forms';
 import { Type } from '@tuval/core';
-import { DataObject } from '../../../Svg/Forms/DataObject';
+import { DataObject } from '@tuval/components/diagram';
 
 DomHandler.addCssToDocument(require('./ListPalette.css'));
 
