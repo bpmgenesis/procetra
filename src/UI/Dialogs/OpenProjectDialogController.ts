@@ -1,13 +1,27 @@
-import { Services } from './../../Services/Services';
-import { StateService } from './../../Services/StateService';
-import { UIController, UIView, Text, State, UIScene, ForEach, VStack, HStack, Alignment, UIButton, Icon, Fonts, TApplication, HDivider, cCenter, cTrailing } from '@tuval/forms';
-import { MiningBrokerClient } from './ConnectorDialog/eBA/MiningBrokerClient';
-import { MIProjectItem } from '../Models/MIProjectItem';
-import { ListView, ListViewItem } from '../Views/ListView';
+import {
+    Alignment,
+    cCenter,
+    cTrailing,
+    Fonts,
+    ForEach,
+    HDivider,
+    HStack,
+    Icon,
+    State,
+    TApplication,
+    Text,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { MIProject } from '../Models/ProjectModel';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
+import { ListView, ListViewItem } from '../Views/ListView';
+import { Services } from './../../Services/Services';
+import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
-import { Font } from '@tuval/graphics';
 
 export class OpenProjectDialogController extends UIController {
 

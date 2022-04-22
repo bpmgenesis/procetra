@@ -1,8 +1,5 @@
-import { DialogResult } from '@tuval/forms';
 import { NewProjectDialog } from '../Dialogs/NewProjectDialog';
-import { IProject } from "../../Bussiness/IProject";
 import { OpenProjectDialog } from '../Dialogs/OpenProjectDialog';
-import { MIProject } from '../Models/ProjectModel';
 
 export class ProjectUIService {
     public static NewProject(): Promise<any> {

@@ -2,8 +2,8 @@ import { UIController, UIView, UIScene, Text, VStack, HStack, Spacer, UIButton, 
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../../../Views/Texts';
 import { TileBox } from '../../../../../Views/TileBox';
 import { int, foreach } from '@tuval/core';
-import { EventsOverTimeChart } from '../../../../../DataSetTabPage/StatisticTabPage/CaseOverview/Charts/EventsOverTimeChart';
 import { PortalFilterBarWidget } from '../../../../AppController/Views/PortalFilterBarWidget';
+import { EventsOverTimeChart } from '../../../../../Controls/EventsOverTimeChart/EventsOverTimeChart';
 
 const overviewTypes = [
     'Events over time',

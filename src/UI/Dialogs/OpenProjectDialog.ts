@@ -1,10 +1,7 @@
-import { OpenProjectDialogController } from './OpenProjectDialogController';
 import { Event } from '@tuval/core';
-import { Button, Dialog, ListBox } from '@tuval/forms';
-import { Services } from '../../Services/Services';
-import { StateService } from '../../Services/StateService';
-import { MIProject } from '../Models/ProjectModel';
-import { MiningBrokerClient } from './ConnectorDialog/eBA/MiningBrokerClient';
+import { Dialog, ListBox } from '@tuval/forms';
+
+import { OpenProjectDialogController } from './OpenProjectDialogController';
 
 
 

@@ -1,5 +1,4 @@
 import { Guid, clone } from '@tuval/core';
-import { EventLog } from '../Logic/objects/log/EventLog';
 import { IActivityInfoBag } from './IDataSet';
 /* export abstract class DataSetBase implements IDataSet {
     public ProjectId: string;
@@ -18,7 +17,7 @@ export class DataSet {
     public Id: string;
     public ParentDataSetId: string;
     public Name: string;
-    public EventLog: EventLog;
+    public EventLog: any;
     public Separator: string = ',';
     public CaseColumn: string = 'case:concept:name';
     public ActivityColumn: string = 'concept:name';

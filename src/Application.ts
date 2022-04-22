@@ -1,11 +1,11 @@
 import { instance as container, TStorage, TuvalStorage } from '@tuval/core';
 import { TApplication } from '@tuval/forms';
+import { MiningBrokerClient } from './BrokerClients/MiningBrokerClient';
 
 import { BrokerProjectService } from './BrokerProjectService';
 import { MainView } from './MainView';
 import { Resources } from './Resources';
 import { StateService } from './Services/StateService';
-import { MiningBrokerClient } from './UI/Dialogs/ConnectorDialog/eBA/MiningBrokerClient';
 
 const manifest = require('./manifest');
 

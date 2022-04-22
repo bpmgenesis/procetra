@@ -1,5 +1,6 @@
 import { Delegate, Event } from '@tuval/core';
-import { MiningBrokerClient } from '../UI/Dialogs/ConnectorDialog/eBA/MiningBrokerClient';
+import { MiningBrokerClient } from '../BrokerClients/MiningBrokerClient';
+
 
 export class CurrentProjectChangedArgs {
     public ProjectId: string;

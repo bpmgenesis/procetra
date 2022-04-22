@@ -1,5 +1,4 @@
 import { DateTime } from '@tuval/core';
-import { EventLog } from '../Logic/objects/log/EventLog';
 import { IActivityInfo } from '../../dist_types/types/Bussiness/IActivityInfo';
 
 export interface IActivityInfoBag {
@@ -14,7 +13,7 @@ export interface IDataSet {
     CreatedDate: DateTime;
     FilteredData: any[];
     ConditionRules: string;
-    EventLog: EventLog;
+    EventLog: any;
     Separator: string;
     CaseColumn: string;
     ActivityColumn: string;

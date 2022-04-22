@@ -1,13 +1,12 @@
 import { MIProject } from './UI/Models/ProjectModel';
-import { CvsToJson } from './Logic/utils/csv2json';
 import { IActivityInfo } from "./Bussiness/IActivityInfo";
 import { IDataSet } from "./Bussiness/IDataSet";
 import { IProject } from "./Bussiness/IProject";
 import { Project } from "./Bussiness/Project";
 import { IProjectService } from "./Services/IProjectService";
 import { StateService } from "./Services/StateService";
-import { ICreateProjectResponse, MiningBrokerClient } from "./UI/Dialogs/ConnectorDialog/eBA/MiningBrokerClient";
 import { MIProjectItem } from './UI/Models/MIProjectItem';
+import { MiningBrokerClient, ICreateProjectResponse } from './BrokerClients/MiningBrokerClient';
 
 export class BrokerProjectService implements IProjectService {
     public CreateProject(name: string): Promise<IProject> {
@@ -63,8 +62,8 @@ export class BrokerProjectService implements IProjectService {
     }
     ConvertCsvToJson(csv: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            const data = CvsToJson.Convert(csv, { parseNumbers: true });
-            return resolve(data);
+            /* const data = CvsToJson.Convert(csv, { parseNumbers: true }); */
+            return resolve(null);
         });
 
     }

@@ -5,7 +5,7 @@ import {
     HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, TwoColumnLayout2
 } from '@tuval/forms';
 
-import { DashboardView } from '../../DataSetTabPage/DashboardTabPage/DashboardView';
+
 import { CGSize } from '@tuval/cg';
 
 import { PaletteView } from './Views/PaletteView';
@@ -13,6 +13,7 @@ import { MIPaletteCategory } from './Models/MIPaletteCategory';
 import { PaletteModel } from './Models/MDPalette';
 import { PageTitle } from '../../Views/PageHeader';
 import { int } from '@tuval/core';
+import { DashboardView } from '../../Controls/DashboardView/DashboardView';
 export class ProcessDashboardController extends UIController {
 
     private palettedata: MIPaletteCategory[];

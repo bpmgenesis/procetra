@@ -3,12 +3,12 @@ import { MVIActivityBox } from './Views/ActivityBox';
 import { int } from '@tuval/core';
 import { TvChart } from '@tuval/components/charts';
 import { UIController, UIView, VStack, PositionTypes, Alignment, State } from '@tuval/forms';
-import { EventsOverTimeChart } from '../../../../DataSetTabPage/StatisticTabPage/CaseOverview/Charts/EventsOverTimeChart';
 import { ActivitySection } from './Views/ActivitySection';
 import { HappyPathSection, MVIHappyPathSectionModel } from './Views/HappyPathSection';
 import { MetricsSection, MVIMetricSection } from './Views/MetricsSection';
 import { MVIHappyPathDiagramItem } from './Views/HappyPathDiagram';
 import { MVIHappyPathAbsoluteBoxModel } from './Views/HappyPathBox';
+import { EventsOverTimeChart } from '../../../../Controls/EventsOverTimeChart/EventsOverTimeChart';
 
 
 const testActivitySectionModel: MVIActivityBox[] = [

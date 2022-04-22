@@ -1,9 +1,9 @@
 var shell = require('shelljs');
 
-if (shell.exec('node shell_wp.js').code !== 0) {
+/* if (shell.exec('node shell_wp.js').code !== 0) {
     shell.echo('Build failed');
     shell.exit(1);
-}
+} */
 
 if (shell.exec('npm run wbuild').code !== 0) {
     shell.echo('Build failed');

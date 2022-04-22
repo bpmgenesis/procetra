@@ -10,9 +10,8 @@ import { Binding } from '../Binding';
 import { AppController } from '../AppController/AppController';
 import { CreateMVIProjectItem, MIProjectItem, MVIProjectItem } from '../../Models/MIProjectItem';
 import { ListFooterButton } from './Views/ListFooterButton';
-import { ConnectorDialog } from '../../Dialogs/ConnectorDialog/ConnectorDialog';
+
 import { ListView, ListViewItem, ListViewItemClass } from '../../Views/ListView';
-import { TGauge } from '../../Components/TGauge/TGauge';
 import { ApplicationModes } from '@tuval/forms';
 
 class StackController extends UIController {
@@ -89,11 +88,6 @@ class Tab1Controller2 extends UIController {
 }
 
 
-let gauge = new TGauge();
-gauge.Value = 56;
-gauge.Appearance.Width = '20px'
-gauge.Appearance.Height = '20px'
-
 let tabModel: any[] = [];
 
 function DatasetListView(projectItem: MVIProjectItem): ListViewItemClass {
@@ -106,7 +100,7 @@ function DatasetListView(projectItem: MVIProjectItem): ListViewItemClass {
                         Text(projectItem.name),
                     ).alignment(Alignment.leading).spacing('5px'),
                     HStack(
-                        gauge as any
+                       /*  gauge as any */
                     ).alignment(Alignment.leading)
                 ).spacing('5px').padding('5px'),
                 VStack(
@@ -210,8 +204,8 @@ export class ProjectControllerClass extends UIController {
 
     //When user click add button that under list
     private OnNewProjectItem() {
-        const connectorDialog = new ConnectorDialog();
-        connectorDialog.ShowDialog();
+       /*  const connectorDialog = new ConnectorDialog();
+        connectorDialog.ShowDialog(); */
     }
 
     // When user select items froım list
