@@ -64,7 +64,7 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
             left: [
                 VStack({ spacing: 5 })(
                     HStack(
-                        Icon('\\f112').size(15),
+                        Icon('\\f112').size(19).marginRight('10px').foregroundColor('#ccc'),
                         Text('insan kaynakları süreci').textTransform('uppercase')
                     ).height(),
                     HStack({ spacing: 10 })(
@@ -72,21 +72,28 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
                             Text('100%'),
                             Spacer(),
                             RoundedRectangle().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            Text('Project').textTransform('uppercase'),
-                            Text('31.123').textTransform('uppercase').fontSize('10px')
+                            VStack(
+                                Text('Project').textTransform('uppercase'),
+                                Text('31.123').textTransform('uppercase').fontSize('12px')
+                            ).height()
                         ),
                         VStack({ spacing: 10 })(
                             Text('100%'),
                             Spacer(),
                             RoundedRectangle().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            Text('Set').textTransform('uppercase'),
-                            Text('Set').textTransform('uppercase')
+                            VStack(
+                                Text('Set').textTransform('uppercase'),
+                                Text('31.123').textTransform('uppercase').fontSize('12px')
+                            ).height()
                         ),
                         VStack({ spacing: 10 })(
                             Text('100%'),
                             Spacer(),
                             RoundedRectangle().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            Text('Current').textTransform('uppercase')
+                            VStack(
+                                Text('Current').textTransform('uppercase'),
+                                Text('31.123').textTransform('uppercase').fontSize('12px')
+                            ).height()
                         )
                     ).height(500).width(200).padding(20),
 

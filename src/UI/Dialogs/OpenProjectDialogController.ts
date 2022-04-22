@@ -59,26 +59,26 @@ export class OpenProjectDialogController extends UIController {
         return (
             UIScene(
                 VStack(
-                    HStack({alignment:cLeading, spacing:10})(
+                    HStack({ alignment: cLeading, spacing: 10 })(
                         Icon('\\efd5').size(30).foregroundColor(TApplication.IsPortal ? '#ddd' : ''),
                         Text('Select Project').font(Fonts.title).fontFamily('Ubuntu, sans-serif')
-                        .fontWeight(TApplication.IsPortal ? '600' : '400').foregroundColor(TApplication.IsPortal ? '#ddd' : '')
+                            .fontWeight(TApplication.IsPortal ? '600' : '400').foregroundColor(TApplication.IsPortal ? '#ddd' : '')
                     ).height(),
                     HDivider().height(1).background(TApplication.IsPortal ? '#288ae2' : 'gray'),
                     ListView(
                         ...ForEach(this.projects, (project: MIProject) =>
                             ListViewItem(
-                                Text(project.project_name).foregroundColor(TApplication.IsPortal ? '#bbb' : ''),
+                                Text(project.project_name).foregroundColor(TApplication.IsPortal ? '#bbb' : '').fontWeight('500'),
                             )
                                 .minHeight('50px')
                                 .background(this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' } as any)
                                 .onSelected(() => this.selectedProject = project)
                         )
-                    ).width('100%').backgroundColor('#2b3641'),
+                    ).width('100%').backgroundColor(TApplication.IsPortal ? '#2b3641' : 'white'),
                     HStack({ alignment: TApplication.IsPortal ? cCenter : cTrailing })(
                         AcceptButton('OK').action(() => this.OnOK()),
                         CancelButton('Cancel').action(() => this.OnCancel())
-                    ).height('50px')
+                    ).height(50)
                 ).grow()
             )
                 .background(TApplication.IsPortal ? '#212932' : '')

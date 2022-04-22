@@ -19,14 +19,14 @@
 ******************************************************************************************************************************@*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$grids"));
+		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"));
 	else if(typeof define === 'function' && define.amd)
-		define(["tuval$core", "tuval$forms", "tuval$components$charts", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics", "tuval$components$grids"], factory);
+		define(["tuval$core", "tuval$forms", "tuval$components$grids", "tuval$components$charts", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$grids")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$charts"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"], root["tuval$components$grids"]);
+		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$grids"], root["tuval$components$charts"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__, __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__) {
+})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -789,14 +789,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 var manifest = __webpack_require__(/*! ./manifest */ "./src/manifest.js");
 function make(ctorFun, argsArray) {
-    // New instance attached to the prototype but the constructor
-    // hasn't been called on it.
     var newInstance = Object.create(ctorFun.prototype.constructor.prototype);
     ctorFun.prototype.constructor.apply(newInstance, argsArray);
     return newInstance;
 }
-// If you create a utility function to create from instance, then it uses the
-// inherited `constructor` property and your change would affect that.
 function makeFromInstance(instance, argsArray) {
     return make(instance.constructor, argsArray);
 }
@@ -822,13 +818,10 @@ var ProcessMining = /** @class */ (function (_super) {
             var brokerProjectService = new _BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__.BrokerProjectService();
             _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.registerInstance('IProjectService_Thread', brokerProjectService);
             var fileExprorer = new _MainView__WEBPACK_IMPORTED_MODULE_4__.MainView();
-            /*  const controller = new MainController();
-             controller.SetView(fileExprorer); */
             _this.SetMainForm(fileExprorer);
-            _this.Start();
+            _this.Start(); // Uygulamayı başlatıyoruz.
             //PMAcademyService.Start();
             _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.SaveFile('/static/tuval-core-wp.js', 'tuval-core-wp').then(function () {
-                // debugger;
                 _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.GetFile('tuval-core-wp').then(function (url) {
                     // const thread = make(PMThreadWorker, ['/static/index-wp.js']);
                     // container.registerInstance('IProjectService_Thread', thread);
@@ -838,13 +831,6 @@ var ProcessMining = /** @class */ (function (_super) {
                 });
             });
         });
-        /*   TuvalTracker.install({
-             token: 'YOUR_TOKEN_HERE',
-             window: { enabled: true }
-         }); */
-        /*
-        TuvalTracker.addMetadata("subscription", "professional");
-        TuvalTracker.addMetadata("has_sourcemaps", "false"); */
     };
     ProcessMining.RecentlyUploadedFilesStorage = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TuvalStorage({ name: 'BPMG_P2M', storeName: 'RecentlyUploadedFilesStorage' });
     ProcessMining = __decorate([
@@ -853,7 +839,6 @@ var ProcessMining = /** @class */ (function (_super) {
     return ProcessMining;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication));
 
-// ModuleLoader.FireModuleLoadedEvent(manifest.application.name, ProcessMining);
 
 
 /***/ }),
@@ -3385,6 +3370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./View/BottleneckSection */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts");
 /* harmony import */ var _View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./View/ThroughputTimeSection */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3403,15 +3389,23 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var ThroughputTimesController = /** @class */ (function (_super) {
     __extends(ThroughputTimesController, _super);
     function ThroughputTimesController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ThroughputTimesController.prototype.InitController = function () {
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__.EventsOverTimeChart();
+        var map = new Map();
+        // this.map = [];
+        for (var i = 0; i < 100; i++) {
+            map[i] = i;
+        }
+        this.chart.SetChartData(map);
     };
     ThroughputTimesController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 })((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 })((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(this.chart), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
             .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute)
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
@@ -3498,13 +3492,13 @@ function ProcessStartEnd() {
         .width() //auto
     );
 }
-function ThroughputTimeSection() {
+function ThroughputTimeSection(chart) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Throughput Time Search'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
         .height('auto'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('Select any two activities to see throughput time between them'), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(DurationHeadline('Average Throughput time'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(DurationText('24'), DurationUnitText('Days')), ProcessStartEnd())
         .padding(10)
         .height()
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Chart here')))
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(chart))
         .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
         .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top))
         .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
@@ -3530,9 +3524,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
-/* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/Domains/Project/Models/MIProjectItem.ts");
-/* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/Domains/Project/Views/DesktopView.ts");
-/* harmony import */ var _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Dialogs/ConnectorDialog */ "./src/UI/Dialogs/ConnectorDialog.ts");
+/* harmony import */ var _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Dialogs/ConnectorDialog */ "./src/UI/Dialogs/ConnectorDialog.ts");
+/* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/Domains/Project/Models/MIProjectItem.ts");
+/* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/Domains/Project/Views/DesktopView.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3611,14 +3605,14 @@ var ProjectControllerClass = /** @class */ (function (_super) {
         this.selectedProject = project;
         var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
         _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjectItems(session_id, 'bpmgenesis', '').then(function (projectItems) {
-            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__.CreateMVIProjectItem)(projectItem); });
+            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_3__.CreateMVIProjectItem)(projectItem); });
             _this.OnProjectItemSelected(_this.selectedProjectItems[0]);
         });
         return this;
     };
     //When user click add button that under list
     ProjectControllerClass.prototype.OnNewProjectItem = function () {
-        var connectorDialog = new _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_4__.ConnectorDialog();
+        var connectorDialog = new _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_2__.ConnectorDialog();
         connectorDialog.ShowDialog();
     };
     // When user select items froım list
@@ -3639,7 +3633,7 @@ var ProjectControllerClass = /** @class */ (function (_super) {
         });
     };
     ProjectControllerClass.prototype.LoadDesktopView = function () {
-        return (0,_Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__.DesktopView)({
+        return (0,_Views_DesktopView__WEBPACK_IMPORTED_MODULE_4__.DesktopView)({
             selectedProjectItems: this.selectedProjectItems,
             selectedProjectItem: this.selectedProjectItem,
             selectedProjectItemController: this.selectedProjectItemController,
@@ -3783,7 +3777,7 @@ function DesktopView(_a) {
           ).action(() => this.parentAppController.CLoseProject()) */
         ],
         left: [
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('10px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase'))).height(500).width(200).padding(20), 
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(19).marginRight('10px').foregroundColor('#ccc'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height())).height(500).width(200).padding(20), 
             //Project Title
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
                 .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
@@ -6500,11 +6494,11 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
             .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects, function (project) {
-            return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : ''))
+            return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : '').fontWeight('500'))
                 .minHeight('50px')
                 .background(_this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' })
                 .onSelected(function () { return _this.selectedProject = project; });
-        })).width('100%').backgroundColor('#2b3641'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter : _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.AcceptButton)('OK').action(function () { return _this.OnOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.CancelButton)('Cancel').action(function () { return _this.OnCancel(); })).height('50px')).grow())
+        })).width('100%').backgroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#2b3641' : 'white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter : _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.AcceptButton)('OK').action(function () { return _this.OnOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.CancelButton)('Cancel').action(function () { return _this.OnCancel(); })).height(50)).grow())
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#212932' : '')
             .padding('10px'));
     };
@@ -6581,9 +6575,9 @@ var eBABrokerClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('user', 'cvx');
-                        form.append('password', 'xcv');
-                        form.append('lang', 'xcv');
+                        form.append('user', '');
+                        form.append('password', '');
+                        form.append('lang', '');
                         _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProjects', form)
                             .then(function (response) {
                             resolve(response.data);
@@ -6597,10 +6591,10 @@ var eBABrokerClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('user', 'cvx');
-                        form.append('password', 'xcv');
+                        form.append('user', '');
+                        form.append('password', '');
                         form.append('process_name', process_name);
-                        form.append('lang', 'xcv');
+                        form.append('lang', '');
                         _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcesses', form)
                             .then(function (response) {
                             resolve(response.data);
@@ -6614,11 +6608,11 @@ var eBABrokerClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('user', 'cvx');
-                        form.append('password', 'xcv');
+                        form.append('user', '');
+                        form.append('password', '');
                         form.append('user_id', 'admin');
                         form.append('process_id', process_id);
-                        form.append('lang', 'xcv');
+                        form.append('lang', '');
                         _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcessHistory', form)
                             .then(function (response) {
                             resolve(response.data);
@@ -6632,10 +6626,10 @@ var eBABrokerClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('user', 'cvx');
-                        form.append('password', 'xcv');
+                        form.append('user', '');
+                        form.append('password', '');
                         form.append('process_name', process_name);
-                        form.append('lang', 'xcv');
+                        form.append('lang', '');
                         _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcessAllHistory/json', form)
                             .then(function (response) {
                             resolve(response.data);

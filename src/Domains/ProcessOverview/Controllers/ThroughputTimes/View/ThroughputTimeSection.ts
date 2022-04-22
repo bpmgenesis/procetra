@@ -40,7 +40,7 @@ function ProcessStartEnd(): UIView {
     )
 }
 
-export function ThroughputTimeSection(): UIView {
+export function ThroughputTimeSection(chart: any): UIView {
     return (
         VStack(
             HStack(
@@ -67,7 +67,7 @@ export function ThroughputTimeSection(): UIView {
                     .height()
                     .alignment(Alignment.top),
                 VStack(
-                    Text('Chart here')
+                    chart
                 )
             )
                 .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })

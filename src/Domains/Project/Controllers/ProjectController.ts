@@ -1,21 +1,13 @@
-import { MIProject } from '../Models/ProjectModel';
-import {
-    TApplication, TForm, UIScene, UIButton, UIController, UIView, UITextField, State, VStack,
-    Text, ForEach, HStack, IFont, Icon, Spacer, Alignment, ZStack, RoundedRectangle, VDivider, Button, IControl, Fonts, TwoColumnWithHeaderFooterLayout, TwoColumnWithHeaderLayout, Case
-} from '@tuval/forms';
-import { ModuleLoader, instance as container, TuvalStorage, Thread, Console, TStorage, int } from '@tuval/core';
+import { int } from '@tuval/core';
+import { Fonts, RoundedRectangle, State, Text, UIButton, UIController, UIScene, UIView, VStack, ZStack } from '@tuval/forms';
+
 import { Services } from '../../../Services/Services';
-import { TabView, TabViewItem } from '../../../UI/Views/TabView';
-import { Binding } from '../../Binding';
-import { AppController } from '../../Application/Controllers/AppController';
-
-import { ListFooterButton } from '../Views/ListFooterButton';
-
-import { ListView, ListViewItem, ListViewItemClass } from '../../../UI/Views/ListView';
-import { ApplicationModes, cLeading } from '@tuval/forms';
-import { CreateMVIProjectItem, MVIProjectItem, MIProjectItem } from '../Models/MIProjectItem';
-import { DesktopView } from '../Views/DesktopView';
 import { ConnectorDialog } from '../../../UI/Dialogs/ConnectorDialog';
+import { AppController } from '../../Application/Controllers/AppController';
+import { Binding } from '../../Binding';
+import { CreateMVIProjectItem, MIProjectItem, MVIProjectItem } from '../Models/MIProjectItem';
+import { MIProject } from '../Models/ProjectModel';
+import { DesktopView } from '../Views/DesktopView';
 
 class StackController extends UIController {
     @State()
