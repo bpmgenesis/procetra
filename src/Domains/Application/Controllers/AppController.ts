@@ -24,21 +24,6 @@ import { MIProject } from '../../Project/Models/ProjectModel';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 import { RecentProjects } from '../Views/RecentProjects';
 
-/* VStack(
-    Text('Simple Swift Guide to largeTitle ').font(Fonts.largeTitle),
-    Text('Simple Swift Guide to title').font(Fonts.title),
-    Text('Simple Swift Guide to title2').font(Fonts.title2),
-    Text('Simple Swift Guide to title3').font(Fonts.title3),
-    Text('Simple Swift Guide to headline').font(Fonts.headline),
-    Text('Simple Swift Guide to body').font(Fonts.body),
-    Text('Simple Swift Guide to callout').font(Fonts.callout),
-    Text('Simple Swift Guide to subhead').font(Fonts.subhead),
-    Text('Simple Swift Guide to footnote').font(Fonts.footnote),
-    UIButton(
-        Text('New')
-    ).cornerRadius('50%').shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
-)
-) */
 
 function MenuButton(title: string, icon: string, action: Function): UIView {
     const view =
@@ -47,12 +32,12 @@ function MenuButton(title: string, icon: string, action: Function): UIView {
                 Icon(icon).size(30),
             )
         )
-            .width('64px').height('64px')
+            .width(64).height(64)
             .transition('all 0.35s')
             .background('rgb(255,255,255,50%)')
-            .padding('8px')
+            .padding(8)
             .border('solid 1px rgb(120,120,120,20%)')
-            .cornerRadius('12px')
+            .cornerRadius(12)
             .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
             .action(() => action())
 
@@ -78,8 +63,6 @@ export class AppController extends UIController {
         this.showAnim = false;
 
         this.RequestDesktop = new Event();
-        /*  this.controller = new ProjectController();
-         this.controller.SetParentAppController(this); */
     }
 
     private MainPage(): UIView {
@@ -141,8 +124,6 @@ export class AppController extends UIController {
     }
 
     private OnOpenProject() {
-        /* this.currentProject = 'sd';
-        this.controller.LoadProjects(); */
         ProjectUIService.OpenProjectDialog().then((project: MIProject) => {
             this.currentProject = project;
             this.controller = ProjectController(this, project);
