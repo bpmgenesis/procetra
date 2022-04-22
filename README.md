@@ -156,7 +156,7 @@ Pizza örneğimize geri dönelim. Tipik bir süreç şöyle görünür:
 Siparişi al → fırını ısıt → hamuru hazırla → hamurun üzerine malzemeyi yay → sosları ekle → pizzayı pişir → pizzayı kutuya koy → teslim et
 
 ## CaseID
-Buraya açıklama gelecek
+Açıklama eklenecek.
 
 ## Timestamp
 Bir süreç adımı ne zaman gerçekleşti? Zaman damgası size bir işlemin ne zaman başladığını, ne zaman bittiğini söyler veya iki zaman damganız vardır ve başlangıç ve bitiş zamanını içerir. İki zaman damgalı sürüm açıkçası en kesin olanıdır.
