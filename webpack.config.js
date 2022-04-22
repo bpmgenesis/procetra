@@ -11,7 +11,7 @@ const copyright = `
 *                                                                                                                               *
 *                                                                                                                               *
 * This file is part of Tuval Framework.                                                                                         *
-* Copyright (c) Tuvalsoft 2018 All rights reserved.                                                                             *
+* Copyright (c) Tuvalsoft 2019 All rights reserved.                                                                             *
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
