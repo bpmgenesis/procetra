@@ -19,9 +19,9 @@ export class EnsembleBrokerClient {
     public static async Login(): Promise<string> {
         return new Promise((resolve, reject) => {
             const form = new FormData();
-            form.append('user_name','cvx');
-            form.append('password','xcv');
-            form.append('lang','xcv');
+            form.append('user_name','');
+            form.append('password','');
+            form.append('lang','');
             // const config = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
             HttpClient.Post(ConfigService.GetEnsembleUrl() + '/process/Login', form)
                 .then(response => {
