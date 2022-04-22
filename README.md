@@ -3,14 +3,14 @@
 # Süreç Madenciliği Nedir ?
 Daha önce Süreç Madenciliğini duydunuz ama ne anlama geldiğinden, nasıl çalıştığından veya sizin için bir değeri olup olmadığından emin değil misiniz? Yoksa Süreç Madenciliği alanında tamamen yeni misiniz ve buraya tamamen şans eseri mi geldiniz? Merak etmeyin. Aşağıda Süreç Madenciliği için kapsamlı bir rehber hazırladık. Temel bilgilerle başlayacağız ve uygulama, kullanım durumları ve olasılıklarla ilgili daha fazla ayrıntıya gireceğiz.
 
-# What is Process Mining? How does it work?
+# Süreç Madenciliği Nasıl Çalışır?
 Konuya Süreç Madenciliğinin temelleri ile başlıyoruz. 'Süreç' ile ne demek istiyoruz? Süreç Madenciliği nasıl çalışır? Nereden geldi? Avantajları nelerdir? Kimler kullanabilir? Tipik uygulama alanları nelerdir? Ve başlamak için neye ihtiyacınız var? Bütün bu soruların cevaplarını aşağıda bulacaksınız.
 
-# Technology of Process Mining
-## What is a process?
+# Proses Madenciliği Teknolojisi
+## Süreç Nedir?
 Süreç Madenciliği açısından bakarsak bir süreç, net bir başlangıç ve bitiş adımı olan aktivite adımlarından oluşan bir olaylar zinciridir. Bu süreç adımları, süreçteki bireysel eylemler veya olaylardır. Süreçin klasik örneklerinden olan pizzacı örneğini ele alırsak, bir pizza hazırlama ve pişirme sürecini ele alalım. Bir pizza türü için sipariş verilmesiyle başlar ve pizzanın teslim edilmesiyle sona erer. Bunlar başlangıç ve bitiş noktalarıdır. Bunlar ve aradaki tüm adımlar (fırını ısıtma, hamur hazırlama, malzemeleri ekleme vb.) işlem adımlarıdır.
 
-## What is the definiton of Process Mining?
+## Süreç Madenciliğinin Tanımı
 Süreç Madenciliği terimi aslında daha geniş bir şekilde süreç yönetimi alanına giren teknolojilerin ve yöntemlerin bir karışımını tanımlar. Süreç Madenciliğinin temel amacı, süreçlerin gerçekte nasıl gerçekleştiğini, ideal modelden sapıp sapmadığı veya nasıl saptığını, hangi problemlerin ortaya çıktığını, hangi optimizasyon önlemlerinin alınması gerektiğini analiz etmek ve ardından da süreci iyileştirmeye başlamaktır.
 
 Procetra gibi modern süreç madenciliği araçları, sürecinizi görselleştirmekten fazlasını yaparlar. Bu araçları aşağıdakiler için kullanabilirsiniz:
@@ -22,7 +22,7 @@ Procetra gibi modern süreç madenciliği araçları, sürecinizi görselleştir
 - İş akışlarını tetiklemek
 - Süreç iyileştirmelerini keşfetmek ve planlamak
 
-## How does it work?
+## Nasıl Çalışır?
 Süreç Madenciliği algoritmaları, sürecin olay verilerini kullanır. Bunlar tipik günlük dosyaları değil, kurumsal bilgi sistemlerinden veya kurumsal kaynak planlama sistemlerinden farklı veritabanları ve dosyalarıdır.
 
 Employees are very effective in creating shortcuts in your process. They can improve your workflow or be serious compliance violations, that’s why it’s so important to find them. Process Mining is the best solution to unveil the invisible net of pirate paths in your company.
@@ -50,7 +50,7 @@ Erken Süreç Madenciliği doğdu.
 
 Süreç Madenciliğinin ekonomik potansiyeli ortaya çıktığında işler daha da hızlandı. Birinci nesil Süreç Madenciliği araçları pazara girdi. Olduğu gibi süreçlerin görselleştirilmesine odaklandılar ve analizlere izin verdiler, ancak 2. nesil araçlarda bulabileceğimiz BI unsurlarından yoksunlardı.
 
-## Process Mining 2.0
+## Süreç Madenciliği 2.0
 En son Proses Madenciliği araçları dalgası çok daha gelişmiş. Veri analitiği, veri madenciliği, süreç analitiği ve İş Zekası'nın (BI) bir birleşimidir. Bu, görselleştirme ve analizin (aynı zamanda geliştirilmiş olan) yanı sıra artık süreçleri ve KPI'ları (Ana Performans Göstergeleri) kıyaslayabilir, karşılaştırabilir ve izleyebilir, iş akışı tetikleyicilerini doğrudan Süreç Madenciliği yazılımınızdan başlatabilir ve kuruluşunuzun BT altyapısında işbirliği yaparak aşağıdakileri gerçekleştirebilirsiniz: iletişim kurmak ve sorunları çözmek.
 
 # Süreç Madenciliğinin faydaları nelerdir?
@@ -62,10 +62,10 @@ Gerçek süreçler ideal modelden çok daha karmaşıktır. Şu anda işleri nas
 ## Hız
 Süreç Madenciliği, süreç optimizasyonuna yönelik eski yaklaşımdan çok daha hızlıdır. Görüşmeler yapmak ve daha sonra analiz edilmesi gereken çalıştaylar düzenlemek yerine, sonuçlar bir düğmeye basarak ortaya çıkıyor.
 
-## Amaç
+## Hedefler
 Süreç akışı, gerçek süreciniz hakkında size tamamen objektif bir bakış açısı sağlar. Görünüme uygulanan belirli bir lens yoktur. Sürecinizi kimsenin algıladığı gibi değil gibi görüyorsunuz.
 
-## The entire picture
+## Resmin Bütününü Görme
 You get the complete picture. Where individual people know what they are doing, there usually is no-one who has an idea of the entire process. With Process Mining, you see the entire process from start to finish including every individual step. This makes it much easier to communicate problems and find optimization potential.
 
 ## Süreçleri ve istisnaları değiştirme
