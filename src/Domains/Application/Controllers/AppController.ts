@@ -26,7 +26,7 @@ import { RecentProjects } from '../Views/RecentProjects';
 
 
 function MenuButton(title: string, icon: string, action: Function): UIView {
-    const view =
+    return (
         UIButton(
             VStack(
                 Icon(icon).size(30),
@@ -40,8 +40,7 @@ function MenuButton(title: string, icon: string, action: Function): UIView {
             .cornerRadius(12)
             .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
             .action(() => action())
-
-    return view;
+    )
 }
 
 
@@ -61,24 +60,25 @@ export class AppController extends UIController {
 
     protected InitController(): void {
         this.showAnim = false;
-
         this.RequestDesktop = new Event();
     }
 
     private MainPage(): UIView {
-        return UIScene(
-            HStack(
-                VStack({ spacing: 10 })(
-                    MenuButton('', '\\f064', () => this.OnNewProject()),
-                    MenuButton('', '\\f06d', () => this.OnOpenProject()),
-                    MenuButton('', '\\f051', () => this.OnNewProject()),
-                    MenuButton('', '\\f183', () => this.OnNewProject()),
-                    MenuButton('', '\\f04a', () => this.OnNewProject())
-                ).width('120px'),
-                RecentProjects()
+        return (
+            UIScene(
+                HStack(
+                    VStack({ spacing: 10 })(
+                        MenuButton('', '\\f064', () => this.OnNewProject()),
+                        MenuButton('', '\\f06d', () => this.OnOpenProject()),
+                        MenuButton('', '\\f051', () => this.OnNewProject()),
+                        MenuButton('', '\\f183', () => this.OnNewProject()),
+                        MenuButton('', '\\f04a', () => this.OnNewProject())
+                    ).width('120px'),
+                    RecentProjects()
+                )
+                    // UIScene içerisine yayılması için
+                    .width('100%')
             )
-                // UIScene içerisine yayılması için
-                .width('100%')
         )
     }
 
