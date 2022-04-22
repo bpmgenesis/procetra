@@ -1,38 +1,35 @@
 
 
-# What is Process Mining ?
-Have you heard of Process Mining or Process Mining Software before but are not sure what’s the meaning, how it works or if it has any value to you? Or are you completely new to the area of Process Mining and just arrived here by pure chance? Don’t worry. We’ve got you covered. In this five-part series we’ll give you a comprehensive guide to Process Mining. We’ll start with the basics and go into more details regarding application, use cases and possibilities along the way. The series ends with common misconceptions about Process Mining that cause confusion and hold people back from getting started.
+# Süreç Madenciliği Nedir ?
+Daha önce Proses Madenciliği veya Proses Madenciliği Yazılımını duydunuz ama ne anlama geldiğinden, nasıl çalıştığından veya sizin için bir değeri olup olmadığından emin değil misiniz? Yoksa Proses Madenciliği alanında tamamen yeni misiniz ve buraya tamamen şans eseri mi geldiniz? Merak etmeyin. Aşağıda Süreç Madenciliği için kapsamlı bir rehber hazırladık. Temel bilgileri başlayacağız ve yol boyunca uygulama, kullanım durumları ve olasılıklarla ilgili daha fazla ayrıntıya gireceğiz. Dizi, Süreç Madenciliği hakkında kafa karışıklığına neden olan ve insanları başlamaktan alıkoyan yaygın yanlış anlamalarla sona eriyor.
 
 # What is Process Mining? How does it work?
-We start our workshop with the basics of Process Mining. What do we mean by ‘process’? How does Process Mining work? Where did it come from? What are its advantages? Who can use it? What are the typical application areas? And what do you need to get started?
+Konuya Süreç Madenciliğinin temelleri ile başlıyoruz. 'Süreç' ile ne demek istiyoruz? Süreç Madenciliği nasıl çalışır? Nereden geldi? Avantajları nelerdir? Kimler kullanabilir? Tipik uygulama alanları nelerdir? Ve başlamak için neye ihtiyacınız var? Bütün bu soruların cevaplarını aşağıda bulacaksınız.
 
 # Technology of Process Mining
 ## What is a process?
-In Process Mining a process is a chain of events made up of process steps with a clear start and end activity. Those process steps are individual actions or events in the process. An easy example of such a process is running a pizza place and baking a pizza. It starts with an order placement for a type of pizza and ends when the pizza is delivered. Those are start and end points. They and all the steps in-between (preheat oven, prepare dough, add toppings etc.) are process steps.
+Süreç Madenciliği açısından bakarsak bir süreç, net bir başlangıç ve bitiş adımı olan aktivite adımlarından oluşan bir olaylar zinciridir. Bu süreç adımları, süreçteki bireysel eylemler veya olaylardır. Süreçin klasik örneklerinden olan pizzacı örneğini ele alırsak, bir pizza hazırlama ve pişirme sürecini ele alalım. Bir pizza türü için sipariş verilmesiyle başlar ve pizzanın teslim edilmesiyle sona erer. Bunlar başlangıç ve bitiş noktalarıdır. Bunlar ve aradaki tüm adımlar (fırını ısıtma, hamur hazırlama, malzemeleri ekleme vb.) işlem adımlarıdır.
 
 ## What is the definiton of Process Mining?
-The term Process Mining actually describes a mix of technologies and methods that fall into the broader area of process management. The main goal of Process Mining is to analyze how processes actually transpire, how they deviate from the ideal model, what problems occur, what optimization measures should be taken, and then start to improve the process.
+Süreç Madenciliği terimi aslında daha geniş bir şekilde süreç yönetimi alanına giren teknolojilerin ve yöntemlerin bir karışımını tanımlar. Süreç Madenciliğinin temel amacı, süreçlerin gerçekte nasıl gerçekleştiğini, ideal modelden sapıp sapmadığı veya nasıl saptığını, hangi problemlerin ortaya çıktığını, hangi optimizasyon önlemlerinin alınması gerektiğini analiz etmek ve ardından da süreci iyileştirmeye başlamaktır.
 
-You can use the technique on any process as long as the relevant data is stored in an accessible IT system. Nowadays that describes any digitalized process.
+Procetra gibi modern süreç madenciliği araçları, sürecinizi görselleştirmekten fazlasını yaparlar. Bu araçları aşağıdakiler için kullanabilirsiniz:
 
-Modern Process Mining tools do more than visualize your process. You can use them to:
-
-- do an in-depth analysis
-- benchmark
-- compare
-- monitor
-- trigger workflows
-- collaborate on process improvements
+- Süreçlerinizi derinlemesine analiz etmek
+- Benchmark
+- Süreçleri birbirleri ile karşılaştırmak
+- Süreçleri izlemek
+- İş akışlarını tetiklemek
+- Süreç iyileştirmelerini keşfetmek ve planlamak
 
 ## How does it work?
-Process Mining algorithms use data from so-called event logs. Those are not typical log files but different types of databases and files from enterprise information systems or enterprise resource planning systems.
+Süreç Madenciliği algoritmaları, sürecin olay verilerini kullanır. Bunlar tipik günlük dosyaları değil, kurumsal bilgi sistemlerinden veya kurumsal kaynak planlama sistemlerinden farklı veritabanları ve dosyalarıdır.
 
 Employees are very effective in creating shortcuts in your process. They can improve your workflow or be serious compliance violations, that’s why it’s so important to find them. Process Mining is the best solution to unveil the invisible net of pirate paths in your company.
 The data is visualized in a process flow and shows your process as it actually happens. There are no guessing-games with Process Mining. You get a fact-based view on the events in your organization.
 
-After your data has been visualized, you can start the analysis. There are filter options, root cause analysis for problems, different levels of detail and many other functions with which you can get to the bottom of the driving forces in your process.
+Verileriniz görselleştirildikten sonra analize başlayabilirsiniz. Filtre seçenekleri, problemler için kök neden analizi, farklı detay seviyeleri ve prosesinizdeki istatistiklerin detayına inebileceğiniz daha birçok fonksiyon vardır.
 
-There are even AI-supported tools to help you if you have no idea where to start your analysis or what to look for.
 
 # History of Process Mining
 ## Before Process Mining
