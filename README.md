@@ -1,7 +1,7 @@
 
 
 # Süreç Madenciliği Nedir ?
-Daha önce Proses Madenciliği veya Proses Madenciliği Yazılımını duydunuz ama ne anlama geldiğinden, nasıl çalıştığından veya sizin için bir değeri olup olmadığından emin değil misiniz? Yoksa Proses Madenciliği alanında tamamen yeni misiniz ve buraya tamamen şans eseri mi geldiniz? Merak etmeyin. Aşağıda Süreç Madenciliği için kapsamlı bir rehber hazırladık. Temel bilgileri başlayacağız ve yol boyunca uygulama, kullanım durumları ve olasılıklarla ilgili daha fazla ayrıntıya gireceğiz. Dizi, Süreç Madenciliği hakkında kafa karışıklığına neden olan ve insanları başlamaktan alıkoyan yaygın yanlış anlamalarla sona eriyor.
+Daha önce Süreç Madenciliğini duydunuz ama ne anlama geldiğinden, nasıl çalıştığından veya sizin için bir değeri olup olmadığından emin değil misiniz? Yoksa Süreç Madenciliği alanında tamamen yeni misiniz ve buraya tamamen şans eseri mi geldiniz? Merak etmeyin. Aşağıda Süreç Madenciliği için kapsamlı bir rehber hazırladık. Temel bilgilerle başlayacağız ve uygulama, kullanım durumları ve olasılıklarla ilgili daha fazla ayrıntıya gireceğiz.
 
 # What is Process Mining? How does it work?
 Konuya Süreç Madenciliğinin temelleri ile başlıyoruz. 'Süreç' ile ne demek istiyoruz? Süreç Madenciliği nasıl çalışır? Nereden geldi? Avantajları nelerdir? Kimler kullanabilir? Tipik uygulama alanları nelerdir? Ve başlamak için neye ihtiyacınız var? Bütün bu soruların cevaplarını aşağıda bulacaksınız.
