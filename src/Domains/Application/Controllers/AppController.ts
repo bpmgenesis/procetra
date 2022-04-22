@@ -2,7 +2,7 @@ import { UIController, UIView, Text, UIScene, Fonts, UIButton, VStack, HDivider,
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { ProcessMining } from '../../../Application';
 import { foreach, Event } from '@tuval/core';
-import { ProjectController, ProjectControllerClass } from '../../../UI/Controllers/ProjectController/ProjectController';
+import { ProjectController, ProjectControllerClass } from '../../Project/Controllers/ProjectController';
 import { MIProject } from '../../../UI/Models/ProjectModel';
 import { Resources } from '../../../Resources';
 import { RecentProjects } from '../Views/RecentProjects';
