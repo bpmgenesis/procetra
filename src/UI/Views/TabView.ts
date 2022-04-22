@@ -14,9 +14,9 @@ class TabViewItemClass extends UIView {
     private _content: IRenderable[];
     private _onSelected: Event<any>;
     public get Header(): UIView {
-        return HStack(
+        return HStack({ spacing: 5 })(
             ...(this.headerContent as any)
-        ).onClick(() => this._onSelected()).spacing('5px')
+        ).onClick(() => this._onSelected())
     }
     public get Content(): UIView {
         return HStack(

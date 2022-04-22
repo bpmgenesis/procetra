@@ -1,5 +1,5 @@
 import { TvChart } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach } from '@tuval/forms';
+import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading } from '@tuval/forms';
 import { MetricBox, MVIMetricBox } from './MetricBox';
 
 export interface MVIMetricSection {
@@ -8,7 +8,8 @@ export interface MVIMetricSection {
 }
 export function MetricsSection(params: MVIMetricSection): UIView {
     return (
-        VStack(
+        // We want to space 10px between every vertical block
+        VStack({ alignment: cTopLeading, spacing: 10 })(
             HStack(
                 Text('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'),
                 Spacer(),
@@ -18,14 +19,12 @@ export function MetricsSection(params: MVIMetricSection): UIView {
             )
                 // We prevent this stack to large more than its content
                 .height('auto'),
-            HStack(
+            HStack({ spacing: 10 })(
                 ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox) =>
                     MetricBox(metricBoxModel),
                 )
-            )
-                .height('155px')
-                .spacing('10px'),
-            VStack(
+            ).height(155),
+            VStack({ alignment: cTopLeading })(
                 Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
                 VStack(
                     params.chart
@@ -36,11 +35,7 @@ export function MetricsSection(params: MVIMetricSection): UIView {
                 .cornerRadius('12px')
                 .height('200px')
                 .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-                .alignment(Alignment.topLeading)
                 .tabIndex(0)
         )
-            .alignment(Alignment.topLeading)
-            // We want to space 10px between every vertical block
-            .spacing('10px')
     )
 }

@@ -9,13 +9,12 @@ export class ThroughputTimesController extends UIController {
 
     public LoadView(): UIView {
         return (
-            VStack(
+            VStack({ spacing: 20 })(
                 ThroughputTimeSection(),
                 BottleneckSection(),
                 /* HappyPathSection(),
                 ActivitySection(['Activity 1', 'Activity 2', 'Activity 3', 'Activity 4', 'Activity 5']) */
             )
-                .spacing(20)
                 .position(PositionTypes.Absolute)
                 .alignment(Alignment.topLeading)
         )

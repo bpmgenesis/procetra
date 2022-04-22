@@ -1,4 +1,4 @@
-import { TuRectangle, ViewRenderingMode, TuViewSnapStyle, TuViewGridStyle} from '@tuval/components/diagram';
+import { TuRectangle, ViewRenderingMode, TuViewSnapStyle, TuViewGridStyle } from '@tuval/components/diagram';
 import { Pens, Brushes } from '@tuval/graphics';
 import {
     UIController, UIView, Text, UIScene, VStack,
@@ -14,6 +14,7 @@ import { PageTitle } from '../../../UI/Views/PageHeader';
 import { int } from '@tuval/core';
 import { DashboardView } from '../../../UI/Controls/DashboardView/DashboardView';
 import { MIPaletteCategory } from '../Models/MIPaletteCategory';
+import { cTopLeading } from '@tuval/forms';
 export class ProcessDashboardController extends UIController {
 
     private palettedata: MIPaletteCategory[];
@@ -61,19 +62,19 @@ export class ProcessDashboardController extends UIController {
             UIScene(
                 UIButton(
                     Text('Test')
-                ).action(()=> this.test = 10),
-                VStack(
-                    HStack(
-                        PageTitle('\\f0b3',this.test.toString()),
+                ).action(() => this.test = 10),
+                VStack({ alignment: cTopLeading, spacing: 10 })(
+                    HStack({ alignment: cTopLeading, spacing: 10 })(
+                        PageTitle('\\f0b3', this.test.toString()),
                         Spacer(),
-                        HStack(
+                        HStack({ spacing: 5 })(
                             ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>
                                 UIButton(
                                     Text(name)
                                 ).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
                             )
-                        ).width('auto').spacing('5px')
-                    ).alignment(Alignment.topLeading).spacing('10px').height()/* .height('20px') */,
+                        ).width()
+                    ).height()/* .height('20px') */,
                     HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
                     TwoColumnLayout2(
                         {
@@ -91,7 +92,7 @@ export class ProcessDashboardController extends UIController {
                         }
                     )
 
-                ).padding('10px').alignment(Alignment.topLeading).spacing('10px')
+                ).padding('10px')
             ).alignment(Alignment.topLeading)
         )
     }

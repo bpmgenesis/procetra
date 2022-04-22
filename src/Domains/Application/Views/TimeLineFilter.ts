@@ -9,7 +9,7 @@ function TimeText(value: string): UIView {
 
 export function TimeLineFilter(): UIView {
     return (
-        HStack(
+        HStack({ spacing: 5 })(
             Icon('\\f043').size(20).foregroundColor('#777'),
             TimeText('1H'),
             TimeText('8H'),
@@ -19,7 +19,6 @@ export function TimeLineFilter(): UIView {
             TimeText('All'),
             TimeText('Custom'),
         )
-            .spacing(5)
             .width() // auto
 
     )

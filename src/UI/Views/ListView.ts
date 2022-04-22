@@ -1,4 +1,4 @@
-import { UIView, HStack, Alignment, IControl, VStack } from '@tuval/forms';
+import { UIView, HStack, Alignment, IControl, VStack, cLeading } from '@tuval/forms';
 
 export class ListViewItemClass extends UIView {
     private _tag: any;
@@ -6,13 +6,11 @@ export class ListViewItemClass extends UIView {
     private children: any[] = [];
     public Body(): UIView {
         this.SubViews.Add(
-            HStack(
+            HStack({alignment:cLeading, spacing:10})(
                 this.children as any
             )
                 .width('100%')
-                .spacing('10px')
                 .paddingLeft('5px')
-                .alignment(Alignment.leading)
                 .cursor('pointer')
                 .onClick(() => this._selected())
         );

@@ -1,6 +1,7 @@
 import { UIController } from '@tuval/forms';
-import { DatasetController } from '../../Domains/Dataset/Controllers/DatasetController';
-import { CustomPageController } from '../../Domains/CustomPage/Controllers/CustomPageController';
+import { CustomPageController } from '../../CustomPage/Controllers/CustomPageController';
+import { DatasetController } from '../../Dataset/Controllers/DatasetController';
+
 
 export interface MIProjectItem {
     project_item_id: string;

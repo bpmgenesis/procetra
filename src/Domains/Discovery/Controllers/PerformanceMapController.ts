@@ -1,4 +1,4 @@
-import { UIController, UIView, HStack, VStack, Text, Alignment, PositionTypes, State } from '@tuval/forms';
+import { UIController, UIView, HStack, VStack, Text, Alignment, PositionTypes, State, cTopLeading } from '@tuval/forms';
 import { int } from '@tuval/core';
 import { ActivitySliderView } from '../Views/ActivitySliderView';
 import { ConnectionSliderView } from '../Views/ConnectionSliderView';
@@ -24,17 +24,12 @@ export class PerformanceMapController extends UIController {
                     Text('Performance Map')
                 ).grow(),
                 VStack( // For scrolling container
-                    VStack(
+                    VStack({ alignment: cTopLeading, spacing: 10 })(
                         ActivitySliderView(this.actionSliderValue, (e) => this.actionSliderValue = e),
                         ConnectionSliderView(this.connectionSliderValue, (e) => this.connectionSliderValue = e)
                     )
-                        .alignment(Alignment.topLeading)
                         .position(PositionTypes.Absolute) // For scrolling
-                        .spacing(10)
-                    // auto width
-
                 )
-
                     .minWidth('260px')
                     .maxWidth('260px')
                     .overflowY('auto').overflowX('hidden')

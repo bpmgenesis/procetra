@@ -1,6 +1,6 @@
 import { HttpClient } from '@tuval/core';
 import { ConfigService } from '../Services/ConfigService';
-import { MIProject } from '../UI/Models/ProjectModel';
+import { MIProject } from '../Domains/Project/Models/ProjectModel';
 
 
 export interface ICreateProjectResponse {

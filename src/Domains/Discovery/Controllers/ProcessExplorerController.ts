@@ -19,6 +19,7 @@ import { PageTitle } from '../../../UI/Views/PageHeader';
 import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { FrequencyMapController } from './FrequencyMapController';
 import { PerformanceMapController } from './PerformanceMapController';
+import { cLeading, cTopLeading } from '@tuval/forms';
 
 
 const sideMenu: MVIPortalSideMenuItem[] = [
@@ -72,12 +73,12 @@ export class ProcessExplorerController extends UIController {
                         }
                     ),
 
-                    VStack(
+                    VStack({alignment:cTopLeading, spacing:10})(
                         // Header
-                        HStack(
+                        HStack({ alignment: cLeading, spacing: 10 })(
                             PageTitle('\\f0a4', 'Process explorer'),
                             Spacer(),
-                            HStack(
+                            HStack({ spacing: 5 })(
                                 ...ForEach(sideMenu, (item: MVIPortalSideMenuItem, index: int) =>
                                     UIButton(
                                         Icon(item.icon),
@@ -89,16 +90,15 @@ export class ProcessExplorerController extends UIController {
                                         .padding('3px 10px 3px 10px')
                                         .action(() => this.OnControllerSelected(index))
                                 )
-                            ).width().spacing('5px')
-                        ).alignment(Alignment.leading).spacing('10px').height(),
+                            ).width()
+                        ).height(),
                         HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
                         // Body
-                        this.currentController
+                        this.currentController as any
 
                     )
                         .padding(10)
                         .alignment(Alignment.topLeading)
-                        .spacing(10)
                 ).alignment(Alignment.topLeading)
             )
         )

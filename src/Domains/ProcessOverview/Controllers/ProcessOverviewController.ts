@@ -21,6 +21,7 @@ import { PageTitle } from '../../../UI/Views/PageHeader';
 import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { OverviewController } from './Overview/OverviewController';
 import { ThroughputTimesController } from './ThroughputTimes/ThroughputTimesController';
+import { cLeading, cTopLeading } from '@tuval/forms';
 
 
 function getMax(array: any[]) {
@@ -42,12 +43,12 @@ const sideMenu: MVIPortalSideMenuItem[] = [
     {
         name: 'Throughput times',
         icon: '\\f144',
-        controller:new ThroughputTimesController()
+        controller: new ThroughputTimesController()
     },
     {
         name: 'Activities',
         icon: '\\f0d5',
-        controller:new ThroughputTimesController()
+        controller: new ThroughputTimesController()
     }
 ]
 
@@ -104,7 +105,7 @@ export class ProcessOverviewController extends UIController {
 
     }
 
-    private OnControllerChanged(index:int) {
+    private OnControllerChanged(index: int) {
         this.selectedIndex = index;
         this.currentController = sideMenu[index].controller;
 
@@ -121,14 +122,14 @@ export class ProcessOverviewController extends UIController {
                             second: true
                         }
                     ),
-                    VStack(
-                        HStack(
+                    VStack({ alignment: cTopLeading, spacing: 10 })(
+                        HStack({ alignment: cLeading, spacing: 10 })(
                             PageTitle(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name),
                             Spacer(),
 
                             // View Buttons Overview, Throuthput Times
                             // Only Desktop
-                            HStack(
+                            HStack({ spacing: 5 })(
                                 ...ForEach(sideMenu, (item: MVIPortalSideMenuItem, index: int) =>
                                     UIButton(
                                         Icon(item.icon).size(14).foregroundColor('gray'),
@@ -142,11 +143,10 @@ export class ProcessOverviewController extends UIController {
                                 )
                             )
                                 .width() // auto width
-                                .spacing(5)
                                 .visible(TApplication.IsDesktop),
 
                             // Portal
-                            HStack(
+                            HStack({ spacing: 30 })(
                                 VStack(
                                     Text('traces').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'),
                                     Text('0').foregroundColor('#999').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif'),
@@ -160,24 +160,18 @@ export class ProcessOverviewController extends UIController {
                                     Text('0').foregroundColor('#b40404').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif'),
                                 )
                             )
-                                .spacing(30)
                                 .width() //auto width
                                 .visible(TApplication.IsPortal)
 
-                        ).alignment(Alignment.leading).spacing(10).height(),
+                        ).height(),
                         HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
                         VStack( // For scrolling
                             this.currentController
                         ).overflowX('hidden').overflowY('auto')
                     )
-                        .padding('10px')
-                        .alignment(Alignment.topLeading)
-                        .spacing(10)
+                        .padding(10)
                         .background(TApplication.IsPortal ? '#f1f1f1' : '')
-
-
                 )
-
             )
         )
     }

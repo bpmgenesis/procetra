@@ -1,5 +1,4 @@
 import { int } from '@tuval/core';
-import { MVIProjectItem } from '../../../UI/Models/MIProjectItem';
 import {
     UIController, UIView, Text, State, UIScene, PositionTypes,
     TApplication, ApplicationModes, HStack, VStack, Icon, ForEach, Alignment
@@ -8,7 +7,7 @@ import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
 import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
 import { ProcessDashboardController } from '../../Dashboard/Controllers/ProcessDashboardController';
-import { MIProject } from '../../../UI/Models/ProjectModel';
+import { MIProject } from '../../Project/Models/ProjectModel';
 import { ProcessExplorerController } from '../../Discovery/Controllers/ProcessExplorerController';
 import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
 
@@ -16,6 +15,7 @@ import { CaseExplorerController } from '../../CaseExplorer/Controllers/CaseExplo
 import { FilterController } from '../../Filter/Controllers/FilterController';
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
+import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
 
 export class DatasetController extends UIController {
 

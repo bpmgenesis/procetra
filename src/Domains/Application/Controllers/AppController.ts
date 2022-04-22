@@ -3,7 +3,7 @@ import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { ProcessMining } from '../../../Application';
 import { foreach, Event } from '@tuval/core';
 import { ProjectController, ProjectControllerClass } from '../../Project/Controllers/ProjectController';
-import { MIProject } from '../../../UI/Models/ProjectModel';
+import { MIProject } from '../../Project/Models/ProjectModel';
 import { Resources } from '../../../Resources';
 import { RecentProjects } from '../Views/RecentProjects';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
@@ -69,13 +69,13 @@ export class AppController extends UIController {
     private MainPage(): UIView {
         return UIScene(
             HStack(
-                VStack(
+                VStack({spacing:10})(
                     MenuButton('', '\\f064', () => this.OnNewProject()),
                     MenuButton('', '\\f06d', () => this.OnOpenProject()),
                     MenuButton('', '\\f051', () => this.OnNewProject()),
                     MenuButton('', '\\f183', () => this.OnNewProject()),
                     MenuButton('', '\\f04a', () => this.OnNewProject())
-                ).width('120px').spacing('10px'),
+                ).width('120px'),
                 RecentProjects()
             )
                 // UIScene içerisine yayılması için

@@ -1498,7 +1498,7 @@ var AppController = /** @class */ (function (_super) {
     };
     AppController.prototype.MainPage = function () {
         var _this = this;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(MenuButton('', '\\f064', function () { return _this.OnNewProject(); }), MenuButton('', '\\f06d', function () { return _this.OnOpenProject(); }), MenuButton('', '\\f051', function () { return _this.OnNewProject(); }), MenuButton('', '\\f183', function () { return _this.OnNewProject(); }), MenuButton('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px').spacing('10px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_6__.RecentProjects)())
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })(MenuButton('', '\\f064', function () { return _this.OnNewProject(); }), MenuButton('', '\\f06d', function () { return _this.OnOpenProject(); }), MenuButton('', '\\f051', function () { return _this.OnNewProject(); }), MenuButton('', '\\f183', function () { return _this.OnNewProject(); }), MenuButton('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_6__.RecentProjects)())
             // UIScene içerisine yayılması için
             .width('100%'));
     };
@@ -1628,10 +1628,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PortalFilterBarView(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f148').size(20).foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0fc').size(10).foregroundColor('#aaa'))
-        .spacing(10)
-        .onClick(function () { return params.selectProjectAction(); }))
-        .spacing(3)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f148').size(20).foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 3 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0fc').size(10).foregroundColor('#aaa')).onClick(function () { return params.selectProjectAction(); }))
         .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
         .cursor('pointer')
         .height()
@@ -1652,9 +1649,7 @@ function PortalFilterBarView(params) {
     )
         .zIndex(3000)
         .paddingLeft('10px')
-        .spacing(10)
         .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
         .height() // auto height
         .minHeight('50px')
         .backgroundColor('#212932')
@@ -1679,13 +1674,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalFilterBarWidget(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontSize('40px').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('AVG').foregroundColor('#AAA')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
-        .spacing(10)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Duration').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('15 - 40 monts').foregroundColor('#AAA'))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontSize('40px').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('AVG').foregroundColor('#AAA'))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Duration').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('15 - 40 monts').foregroundColor('#AAA')))
         .paddingRight('50px')
         .width() //auto
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading));
+    );
 }
 
 
@@ -1730,8 +1722,7 @@ function TimeText(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).padding('5px 5px').fontFamily('Ubuntu,sans-serif').fontSize('16px').fontWeight('700').foregroundColor('#989898'));
 }
 function TimeLineFilter() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f043').size(20).foregroundColor('#777'), TimeText('1H'), TimeText('8H'), TimeText('24H'), TimeText('3D'), TimeText('7D'), TimeText('All'), TimeText('Custom'))
-        .spacing(5)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f043').size(20).foregroundColor('#777'), TimeText('1H'), TimeText('8H'), TimeText('24H'), TimeText('3D'), TimeText('7D'), TimeText('All'), TimeText('Custom'))
         .width() // auto
     );
 }
@@ -1776,11 +1767,11 @@ var CaseExplorerController = /** @class */ (function (_super) {
     CaseExplorerController.prototype.InitController = function () {
     };
     CaseExplorerController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Case explorer')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Case explorer')
             .fontFamily('Proxima Nova').fontSize('22px')
-            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width('auto').spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)')).padding('10px').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading).spacing('10px').height('auto')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+        })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
     return CaseExplorerController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
@@ -1887,6 +1878,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var ProcessDashboardController = /** @class */ (function (_super) {
     __extends(ProcessDashboardController, _super);
     function ProcessDashboardController() {
@@ -1921,16 +1913,16 @@ var ProcessDashboardController = /** @class */ (function (_super) {
     };
     ProcessDashboardController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Test')).action(function () { return _this.test = 10; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', this.test.toString()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Test')).action(function () { return _this.test = 10; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', this.test.toString()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width('auto').spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading).spacing('10px').height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
+        })).width()).height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
             left: [
                 (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)(this.svg).position('absolute').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)).overflowX('auto').overflowY('auto').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)
             ],
             right: [
                 (0,_Views_PaletteView__WEBPACK_IMPORTED_MODULE_4__.PaletteView)(this.palettedata)
             ]
-        })).padding('10px').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading).spacing('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading));
+        })).padding('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.State)()
@@ -2041,9 +2033,9 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 };
 
 function PaletteView(paletteData) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For better scrolling
-    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData, function (paletteCategory) {
-        return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray([
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(// For better scrolling
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData, function (paletteCategory) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([
             /*  HDivider().height('1px').background('#e4e4e4'), */
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteCategory.name)
                 .fontSize(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FontSizeTypes.Small)
@@ -2052,28 +2044,20 @@ function PaletteView(paletteData) {
                 .foregroundColor('#0D6B87')
                 /* .background('#f1f1f1') */
                 .padding(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteCategory.items, function (paletteItem) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             /*  HDivider().height('1px').background('#e4e4e4'), */
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(paletteItem.icon).size(20).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteItem.label)
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(paletteItem.icon).size(20).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteItem.label)
                 .fontFamily('Proxima Nova'))
                 .cornerRadius()
                 .background({ hover: 'rgb(120,120,120,20%)' })
-                .spacing(10)
-                .padding(10)
-                .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
-                /*  .background('white') */
-                .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading);
+                .padding(10));
         }))).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.5))
             .cornerRadius(12)
             .padding() // Default padding 5px
-            .height() // uto height relative to its content
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading);
-    })).spacing(10)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        // For Scrolling
-        .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute))
+            .height();
+    } // uto height relative to its content
+    )).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute))
         .width(270)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
         .overflowX('hidden')
         .overflowY('auto'));
 }
@@ -2261,13 +2245,12 @@ function DatasetTabView(datasetTabViewParams) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel, function (tabItem, index) {
         return (0,_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabViewItem)({
             name: tabItem.name,
-            header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
+            header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
                 .wrap('wrap')
                 .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
                 .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                 /*  .cornerRadius('10px') */
-                .spacing('5px')
-                .padding('10px')
+                .padding(10)
                 /* .borderBottom(this.selectedTab === tabItem.name ? 'solid 1px blue' : 'solid 0px') */
                 /* .shadow(datasetTabViewParams.selectedTabIndex === index ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '') */
                 .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
@@ -2334,10 +2317,8 @@ var FrequencyMapController = /** @class */ (function (_super) {
     FrequencyMapController.prototype.LoadView = function () {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Frequency Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
             .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
-            .spacing(10)
         // auto width
         )
             .minWidth('260px')
@@ -2408,11 +2389,8 @@ var PerformanceMapController = /** @class */ (function (_super) {
     PerformanceMapController.prototype.LoadView = function () {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Performance Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
             .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
-            .spacing(10)
-        // auto width
         )
             .minWidth('260px')
             .maxWidth('260px')
@@ -2474,6 +2452,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var sideMenu = [
     {
         name: 'Frequency Map',
@@ -2511,21 +2490,20 @@ var ProcessExplorerController = /** @class */ (function (_super) {
             selectedIndex: this.selectedIndex,
             selectedAction: function (index) { return _this.OnControllerSelected(index); },
             second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
         // Header
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu, function (item, index) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu, function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
                 .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '')
                 .border('solid 1px gray')
                 .cornerRadius('10px')
                 .padding('3px 10px 3px 10px')
                 .action(function () { return _this.OnControllerSelected(index); });
-        })).width().spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('10px').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), 
+        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), 
         // Body
         this.currentController)
             .padding(10)
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-            .spacing(10)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
@@ -2560,15 +2538,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ActivitySliderView(sliderValue, onChange) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(25).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activities').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
-        .spacing(10)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(25).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activities').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
         .padding(5)
         .height(), // auto
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
         .width() //auto
-        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of activities'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })).spacing(10))
+        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of activities'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
         .height() // auto
-        .spacing(10)))
+    ))
         .background('rgb(255,255,255,30%)')
         .padding(10)
         .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
@@ -2598,15 +2575,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ConnectionSliderView(sliderValue, onChange) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f13d').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Connections').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
-        .spacing(10)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f13d').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Connections').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
         .padding(5)
         .height(), // auto
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
         .width() //auto
-        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of connections'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })).spacing(10))
+        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of connections'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
         .height() // auto
-        .spacing(10)))
+    ))
         .background('rgb(255,255,255,30%)')
         .padding(10)
         .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
@@ -2694,11 +2670,11 @@ var FilterController = /** @class */ (function (_super) {
     FilterController.prototype.InitController = function () {
     };
     FilterController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Filter')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Filter')
             .fontFamily('Proxima Nova').fontSize('22px')
-            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width('auto').spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)')).padding('10px').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading).spacing('10px').height('auto')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+        })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
     return FilterController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
@@ -2942,7 +2918,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ActivitySection(activities) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Other frequent activities')
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Other frequent activities')
         .marginTop('30px')
         .paddingTop('5px')
         /*    .height('38px') */
@@ -2952,10 +2930,7 @@ function ActivitySection(activities) {
         // We prevent this stack to large more than its content
         .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(activities)(function (activity) {
         return (0,_ActivityBox__WEBPACK_IMPORTED_MODULE_1__.ActivityBox)({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount });
-    })).height('auto').wrap('wrap').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        // We want to space 10px between every vertical block
-        .spacing(10));
+    })).height('auto').wrap('wrap').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
 }
 
 
@@ -3069,16 +3044,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HappyPathSection(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Happy path')
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Happy path')
         .marginTop('30px')
         .paddingTop('5px')
         .height('38px')
         .fontFamily('Proxima Nova')
         .fontSize('20px')
-        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathGaugeBox)({ title: 'Happy path in percentages' }), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox2)(params.happyPathAbsoluteBoxModel), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox3)()).height('auto').spacing('10px'), (0,_HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__.HappyPathDiagram)(params.happyPathDiagramItems))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        // We want to space 10px between every vertical block
-        .spacing('10px'));
+        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathGaugeBox)({ title: 'Happy path in percentages' }), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox2)(params.happyPathAbsoluteBoxModel), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox3)()).height(), //auto height,
+    (0,_HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__.HappyPathDiagram)(params.happyPathDiagramItems)));
 }
 
 
@@ -3181,21 +3156,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function MetricsSection(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.metricBoxNodels, function (metricBoxModel) {
+        .height('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.metricBoxNodels, function (metricBoxModel) {
         return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_1__.MetricBox)(metricBoxModel);
-    })).height('155px')
-        .spacing('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(params.chart))
+    })).height(155), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(params.chart))
         .backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
         .height('200px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        .tabIndex(0))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        // We want to space 10px between every vertical block
-        .spacing('10px'));
+        .tabIndex(0)));
 }
 
 
@@ -3241,6 +3213,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3306,10 +3279,10 @@ var ProcessOverviewController = /** @class */ (function (_super) {
             selectedIndex: this.selectedIndex,
             selectedAction: function (index) { return _this.OnControllerChanged(index); },
             second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
         // View Buttons Overview, Throuthput Times
         // Only Desktop
-        _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu, function (item, index) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu, function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(14).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).paddingLeft('5px'))
                 .action(function () { return _this.OnControllerChanged(index); })
                 .border('solid 1px gray')
@@ -3317,17 +3290,13 @@ var ProcessOverviewController = /** @class */ (function (_super) {
                 .padding('3px 10px 3px 10px')
                 .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '');
         })).width() // auto width
-            .spacing(5)
             .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop), 
         // Portal
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('traces').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#999').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('events').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#2ca3c0').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('variants').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#b40404').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')))
-            .spacing(30)
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('traces').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#999').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('events').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#2ca3c0').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('variants').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#b40404').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')))
             .width() //auto width
-            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading).spacing(10).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(// For scrolling
+            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal)).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(// For scrolling
         this.currentController).overflowX('hidden').overflowY('auto'))
-            .padding('10px')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading)
-            .spacing(10)
+            .padding(10)
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal ? '#f1f1f1' : ''))));
     };
     ProcessOverviewController.prototype.LoadView = function () {
@@ -3405,8 +3374,7 @@ var ThroughputTimesController = /** @class */ (function (_super) {
     ThroughputTimesController.prototype.InitController = function () {
     };
     ThroughputTimesController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
-            .spacing(20)
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 })((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
             .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute)
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
@@ -3486,10 +3454,9 @@ function DurationUnitText(value) {
         .transition('border .3s'));
 }
 function ProcessStartEnd() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process start').fontWeight('bold').foregroundColor('#555'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f084').size(20).marginBottom('3px'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process end').fontWeight('bold').foregroundColor('#555'))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process start').fontWeight('bold').foregroundColor('#555'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f084').size(20).marginBottom('3px'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process end').fontWeight('bold').foregroundColor('#555'))
         .cursor('pointer')
         .border({ default: 'dashed 1px var(--sub-border-color)', hover: 'solid 1px #2ca3c0' })
-        .spacing(10)
         .height() //auto
         .width() //auto
     );
@@ -3526,9 +3493,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
-/* harmony import */ var _UI_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Models/MIProjectItem */ "./src/UI/Models/MIProjectItem.ts");
-/* harmony import */ var _Views_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/ListFooterButton */ "./src/Domains/Project/Views/ListFooterButton.ts");
-/* harmony import */ var _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Views/ListView */ "./src/UI/Views/ListView.ts");
+/* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/Domains/Project/Models/MIProjectItem.ts");
+/* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/Domains/Project/Views/DesktopView.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3554,8 +3520,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
 var StackController = /** @class */ (function (_super) {
     __extends(StackController, _super);
     function StackController() {
@@ -3576,77 +3540,6 @@ var StackController = /** @class */ (function (_super) {
     ], StackController.prototype, "array", void 0);
     return StackController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-function MyButton(text, action) {
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f178').size(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text))
-        .spacing('5px')
-        .border('solid 2px maroon')
-        .cornerRadius('40px')
-        .paddingLeft('10px')
-        .paddingRight('10px')
-        .cursor('pointer')).action(function () { action(); });
-}
-var Tab1Controller1 = /** @class */ (function (_super) {
-    __extends(Tab1Controller1, _super);
-    function Tab1Controller1() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Tab1Controller1.prototype.InitController = function () {
-        var _this = this;
-        this.Appearance.Display = 'flex';
-        this.Appearance.Width = '100%';
-        this.Appearance.Height = '100%';
-        this.title = '__Tes_';
-        setTimeout(function () { return _this.title = 'sdfsdfdsfsdf'; }, 5000);
-        this.button = new _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Button();
-        this.button.Text = 'asdka';
-    };
-    Tab1Controller1.prototype.LoadView = function () {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(this.button);
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], Tab1Controller1.prototype, "title", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], Tab1Controller1.prototype, "button", void 0);
-    return Tab1Controller1;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-var Tab1Controller2 = /** @class */ (function (_super) {
-    __extends(Tab1Controller2, _super);
-    function Tab1Controller2() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Tab1Controller2.prototype.InitController = function () {
-        this.Appearance.Display = 'flex';
-        this.Appearance.Width = '100%';
-        this.Appearance.Height = '100%';
-    };
-    Tab1Controller2.prototype.LoadView = function () {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Tab1Controller 2');
-    };
-    return Tab1Controller2;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-var tabModel = [];
-function DatasetListView(projectItem) {
-    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_4__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(
-    /*  gauge as any */
-    ).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).spacing('5px').padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
-    // Filter Icon
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(20), 
-    // Filter Badge
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('2')
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.center)
-        .fontWeight('bold')
-        .padding('5px')
-        .backgroundColor('#27B764')
-        .width('20px')
-        .height('20px')
-        .cornerRadius('5px')
-        .foregroundColor('white')).width('auto').spacing('5px'))).minHeight('80px'));
-}
-function DashboardListView(projectItem) {
-    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_4__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)).minHeight('50px'));
-}
 var ProjectControllerClass = /** @class */ (function (_super) {
     __extends(ProjectControllerClass, _super);
     function ProjectControllerClass() {
@@ -3679,7 +3572,7 @@ var ProjectControllerClass = /** @class */ (function (_super) {
         this.selectedProject = project;
         var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
         _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjectItems(session_id, 'bpmgenesis', '').then(function (projectItems) {
-            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_UI_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__.CreateMVIProjectItem)(projectItem); });
+            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__.CreateMVIProjectItem)(projectItem); });
             _this.OnProjectItemSelected(_this.selectedProjectItems[0]);
         });
         return this;
@@ -3707,49 +3600,13 @@ var ProjectControllerClass = /** @class */ (function (_super) {
         });
     };
     ProjectControllerClass.prototype.LoadDesktopView = function () {
-        var _this = this;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
-            header: [
-            /*   Text(this.selectedProject?.project_name).fontSize('24px'),
-              UIButton(
-                  Text('Close')
-              ).action(() => this.parentAppController.CLoseProject()) */
-            ],
-            left: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('10px')).spacing(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase')).spacing(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase')).spacing(10)).height('500px').width('200px').padding('20px').spacing('10px'), 
-                //Project Title
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
-                    .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
-                    .padding('8px')
-                    .fontWeight('bold')
-                    .foregroundColor('black')).height('auto').visible(false), 
-                // Poject items list view
-                _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_4__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.selectedProjectItems, function (projectItem) {
-                    var _a, _b;
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
-                        'Dataset': DatasetListView(projectItem),
-                        'Dashboard': DashboardListView(projectItem)
-                    })
-                        .borderBottom('solid 1px rgb(200,200,200,10%)')
-                        .cornerRadius('5px')
-                        .transition('all 0.35s')
-                        .shadow(((_a = _this.selectedProjectItem) === null || _a === void 0 ? void 0 : _a.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
-                        .background(((_b = _this.selectedProjectItem) === null || _b === void 0 ? void 0 : _b.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                        .onSelected(function () { return _this.OnProjectItemSelected(projectItem); });
-                })).width('200px').background('rgb(255,255,255,10%)').grow(), 
-                // Project items buttons
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_Views_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\efff').action(function () { return _this.OnNewProjectItem(); }), (0,_Views_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\effd'), (0,_Views_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f04a'), (0,_Views_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f0bb')).height('auto').width('100%').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.center).spacing('5px')).spacing('5px')
-                    .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop)
-            ],
-            right: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
-                /*  this.TestTabView(), */
-                this.selectedProjectItemController).grow()
-            ],
-            /*  footer: [
-                 Text('Test').fontSize('24px')
-             ] */
-        }));
+        return (0,_Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__.DesktopView)({
+            selectedProjectItems: this.selectedProjectItems,
+            selectedProjectItem: this.selectedProjectItem,
+            selectedProjectItemController: this.selectedProjectItemController,
+            NewProjectItemAction: this.OnNewProjectItem.bind(this),
+            ProjectItemSelectedAction: this.OnProjectItemSelected.bind(this)
+        });
     };
     ProjectControllerClass.prototype.TestZStack = function () {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Test'))
@@ -3761,12 +3618,6 @@ var ProjectControllerClass = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], ProjectControllerClass.prototype, "parentAppController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "tab1", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "tab2", void 0);
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], ProjectControllerClass.prototype, "title", void 0);
@@ -3799,6 +3650,133 @@ var ProjectControllerClass = /** @class */ (function (_super) {
 
 function ProjectController(appController, model) {
     return new ProjectControllerClass().SetParentAppController(appController).Bind(model);
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/Project/Models/MIProjectItem.ts":
+/*!*****************************************************!*\
+  !*** ./src/Domains/Project/Models/MIProjectItem.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CreateMVIProjectItem": () => (/* binding */ CreateMVIProjectItem)
+/* harmony export */ });
+/* harmony import */ var _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../CustomPage/Controllers/CustomPageController */ "./src/Domains/CustomPage/Controllers/CustomPageController.ts");
+/* harmony import */ var _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Dataset/Controllers/DatasetController */ "./src/Domains/Dataset/Controllers/DatasetController.ts");
+
+
+function CreateMVIProjectItem(model) {
+    if (model.type === 'Dataset') {
+        return {
+            project_item_id: model.project_item_id,
+            name: model.name,
+            type: model.type,
+            icon: '\\f050',
+            controller: new _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__.DatasetController()
+        };
+    }
+    else if (model.type === 'Dashboard') {
+        return {
+            project_item_id: model.project_item_id,
+            name: model.name,
+            type: model.type,
+            icon: '\\f0b3',
+            controller: new _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__.CustomPageController()
+        };
+    }
+    return {};
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/Project/Views/DesktopView.ts":
+/*!**************************************************!*\
+  !*** ./src/Domains/Project/Views/DesktopView.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DesktopView": () => (/* binding */ DesktopView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/ListView */ "./src/UI/Views/ListView.ts");
+/* harmony import */ var _ListFooterButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListFooterButton */ "./src/Domains/Project/Views/ListFooterButton.ts");
+
+
+
+function DatasetListView(projectItem) {
+    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(
+    /*  gauge as any */
+    )).padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })(
+    // Filter Icon
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(20), 
+    // Filter Badge
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('2')
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.center)
+        .fontWeight('bold')
+        .padding('5px')
+        .backgroundColor('#27B764')
+        .width('20px')
+        .height('20px')
+        .cornerRadius('5px')
+        .foregroundColor('white')).width() // auto
+    )).minHeight('80px'));
+}
+function DashboardListView(projectItem) {
+    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)).minHeight('50px'));
+}
+function DesktopView(_a) {
+    var selectedProjectItem = _a.selectedProjectItem, selectedProjectItems = _a.selectedProjectItems, ProjectItemSelectedAction = _a.ProjectItemSelectedAction, NewProjectItemAction = _a.NewProjectItemAction, selectedProjectItemController = _a.selectedProjectItemController;
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
+        header: [
+        /*   Text(this.selectedProject?.project_name).fontSize('24px'),
+          UIButton(
+              Text('Close')
+          ).action(() => this.parentAppController.CLoseProject()) */
+        ],
+        left: [
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('10px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase'))).height(500).width(200).padding(20), 
+            //Project Title
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
+                .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
+                .padding('8px')
+                .fontWeight('bold')
+                .foregroundColor('black')).height('auto').visible(false), 
+            // Poject items list view
+            _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(selectedProjectItems, function (projectItem) {
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
+                    'Dataset': DatasetListView(projectItem),
+                    'Dashboard': DashboardListView(projectItem)
+                })
+                    .borderBottom('solid 1px rgb(200,200,200,10%)')
+                    .cornerRadius('5px')
+                    .transition('all 0.35s')
+                    .shadow((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
+                    .background((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                    .onSelected(function () { return ProjectItemSelectedAction(projectItem); });
+            })).width('200px').background('rgb(255,255,255,10%)').grow(), 
+            // Project items buttons
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter, spacing: 5 })((0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\efff').action(function () { return NewProjectItemAction(); }), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\effd'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f04a'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f0bb')).height('auto').width('100%'))
+                .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop)
+        ],
+        right: [
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+            /*  this.TestTabView(), */
+            selectedProjectItemController).grow()
+        ],
+        /*  footer: [
+             Text('Test').fontSize('24px')
+         ] */
+    }));
 }
 
 
@@ -4219,11 +4197,11 @@ var ProcessStatisticController = /** @class */ (function (_super) {
     };
     ProcessStatisticController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0f2', 'Process statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name, index) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0f2', 'Process statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
                 .action(function () { return _this.currentController = controllers[index]; })
                 .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width('auto').spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('10px').height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading).spacing('10px'))
+        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
@@ -4278,17 +4256,11 @@ var VariantExplorerController = /** @class */ (function (_super) {
     VariantExplorerController.prototype.InitController = function () {
     };
     VariantExplorerController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width('auto').spacing('5px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5], function (index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Satınalma onayının verilmesi'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Gerekli kontrollerin Sağlanması'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('İzin talebi başladı'))
-                .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
-                .spacing(10))
-                .padding('20px')
-                /*   .shadow('rgba(0, 0, 0, 0.16) 0px 1px 4px') */
-                .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
-                .spacing(20);
-        })).spacing(20)).padding('10px').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading).spacing('10px').height('auto'))
+        })).width()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5], function (index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Satınalma onayının verilmesi'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Gerekli kontrollerin Sağlanması'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('İzin talebi başladı'))).padding(20);
+        }))).padding(10).height())
             .backgroundColor('#f1f1f1')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
@@ -5944,6 +5916,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var OpenProjectDialogController = /** @class */ (function (_super) {
     __extends(OpenProjectDialogController, _super);
     function OpenProjectDialogController() {
@@ -5973,8 +5946,8 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     };
     OpenProjectDialogController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
-            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading).spacing(10).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects, function (project) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
+            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects, function (project) {
             return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : ''))
                 .minHeight('50px')
                 .background(_this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' })
@@ -5992,46 +5965,6 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     return OpenProjectDialogController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
-
-
-/***/ }),
-
-/***/ "./src/UI/Models/MIProjectItem.ts":
-/*!****************************************!*\
-  !*** ./src/UI/Models/MIProjectItem.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CreateMVIProjectItem": () => (/* binding */ CreateMVIProjectItem)
-/* harmony export */ });
-/* harmony import */ var _Domains_Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Domains/Dataset/Controllers/DatasetController */ "./src/Domains/Dataset/Controllers/DatasetController.ts");
-/* harmony import */ var _Domains_CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Domains/CustomPage/Controllers/CustomPageController */ "./src/Domains/CustomPage/Controllers/CustomPageController.ts");
-
-
-function CreateMVIProjectItem(model) {
-    if (model.type === 'Dataset') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f050',
-            controller: new _Domains_Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_0__.DatasetController()
-        };
-    }
-    else if (model.type === 'Dashboard') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f0b3',
-            controller: new _Domains_CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_1__.CustomPageController()
-        };
-    }
-    return {};
-}
 
 
 /***/ }),
@@ -6212,11 +6145,9 @@ var ListViewItemClass = /** @class */ (function (_super) {
     }
     ListViewItemClass.prototype.Body = function () {
         var _this = this;
-        this.SubViews.Add((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(this.children)
+        this.SubViews.Add((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })(this.children)
             .width('100%')
-            .spacing('10px')
             .paddingLeft('5px')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
             .cursor('pointer')
             .onClick(function () { return _this._selected(); }));
         return null;
@@ -6278,22 +6209,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalPageTitle(icon, text) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
         .fontWeight('700')
         .fontFamily('Ubuntu, sans-serif')
         .fontSize('30px')
         .foregroundColor('#495057'))
         .marginLeft('10px')
-        .spacing(10)
         .width() //auto
     );
 }
 function DesktopPageTitle(icon, text) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
         .fontFamily('Proxima Nova')
         .fontSize('22px')
         .foregroundColor('#333333'))
-        .spacing(10)
         .width() //auto
     );
 }
@@ -6392,7 +6321,7 @@ var TabViewItemClass = /** @class */ (function (_super) {
     Object.defineProperty(TabViewItemClass.prototype, "Header", {
         get: function () {
             var _this = this;
-            return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, this.headerContent).onClick(function () { return _this._onSelected(); }).spacing('5px');
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, this.headerContent).onClick(function () { return _this._onSelected(); });
         },
         enumerable: false,
         configurable: true

@@ -28,14 +28,13 @@ function DurationUnitText(value: string): UIView {
 
 function ProcessStartEnd(): UIView {
     return (
-        HStack(
+        HStack({ spacing: 10 })(
             RegularText('Process start').fontWeight('bold').foregroundColor('#555'),
             Icon('\\f084').size(20).marginBottom('3px'),
             RegularText('Process end').fontWeight('bold').foregroundColor('#555')
         )
             .cursor('pointer')
             .border({ default: 'dashed 1px var(--sub-border-color)', hover: 'solid 1px #2ca3c0' })
-            .spacing(10)
             .height() //auto
             .width() //auto
     )

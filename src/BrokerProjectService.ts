@@ -1,12 +1,12 @@
-import { MIProject } from './UI/Models/ProjectModel';
+import { MIProject } from './Domains/Project/Models/ProjectModel';
 import { IActivityInfo } from "./Bussiness/IActivityInfo";
 import { IDataSet } from "./Bussiness/IDataSet";
 import { IProject } from "./Bussiness/IProject";
 import { Project } from "./Bussiness/Project";
 import { IProjectService } from "./Services/IProjectService";
 import { StateService } from "./Services/StateService";
-import { MIProjectItem } from './UI/Models/MIProjectItem';
 import { MiningBrokerClient, ICreateProjectResponse } from './BrokerClients/MiningBrokerClient';
+import { MIProjectItem } from './Domains/Project/Models/MIProjectItem';
 
 export class BrokerProjectService implements IProjectService {
     public CreateProject(name: string): Promise<IProject> {

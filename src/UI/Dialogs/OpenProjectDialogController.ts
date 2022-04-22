@@ -16,12 +16,13 @@ import {
     VStack,
 } from '@tuval/forms';
 
-import { MIProject } from '../Models/ProjectModel';
+import { MIProject } from '../../Domains/Project/Models/ProjectModel';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { ListView, ListViewItem } from '../Views/ListView';
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
+import { cLeading } from '@tuval/forms';
 
 export class OpenProjectDialogController extends UIController {
 
@@ -58,11 +59,11 @@ export class OpenProjectDialogController extends UIController {
         return (
             UIScene(
                 VStack(
-                    HStack(
+                    HStack({alignment:cLeading, spacing:10})(
                         Icon('\\efd5').size(30).foregroundColor(TApplication.IsPortal ? '#ddd' : ''),
                         Text('Select Project').font(Fonts.title).fontFamily('Ubuntu, sans-serif')
                         .fontWeight(TApplication.IsPortal ? '600' : '400').foregroundColor(TApplication.IsPortal ? '#ddd' : '')
-                    ).alignment(Alignment.leading).spacing(10).height(),
+                    ).height(),
                     HDivider().height(1).background(TApplication.IsPortal ? '#288ae2' : 'gray'),
                     ListView(
                         ...ForEach(this.projects, (project: MIProject) =>

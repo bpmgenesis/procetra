@@ -1,17 +1,18 @@
 import { TvChart } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, _ForEach } from '@tuval/forms';
+import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, _ForEach, cTopLeading } from '@tuval/forms';
 import { MetricBox } from './MetricBox';
 import { ActivityBox, MVIActivityBox } from './ActivityBox';
 
 
 export function ActivitySection(activities: MVIActivityBox[]): UIView {
     return (
-        VStack(
+        // We want to space 10px between every vertical block
+        VStack({ alignment: cTopLeading, spacing: 10 })(
             HStack(
                 Text('Other frequent activities')
                     .marginTop('30px')
                     .paddingTop('5px')
-                 /*    .height('38px') */
+                    /*    .height('38px') */
                     .fontFamily('Proxima Nova')
                     .fontSize('20px')
                     .foregroundColor('#333333'),
@@ -23,13 +24,11 @@ export function ActivitySection(activities: MVIActivityBox[]): UIView {
                 // We prevent this stack to large more than its content
                 .height('auto'),
             HStack(
-                ..._ForEach(activities)( activity =>
+                ..._ForEach(activities)(activity =>
                     ActivityBox({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount }),
                 )
             ).height('auto').wrap('wrap').alignment(Alignment.topLeading),
         )
-            .alignment(Alignment.topLeading)
-            // We want to space 10px between every vertical block
-            .spacing(10)
+
     )
 }

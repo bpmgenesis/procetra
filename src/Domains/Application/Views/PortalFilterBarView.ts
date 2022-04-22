@@ -1,4 +1,4 @@
-import { HStack, Text, Alignment, UIView, Icon, VStack, Spacer, VDivider, Gauge, Range } from '@tuval/forms';
+import { HStack, Text, Alignment, UIView, Icon, VStack, Spacer, VDivider, Gauge, Range, cLeading } from '@tuval/forms';
 import { PortalFilterBarWidget } from './PortalFilterBarWidget';
 import { TimeLineFilter } from './TimeLineFilter';
 import { FilterView } from './FilterView';
@@ -10,18 +10,15 @@ export interface PortalFilterBarViewParams {
 
 export function PortalFilterBarView(params: PortalFilterBarViewParams): UIView {
     return (
-        HStack(
+        HStack({alignment:cLeading, spacing:10})(
             Icon('\\f148').size(20).foregroundColor('#aaa'),
-            VStack(
+            VStack({ spacing: 3 })(
                 Text('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'),
-                HStack(
+                HStack({ spacing: 10 })(
                     Text(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'),
                     Icon('\\f0fc').size(10).foregroundColor('#aaa'),
-                )
-                    .spacing(10)
-                    .onClick(() => params.selectProjectAction())
+                ).onClick(() => params.selectProjectAction())
             )
-                .spacing(3)
                 .alignment(Alignment.leading)
                 .cursor('pointer')
                 .height()
@@ -44,9 +41,7 @@ export function PortalFilterBarView(params: PortalFilterBarViewParams): UIView {
         )
             .zIndex(3000)
             .paddingLeft('10px')
-            .spacing(10)
             .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')
-            .alignment(Alignment.leading)
             .height() // auto height
             .minHeight('50px')
             .backgroundColor('#212932')

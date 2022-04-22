@@ -1,5 +1,5 @@
 
-import { UIView, Text, ForEach, VStack, Icon, HStack, Alignment, HDivider, FontSizeTypes, PositionTypes, Color, CornerRadiusTypes } from '@tuval/forms';
+import { UIView, Text, ForEach, VStack, Icon, HStack, Alignment, HDivider, FontSizeTypes, PositionTypes, Color, CornerRadiusTypes, cLeading, cTopLeading } from '@tuval/forms';
 import { MIPaletteCategory } from '../Models/MIPaletteCategory';
 import { MIPaletteItem } from '../Models/MIPaletteItem';
 
@@ -8,10 +8,10 @@ import { MIPaletteItem } from '../Models/MIPaletteItem';
 
 export function PaletteView(paletteData: MIPaletteCategory[]): UIView {
     return (
-        VStack( // For better scrolling
-            VStack(
+        VStack({ alignment: cTopLeading })( // For better scrolling
+            VStack({ alignment: cTopLeading, spacing: 10 })(
                 ...ForEach(paletteData, (paletteCategory: MIPaletteCategory) =>
-                    VStack(
+                    VStack({ alignment: cTopLeading })(
                         /*  HDivider().height('1px').background('#e4e4e4'), */
                         Text(paletteCategory.name)
                             .fontSize(FontSizeTypes.Small)
@@ -21,38 +21,30 @@ export function PaletteView(paletteData: MIPaletteCategory[]): UIView {
                             /* .background('#f1f1f1') */
                             .padding(10),
                         ...ForEach(paletteCategory.items, (paletteItem: MIPaletteItem) =>
-                            VStack(
+                            VStack({ alignment: cTopLeading })(
                                 /*  HDivider().height('1px').background('#e4e4e4'), */
-                                HStack(
+                                HStack({ alignment: cLeading, spacing: 10 })(
                                     Icon(paletteItem.icon).size(20).foregroundColor('gray'),
                                     Text(paletteItem.label)
                                         .fontFamily('Proxima Nova')
                                 )
                                     .cornerRadius()
                                     .background({ hover: 'rgb(120,120,120,20%)' })
-                                    .spacing(10)
                                     .padding(10)
-                                    .alignment(Alignment.leading)
                             )
-                                /*  .background('white') */
-                                .alignment(Alignment.topLeading)
                         )
                     )
                         .background(Color.white.opacity(0.5))
                         .cornerRadius(12)
                         .padding() // Default padding 5px
                         .height() // uto height relative to its content
-                        .alignment(Alignment.topLeading)
 
                 )
             )
-                .spacing(10)
-                .alignment(Alignment.topLeading)
                 // For Scrolling
                 .position(PositionTypes.Absolute)
         )
             .width(270)
-            .alignment(Alignment.topLeading)
             .overflowX('hidden')
             .overflowY('auto')
     )

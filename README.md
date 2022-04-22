@@ -31,144 +31,143 @@ The data is visualized in a process flow and shows your process as it actually h
 Verileriniz görselleştirildikten sonra analize başlayabilirsiniz. Filtre seçenekleri, problemler için kök neden analizi, farklı detay seviyeleri ve prosesinizdeki istatistiklerin detayına inebileceğiniz daha birçok fonksiyon vardır.
 
 
-# History of Process Mining
-## Before Process Mining
-Now, you might say that the idea of analyzing data isn’t new and you are correct. However, the way we collect and analyze data is changing rapidly. Before data was readily available in digital form, people simply went through documents by hand or collected data from interviews to find useful information and deviations from the norm.
+# Süreç Madenciliğinin Tarihçesi
+## Süreç Madenciliğinden Önce
+Şimdi, verileri analiz etme fikrinin yeni olmadığını ve haklı olduğunuzu söyleyebilirsiniz. Ancak, verileri toplama ve analiz etme şeklimiz hızla değişiyor. Veriler dijital biçimde hazır bulunmadan önce, insanlar yararlı bilgileri ve normdan sapmaları bulmak için belgeleri elle gözden geçirdiler veya görüşmelerden veri topladılar.
 
-Even business processes were analyzed that way. It took a whole bunch of consultants, weeks of time, workshops, interviews and an awful lot of money to get an idea of how things were happening and what could be improved.
+İş süreçleri bile bu şekilde analiz edildi. İşlerin nasıl olduğu ve nelerin iyileştirilebileceği hakkında bir fikir edinmek için bir sürü danışman, haftalar, çalıştaylar,
+röportajlar ve çok fazla para gerekti.
 
-There were several problems with this approach because usually people have an idea of how things should happen but lack the greater picture of how things are actually happening. Then, there are also exceptions to the standard procedure. Steps might have to be redone because there was a mistake or something changed (for example, an order was changed), the process itself can evolve and change due to outside factors or process steps need to be adapted to a new situation. No one can be aware of all these exceptions and keep track of all deviations from the norm.
+Bu yaklaşımla ilgili birkaç sorun vardı, çünkü genellikle insanların işlerin nasıl olması gerektiğine dair bir fikre sahip olmalarına karşın, olayların gerçekte nasıl olduğuna dair daha büyük bir resimden yoksundurlar. Ardından, standart prosedürün istisnaları da vardır. Bir hata olduğu veya bir şey değiştiği için (örneğin, bir sipariş değiştirildi) adımların yeniden yapılması gerekebilir, dış etkenler nedeniyle sürecin kendisi gelişebilir ve değişebilir veya süreç adımlarının yeni bir duruma uyarlanması gerekebilir. Hiç kimse tüm bu istisnaların farkında olamaz ve normdan tüm sapmaları takip edemez.
 
-The results from the old approach were thus subjective, incomplete and often outdated by the time they were available.
+Eski yaklaşımın sonuçları bu nedenle öznel, eksik ve genellikle mevcut olduklarında modası geçmişti.
 
-## Early Process Mining
+## Erken Süreç Madenciliği
 
-In the late 1990s things started to change. Large amounts of data became available digitally. Professor Wil van der Aalst (the ‘Godfather of Process Mining’) and his dedicated team found a way to use that data in combination with analytics and visualization software.
+1990'ların sonunda işler değişmeye başladı. Büyük miktarda veri dijital olarak kullanılabilir hale geldi. Profesör Wil van der Aalst ("Proses Madenciliğinin Babası") ve kendini işine adamış ekibi, bu verileri analitik ve görselleştirme yazılımıyla birlikte kullanmanın bir yolunu buldu.
 
-Early Process Mining was born.
+Erken Süreç Madenciliği doğdu.
 
-Things sped up further when the economic potential of Process Mining became apparent. First generation Process Mining tools entered the market. They focused on the visualization of as-is processes and allowed for analyses, but they lacked the BI elements we can find in 2nd generation tools.
+Süreç Madenciliğinin ekonomik potansiyeli ortaya çıktığında işler daha da hızlandı. Birinci nesil Süreç Madenciliği araçları pazara girdi. Olduğu gibi süreçlerin görselleştirilmesine odaklandılar ve analizlere izin verdiler, ancak 2. nesil araçlarda bulabileceğimiz BI unsurlarından yoksunlardı.
 
 ## Process Mining 2.0
-The latest wave of Process Mining tools is much more advanced. It is a combination of data analytics, data mining, process analytics and Business Intelligence (BI). That means, on top of visualization and analysis (which also got improved) you now can benchmark, compare and monitor processes and KPIs (Key Performance Indicators), start workflow-triggers directly from your Process Mining software and collaborate in your organization’s IT infrastructure to communicate and solve problems.
+En son Proses Madenciliği araçları dalgası çok daha gelişmiş. Veri analitiği, veri madenciliği, süreç analitiği ve İş Zekası'nın (BI) bir birleşimidir. Bu, görselleştirme ve analizin (aynı zamanda geliştirilmiş olan) yanı sıra artık süreçleri ve KPI'ları (Ana Performans Göstergeleri) kıyaslayabilir, karşılaştırabilir ve izleyebilir, iş akışı tetikleyicilerini doğrudan Süreç Madenciliği yazılımınızdan başlatabilir ve kuruluşunuzun BT altyapısında işbirliği yaparak aşağıdakileri gerçekleştirebilirsiniz: iletişim kurmak ve sorunları çözmek.
 
-# What are the benefits of Process Mining?
-Process Mining comes with serious advantages both over traditional approaches to data analysis or process management and in terms of competitiveness in the market.
+# Süreç Madenciliğinin faydaları nelerdir?
+Süreç Madenciliği, hem veri analizine veya süreç yönetimine yönelik geleneksel yaklaşımlara göre hem de pazardaki rekabet gücü açısından ciddi avantajlarla birlikte gelir.
 
-## Compared to old approaches
-Real processes are much more complex than the ideal model. Understanding how you’re currently doing things is crucial to come up with an improvement strategy. Process Mining has a lot of benefits compared to the traditional approach and is able to resolve the weaknesses and problems that arise during old-fashioned data gathering and analysis.
+## Eski yaklaşımlarla karşılaştırıldığında
+Gerçek süreçler ideal modelden çok daha karmaşıktır. Şu anda işleri nasıl yaptığınızı anlamak, bir iyileştirme stratejisi bulmak için çok önemlidir. Süreç Madenciliği, geleneksel yaklaşıma kıyasla birçok avantaja sahiptir ve eski moda veri toplama ve analizi sırasında ortaya çıkan zayıflıkları ve sorunları çözebilir.
 
-## Fast
-Process Mining is much faster than the old approach to process optimization. Instead of conducting interviews and holding workshops that then need to be analyzed, the results appear at the push of a button.
+## Hız
+Süreç Madenciliği, süreç optimizasyonuna yönelik eski yaklaşımdan çok daha hızlıdır. Görüşmeler yapmak ve daha sonra analiz edilmesi gereken çalıştaylar düzenlemek yerine, sonuçlar bir düğmeye basarak ortaya çıkıyor.
 
-## Objective
-The process flow gives you a completely objective view on your real process. There is no specific lens that was applied to the view. You see your process as it is not as anyone perceives it.
+## Amaç
+Süreç akışı, gerçek süreciniz hakkında size tamamen objektif bir bakış açısı sağlar. Görünüme uygulanan belirli bir lens yoktur. Sürecinizi kimsenin algıladığı gibi değil gibi görüyorsunuz.
 
 ## The entire picture
 You get the complete picture. Where individual people know what they are doing, there usually is no-one who has an idea of the entire process. With Process Mining, you see the entire process from start to finish including every individual step. This makes it much easier to communicate problems and find optimization potential.
 
-## Changing processes & exceptions
-The process flow shows you all the paths from start to end activity in your process. This includes all exceptions, deviations from the norm, skipped steps, reworks, etc.
+## Süreçleri ve istisnaları değiştirme
+Süreç akışı, sürecinizdeki aktivitenin başlangıcından sonuna kadar tüm yolları gösterir. Bu, tüm istisnaları, normdan sapmaları, atlanan adımları, yeniden çalışmaları vb. içerir.
 
-You can react to changing processes and find out if your target model is actually what your process should look like or if there are better ways.
+Değişen süreçlere tepki verebilir ve hedef modelinizin aslında sürecinizin nasıl görünmesi gerektiğini veya daha iyi yollar olup olmadığını öğrenebilirsiniz.
 
-Since the results are available faster, you can also react better to natural changes in the process.
+Sonuçlar daha hızlı elde edildiğinden, süreçteki doğal değişikliklere daha iyi tepki verebilirsiniz.
 
-## Visibility
+## Görünürlük
 
-With most processes happening digitally, it can be very hard to see how and where work is done. In the old days of huge piles of paper that moved from one desk to the other for different steps, things were easier. Process Mining makes visible what is hidden. It shows the movement of those ‘virtual stacks of paper’.
+Çoğu süreç dijital olarak gerçekleşirken işin nasıl ve nerede yapıldığını görmek çok zor olabilir. Farklı adımlar için bir masadan diğerine taşınan devasa kağıt yığınlarının eski günlerinde işler daha kolaydı. Süreç Madenciliği gizli olanı görünür kılar. Bu 'sanal kağıt yığınlarının' hareketini gösterir.
 
-Process Mining turns a hit-or-miss guessing game into a fast, fact-based and on point picture of your actual process and allows you to utilize this picture in many ways.
+Süreç Madenciliği, bir isabetli tahmin oyununu hızlı, gerçeğe dayalı ve gerçek sürecinizin nokta resmine dönüştürür ve bu resmi birçok şekilde kullanmanıza olanak tanır.
 
-## Competitive
-Aside from the advantages over typical optimization procedures, Process Mining also boosts your competitiveness and puts you at the front of the digital transformation race.
+## Rekabetçi
+Tipik optimizasyon prosedürlerine göre avantajlarının yanı sıra, Proses Madenciliği rekabet gücünüzü artırır ve sizi dijital dönüşüm yarışının önüne koyar.
 
-## Fact-based approach
-Process Mining is based on facts, not gut-feeling. The main advantage of applying Process Mining tools in your business is the ability to depict what is actually happening and to pinpoint exactly what needs to be improved and what has the highest priority.
+## Gerçeklere dayalı yaklaşım
+Süreç Madenciliği, içgüdülere değil, gerçeklere dayanır. İşletmenizde Süreç Madenciliği araçlarını uygulamanın ana avantajı, gerçekte ne olduğunu tasvir etme ve neyin iyileştirilmesi gerektiğini ve neyin en yüksek önceliğe sahip olduğunu tam olarak belirleme yeteneğidir.
 
-## Continuous optimization
-Because it’s fast and easy to receive results from Process Mining, it is also much easier to react to changes in the business world. It is also much easier to assign priorities and develop a comprehensive, pro-active and sustainable but also adaptable optimization strategy.
+## Sürekli optimizasyon
+Süreç Madenciliğinden sonuç almak hızlı ve kolay olduğu için iş dünyasındaki değişikliklere tepki vermek de çok daha kolay. Ayrıca öncelikleri belirlemek ve kapsamlı, proaktif ve sürdürülebilir ama aynı zamanda uyarlanabilir bir optimizasyon stratejisi geliştirmek çok daha kolaydır.
 
-## Complete transparency & maximum visibility
-You get the entire picture of your process. You may find that one of the exceptions in your as-is process is actually better than your ideal process model. You may also find that you need to deploy changes to the whole process or just too very specific stages. Whatever you find out, you gain the insights you need to develop the best optimization strategy.
+## Tam şeffaflık ve maksimum görünürlük
+Sürecinizin tüm resmini elde edersiniz. Olduğu gibi sürecinizdeki istisnalardan birinin aslında ideal süreç modelinizden daha iyi olduğunu görebilirsiniz. Değişiklikleri tüm sürece veya çok özel aşamalara dağıtmanız gerektiğini de görebilirsiniz. Ne bulursanız öğrenin, en iyi optimizasyon stratejisini geliştirmek için ihtiyaç duyduğunuz bilgileri edinirsiniz.
 
-## Continuous monitoring
-This is not a one-time solution. You can monitor KPIs, see how your optimization measures are impacting your process performance, adapt your strategy to outside changes and stay on track while optimizing your business.
+## Sürekli izleme
+Bu tek seferlik bir çözüm değil. KPI'ları izleyebilir, optimizasyon önlemlerinizin süreç performansınızı nasıl etkilediğini görebilir, stratejinizi dış değişikliklere uyarlayabilir ve işinizi optimize ederken yolda kalabilirsiniz.
 
-## Empower your employees
-Successful companies are the sum of excellent processes – and the people who work in them. With their commitment and experience, they contribute to growth and innovation every day. With Process Mining, you can use this valuable wealth of expertise to make processes better where they are happening.
+## Çalışanlarınızı güçlendirin
+Başarılı şirketler, mükemmel süreçlerin ve bu süreçlerde çalışan insanların toplamıdır. Bağlılıkları ve deneyimleri ile her gün büyümeye ve yeniliğe katkıda bulunurlar. Proses Madenciliği ile bu değerli uzmanlık zenginliğini, prosesleri gerçekleştikleri yerde daha iyi hale getirmek için kullanabilirsiniz.
 
-You stay informed about your actual process performance, can react to problems and changes before they become huge obstacles, maintain sustainable and successful optimization strategies, and base your decision on facts. Everyone can understand and contribute to optimization measures as a process expert to ensure the strategy is working out in the long run.
+Gerçek süreç performansınız hakkında bilgi sahibi olursunuz, sorunlara ve değişikliklere büyük engeller haline gelmeden tepki verebilir, sürdürülebilir ve başarılı optimizasyon stratejilerini sürdürebilir ve kararınızı gerçeklere dayandırabilirsiniz. Stratejinin uzun vadede işe yaradığından emin olmak için herkes bir süreç uzmanı olarak optimizasyon önlemlerini anlayabilir ve bunlara katkıda bulunabilir.
 
-## Who can use Process Mining?
+## Süreç Madenciliğini kimler kullanabilir?
 
-Process Mining is applied in different areas by different people for different purposes. The tools of the 2nd generation can work with millions of data points so as long as the basic event log requirements are met, there is no limit to the process you can explore. However, there are still common application areas and user types, as well as typical industries that already leverage Process Mining.
+Proses Madenciliği farklı alanlarda farklı kişiler tarafından farklı amaçlarla uygulanmaktadır. 2. nesil araçlar, temel olay günlüğü gereksinimleri karşılandığı sürece milyonlarca veri noktasıyla çalışabilir, keşfedebileceğiniz süreç için bir sınır yoktur. Bununla birlikte, halen Proses Madenciliğinden yararlanan tipik endüstrilerin yanı sıra ortak uygulama alanları ve kullanıcı türleri vardır.
 
-### Business Areas
+### Kullanım alanları
 
-Depending on the area you’re workin in, Process Mining can be used from your employees in-house and from outside service-providers.
+Çalıştığınız alana bağlı olarak Proses Madenciliği, çalışanlarınızdan kurum içinde ve dışarıdan hizmet sağlayıcılardan kullanılabilir.
 
-- In-House
-  - Process Managers
-  - Process Improvement Teams
-  - IT Departments
-  - Data Science Teams
-- Ouside
-  - Auditors
-  - Consultants
+- Kurum içi
+  - Süreç Yöneticileri
+  - Süreç İyileştirme Ekipleri
+  - BT Departmanları
+  - Veri İşleme Ekipleri
+- Kurum Dışı
+  - Denetçiler
+  - Danışmanlar
 
-## User Types
-With modern Process Mining software, you don’t have to be a tech-wizard to achieve results. Although there are a lot of tech-related user types, even end users with no coding experience can easily use the tools. In general, the people interacting with Process Mining applications are:
+## Kullnıcı Tipleri
+Modern Süreç Madenciliği yazılımıyla, sonuçlara ulaşmak için teknoloji sihirbazı olmanıza gerek yok. Teknolojiyle ilgili birçok kullanıcı türü olmasına rağmen, kodlama deneyimi olmayan son kullanıcılar bile araçları rahatlıkla kullanabilir. Genel olarak, Süreç Madenciliği uygulamaları ile etkileşime giren kişiler şunlardır:
 
-### Endusers
-View, work and interact with existing analysis. They work on the report and visuals levels.
+### Son kullanıcılar
+Mevcut analizleri görüntüleyin, çalışın ve etkileşim kurun. Rapor ve görsel seviyeleri üzerinde çalışırlar.
 
-### Process Analysts
-Create and configure their own analysis. They work on the report and visuals levels.
+### Süreç Analistleri
+Kendi analizlerini oluşturabilir. Rapor ve görsel seviyeleri üzerinde çalışırlar.
 
-### Data Scientists
-Model, create and integrate data. They work on data levels, making sure the data is available in the right form, and processed and imported correctly.
+### Veri Bilimcileri
+Verileri modelleyin, oluşturun ve entegre edin. Veri seviyeleri üzerinde çalışırlar, verilerin doğru biçimde mevcut olduğundan ve doğru şekilde işlenip içe aktarıldığından emin olurlar.
 
-### Administrators
-Care for administration and infrastrucutre. They manage the IT infrastrucure in which Process Mining tools are embedded.
+### Sistem Yöneticileri
+Yönetim ve altyapıya özen gösterin. Süreç Madenciliği araçlarının gömülü olduğu BT altyapısını yönetirler.
 
-## Application areas
-The following list includes just some examples of industry sectors where Process Mining is already used:
-  - Manufacturing
-  - Services
-  - Governmental institutions
-  - Healthcare
-  - Consumer Goods
-  - Telecommunications
-  - Audit & Banking
-  - Financial
-  - Educational/Research
+## Süreç Madenciliğinin Sık Kullanıldığı Sektörler
+Aşağıdaki liste, Proses Madenciliğinin halihazırda kullanıldığı bazı endüstri sektör örneklerini içermektedir:
+  - Üretim
+  - Hizmetler
+  - Devlet kurumları
+  - Sağlık hizmetleri
+  - Parakende
+  - Telekomünikasyon
+  - Finans
+  - Eğitim/Araştırma
 
-# What do you need for Process Mining?
-## Software
-You need Process Mining software to start. We have our own free version. It is very user-friendly because it does a lot of the data-preprocessing, loading, and transformation for you. ;)
+# Proses Madenciliği için neye ihtiyacınız var?
+## Yazılım
+Başlamak için Süreç Madenciliği yazılımına ihtiyacınız var. Procetranın ücretsiz versiyonu ile başlayabilirsiniz.
 
-## Data/Event Log
-You need data to analyze. Usually, this is stored in your IT system and you shouldn’t have to worry about it.
+## Veri/Olay Günlüğü
+Analiz etmek için verilere ihtiyacınız var. Genellikle bu, BT sisteminizde saklanır ve bunun için endişelenmenize gerek yoktur.
 
-Process Mining uses data in a so-called event log. This means databases that store the following information: CaseID, Timestamp, Activity name.
+Süreç Madenciliği, sözde olay günlüğündeki verileri kullanır. Bu, şu bilgileri depolayan veritabanları anlamına gelir: CaseID, Timestamp, Activity name.
 
-Let’s go back to our example of the pizza delivery service. A typical process would look like this:
+Pizza örneğimize geri dönelim. Tipik bir süreç şöyle görünür:
 
-Receive order → preheat oven → prepare dough → spread sauce on dough → add toppings → bake pizza → put pizza into box → deliver
+Siparişi al → fırını ısıt → hamuru hazırla → hamurun üzerine malzemeyi yay → sosları ekle → pizzayı pişir → pizzayı kutuya koy → teslim et
 
 ## CaseID
-A case is one completed route through your process. So, for example, one completed pizza delivery. In our example every order is a new case and needs a new CaseID so that the individual process steps can be linked to a specific case.
-For example Customer A orders a pepperoni pizza – that’s one case. Customer B orders a cheese pizza, a pepperoni pizza and a pizza with cheese and pineapple – that’s also one case but it has way more steps because you have to make a total of three pizzas.
+Buraya açıklama gelecek
 
 ## Timestamp
-When did a process step happen? A timestamp either tells you when a process started, when it ended, or you have two timestamps and include start and end time. The version with two timestamps is obviously the most precise.
+Bir süreç adımı ne zaman gerçekleşti? Zaman damgası size bir işlemin ne zaman başladığını, ne zaman bittiğini söyler veya iki zaman damganız vardır ve başlangıç ve bitiş zamanını içerir. İki zaman damgalı sürüm açıkçası en kesin olanıdır.
 
-When did you put the pizza in the oven? That’s the start timestamp for ‘Bake pizza’. When did you take it out of the oven? That’s your end timestamp. When you don’t have an end timestamp you wouldn’t know how much time was wasted between taking the pizza out of the oven and putting it in a box. The process step ‘bake pizza’ would last until the beginning of the process step ‘put pizza in box’.
+Pizzayı ne zaman fırına koydunuz? Bu, "Pizzayı pişir" için başlangıç zaman damgasıdır. Fırından ne zaman çıkardınız? Bu senin bitiş zaman damgan. Bitiş zaman damganız olmadığında, pizzayı fırından çıkarmak ve bir kutuya koymak arasında ne kadar zaman kaybettiğinizi bilemezsiniz. "Pizzayı pişir" işlem adımı, "pizzayı kutuya koy" işlem adımının başlangıcına kadar sürer.
 
 # Activity
-What was done? This is the descriptor of your process steps. Activity names are usually short and on point. Examples are ‘Create PO’, ‘Send Invoice’, etc.
+Ne yapıldı? Bu, işlem adımlarınızın tanımlayıcısıdır. Etkinlik adları genellikle kısa ve yerindedir. Örnekler "PO Oluştur", "Fatura Gönder" vb.
 
-In our example of the pizza place activity names would be ‘preheat oven’, ‘prepare dough’, ‘add toppings’ etc.
+Pizza  örneğimizde aktivite adları 'fırını ısıt', 'hamuru hazırla', 'malzemeyi ekle' vb. olacaktır.
 
-You can add more information to your Event Log to get a more detailed analysis. For example, if you have various people baking pizza for you, you could add them to the event log. Or if you have more than one pizza place, that could also be a category. The more categories you add, the more detailed you can go with your analysis. Just keep in mind, that CaseID, Timestamp and Activity Name are mandatory while everything else is optional. Otherwise you have complete freedom in the process you want to analyze.
+Daha ayrıntılı bir analiz almak için Olay Günlüğünüze daha fazla bilgi ekleyebilirsiniz. Örneğin, sizin için pizza pişiren çeşitli kişiler varsa, onları olay günlüğüne ekleyebilirsiniz. Veya birden fazla pizza yeriniz varsa bu da bir kategori olabilir. Ne kadar çok kategori eklerseniz, analizinize o kadar ayrıntılı gidebilirsiniz. CaseID, Timestamp ve Activity Name'in zorunlu olduğunu, diğer her şeyin isteğe bağlı olduğunu unutmayın. Aksi takdirde, analiz etmek istediğiniz süreçte tam bir özgürlüğe sahipsiniz.
