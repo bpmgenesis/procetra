@@ -8,14 +8,3 @@
     }
 })();
 
-git config user.name ""
-git config user.email ""
-git config --local credential.helper ""
-
-echo "# procetra" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/bpmgenesis/procetra.git
-git push -u origin main
