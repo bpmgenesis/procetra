@@ -1,5 +1,12 @@
 import { UIView, UIButton, VStack, Icon } from '@tuval/forms';
 
+/**
+ * Desktop görünümünde ana sayfadaki temel fonksiyon butonlarının görünümüdür.
+ * @param title
+ * @param icon
+ * @param action
+ * @returns
+ */
 export function MenuButton(title: string, icon: string, action: Function): UIView {
     return (
         UIButton(

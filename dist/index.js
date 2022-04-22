@@ -11,22 +11,22 @@
 *                                                                                                                               *
 *                                                                                                                               *
 * This file is part of Tuval Framework.                                                                                         *
-* Copyright (c) Tuvalsoft 2018 All rights reserved.                                                                             *
+* Copyright (c) Tuvalsoft 2019 All rights reserved.                                                                             *
 *                                                                                                                               *
 * Licensed under the GNU General Public License v3.0.                                                                           *
 * More info at: https://choosealicense.com/licenses/gpl-3.0/                                                                    *
-* Tuval Framework Created By Tuvalsoft in 2018                                                                                  *
+* Tuval Framework Created By Tuvalsoft in 2019                                                                                  *
 ******************************************************************************************************************************@*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"));
+		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$grids"));
 	else if(typeof define === 'function' && define.amd)
-		define(["tuval$core", "tuval$forms", "tuval$components$charts", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics"], factory);
+		define(["tuval$core", "tuval$forms", "tuval$components$charts", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics", "tuval$components$grids"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$charts"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"]);
+		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$grids")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$charts"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"], root["tuval$components$grids"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__) {
+})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__, __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -1241,6 +1241,32 @@ var MiningBrokerClient = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/BrokerClients/SymbolBroker.ts":
+/*!*******************************************!*\
+  !*** ./src/BrokerClients/SymbolBroker.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SymbolBroker": () => (/* binding */ SymbolBroker)
+/* harmony export */ });
+/* harmony import */ var _Services_ConfigService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Services/ConfigService */ "./src/Services/ConfigService.ts");
+
+var SymbolBroker = /** @class */ (function () {
+    function SymbolBroker() {
+    }
+    SymbolBroker.GetSymbolUrl = function (category, subCategory, name) {
+        return _Services_ConfigService__WEBPACK_IMPORTED_MODULE_0__.ConfigService.GetSymbolBrokerUrl() + "/GetSymbol/" + category + "/" + subCategory + "/" + name;
+    };
+    return SymbolBroker;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/BrokerProjectService.ts":
 /*!*************************************!*\
   !*** ./src/BrokerProjectService.ts ***!
@@ -1419,16 +1445,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppController": () => (/* binding */ AppController)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/UIServices/ProjectUIService */ "./src/UI/UIServices/ProjectUIService.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Application */ "./src/Application.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/Domains/Project/Controllers/ProjectController.ts");
-/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Resources */ "./src/Resources.ts");
-/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
+/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Resources */ "./src/Resources.ts");
+/* harmony import */ var _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/UIServices/ProjectUIService */ "./src/UI/UIServices/ProjectUIService.ts");
+/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/Domains/Project/Controllers/ProjectController.ts");
+/* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/Domains/Application/Views/MenuButton.ts");
 /* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/Domains/Application/Views/PortalFilterBarView.ts");
+/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1458,33 +1485,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-/* VStack(
-    Text('Simple Swift Guide to largeTitle ').font(Fonts.largeTitle),
-    Text('Simple Swift Guide to title').font(Fonts.title),
-    Text('Simple Swift Guide to title2').font(Fonts.title2),
-    Text('Simple Swift Guide to title3').font(Fonts.title3),
-    Text('Simple Swift Guide to headline').font(Fonts.headline),
-    Text('Simple Swift Guide to body').font(Fonts.body),
-    Text('Simple Swift Guide to callout').font(Fonts.callout),
-    Text('Simple Swift Guide to subhead').font(Fonts.subhead),
-    Text('Simple Swift Guide to footnote').font(Fonts.footnote),
-    UIButton(
-        Text('New')
-    ).cornerRadius('50%').shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
-)
-) */
-function MenuButton(title, icon, action) {
-    var view = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30)))
-        .width('64px').height('64px')
-        .transition('all 0.35s')
-        .background('rgb(255,255,255,50%)')
-        .padding('8px')
-        .border('solid 1px rgb(120,120,120,20%)')
-        .cornerRadius('12px')
-        .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
-        .action(function () { return action(); });
-    return view;
-}
+
 var AppController = /** @class */ (function (_super) {
     __extends(AppController, _super);
     function AppController() {
@@ -1492,46 +1493,42 @@ var AppController = /** @class */ (function (_super) {
     }
     AppController.prototype.InitController = function () {
         this.showAnim = false;
-        this.RequestDesktop = new _tuval_core__WEBPACK_IMPORTED_MODULE_3__.Event();
-        /*  this.controller = new ProjectController();
-         this.controller.SetParentAppController(this); */
+        this.RequestDesktop = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
     };
     AppController.prototype.MainPage = function () {
         var _this = this;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })(MenuButton('', '\\f064', function () { return _this.OnNewProject(); }), MenuButton('', '\\f06d', function () { return _this.OnOpenProject(); }), MenuButton('', '\\f051', function () { return _this.OnNewProject(); }), MenuButton('', '\\f183', function () { return _this.OnNewProject(); }), MenuButton('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_6__.RecentProjects)())
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f064', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f06d', function () { return _this.OnOpenProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f051', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f183', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_8__.RecentProjects)())
             // UIScene içerisine yayılması için
-            .width('100%'));
+            .width('100%')));
     };
     AppController.prototype.LoadPortalView = function () {
         var _this = this;
         var _a;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(_Resources__WEBPACK_IMPORTED_MODULE_5__.Resources.Icons.ApplicationIcon).width(24).height(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(function () { return _this.RequestDesktop(); }))
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(_Resources__WEBPACK_IMPORTED_MODULE_3__.Resources.Icons.ApplicationIcon).width(24).height(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(function () { return _this.RequestDesktop(); }))
             .fontFamily('verdana, arial, tahoma, helvetica, sans-serif')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading)
             .minHeight('50px')
             .maxHeight('50px')
-            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.controller).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading))
+            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.controller).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
             .backgroundColor('white')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading);
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
     };
     AppController.prototype.LoadView = function () {
-        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(this.currentProject == null, this.MainPage(), this.controller);
+        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null, this.MainPage(), this.controller);
         }
-        else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Portal) {
+        else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal) {
             return this.LoadPortalView();
         }
     };
     AppController.prototype.OnNewProject = function () {
-        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_1__.ProjectUIService.NewProject();
+        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.NewProject();
     };
     AppController.prototype.OnOpenProject = function () {
         var _this = this;
-        /* this.currentProject = 'sd';
-        this.controller.LoadProjects(); */
-        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_1__.ProjectUIService.OpenProjectDialog().then(function (project) {
+        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.OpenProjectDialog().then(function (project) {
             _this.currentProject = project;
-            _this.controller = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_4__.ProjectController)(_this, project);
+            _this.controller = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__.ProjectController)(_this, project);
         });
     };
     AppController.prototype.CLoseProject = function () {
@@ -1541,7 +1538,7 @@ var AppController = /** @class */ (function (_super) {
         var _this = this;
         var result = [];
         _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.Keys().then(function (keys) {
-            (0,_tuval_core__WEBPACK_IMPORTED_MODULE_3__.foreach)(keys, function (key) {
+            (0,_tuval_core__WEBPACK_IMPORTED_MODULE_0__.foreach)(keys, function (key) {
                 _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.GetString(key).then(function (str) {
                     var obj = JSON.parse(str);
                     result.push(obj);
@@ -1566,19 +1563,19 @@ var AppController = /** @class */ (function (_super) {
         });
     };
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "RequestDesktop", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "currentProject", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "recentFiles", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "showAnim", void 0);
     return AppController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
 
 
@@ -1598,12 +1595,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
+/**
+ * Portal menude en tepedeki filtre görünümüdür.
+ * @returns
+ */
 function FilterView() {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f121').size(25).foregroundColor('#55606c'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add Filter').fontFamily('Ubuntu,sans-serif').fontSize('15px').fontWeight('700').foregroundColor('#999')).padding('5px 10px'))
         .height() //auto
         .backgroundColor('#141719')
         .border('1px solid transparent')
         .cornerRadius(6)));
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/Application/Views/MenuButton.ts":
+/*!*****************************************************!*\
+  !*** ./src/Domains/Application/Views/MenuButton.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MenuButton": () => (/* binding */ MenuButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * Desktop görünümünde ana sayfadaki temel fonksiyon butonlarının görünümüdür.
+ * @param title
+ * @param icon
+ * @param action
+ * @returns
+ */
+function MenuButton(title, icon, action) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30)))
+        .width(64).height(64)
+        .transition('all 0.35s')
+        .background('rgb(255,255,255,50%)')
+        .padding(8)
+        .border('solid 1px rgb(120,120,120,20%)')
+        .cornerRadius(12)
+        .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
+        .action(function () { return action(); }));
 }
 
 
@@ -3495,6 +3532,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
 /* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/Domains/Project/Models/MIProjectItem.ts");
 /* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/Domains/Project/Views/DesktopView.ts");
+/* harmony import */ var _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Dialogs/ConnectorDialog */ "./src/UI/Dialogs/ConnectorDialog.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3516,6 +3554,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3579,8 +3618,8 @@ var ProjectControllerClass = /** @class */ (function (_super) {
     };
     //When user click add button that under list
     ProjectControllerClass.prototype.OnNewProjectItem = function () {
-        /*  const connectorDialog = new ConnectorDialog();
-         connectorDialog.ShowDialog(); */
+        var connectorDialog = new _UI_Dialogs_ConnectorDialog__WEBPACK_IMPORTED_MODULE_4__.ConnectorDialog();
+        connectorDialog.ShowDialog();
     };
     // When user select items froım list
     ProjectControllerClass.prototype.OnProjectItemSelected = function (projectItem) {
@@ -5609,6 +5648,519 @@ var BlankProjectDialog = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/UI/Dialogs/ConnectorDialog.ts":
+/*!*******************************************!*\
+  !*** ./src/UI/Dialogs/ConnectorDialog.ts ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConnectorDialog": () => (/* binding */ ConnectorDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _eBA_eBADatasetConnectorDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./eBA/eBADatasetConnectorDialog */ "./src/UI/Dialogs/eBA/eBADatasetConnectorDialog.ts");
+/* harmony import */ var _ConnectorDialogController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ConnectorDialogController */ "./src/UI/Dialogs/ConnectorDialogController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+var ConnectorDialog = /** @class */ (function (_super) {
+    __extends(ConnectorDialog, _super);
+    function ConnectorDialog() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.OkButtonClicked = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
+        return _this;
+    }
+    ConnectorDialog.prototype.InitNonVisualComponent = function () {
+        this.eBAConnectorDialog = new _eBA_eBADatasetConnectorDialog__WEBPACK_IMPORTED_MODULE_2__.eBADatasetConnectorDialog();
+        this.Controls.Add(this.eBAConnectorDialog);
+    };
+    ConnectorDialog.prototype.InitComponents = function () {
+        //this.InitNonVisualComponent();
+        this.Text = 'Select Item';
+        this.Width = 1000;
+        this.Height = 700;
+        var controller = new _ConnectorDialogController__WEBPACK_IMPORTED_MODULE_3__.ConnectorDialogController();
+        controller.Bind(this);
+        this.Controls.Add(controller);
+    };
+    ConnectorDialog.prototype.clearForm = function () {
+        /*  this.costTabPage.chkFixedCost.Checked = false;
+         this.costTabPage.chkAmount.Checked = false;
+         this.costTabPage.txtAmount.Text = ''; */
+    };
+    ConnectorDialog.prototype.SetActivityInfo = function (activityInfo) {
+        this.clearForm();
+        this.activityInfo = activityInfo;
+        // this.costTabPage.SetActivityInfo(activityInfo);
+    };
+    ConnectorDialog.prototype.OnOKClick = function () {
+        this.OkButtonClicked();
+        this.Hide();
+    };
+    return ConnectorDialog;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Dialog));
+
+
+
+/***/ }),
+
+/***/ "./src/UI/Dialogs/ConnectorDialogController.ts":
+/*!*****************************************************!*\
+  !*** ./src/UI/Dialogs/ConnectorDialogController.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConnectorDialogController": () => (/* binding */ ConnectorDialogController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../BrokerClients/SymbolBroker */ "./src/BrokerClients/SymbolBroker.ts");
+/* harmony import */ var _Views_ListView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ListView */ "./src/UI/Views/ListView.ts");
+/* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/Buttons */ "./src/UI/Views/Buttons.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+
+
+
+
+function GetImage(url) {
+    var image = new Image();
+    image.src = url;
+    return image;
+}
+var Model = [
+    {
+        name: 'Database',
+        title: 'Database',
+        items: [
+            {
+                name: 'Google BigQuery',
+                imagePath: 'Integrations/Data Connectors/google_bigquery',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'google_bigquery'))
+            },
+            {
+                name: 'Heroku PostgreSQL',
+                imagePath: 'Integrations/Data Connectors/herokupostgresql',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'herokupostgresql'))
+            },
+            {
+                name: 'MariaDB',
+                imagePath: 'Integrations/Data Connectors/maria_db',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'maria_db'))
+            },
+            {
+                name: 'MongoDB',
+                imagePath: 'Integrations/Data Connectors/mongo_db',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'mongo_db'))
+            },
+            {
+                name: 'MS SQL Server',
+                imagePath: 'Integrations/Data Connectors/mssql',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'mssql'))
+            },
+            {
+                name: 'My SQL',
+                imagePath: 'Integrations/Data Connectors/mysql',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'mysql'))
+            },
+            {
+                name: 'Oracle',
+                imagePath: 'Integrations/Data Connectors/oracle_db',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'oracle_db'))
+            },
+            {
+                name: 'PostgreSQL',
+                imagePath: 'Integrations/Data Connectors/postgresql',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'postgresql'))
+            },
+            {
+                name: 'Amazon Redshift',
+                imagePath: 'Integrations/Data Connectors/redshift',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'redshift'))
+            },
+            {
+                name: 'Segment',
+                imagePath: 'Integrations/Data Connectors/segment',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'segment'))
+            },
+            {
+                name: 'Snowflake',
+                imagePath: 'Integrations/Data Connectors/snowflake',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'snowflake'))
+            },
+        ]
+    },
+    {
+        name: 'Files',
+        title: 'Files',
+        items: [
+            {
+                name: 'CSV File',
+                imagePath: 'Integrations/Data Connectors/csv',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'csv'))
+            },
+            {
+                name: 'Xes File',
+                imagePath: 'Integrations/Data Connectors/herokupostgresql',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'herokupostgresql'))
+            },
+            {
+                name: 'Xlsx File',
+                imagePath: 'Integrations/Data Connectors/xlsx',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'xlsx'))
+            },
+            {
+                name: 'Excel Online',
+                imagePath: 'Integrations/Data Connectors/excelonline',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'excelonline'))
+            },
+            {
+                name: 'Google Spreadsheet',
+                imagePath: 'Integrations/Data Connectors/google_spreadsheet',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'google_spreadsheet'))
+            },
+            {
+                name: 'Smartsheet',
+                imagePath: 'Integrations/Data Connectors/smartsheet',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'smartsheet'))
+            },
+            {
+                name: 'Microsoft Access',
+                imagePath: 'Integrations/Data Connectors/microsoft_access',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'microsoft_access'))
+            },
+            {
+                name: 'SQLLite',
+                imagePath: 'Integrations/Data Connectors/SQLite',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'SQLite'))
+            }
+        ]
+    },
+    {
+        name: 'Marketing',
+        title: 'Marketing',
+        items: [
+            {
+                name: 'Google Ads',
+                imagePath: 'Integrations/Data Connectors/googleadwords',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'googleadwords'))
+            },
+            {
+                name: 'Google Analytics',
+                imagePath: 'Integrations/Data Connectors/google_analytics',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'google_analytics'))
+            },
+            {
+                name: 'GoToWebinar',
+                imagePath: 'Integrations/Data Connectors/gotowebinar',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'gotowebinar'))
+            },
+            {
+                name: 'MailChimp',
+                imagePath: 'Integrations/Data Connectors/mailchimp',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'mailchimp'))
+            },
+            {
+                name: 'Optimizely',
+                imagePath: 'Integrations/Data Connectors/optimizely',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'optimizely'))
+            },
+            {
+                name: 'Persistiq',
+                imagePath: 'Integrations/Data Connectors/persistiq',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'persistiq'))
+            },
+            {
+                name: 'SendGrid',
+                imagePath: 'Integrations/Data Connectors/eba',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'eba'))
+            }
+        ]
+    },
+    {
+        name: 'Operations',
+        title: 'Operations',
+        items: [
+            {
+                name: 'FreshDesk',
+                imagePath: 'Integrations/Data Connectors/freshdesk',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'freshdesk'))
+            },
+            {
+                name: 'Intercom',
+                imagePath: 'Integrations/Data Connectors/intercom',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'intercom'))
+            },
+            {
+                name: 'Paidlabs',
+                imagePath: 'Integrations/Data Connectors/paidlabs',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'paidlabs'))
+            },
+            {
+                name: 'QuickBooks Online',
+                imagePath: 'Integrations/Data Connectors/quickbooks',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'quickbooks'))
+            },
+            {
+                name: 'Optimizely',
+                imagePath: 'Integrations/Data Connectors/optimizely',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'optimizely'))
+            },
+            {
+                name: 'Stripe',
+                imagePath: 'Integrations/Data Connectors/stripe',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'stripe'))
+            },
+            {
+                name: 'ZenDesk',
+                imagePath: 'Integrations/Data Connectors/zendesk',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'zendesk'))
+            }
+        ]
+    },
+    {
+        name: 'Product',
+        title: 'Product',
+        items: [
+            {
+                name: 'SAP',
+                imagePath: 'Integrations/Data Connectors/SAP_logo',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'SAP_logo'))
+            },
+            {
+                name: 'SAP Business One',
+                imagePath: 'Integrations/Data Connectors/sap_business_one',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'sap_business_one'))
+            },
+            {
+                name: 'SAP Concur',
+                imagePath: 'Integrations/Data Connectors/sap_concur',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'sap_concur'))
+            },
+            {
+                name: 'SAP Hana',
+                imagePath: 'Integrations/Data Connectors/sap_hana',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'sap_hana'))
+            },
+            {
+                name: 'SAP Success Factors',
+                imagePath: 'Integrations/Data Connectors/sap_success_factors',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'sap_success_factors'))
+            },
+            {
+                name: 'eBA',
+                imagePath: 'Integrations/Data Connectors/eba',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'eba'))
+            },
+            {
+                name: 'QDMS',
+                imagePath: 'Integrations/Data Connectors/qdms',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'qdms'))
+            },
+            {
+                name: 'BEAM',
+                imagePath: 'Integrations/Data Connectors/beam',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'beam'))
+            },
+            {
+                name: 'Ensemble',
+                imagePath: 'Integrations/Data Connectors/ensemble',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'ensemble'))
+            },
+            {
+                name: 'Jira',
+                imagePath: 'Integrations/Data Connectors/jira',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'jira'))
+            },
+            {
+                name: 'Service Now',
+                imagePath: 'Integrations/Data Connectors/servicenow',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'servicenow'))
+            },
+            {
+                name: 'Asana',
+                imagePath: 'Integrations/Data Connectors/asana',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'asana'))
+            },
+            {
+                name: 'Auth0',
+                imagePath: 'Integrations/Data Connectors/auth0',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'auth0'))
+            },
+            {
+                name: 'Basecamp',
+                imagePath: 'Integrations/Data Connectors/basecamp',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'basecamp'))
+            },
+            {
+                name: 'Bitbucket',
+                imagePath: 'Integrations/Data Connectors/bitbucket',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'bitbucket'))
+            },
+            {
+                name: 'Delighted',
+                imagePath: 'Integrations/Data Connectors/delighted',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'delighted'))
+            },
+            {
+                name: 'Jenkins',
+                imagePath: 'Integrations/Data Connectors/jenkins',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'jenkins'))
+            },
+            {
+                name: 'Podio',
+                imagePath: 'Integrations/Data Connectors/podio',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'podio'))
+            },
+            {
+                name: 'Trello',
+                imagePath: 'Integrations/Data Connectors/trello',
+                image: GetImage(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl('Integrations', 'Data Connectors', 'trello'))
+            }
+        ]
+    }
+];
+var BI = [
+    {
+        name: 'Custom Page',
+        title: 'Custom Page',
+        items: [
+            {
+                name: 'Custom Page',
+                imagePath: 'Integrations/Data Connectors/google_bigquery'
+            }
+        ]
+    }
+];
+var ListModel = [
+    {
+        name: 'Mining Dataset',
+        items: Model
+    },
+    {
+        name: 'BI Services',
+        items: BI
+    }
+];
+var ConnectorDialogController = /** @class */ (function (_super) {
+    __extends(ConnectorDialogController, _super);
+    function ConnectorDialogController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ConnectorDialogController.prototype.InitController = function () {
+        this.selectedModelItem = Model[0];
+    };
+    ConnectorDialogController.prototype.OnBindModel = function (dialog) {
+        this.dialog = dialog;
+    };
+    ConnectorDialogController.prototype.onOK = function () {
+        this.dialog.Hide();
+    };
+    ConnectorDialogController.prototype.onCancel = function () {
+        this.dialog.Hide();
+    };
+    ConnectorDialogController.prototype.LoadView = function () {
+        var _this = this;
+        var _a;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnLayout)({
+            left: [
+                _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Item').textAlign('start').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(ListModel, function (listModelItem) {
+                    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(listModelItem.name).padding('5px').fontWeight('bold')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(listModelItem.items, function (modelItem) {
+                        return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)(
+                        /*   Icon(projectItem.icon).size(20).width('auto'), */
+                        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(modelItem.title).paddingLeft('10px').width('100%'))
+                            .foregroundColor(_this.selectedModelItem === modelItem ? 'white' : '')
+                            .cornerRadius(5)
+                            .transition('margin-left 0.35s, background-color 0.35s, shadow 0.35s')
+                            .shadow(_this.selectedModelItem === modelItem ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
+                            .marginLeft(_this.selectedModelItem === modelItem ? '20px' : '15px')
+                            .minHeight(_this.selectedModelItem === modelItem ? '50px' : '40px')
+                            .backgroundImage(_this.selectedModelItem === modelItem ? 'linear-gradient(#25A4FFAA, #028AEBAA)' : '')
+                            .onSelected(function () { _this.selectedModelItem = modelItem; });
+                    }))).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading).width('100%').height('auto'));
+                }))).width(200).background('rgb(120,120,120,10%)').cornerRadius('12px 0px 0px 12px').grow(),
+            ],
+            right: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)((_a = this.selectedModelItem) === null || _a === void 0 ? void 0 : _a.items, function (item) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl(item.imagePath.split('/')[0], item.imagePath.split('/')[1], item.imagePath.split('/')[2])).width('104px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).textAlign('center'))
+                        .cursor('pointer')
+                        // selection frame
+                        .border(_this.selectedItem === item ? '2px solid rgb(37,159,245, 50%)' : '2px solid #eef0f4')
+                        .shadow(_this.selectedItem === item ? 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px' : '')
+                        .width('136px')
+                        .height('192px')
+                        .padding('10px')
+                        .margin('10px')
+                        .onClick(function () { return _this.selectedItem = item; });
+                })).alignContent('baseline')
+                    .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+                    .width('100%')
+                    .wrap('wrap')
+                    .overflowY('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_3__.AcceptButton)('OK').action(function () { return _this.onOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_3__.CancelButton)('Cancel').action(function () { return _this.onCancel(); })).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.trailing).width('100%').height(50)).width('100%')
+            ]
+        })));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ConnectorDialogController.prototype, "selectedModelItem", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ConnectorDialogController.prototype, "selectedItem", void 0);
+    return ConnectorDialogController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
 /***/ "./src/UI/Dialogs/NewProjectDialog.ts":
 /*!********************************************!*\
   !*** ./src/UI/Dialogs/NewProjectDialog.ts ***!
@@ -5964,6 +6516,660 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     ], OpenProjectDialogController.prototype, "selectedProject", void 0);
     return OpenProjectDialogController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/UI/Dialogs/eBA/eBABrokerClient.ts":
+/*!***********************************************!*\
+  !*** ./src/UI/Dialogs/eBA/eBABrokerClient.ts ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "eBABrokerClient": () => (/* binding */ eBABrokerClient)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/ConfigService */ "./src/Services/ConfigService.ts");
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var eBABrokerClient = /** @class */ (function () {
+    function eBABrokerClient() {
+    }
+    eBABrokerClient.GetProjects = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('user', 'cvx');
+                        form.append('password', 'xcv');
+                        form.append('lang', 'xcv');
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProjects', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
+    eBABrokerClient.GetProcesses = function (process_name) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('user', 'cvx');
+                        form.append('password', 'xcv');
+                        form.append('process_name', process_name);
+                        form.append('lang', 'xcv');
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcesses', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
+    eBABrokerClient.GetProcessHistory = function (process_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('user', 'cvx');
+                        form.append('password', 'xcv');
+                        form.append('user_id', 'admin');
+                        form.append('process_id', process_id);
+                        form.append('lang', 'xcv');
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcessHistory', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
+    eBABrokerClient.GetProcessAllHistory = function (process_name) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('user', 'cvx');
+                        form.append('password', 'xcv');
+                        form.append('process_name', process_name);
+                        form.append('lang', 'xcv');
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetEbaBrokerUrl() + '/process/GetProcessAllHistory/json', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
+    return eBABrokerClient;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/UI/Dialogs/eBA/eBADatasetConnectorDialog.ts":
+/*!*********************************************************!*\
+  !*** ./src/UI/Dialogs/eBA/eBADatasetConnectorDialog.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "eBADatasetConnectorDialog": () => (/* binding */ eBADatasetConnectorDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_grids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/grids */ "@tuval/components/grids");
+/* harmony import */ var _tuval_components_grids__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_grids__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eBABrokerClient */ "./src/UI/Dialogs/eBA/eBABrokerClient.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _eBAProjectListControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./eBAProjectListControl */ "./src/UI/Dialogs/eBA/eBAProjectListControl.tsx");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var eBADatasetConnectorDialog = /** @class */ (function (_super) {
+    __extends(eBADatasetConnectorDialog, _super);
+    function eBADatasetConnectorDialog() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.OkButtonClicked = new _tuval_core__WEBPACK_IMPORTED_MODULE_2__.Event();
+        return _this;
+    }
+    eBADatasetConnectorDialog.prototype.InitComponents = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var projects, grid, btnOK, btnCancel;
+            var _this = this;
+            return __generator(this, function (_a) {
+                this.Width = 1200;
+                this.Height = 600;
+                this.Text = 'Select which eBA process you want to connect';
+                projects = new _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.ComboBox();
+                projects.OnChanged.add(function (item) { return __awaiter(_this, void 0, void 0, function () {
+                    var processes, result, i, history_1;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__.eBABrokerClient.GetProcesses(item.Key)];
+                            case 1:
+                                processes = _a.sent();
+                                console.log(processes.length);
+                                result = [];
+                                i = 0;
+                                _a.label = 2;
+                            case 2:
+                                if (!(i < processes.length)) return [3 /*break*/, 5];
+                                return [4 /*yield*/, _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__.eBABrokerClient.GetProcessHistory(processes[i].Id)];
+                            case 3:
+                                history_1 = _a.sent();
+                                history_1.forEach(function (item) { return result.push(item); });
+                                console.log(i);
+                                _a.label = 4;
+                            case 4:
+                                i++;
+                                return [3 /*break*/, 2];
+                            case 5:
+                                console.log(result);
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                grid = new _tuval_components_grids__WEBPACK_IMPORTED_MODULE_0__.GridView();
+                //this.Controls.Add(grid);
+                this.eBAProjectsControl = new _eBAProjectListControl__WEBPACK_IMPORTED_MODULE_4__.eBAProjectListControl();
+                this.Controls.Add(this.eBAProjectsControl);
+                btnOK = new _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button();
+                btnOK.Text = 'OK';
+                btnOK.Color = 2;
+                btnOK.Clicked = (function () {
+                    _this.OkButtonClicked({
+                        name: _this.eBAProjectsControl.SelectedProject.Caption,
+                        data: _this.eBAProjectsControl.ProcessData
+                    });
+                });
+                btnCancel = new _tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Button();
+                btnCancel.Text = 'Cancel';
+                btnCancel.Color = 1;
+                btnCancel.Clicked = (function () {
+                    _this.Hide();
+                });
+                this.FooterControls.AddRange([btnOK, btnCancel]);
+                return [2 /*return*/];
+            });
+        });
+    };
+    return eBADatasetConnectorDialog;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_3__.Dialog));
+
+
+
+/***/ }),
+
+/***/ "./src/UI/Dialogs/eBA/eBAProjectListControl.tsx":
+/*!******************************************************!*\
+  !*** ./src/UI/Dialogs/eBA/eBAProjectListControl.tsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "eBAProjectListControl": () => (/* binding */ eBAProjectListControl)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./eBABrokerClient */ "./src/UI/Dialogs/eBA/eBABrokerClient.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_components_grids__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/components/grids */ "@tuval/components/grids");
+/* harmony import */ var _tuval_components_grids__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_grids__WEBPACK_IMPORTED_MODULE_3__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var eBAProjectListControl = /** @class */ (function (_super) {
+    __extends(eBAProjectListControl, _super);
+    function eBAProjectListControl() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    eBAProjectListControl.prototype.SetupControlDefaults = function () {
+        _super.prototype.SetupControlDefaults.call(this);
+        this.filterText = '';
+        this.filterServers = '';
+        this.Loading = false;
+        this.SelectedState = null;
+        this.eBAServers = [
+            {
+                Name: 'Demo EBYS Server'
+            }
+        ];
+        this.grid = new _tuval_components_grids__WEBPACK_IMPORTED_MODULE_3__.GridView();
+        this.grid.Height = 245;
+        this.LoadingText = 'Loading...';
+    };
+    eBAProjectListControl.prototype.SetProjects = function (eBAProject) {
+        this.eBAProject = eBAProject;
+    };
+    eBAProjectListControl.prototype.renderProjects = function () {
+        var _this = this;
+        if (this.Loading) {
+            return;
+        }
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.array(this.eBAProject))
+            return this.eBAProject
+                .filter(function (item) {
+                if (_this.filterText != '') {
+                    return item.Type === 'Standart' && item.Caption.toLowerCase().indexOf(_this.filterText.toLowerCase()) > -1;
+                }
+                else {
+                    return item.Type === 'Standart';
+                }
+            })
+                .map(function (item) {
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "entity", style: "", onclick: function () { return __awaiter(_this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            this.SelectedProject = item;
+                            return [2 /*return*/];
+                        });
+                    }); } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "item ng-binding ng-scope" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "nc-icon-outline icon fa fa-eba-project" }),
+                        item.Caption)));
+            });
+    };
+    eBAProjectListControl.prototype.renderServers = function () {
+        var _this = this;
+        if (this.Loading) {
+            return;
+        }
+        if (_tuval_core__WEBPACK_IMPORTED_MODULE_2__.is.array(this.eBAServers))
+            return this.eBAServers
+                .filter(function (item) {
+                if (_this.filterServers !== '') {
+                    return item.Name.toLowerCase().indexOf(_this.filterServers.toLowerCase()) > -1;
+                }
+                else {
+                    return item;
+                }
+            })
+                .map(function (item) {
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "entity", style: "", onclick: function () { return __awaiter(_this, void 0, void 0, function () {
+                        var eBAProjects;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.Loading = true;
+                                    return [4 /*yield*/, _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__.eBABrokerClient.GetProjects()];
+                                case 1:
+                                    eBAProjects = _a.sent();
+                                    this.SetProjects(eBAProjects);
+                                    this.Loading = false;
+                                    this.SelectedServer = item;
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "item" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "nc-icon-outline icon fa fa-eba-server" }),
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { style: "padding-left:5px;" }, item.Name))));
+            });
+    };
+    eBAProjectListControl.prototype.renderProcessStates = function () {
+        var _this = this;
+        if (this.Loading) {
+            return;
+        }
+        if (this.SelectedProject != null)
+            return ['Finished Process', 'Ongoing processes']
+                .filter(function (item) {
+                if (_this.filterServers != '') {
+                    return item.toLowerCase().indexOf(_this.filterServers.toLowerCase()) > -1;
+                }
+                else {
+                    return item;
+                }
+            })
+                .map(function (item) {
+                var className = (0,_tuval_core__WEBPACK_IMPORTED_MODULE_2__.classNames)('nc-icon-outline icon fa', {
+                    'fa-eba-process-state-finished': item === 'Finished Process',
+                    'fa-eba-process-state-ongoing': item === 'Ongoing processes'
+                });
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "entity", style: "", onclick: function () { return __awaiter(_this, void 0, void 0, function () {
+                        var processes, result, i, history_1;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    this.Loading = true;
+                                    return [4 /*yield*/, _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__.eBABrokerClient.GetProcesses(this.SelectedProject.Name)];
+                                case 1:
+                                    processes = _a.sent();
+                                    console.log(processes.length);
+                                    result = [];
+                                    i = 0;
+                                    _a.label = 2;
+                                case 2:
+                                    if (!(i < processes.length)) return [3 /*break*/, 5];
+                                    if (item === 'Finished Process') {
+                                        if (!processes[i].Finished) {
+                                            return [3 /*break*/, 4];
+                                        }
+                                    }
+                                    else if (item === 'Ongoing processes') {
+                                        if (processes[i].Finished) {
+                                            return [3 /*break*/, 4];
+                                        }
+                                    }
+                                    return [4 /*yield*/, _eBABrokerClient__WEBPACK_IMPORTED_MODULE_1__.eBABrokerClient.GetProcessHistory(processes[i].Id)];
+                                case 3:
+                                    history_1 = _a.sent();
+                                    history_1.forEach(function (item) {
+                                        if (item['ResponseDate'] == null) {
+                                            item['ResponseDate'] = item['RequestDate'];
+                                        }
+                                        if (item['Description'] == null || item['Description'] === '') {
+                                            item['Description'] = item['Text'];
+                                        }
+                                        result.push(item);
+                                    });
+                                    this.LoadingText = "Loading " + i + " of " + processes.length + " process event data";
+                                    _a.label = 4;
+                                case 4:
+                                    i++;
+                                    return [3 /*break*/, 2];
+                                case 5:
+                                    console.log(result);
+                                    this.Loading = false;
+                                    this.SelectedState = item;
+                                    this.ProcessData = this.grid.DataSource = this.ProcessHistory = result;
+                                    return [2 /*return*/];
+                            }
+                        });
+                    }); } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "item" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: className }),
+                        item)));
+            });
+    };
+    eBAProjectListControl.prototype.renderProcessHistory = function () {
+        if (this.ProcessHistory != null) {
+            return this.grid.CreateMainElement();
+        }
+    };
+    eBAProjectListControl.prototype.renderElements = function () {
+        var olmadibastan = "";
+        if (this.SelectedState == null) {
+            if (this.SelectedServer == null) {
+                return this.renderServers();
+            }
+            else if (this.SelectedProject == null) {
+                return this.renderProjects();
+            }
+            else {
+                return this.renderProcessStates();
+            }
+        }
+        else {
+            return this.renderProcessHistory();
+        }
+    };
+    eBAProjectListControl.prototype.renderLoading = function () {
+        if (this.Loading) {
+            return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { "ng-if": "indicators.loading", class: "ng-scope" },
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "ng-scope" },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "indicator-small", "ng-hide": "error || undefined" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "mk-spinner-wrap" },
+                            _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "mk-spinner-pie" })),
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "message", style: "" }, this.LoadingText)))));
+        }
+    };
+    eBAProjectListControl.prototype.renderBread = function () {
+        var _this = this;
+        var renderServerBread = function () {
+            if (_this.SelectedServer != null) {
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "", onclick: function () {
+                        _this.SelectedProject = null;
+                        _this.SelectedState = null;
+                    } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("a", { href: "void:javascript(0)", class: "p-menuitem-link" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "p-menuitem-text" }, _this.SelectedServer.Name))));
+            }
+        };
+        var renderProjectBread = function () {
+            if (_this.SelectedProject) {
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "", onclick: function () {
+                        _this.SelectedState = null;
+                    } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("a", { href: "#", class: "p-menuitem-link" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "p-menuitem-text" }, _this.SelectedProject.Caption))));
+            }
+        };
+        var renderProcessStateBread = function () {
+            if (_this.SelectedState != null) {
+                return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "", onclick: function () {
+                        _this.SelectedState = null;
+                    } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("a", { href: "#", class: "p-menuitem-link" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "p-menuitem-text" }, _this.SelectedState))));
+            }
+        };
+        return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("nav", { class: "p-breadcrumb p-component", style: "border:solid 0px" },
+            _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("ul", null,
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "p-breadcrumb-home", onclick: function () {
+                        _this.SelectedServer = null;
+                        _this.SelectedProject = null;
+                        _this.SelectedState = null;
+                    } },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("a", { href: "javascript:void(0)", class: "p-menuitem-link" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("span", { class: "p-menuitem-icon pi pi-home" }))),
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "p-breadcrumb-chevron pi pi-chevron-right" }),
+                renderServerBread(),
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "p-breadcrumb-chevron pi pi-chevron-right" }),
+                renderProjectBread(),
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("li", { class: "p-breadcrumb-chevron pi pi-chevron-right" }),
+                renderProcessStateBread())));
+    };
+    eBAProjectListControl.prototype.CreateElements = function () {
+        var _this = this;
+        return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", null,
+            _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "mt-2 mb-2" },
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("input", { class: "gh-input-text", onchange: function (e) { return _this.filterText = e.target.value; }, id: "filter-by-name", "ng-model": "query", placeholder: "Filter items by project name", style: "" })),
+            this.renderBread(),
+            _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: 'data-source-eBA-browser' },
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "container-fluid" },
+                    _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "row" },
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "col-md-12" },
+                            _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Teact.createElement("div", { class: "files" },
+                                this.renderLoading(),
+                                this.renderElements())))))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "ProcessData", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "eBAServers", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "eBAProject", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "SelectedServer", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "SelectedProject", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "ProcessHistory", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "SelectedState", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "filterText", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "filterServers", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "grid", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Property)()
+    ], eBAProjectListControl.prototype, "LoadingText", void 0);
+    return eBAProjectListControl;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Control));
 
 
 
@@ -6603,6 +7809,17 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__;
 
 "use strict";
 module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__;
+
+/***/ }),
+
+/***/ "@tuval/components/grids":
+/*!*****************************************!*\
+  !*** external "tuval$components$grids" ***!
+  \*****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__;
 
 /***/ }),
 

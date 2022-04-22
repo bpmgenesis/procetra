@@ -15,6 +15,7 @@ import { ListView, ListViewItem, ListViewItemClass } from '../../../UI/Views/Lis
 import { ApplicationModes, cLeading } from '@tuval/forms';
 import { CreateMVIProjectItem, MVIProjectItem, MIProjectItem } from '../Models/MIProjectItem';
 import { DesktopView } from '../Views/DesktopView';
+import { ConnectorDialog } from '../../../UI/Dialogs/ConnectorDialog';
 
 class StackController extends UIController {
     @State()
@@ -105,8 +106,8 @@ export class ProjectControllerClass extends UIController {
 
     //When user click add button that under list
     private OnNewProjectItem() {
-        /*  const connectorDialog = new ConnectorDialog();
-         connectorDialog.ShowDialog(); */
+         const connectorDialog = new ConnectorDialog();
+         connectorDialog.ShowDialog();
     }
 
     // When user select items froım list
