@@ -1,6 +1,6 @@
 import { UIController, UIView, HStack, VStack, Text, Alignment, PositionTypes, State } from '@tuval/forms';
-import { ActivitySliderView } from '../Views/ActivitySliderView';
-import { ConnectionSliderView } from '../Views/ConnectionSliderView';
+import { ActivitySliderView } from './ProcessExplorerController/Views/ActivitySliderView';
+import { ConnectionSliderView } from './ProcessExplorerController/Views/ConnectionSliderView';
 import { int } from '@tuval/core';
 
 

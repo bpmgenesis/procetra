@@ -9,12 +9,13 @@ import { DatasetTabView } from './Views/DatasetTabView';
 import { ProcessOverviewController } from '../ProcessOverviewController/ProcessOverviewController';
 import { ProcessDashboardController } from '../ProcessDashboardController/ProcessDashboardController';
 import { MIProject } from '../../Models/ProjectModel';
-import { ProcessExplorerController } from './Controllers/ProcessExplorerController/ProcessExplorerController';
-import { ProcessStatisticController } from './Controllers/ProcessStatisticController/ProcessStatisticController';
-import { VariantExplorerController } from './Controllers/VariantExplorerController/VariantExplorerController';
-import { CaseExplorerController } from './Controllers/CaseExplorerController/CaseExplorerController';
-import { FilterController } from './Controllers/FilterController/FilterController';
+import { ProcessExplorerController } from '../ProcessExplorerController/ProcessExplorerController';
+import { ProcessStatisticController } from '../ProcessStatisticController/ProcessStatisticController';
+
+import { CaseExplorerController } from '../CaseExplorerController/CaseExplorerController';
+import { FilterController } from '../FilterController/FilterController';
 import { PortalSideMenu } from '../../Views/PortalSideMenu';
+import { VariantExplorerController } from '../VariantExplorerController/VariantExplorerController';
 
 export class DatasetController extends UIController {
 

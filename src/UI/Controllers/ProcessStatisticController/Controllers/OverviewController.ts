@@ -1,9 +1,9 @@
 import { UIController, UIView, UIScene, Text, VStack, HStack, Spacer, UIButton, Icon, cTopLeading, _ForEach, State, TApplication, cLeading, ScrollView, cVertical, If, PositionTypes } from '@tuval/forms';
-import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../../../Views/Texts';
-import { TileBox } from '../../../../../Views/TileBox';
+import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../Views/Texts';
+import { TileBox } from '../../../Views/TileBox';
 import { int, foreach } from '@tuval/core';
-import { PortalFilterBarWidget } from '../../../../AppController/Views/PortalFilterBarWidget';
-import { EventsOverTimeChart } from '../../../../../Controls/EventsOverTimeChart/EventsOverTimeChart';
+import { PortalFilterBarWidget } from '../../AppController/Views/PortalFilterBarWidget';
+import { EventsOverTimeChart } from '../../../Controls/EventsOverTimeChart/EventsOverTimeChart';
 
 const overviewTypes = [
     'Events over time',

@@ -1,6 +1,6 @@
 import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, Gauge, Range } from '@tuval/forms';
 import { VariantActivityShapeView } from './Views/VariantActivityShape';
-import { PageTitle } from '../../../../Views/PageHeader';
+import { PageTitle } from '../../Views/PageHeader';
 
 export class VariantExplorerController extends UIController {
     protected InitController(): void {

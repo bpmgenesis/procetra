@@ -6,10 +6,10 @@ import { ActivitySliderView } from './Views/ActivitySliderView';
 import { ConnectionSliderView } from './Views/ConnectionSliderView';
 import { int } from '@tuval/core';
 import { State, PositionTypes } from '@tuval/forms';
-import { FrequencyMapController } from './Controllers/FrequencyMapController';
-import { PerformanceMapController } from './Controllers/PerformanceMapController';
-import { PageTitle } from '../../../../Views/PageHeader';
-import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../../Views/PortalSideMenu';
+import { FrequencyMapController } from '../FrequencyMapController';
+import { PerformanceMapController } from '../PerformanceMapController';
+import { PageTitle } from '../../Views/PageHeader';
+import { MVIPortalSideMenuItem, PortalSideMenu } from '../../Views/PortalSideMenu';
 
 
 const sideMenu: MVIPortalSideMenuItem[] = [

@@ -18,6 +18,8 @@ Process Intelligence Application for written for Bpm Genesis
                 - AcivitiesController
             - ProcessDashboardController
             - ProcessExplorerController
+                - FrequencyMapController
+                - PerformanceMapController
             - StatisticController
             - VariantExplorerController
             - CaseExplorerController
