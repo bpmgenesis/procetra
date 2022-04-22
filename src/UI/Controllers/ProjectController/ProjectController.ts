@@ -7,7 +7,7 @@ import { ModuleLoader, instance as container, TuvalStorage, Thread, Console, TSt
 import { Services } from '../../../Services/Services';
 import { TabView, TabViewItem } from '../../Views/TabView';
 import { Binding } from '../Binding';
-import { AppController } from '../AppController/AppController';
+import { AppController } from '../../../Domains/Application/Controllers/AppController';
 import { CreateMVIProjectItem, MIProjectItem, MVIProjectItem } from '../../Models/MIProjectItem';
 import { ListFooterButton } from './Views/ListFooterButton';
 

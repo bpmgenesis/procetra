@@ -1,12 +1,12 @@
 import { UIController, UIView, Text, UIScene, Fonts, UIButton, VStack, HDivider, Alignment, HStack, Icon, State, If, UIAnimation, TApplication, ApplicationModes, TwoColumnWithHeaderLayout, UIImage, Spacer } from '@tuval/forms';
-import { ProjectUIService } from '../../UIServices/ProjectUIService';
+import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { ProcessMining } from '../../../Application';
 import { foreach, Event } from '@tuval/core';
-import { ProjectController, ProjectControllerClass } from '../ProjectController/ProjectController';
-import { RecentProjects } from './Views/RecentProjects';
-import { MIProject } from '../../Models/ProjectModel';
+import { ProjectController, ProjectControllerClass } from '../../../UI/Controllers/ProjectController/ProjectController';
+import { MIProject } from '../../../UI/Models/ProjectModel';
 import { Resources } from '../../../Resources';
-import { PortalFilterBarView } from './Views/PortalFilterBarView';
+import { RecentProjects } from '../Views/RecentProjects';
+import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 
 /* VStack(
     Text('Simple Swift Guide to largeTitle ').font(Fonts.largeTitle),

@@ -6326,20 +6326,17 @@ __webpack_require__.r(__webpack_exports__);
 
 function PortalSideMenu(params) {
     if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal) {
-        return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.items, function (item, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(26), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).fontSize('12px').fontFamily('-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'))
-                .tooltip('Test kdsjkfjls jdskjlf')
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.items, function (item, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(26), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).fontSize('12px').fontFamily('-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'))
                 .padding(5)
-                .spacing(5)
                 .background(params.selectedIndex === index ? (params.second ? '#777b80' : '#52565b') : { hover: '#eee' })
                 .borderBottom(params.selectedIndex === index ? '2px solid #e7b54a' : '2px solid transparent')
                 .cursor('pointer')
                 .foregroundColor(params.selectedIndex === index ? 'white' : { hover: '#333', default: 'white' })
                 .height(80)
                 .onClick(function () { return params.selectedAction(index); });
-        })).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-            .minWidth(params.second ? '75px' : '80px')
-            .width(params.second ? '75px' : '80px')
+        })).minWidth(params.second ? '75px' : '80px')
+            .width(params.second ? 75 : 80)
             .background(params.second ? '#52565b' : '#212932')
             .shadow(params.second ? 'inset 24px 0 20px -20px #373b40' : '')
             .borderBottom('2px solid #212932'));
@@ -6609,8 +6606,7 @@ function TileBox() {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, views).backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .tabIndex(0))
-        .padding(2));
+        .tabIndex(0)).padding(2));
 }
 
 
