@@ -12,7 +12,7 @@ import { MIProject } from '../../Models/ProjectModel';
 import { ProcessExplorerController } from '../ProcessExplorerController/ProcessExplorerController';
 import { ProcessStatisticController } from '../ProcessStatisticController/ProcessStatisticController';
 
-import { CaseExplorerController } from '../CaseExplorerController/CaseExplorerController';
+import { CaseExplorerController } from '../../../Domains/CaseExplorer/Controllers/CaseExplorerController';
 import { FilterController } from '../FilterController/FilterController';
 import { PortalSideMenu } from '../../Views/PortalSideMenu';
 import { VariantExplorerController } from '../VariantExplorerController/VariantExplorerController';
