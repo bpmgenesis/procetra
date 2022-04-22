@@ -1,4 +1,7 @@
 
+# [Procestra](https://bpmgenesis.com)
+
+Hoşgeldiniz! 👋👋🏿👋🏽👋🏻👋🏾👋🏼
 
 # Süreç Madenciliği Nedir ?
 Daha önce Süreç Madenciliğini duydunuz ama ne anlama geldiğinden, nasıl çalıştığından veya sizin için bir değeri olup olmadığından emin değil misiniz? Yoksa Süreç Madenciliği alanında tamamen yeni misiniz ve buraya tamamen şans eseri mi geldiniz? Merak etmeyin. Aşağıda Süreç Madenciliği için kapsamlı bir rehber hazırladık. Temel bilgilerle başlayacağız ve uygulama, kullanım durumları ve olasılıklarla ilgili daha fazla ayrıntıya gireceğiz.
