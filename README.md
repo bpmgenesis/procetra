@@ -25,11 +25,9 @@ Procetra gibi modern süreç madenciliği araçları, sürecinizi görselleştir
 ## Nasıl Çalışır?
 Süreç Madenciliği algoritmaları, sürecin olay verilerini kullanır. Bunlar tipik günlük dosyaları değil, kurumsal bilgi sistemlerinden veya kurumsal kaynak planlama sistemlerinden farklı veritabanları ve dosyalarıdır.
 
-Employees are very effective in creating shortcuts in your process. They can improve your workflow or be serious compliance violations, that’s why it’s so important to find them. Process Mining is the best solution to unveil the invisible net of pirate paths in your company.
-The data is visualized in a process flow and shows your process as it actually happens. There are no guessing-games with Process Mining. You get a fact-based view on the events in your organization.
+Çalışanlar, sürecinizde kısayollar oluşturmada çok isteklidir. Bu oluşturulan kısayollar iş akışınızı iyileştirebilir veya ciddi uyum ihlalleri oluşturabilir, bu yüzden onları bulmak çok önemlidir. Süreç Madenciliği, süreçlerinizdeki görünmez, alternatif veya korsan yolları  ortaya çıkarmak için en iyi çözümdür. Veriler bir süreç akışında görselleştirilir ve sürecinizi gerçekte olduğu gibi gösterir.  Kuruluşunuzdaki olaylar hakkında gerçeklere dayalı bir görünüm elde edersiniz.
 
-Verileriniz görselleştirildikten sonra analize başlayabilirsiniz. Filtre seçenekleri, problemler için kök neden analizi, farklı detay seviyeleri ve prosesinizdeki istatistiklerin detayına inebileceğiniz daha birçok fonksiyon vardır.
-
+Verileriniz görselleştirildikten sonra analize başlayabilirsiniz. Filtre seçenekleri, problemler için kök neden analizi, farklı detay seviyeleri ve sürecinizdeki istatistiklerin detayına inebileceğiniz daha birçok fonksiyon vardır.
 
 # Süreç Madenciliğinin Tarihçesi
 ## Süreç Madenciliğinden Önce
