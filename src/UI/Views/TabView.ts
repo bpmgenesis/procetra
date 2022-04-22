@@ -1,6 +1,6 @@
 import { UIView, VStack, IRenderable, ForEach, Alignment, HStack, Filter, IControl } from '@tuval/forms';
 import { List, foreach, Event, int } from '@tuval/core';
-import { Binding } from '../Controllers/Binding';
+import { Binding } from '../../Domains/Binding';
 
 export interface TabViewItemParameters {
     name: string;
