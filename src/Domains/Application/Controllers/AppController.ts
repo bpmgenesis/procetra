@@ -15,7 +15,7 @@ import {
     UIView,
     VStack,
 } from '@tuval/forms';
-
+import { Sparkline } from '@tuval/components/charts';
 import { ProcessMining } from '../../../Application';
 import { Resources } from '../../../Resources';
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
@@ -41,6 +41,8 @@ export class AppController extends UIController {
     protected InitController(): void {
         this.showAnim = false;
         this.RequestDesktop = new Event();
+
+        this.test = 'Press'
     }
 
     private MainPage(): UIView {
@@ -89,10 +91,13 @@ export class AppController extends UIController {
     @State()
     private showAnim: boolean;
 
+    @State()
+    private test: string;
+
     public override LoadView(): UIView {
         if (TApplication.IsDesktop) {
             return (
-                If(this.currentProject == null, this.MainPage(), this.controller) as any
+                  If(this.currentProject == null, this.MainPage(), this.controller) as any
             )
         } else if (TApplication.IsPortal) {
             return this.LoadPortalView();

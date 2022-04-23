@@ -1,4 +1,6 @@
 
+[![npm](https://ej2.syncfusion.com/github-badges?package=@syncfusion/ej2)](https://www.npmjs.com/package/@syncfusion/ej2)&nbsp;&nbsp;[![license](https://ej2.syncfusion.com/github/images/license.svg)](https://www.syncfusion.com/eula/es/)
+
 # [Procestra](https://bpmgenesis.com)
 
 Hoşgeldiniz! 👋👋🏿👋🏽👋🏻👋🏾👋🏼

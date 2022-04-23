@@ -1,4 +1,4 @@
-import { TvChart } from '@tuval/components/charts';
+import { TvChart, ChartView } from '@tuval/components/charts';
 import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading } from '@tuval/forms';
 import { MetricBox, MVIMetricBox } from './MetricBox';
 
@@ -23,17 +23,18 @@ export function MetricsSection(params: MVIMetricSection): UIView {
                 ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox) =>
                     MetricBox(metricBoxModel),
                 )
-            ).height(155),
+            ).height(150),
             VStack({ alignment: cTopLeading })(
                 Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
                 VStack(
-                    params.chart
+                    /* params.chart */
+                    ChartView().backgroundColor('transparent')
                 )
 
             )
                 .backgroundColor('rgb(255,255,255,60%)')
                 .cornerRadius('12px')
-                .height('200px')
+                .height('300px')
                 .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
                 .tabIndex(0)
         )

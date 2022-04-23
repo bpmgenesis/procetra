@@ -1,3 +1,4 @@
+import { Sparkline } from '@tuval/components/charts';
 import { Bindable } from '../Bindable';
 import { UIView, VStack, Text, Alignment, TApplication, ApplicationModes, HStack, ZStack, AnimationStack } from '@tuval/forms';
 import { ListBounceAnimation } from '../../../../../UI/Animations/ListBounce';
@@ -51,18 +52,22 @@ export function PortalMetricBox(params: MVIMetricBox): UIView {
                     .paddingLeft('30px')
                     .paddingTop('10px')
                     .alignment(Alignment.leading),
-                VStack(
+                /* VStack(
                     Text('Duration').foregroundColor('#b40404'),
                     Text('15 - 40 monts').foregroundColor('#AAA')
                 )
                     .marginLeft('32px')
                     .marginBottom('5px')
-                    .alignment(Alignment.leading),
+                    .alignment(Alignment.leading), */
+
+                Sparkline().height(50),
+
 
                 /*  Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
                  Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'), */
             )
                 .height(148)
+                .overflow('hidden')
                 .backgroundColor('rgb(255,255,255,60%)')
                 .cornerRadius('12px')
                 .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
@@ -79,10 +84,11 @@ export function PortalMetricBox(params: MVIMetricBox): UIView {
                     Text('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => params.showMenu.set(false)),
                 )
             )
+
                 .backgroundColor('white')
                 .animation(ListBounceAnimation, '.3s')
                 .visible(params.showMenu.get())
-        )
+        ).margin('2px')
     )
 }
 export function DesktopMetricBox(params: MVIMetricBox): UIView {
