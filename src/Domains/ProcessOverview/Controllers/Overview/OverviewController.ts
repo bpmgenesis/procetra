@@ -99,19 +99,76 @@ export class OverviewController extends UIController {
                     title: 'Cases per day',
                     value: '694',
                     subTitle: 'Total number of cases per day',
-                    showMenu: new Bindable(false, this)
+                    /*  showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 34 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 32 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 38 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 37 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval',
+                        yName: 'yval',
+
+                    }
                 },
                 {
                     title: 'Events per day',
                     value: '4.215',
                     subTitle: 'Total number of events per day',
-                    showMenu: new Bindable(false, this)
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 12 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 56 },
+                            { x: 4, xval: 'Apr', yval: 76 },
+                            { x: 5, xval: 'May', yval: 34 },
+                            { x: 6, xval: 'Jun', yval: 39 },
+                            { x: 7, xval: 'Jul', yval: 50 },
+                            { x: 8, xval: 'Aug', yval: 43 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 17 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 56 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+
+                    }
                 },
                 {
                     title: 'Throughput time',
                     value: '26 DAYS',
                     subTitle: 'Average case duration from process start to process end without extreme outliers',
-                    showMenu: new Bindable(false, this)
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 23 },
+                            { x: 2, xval: 'Feb', yval: 35 },
+                            { x: 3, xval: 'Mar', yval: 43 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 53 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 12 },
+                            { x: 9, xval: 'Sep', yval: 20 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+
+                    }
                 }
             ],
             chart: this.chart

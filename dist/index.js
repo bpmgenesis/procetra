@@ -2709,36 +2709,6 @@ var FilterController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts":
-/*!**********************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Bindable": () => (/* binding */ Bindable)
-/* harmony export */ });
-var Bindable = /** @class */ (function () {
-    function Bindable(initValue, controller) {
-        this.value = initValue;
-        this.controller = controller;
-    }
-    Bindable.prototype.get = function () {
-        return this.value;
-    };
-    Bindable.prototype.set = function (value) {
-        this.value = value;
-        this.controller.ForceUpdate();
-    };
-    return Bindable;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts":
 /*!********************************************************************************!*\
   !*** ./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts ***!
@@ -2750,13 +2720,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "OverviewController": () => (/* binding */ OverviewController)
 /* harmony export */ });
-/* harmony import */ var _Bindable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Bindable */ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Views_ActivitySection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Views/ActivitySection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts");
-/* harmony import */ var _Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Views/HappyPathSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts");
-/* harmony import */ var _Views_MetricsSection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Views/MetricsSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts");
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Views/ActivitySection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts");
+/* harmony import */ var _Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Views/HappyPathSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts");
+/* harmony import */ var _Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Views/MetricsSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -2778,7 +2747,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -2837,7 +2805,7 @@ var OverviewController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     OverviewController.prototype.InitController = function () {
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverTimeChart();
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverTimeChart();
         var map = new Map();
         // this.map = [];
         for (var i = 0; i < 100; i++) {
@@ -2852,41 +2820,93 @@ var OverviewController = /** @class */ (function (_super) {
                     title: 'Cases per day',
                     value: '694',
                     subTitle: 'Total number of cases per day',
-                    showMenu: new _Bindable__WEBPACK_IMPORTED_MODULE_0__.Bindable(false, this)
+                    /*  showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 34 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 32 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 38 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 37 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval',
+                        yName: 'yval',
+                    }
                 },
                 {
                     title: 'Events per day',
                     value: '4.215',
                     subTitle: 'Total number of events per day',
-                    showMenu: new _Bindable__WEBPACK_IMPORTED_MODULE_0__.Bindable(false, this)
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 12 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 56 },
+                            { x: 4, xval: 'Apr', yval: 76 },
+                            { x: 5, xval: 'May', yval: 34 },
+                            { x: 6, xval: 'Jun', yval: 39 },
+                            { x: 7, xval: 'Jul', yval: 50 },
+                            { x: 8, xval: 'Aug', yval: 43 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 17 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 56 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+                    }
                 },
                 {
                     title: 'Throughput time',
                     value: '26 DAYS',
                     subTitle: 'Average case duration from process start to process end without extreme outliers',
-                    showMenu: new _Bindable__WEBPACK_IMPORTED_MODULE_0__.Bindable(false, this)
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 23 },
+                            { x: 2, xval: 'Feb', yval: 35 },
+                            { x: 3, xval: 'Mar', yval: 43 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 53 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 12 },
+                            { x: 9, xval: 'Sep', yval: 20 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+                    }
                 }
             ],
             chart: this.chart
         };
     };
     OverviewController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_Views_MetricsSection__WEBPACK_IMPORTED_MODULE_4__.MetricsSection)(this.metricSectionModel), (0,_Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_3__.HappyPathSection)(this.happPathSectionModel), (0,_Views_ActivitySection__WEBPACK_IMPORTED_MODULE_2__.ActivitySection)(this.activitySectionModel)).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PositionTypes.Absolute).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__.MetricsSection)(this.metricSectionModel), (0,_Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__.HappyPathSection)(this.happPathSectionModel), (0,_Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__.ActivitySection)(this.activitySectionModel)).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "chart", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "metricSectionModel", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "activitySectionModel", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "happPathSectionModel", void 0);
     return OverviewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
 
@@ -2977,9 +2997,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+
 
 function HappyPathGaugeBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('rgb(118,209,187)').maskColor('rgb(120,120,120,20%)')
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('rgb(118,209,187)').maskColor('rgb(120,120,120,20%)')
         .radius(80)
         .stroke(10)
         .value(67)
@@ -2992,7 +3014,7 @@ function HappyPathGaugeBox(params) {
         .tabIndex(0));
 }
 function HappyPathBox2(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width((params.value / params.totalValue) * 100 + "%"), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width((params.value / params.totalValue) * 100 + "%"), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
         .marginBottom('15px')
         .fontFamily('Proxima Nova')
         .fontWeight('500')
@@ -3006,7 +3028,7 @@ function HappyPathBox2(params) {
         .tabIndex(0));
 }
 function HappyPathBox3() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Happy path in percentages').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#14A9D5').width('20px').height('50%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').width('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.bottom), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').background('gray').width('50%')).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of 279,020 Cases')
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Happy path in percentages'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#14A9D5').width('20px').height('50%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').width('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.bottom), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').background('gray').width('50%')).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of 279,020 Cases')
         .marginBottom('15px')
         .fontFamily('Proxima Nova')
         .fontSize('20px')
@@ -3035,9 +3057,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+
 
 function HappyPathDiagram(items) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Algorithmic happy path').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').fontWeight('500').foregroundColor('#888888'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items, function (item, index) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items, function (item, index) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px'))))
             .height() // auto
             .marginTop('20px');
@@ -3098,40 +3122,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DesktopMetricBox": () => (/* binding */ DesktopMetricBox),
 /* harmony export */   "MetricBox": () => (/* binding */ MetricBox)
 /* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _TileSparkLine__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TileSparkLine */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts");
 
 
 
 
-function MetricBoxHeaderText(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.Headline5)(value).padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD'));
-}
-function MetricBoxValueText(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.Headline4)(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'));
-}
-function CalculationMethodText(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.Headline5)(value).fontFamily('Proxima Nova, sans serif').foregroundColor('#AAA'));
-}
-function PortalMetricBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(MetricBoxHeaderText(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)(MetricBoxValueText(params.value.toString()), 
+function PortalMetricBox(params, selected) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), showMenu = _a[0], setShowMenu = _a[1];
+    var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('50px'), height = _b[0], setHeight = _b[1];
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title).onClick(function () { return setHeight('200px'); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.MetricBoxValueText)(params.value.toString()), 
     /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
     /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
-    CalculationMethodText('AVG')
-        .onClick(function () { return params.showMenu.set(true); })
+    (0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.CalculationMethodText)('AVG')
+        .onClick(function () { return setShowMenu(true); })
         .padding()
         .cornerRadius(5)
         .cursor('pointer')
         .border('dashed 1px var(--sub-border-color)')
-        .transition('border .3s')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading))
+        .transition('border .3s')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
         .paddingLeft('30px')
         .paddingTop('10px')
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading), 
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), 
     /* VStack(
         Text('Duration').foregroundColor('#b40404'),
         Text('15 - 40 monts').foregroundColor('#AAA')
@@ -3139,35 +3155,40 @@ function PortalMetricBox(params) {
         .marginLeft('32px')
         .marginBottom('5px')
         .alignment(Alignment.leading), */
-    (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.Sparkline)().height(50))
+    (0,_TileSparkLine__WEBPACK_IMPORTED_MODULE_3__.TileSparkLine)(params.chart)
+        .slFill(selected ? '#b2cfff' : 'rgb(120,120,120,30%)')
+        .slBorder(selected ? { color: '#3C78EF', width: 2 } : { color: 'gray', width: 2 })
+    /*  Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
+     Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'), */
+    )
         .height(148)
         .overflow('hidden')
         .backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading)
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
         .tabIndex(0)
         // Üzerine geldiğimizde alt text border için.
-        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.AnimationStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return params.showMenu.set(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return params.showMenu.set(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return params.showMenu.set(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return params.showMenu.set(false); })))
+        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); })))
         .backgroundColor('white')
-        .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_2__.ListBounceAnimation, '.3s')
-        .visible(params.showMenu.get())).margin('2px'));
+        .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__.ListBounceAnimation, '.3s')
+        .visible(showMenu)).margin('2px'));
 }
 function DesktopMetricBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
         .height('148px')
         .backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
         .tabIndex(0)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading));
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
 }
-function MetricBox(params) {
-    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ApplicationModes.Desktop) {
+function MetricBox(params, selected) {
+    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
         return DesktopMetricBox(params);
     }
     else {
-        return PortalMetricBox(params);
+        return PortalMetricBox(params, selected);
     }
 }
 
@@ -3189,25 +3210,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _MetricBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MetricBox */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricBox.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _MetricBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MetricBox */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricBox.ts");
 
 
 
+
+
+var data = [
+    { x: new Date(2021, 1, 1), y: 532.2 }, { x: new Date(2021, 2, 1), y: 453.4 },
+    { x: new Date(2021, 3, 1), y: 422.8 }, { x: new Date(2021, 4, 1), y: 531.6 },
+    { x: new Date(2021, 5, 1), y: 642.3 }, { x: new Date(2021, 6, 1), y: 432.5 },
+    { x: new Date(2021, 7, 1), y: 462.9 }, { x: new Date(2021, 8, 1), y: 445.8 },
+    { x: new Date(2021, 9, 1), y: 561.4 }, { x: new Date(2021, 10, 1), y: 433.1 }
+];
 function MetricsSection(params) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(-1), selectedIndex = _a[0], setSelectedIndex = _a[1];
     return (
     // We want to space 10px between every vertical block
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel) {
-        return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_2__.MetricBox)(metricBoxModel);
-    })).height(150), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(
-    /* params.chart */
-    (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)().backgroundColor('transparent')))
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .height('300px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .tabIndex(0)));
+        .height('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel, index) {
+        return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
+    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), 
+    //Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)({ id: 'myChart' })((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
+        .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
+        .fill('#FBCD4E55')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'DateTime',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months',
+        edgeLabelPlacement: 'Shift'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent')))).height('300px')));
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TileSparkLine": () => (/* binding */ TileSparkLine)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function TileSparkLine(model) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.Sparkline)().model(model)
+        .slType('Area')
+        .slWidth('100%')
+        .slHeight('50px')
+        .slPadding({
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0
+    })
+        .slLineWidth(1)
+        .slOpacity(1)
+        .slFill('#b2cfff')
+        .slBorder({ color: '#3C78EF', width: 2 })
+        .slValueType('Category')
+        .marginBottom('-4px'));
 }
 
 
@@ -4007,11 +4096,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4077,37 +4166,107 @@ var staticticInfos = [
 var metrics = [
     {
         name: 'Unique Variants',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Column',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 }
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
         value: '57.14 %',
         subValue: '(+57.1 %)'
     },
     {
         name: 'Cases with (self)loops',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Line',
+            lineWidth: 5,
+            width: '100%',
+            height: '100%',
+            padding: {
+                left: 10,
+                right: 10
+            },
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 6 },
+                { x: 10, yval: 5 },
+                { x: 11, yval: 7 },
+                { x: 12, yval: 8 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 5 },
+                { x: 15, yval: 3 },
+                { x: 16, yval: 4 },
+                { x: 17, yval: 11 },
+                { x: 18, yval: 10 },
+                { x: 19, yval: 2 },
+                { x: 20, yval: 12 },
+                { x: 21, yval: 4 },
+                { x: 22, yval: 7 },
+                { x: 23, yval: 6 },
+                { x: 24, yval: 8 },
+            ],
+            xName: 'x',
+            yName: 'yval',
+            markerSettings: {
+                visible: ['All'],
+                border: {
+                    color: '#00BDAE',
+                    width: 5
+                },
+                fill: 'white',
+                size: 10,
+            }
+        },
         value: '20.00 %',
         subValue: '(-75.6 %)'
     },
     {
         name: 'Automation rate',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Pie'
+        },
         value: '2.78 %',
         subValue: '(+2.8 %)'
     },
     {
         name: 'Cases with long lead time',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '13.33 %',
         subValue: '(-4.4 %)'
     },
     {
         name: 'Cases with many process steps',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '13.33 %',
         subValue: '(+57.1 %)'
     },
     {
         name: 'Number of resources per process step',
-        chart: new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '2.63 %',
         subValue: '(+57.1 %)'
     }
@@ -4132,7 +4291,7 @@ var OverviewController = /** @class */ (function (_super) {
     }
     OverviewController.prototype.InitController = function () {
         this.selectedIndex = 0;
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_2__.EventsOverTimeChart();
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_1__.EventsOverTimeChart();
         var map = new Map();
         // this.map = [];
         for (var i = 0; i < 100; i++) {
@@ -4143,18 +4302,18 @@ var OverviewController = /** @class */ (function (_super) {
         for (var i = 0; i < 10; i++) {
             map1[i] = i;
         }
-        this.chart.SetChartData(map);
-        (0,_tuval_core__WEBPACK_IMPORTED_MODULE_1__.foreach)(metrics, function (item) { return item.chart.SetChartData(map1); });
+        /*  this.chart.SetChartData(map);
+         foreach(metrics, item => item.chart.SetChartData(map1)) */
     };
     OverviewController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
             // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.SectionSubHeadline)('Global statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
-            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_4__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(info.title).textTransform('uppercase').fontSize('11px').foregroundColor('#999')).padding(20)).maxHeight('120px');
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
+            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('11px').foregroundColor('#999')).padding(20)).maxHeight('120px');
         })).height(), MetricSelectionButtons(overviewTypes, this.selectedIndex, function (index) { return _this.selectedIndex = index; }).visible(false), 
         // Chart
-        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_4__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(overviewTypes[this.selectedIndex])
+        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex])
             .fontSize('30px')
             .cursor('pointer')
             .border('dashed 1px var(--sub-border-color)')
@@ -4173,10 +4332,12 @@ var OverviewController = /** @class */ (function (_super) {
             .height(400)
             .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), 
         // Metrics
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([1, 2])(function (indexI) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([1, 2, 3])(function (indexJ) {
-                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_4__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(metrics[indexI * indexJ - 1].name).paddingTop('30px').fontSize(20).foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(metrics[indexI * indexJ - 1].value).fontSize('30px').foregroundColor('#666'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(metrics[indexI * indexJ - 1].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
-                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), metrics[indexI * indexJ - 1].chart)).height(290);
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1])(function (indexJ) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1, 2])(function (indexI) {
+                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px').fontSize(20).foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].value).fontSize('30px').foregroundColor('#666'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
+                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__.Sparkline)()
+                    .model(metrics[(indexJ * 3) + indexI].chart)
+                    .padding(10))).height(290);
             }));
         })).height())));
     };
@@ -7753,6 +7914,42 @@ function TileBox() {
         .cornerRadius('12px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
         .tabIndex(0)).padding(2));
+}
+
+
+/***/ }),
+
+/***/ "./src/UI/Views/Title.ts":
+/*!*******************************!*\
+  !*** ./src/UI/Views/Title.ts ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Title": () => (/* binding */ Title),
+/* harmony export */   "TileBoxHeaderText": () => (/* binding */ TileBoxHeaderText),
+/* harmony export */   "MetricBoxValueText": () => (/* binding */ MetricBoxValueText),
+/* harmony export */   "CalculationMethodText": () => (/* binding */ CalculationMethodText)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Texts */ "./src/UI/Views/Texts.ts");
+
+
+function Title(value) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value)
+        .fontFamily(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop ? "Proxima Nova" : "Ubuntu, sans-serif"));
+}
+function TileBoxHeaderText(value) {
+    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline5)(value).padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD'));
+}
+function MetricBoxValueText(value) {
+    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline4)(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'));
+}
+function CalculationMethodText(value) {
+    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline5)(value).fontFamily('Proxima Nova, sans serif').foregroundColor('#AAA'));
 }
 
 

@@ -1,5 +1,6 @@
 import { UIView, VStack, Text, Alignment, HStack, VDivider, RoundedRectangle, HDivider, Gauge, Range } from '@tuval/forms';
 import { int } from '@tuval/core';
+import { TileBoxHeaderText } from '../../../../../UI/Views/Title';
 
 export interface MVIHappyPathAbsoluteBoxModel {
     title: string;
@@ -10,7 +11,7 @@ export interface MVIHappyPathAbsoluteBoxModel {
 export function HappyPathGaugeBox(params: MVIHappyPathAbsoluteBoxModel): UIView {
     return (
         VStack(
-            Text(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
+            TileBoxHeaderText(params.title),
             VStack(
                 Gauge(
                     Range()
@@ -33,7 +34,7 @@ export function HappyPathGaugeBox(params: MVIHappyPathAbsoluteBoxModel): UIView 
 export function HappyPathBox2(params: MVIHappyPathAbsoluteBoxModel): UIView {
     return (
         VStack(
-            Text(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
+            TileBoxHeaderText(params.title),
             HStack(
                 VDivider().width('1px').background('gray'),
                 VStack(
@@ -63,7 +64,7 @@ export function HappyPathBox2(params: MVIHappyPathAbsoluteBoxModel): UIView {
 export function HappyPathBox3(): UIView {
     return (
         VStack(
-            Text('Happy path in percentages').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
+            TileBoxHeaderText('Happy path in percentages'),
             VStack(
                 HStack(
                     RoundedRectangle().background('transparent').width('10px'),

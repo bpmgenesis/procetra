@@ -1,46 +1,33 @@
-import { Sparkline } from '@tuval/components/charts';
+import { Sparkline, SparklineModel } from '@tuval/components/charts';
 import { Bindable } from '../Bindable';
-import { UIView, VStack, Text, Alignment, TApplication, ApplicationModes, HStack, ZStack, AnimationStack } from '@tuval/forms';
+import { UIView, VStack, Text, Alignment, TApplication, ApplicationModes, HStack, ZStack, AnimationStack, useState } from '@tuval/forms';
 import { ListBounceAnimation } from '../../../../../UI/Animations/ListBounce';
 import { Headline5, Headline4, Overline } from '../../../../../UI/Views/Texts';
+import { CalculationMethodText, TileBoxHeaderText, MetricBoxValueText } from '../../../../../UI/Views/Title';
+import { TileSparkLine } from './TileSparkLine';
 
 export interface MVIMetricBox {
     title: string,
     value: string,
     subTitle: string,
-    showMenu: Bindable<boolean>;
+    /*   showMenu: Bindable<boolean>; */
+    chart: SparklineModel
 }
 
-function MetricBoxHeaderText(value: string): UIView {
-    return (
-        Headline5(value).padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD')
-    )
-}
-
-function MetricBoxValueText(value: string): UIView {
-    return (
-        Headline4(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5')
-    )
-}
-
-function CalculationMethodText(value: string): UIView {
-    return (
-        Headline5(value).fontFamily('Proxima Nova, sans serif').foregroundColor('#AAA')
-    )
-}
-
-export function PortalMetricBox(params: MVIMetricBox): UIView {
+export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView {
+    const [showMenu, setShowMenu] = useState(false);
+    const [height, setHeight] = useState('50px');
     return (
         ZStack(
             VStack(
-                MetricBoxHeaderText(params.title),
+                TileBoxHeaderText(params.title).onClick(() => setHeight('200px')),
                 HStack(
                     MetricBoxValueText(params.value.toString()),
                     /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
                     VStack(
                         /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
                         CalculationMethodText('AVG')
-                            .onClick(() => params.showMenu.set(true))
+                            .onClick(() => setShowMenu(true))
                             .padding()
                             .cornerRadius(5)
                             .cursor('pointer')
@@ -60,7 +47,9 @@ export function PortalMetricBox(params: MVIMetricBox): UIView {
                     .marginBottom('5px')
                     .alignment(Alignment.leading), */
 
-                Sparkline().height(50),
+                TileSparkLine(params.chart)
+                    .slFill(selected ? '#b2cfff': 'rgb(120,120,120,30%)')
+                    .slBorder(selected ? { color: '#3C78EF', width: 2 } : { color: 'gray', width: 2 })
 
 
                 /*  Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
@@ -78,16 +67,16 @@ export function PortalMetricBox(params: MVIMetricBox): UIView {
 
             AnimationStack(
                 VStack(
-                    Text('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => params.showMenu.set(false)),
-                    Text('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => params.showMenu.set(false)),
-                    Text('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => params.showMenu.set(false)),
-                    Text('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => params.showMenu.set(false)),
+                    Text('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => setShowMenu(false)),
+                    Text('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => setShowMenu(false)),
+                    Text('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => setShowMenu(false)),
+                    Text('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(() => setShowMenu(false)),
                 )
             )
 
                 .backgroundColor('white')
                 .animation(ListBounceAnimation, '.3s')
-                .visible(params.showMenu.get())
+                .visible(showMenu)
         ).margin('2px')
     )
 }
@@ -107,10 +96,12 @@ export function DesktopMetricBox(params: MVIMetricBox): UIView {
     )
 }
 
-export function MetricBox(params: MVIMetricBox): UIView {
+export function MetricBox(params: MVIMetricBox, selected: boolean): UIView {
     if (TApplication.ApplicationMode === ApplicationModes.Desktop) {
         return DesktopMetricBox(params);
     } else {
-        return PortalMetricBox(params);
+        return PortalMetricBox(params, selected);
     }
 }
+
+

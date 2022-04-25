@@ -3,6 +3,7 @@ import { int, foreach } from '@tuval/core';
 import { EventsOverTimeChart } from '../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart';
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../UI/Views/Texts';
 import { TileBox } from '../../../UI/Views/TileBox';
+import { Sparkline, SparklineModel } from '@tuval/components/charts';
 
 const overviewTypes = [
     'Events over time',
@@ -42,40 +43,116 @@ const staticticInfos = [
     }
 ]
 
-const metrics = [
+interface MVIMetricData {
+    name: string,
+    chart: SparklineModel,
+    value: string,
+    subValue: string
+}
+const metrics: MVIMetricData[] = [
     {
         name: 'Unique Variants',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Column',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 }
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
         value: '57.14 %',
         subValue: '(+57.1 %)'
     },
     {
         name: 'Cases with (self)loops',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Line',
+            lineWidth: 5,
+            width:'100%',
+            height:'100%',
+            padding: {
+                left: 10,
+                right: 10
+            },
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 6 },
+                { x: 10, yval: 5 },
+                { x: 11, yval: 7 },
+                { x: 12, yval: 8 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 5 },
+                { x: 15, yval: 3 },
+                { x: 16, yval: 4 },
+                { x: 17, yval: 11 },
+                { x: 18, yval: 10 },
+                { x: 19, yval: 2 },
+                { x: 20, yval: 12 },
+                { x: 21, yval: 4 },
+                { x: 22, yval: 7 },
+                { x: 23, yval: 6 },
+                { x: 24, yval: 8 },
+            ],
+            xName: 'x',
+            yName: 'yval',
+            markerSettings: {
+                visible: ['All'],
+                border: {
+                    color: '#00BDAE',
+                    width: 5
+                },
+                fill: 'white',
+                size: 10,
+            }
+        },
         value: '20.00 %',
         subValue: '(-75.6 %)'
     },
     {
         name: 'Automation rate',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Pie'
+        },
         value: '2.78 %',
         subValue: '(+2.8 %)'
     },
     {
         name: 'Cases with long lead time',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '13.33 %',
         subValue: '(-4.4 %)'
     },
     {
         name: 'Cases with many process steps',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '13.33 %',
         subValue: '(+57.1 %)'
     },
     {
         name: 'Number of resources per process step',
-        chart: new EventsOverTimeChart(),
+        chart: {
+            type: 'Line'
+        },
         value: '2.63 %',
         subValue: '(+57.1 %)'
     }
@@ -129,8 +206,8 @@ export class OverviewController extends UIController {
         }
 
 
-        this.chart.SetChartData(map);
-        foreach(metrics, item => item.chart.SetChartData(map1))
+        /*  this.chart.SetChartData(map);
+         foreach(metrics, item => item.chart.SetChartData(map1)) */
     }
 
     public LoadView(): UIView {
@@ -192,18 +269,20 @@ export class OverviewController extends UIController {
                         .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }),
                     // Metrics
                     VStack({ spacing: 10 })(
-                        ..._ForEach([1, 2])(indexI =>
+                        ..._ForEach([0, 1])(indexJ =>
                             HStack({ spacing: 10 })(
-                                ..._ForEach([1, 2, 3])(indexJ =>
+                                ..._ForEach([0, 1, 2])(indexI =>
                                     TileBox(
                                         VStack(
-                                            RegularText(metrics[indexI * indexJ - 1].name).paddingTop('30px').fontSize(20).foregroundColor('#333'),
+                                            RegularText(metrics[(indexJ * 3) + indexI].name).paddingTop('30px').fontSize(20).foregroundColor('#333'),
                                             HStack({ spacing: 10 })(
-                                                RegularText(metrics[indexI * indexJ - 1].value).fontSize('30px').foregroundColor('#666'),
-                                                RegularText(metrics[indexI * indexJ - 1].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
+                                                RegularText(metrics[(indexJ * 3) + indexI].value).fontSize('30px').foregroundColor('#666'),
+                                                RegularText(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
                                                     .position(PositionTypes.Absolute).right('30px')
                                             ).marginTop('20px').height(),
-                                            metrics[indexI * indexJ - 1].chart
+                                            Sparkline()
+                                                .model(metrics[(indexJ * 3) + indexI].chart)
+                                                .padding(10)
                                         )
                                     ).height(290)
                                 )

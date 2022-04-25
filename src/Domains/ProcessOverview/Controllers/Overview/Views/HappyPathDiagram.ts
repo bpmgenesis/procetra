@@ -1,13 +1,14 @@
 import { UIView, VStack, Text, Alignment, HStack, ForEach, Icon, RoundedRectangle, If, UIImage, Spacer } from '@tuval/forms';
 import { int } from '@tuval/core';
 import { Image } from '@tuval/graphics';
+import { TileBoxHeaderText } from '../../../../../UI/Views/Title';
 export interface MVIHappyPathDiagramItem {
     name: string
 }
 export function HappyPathDiagram(items: MVIHappyPathDiagramItem[]): UIView {
     return (
         VStack(
-            Text('Algorithmic happy path').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').fontWeight('500').foregroundColor('#888888'),
+            TileBoxHeaderText('Algorithmic happy path'),
             HStack(
                 ...ForEach(items, (item: MVIHappyPathDiagramItem, index: int) =>
                     VStack(
