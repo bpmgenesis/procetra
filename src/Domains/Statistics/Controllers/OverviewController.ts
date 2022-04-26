@@ -4,6 +4,7 @@ import { EventsOverTimeChart } from '../../../UI/Controls/EventsOverTimeChart/Ev
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../UI/Views/Texts';
 import { TileBox } from '../../../UI/Views/TileBox';
 import { Sparkline, SparklineModel } from '@tuval/components/charts';
+import { TileBoxHeaderText, MetricBoxValueText } from '../../../UI/Views/Title';
 
 const overviewTypes = [
     'Events over time',
@@ -23,7 +24,7 @@ const staticticInfos = [
     },
     {
         title: 'end time',
-        value: '19.09.2012'
+        value: '19.09.2013'
     },
     {
         title: 'cases',
@@ -55,6 +56,8 @@ const metrics: MVIMetricData[] = [
         chart: {
             type: 'Column',
             valueType: 'Numeric',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
             dataSource: [
                 { x: 1, yval: 5 },
                 { x: 2, yval: 6 },
@@ -63,7 +66,23 @@ const metrics: MVIMetricData[] = [
                 { x: 5, yval: 4 },
                 { x: 6, yval: 3 },
                 { x: 7, yval: 9 },
-                { x: 8, yval: 5 }
+                { x: 8, yval: 5 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 6 },
+                { x: 11, yval: 5 },
+                { x: 12, yval: 7 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 4 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
             ],
             xName: 'x',
             yName: 'yval'
@@ -76,8 +95,8 @@ const metrics: MVIMetricData[] = [
         chart: {
             type: 'Line',
             lineWidth: 5,
-            width:'100%',
-            height:'100%',
+            width: '100%',
+            height: '100%',
             padding: {
                 left: 10,
                 right: 10
@@ -127,7 +146,38 @@ const metrics: MVIMetricData[] = [
     {
         name: 'Automation rate',
         chart: {
-            type: 'Pie'
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
         },
         value: '2.78 %',
         subValue: '(+2.8 %)'
@@ -135,7 +185,31 @@ const metrics: MVIMetricData[] = [
     {
         name: 'Cases with long lead time',
         chart: {
-            type: 'Line'
+            lineWidth: 1,
+            type: 'Area',
+            opacity: 1,
+            border: {  width: 2 },
+            valueType: 'Category',
+            axisSettings: {
+                lineSettings: {
+                    visible: true
+                }
+            },
+            dataSource: [
+                { x: 1, xval: 'Jan', yval: 34 },
+                { x: 2, xval: 'Feb', yval: 36 },
+                { x: 3, xval: 'Mar', yval: 32 },
+                { x: 4, xval: 'Apr', yval: 35 },
+                { x: 5, xval: 'May', yval: 40 },
+                { x: 6, xval: 'Jun', yval: 38 },
+                { x: 7, xval: 'Jul', yval: 33 },
+                { x: 8, xval: 'Aug', yval: 37 },
+                { x: 9, xval: 'Sep', yval: 34 },
+                { x: 10, xval: 'Oct', yval: 31 },
+                { x: 11, xval: 'Nov', yval: 30 },
+                { x: 12, xval: 'Dec', yval: 29 },
+            ],
+            xName: 'xval', yName: 'yval',
         },
         value: '13.33 %',
         subValue: '(-4.4 %)'
@@ -143,7 +217,38 @@ const metrics: MVIMetricData[] = [
     {
         name: 'Cases with many process steps',
         chart: {
-            type: 'Line'
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 7 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 9 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 3 },
+                { x: 6, yval: 2 },
+                { x: 7, yval: 5 },
+                { x: 8, yval: 8 },
+                { x: 9, yval: 4 },
+                { x: 10, yval: 8 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 10 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 12 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 13 },
+                { x: 19, yval: 17 },
+                { x: 20, yval: 15 },
+                { x: 21, yval: 15 },
+                { x: 22, yval: 16 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
         },
         value: '13.33 %',
         subValue: '(+57.1 %)'
@@ -151,7 +256,40 @@ const metrics: MVIMetricData[] = [
     {
         name: 'Number of resources per process step',
         chart: {
-            type: 'Line'
+            type: 'Area',
+            lineWidth:5,
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+
+            xName: 'x',
+            yName: 'yval'
         },
         value: '2.63 %',
         subValue: '(+57.1 %)'
@@ -222,14 +360,14 @@ export class OverviewController extends UIController {
                     )
                         // We prevent this stack to large more than its content
                         .height(),
-                    SectionSubHeadline('Global statistics'),
+                    SectionSubHeadline('Global metrics for monitoring.'),
 
                     HStack({ alignment: cLeading, spacing: 10 })(
                         ..._ForEach(staticticInfos)(info =>
                             TileBox(
                                 VStack(
                                     RegularText(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
-                                    RegularText(info.title).textTransform('uppercase').fontSize('11px').foregroundColor('#999')
+                                    RegularText(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')
                                 ).padding(20)
                             ).maxHeight('120px')
                         )
@@ -274,9 +412,9 @@ export class OverviewController extends UIController {
                                 ..._ForEach([0, 1, 2])(indexI =>
                                     TileBox(
                                         VStack(
-                                            RegularText(metrics[(indexJ * 3) + indexI].name).paddingTop('30px').fontSize(20).foregroundColor('#333'),
+                                            TileBoxHeaderText(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'),
                                             HStack({ spacing: 10 })(
-                                                RegularText(metrics[(indexJ * 3) + indexI].value).fontSize('30px').foregroundColor('#666'),
+                                                MetricBoxValueText(metrics[(indexJ * 3) + indexI].value),
                                                 RegularText(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
                                                     .position(PositionTypes.Absolute).right('30px')
                                             ).marginTop('20px').height(),

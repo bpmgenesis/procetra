@@ -19,7 +19,7 @@ export class ProcessStatisticController extends UIController {
             UIScene(
                 VStack({ alignment: cTopLeading, spacing: 10 })(
                     HStack({ alignment: cLeading, spacing: 10 })(
-                        PageTitle('\\f0f2', 'Process statistics'),
+                        PageTitle('\\f0f2', 'Process monitoring'),
                         Spacer(),
                         HStack({ spacing: 5 })(
                             ..._ForEach(['Overview', 'Throughput times', 'Activities'])((name, index) =>
@@ -27,7 +27,7 @@ export class ProcessStatisticController extends UIController {
                                     Text(name)
                                 )
                                     .action(() => this.currentController = controllers[index])
-                                    .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
+                                    .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px').visible(false)
                             )
                         ).width()
                     ).height(),

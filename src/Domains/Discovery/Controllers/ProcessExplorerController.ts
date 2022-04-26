@@ -67,7 +67,6 @@ export class ProcessExplorerController extends UIController {
                     PortalSideMenu(
                         {
                             items: sideMenu,
-                            selectedIndex: this.selectedIndex,
                             selectedAction: (index) => this.OnControllerSelected(index),
                             second: true
                         }

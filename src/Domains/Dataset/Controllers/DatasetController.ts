@@ -1,21 +1,17 @@
 import { int } from '@tuval/core';
-import {
-    UIController, UIView, Text, State, UIScene, PositionTypes,
-    TApplication, ApplicationModes, HStack, VStack, Icon, ForEach, Alignment
-} from '@tuval/forms';
+import { ApplicationModes, HStack, PositionTypes, State, TApplication, UIController, UIScene, UIView } from '@tuval/forms';
+
+import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
+import { CaseExplorerController } from '../../CaseExplorer/Controllers/CaseExplorerController';
+import { ProcessDashboardController } from '../../Dashboard/Controllers/ProcessDashboardController';
+import { ProcessExplorerController } from '../../Discovery/Controllers/ProcessExplorerController';
+import { FilterController } from '../../Filter/Controllers/FilterController';
+import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
+import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
+import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
+import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
-import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
-import { ProcessDashboardController } from '../../Dashboard/Controllers/ProcessDashboardController';
-import { MIProject } from '../../Project/Models/ProjectModel';
-import { ProcessExplorerController } from '../../Discovery/Controllers/ProcessExplorerController';
-import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
-
-import { CaseExplorerController } from '../../CaseExplorer/Controllers/CaseExplorerController';
-import { FilterController } from '../../Filter/Controllers/FilterController';
-import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
-import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
-import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
 
 export class DatasetController extends UIController {
 
@@ -98,17 +94,14 @@ export class DatasetController extends UIController {
                 controller: new FilterController()
             }
         ];
-
         this.selectedTabIndex = 0;
-
     }
 
     private LoadPortalView(): UIView {
-
         return (
             UIScene(
                 HStack(
-                    PortalSideMenu( { items: this.tabModels, selectedIndex:this.selectedTabIndex, selectedAction: (index) => this.OnTabSelected(index) }),
+                    PortalSideMenu( { items: this.tabModels, selectedAction: (index) => this.OnTabSelected(index) }),
                     this.tabModels[this.selectedTabIndex].controller
                 )
             )
@@ -120,7 +113,7 @@ export class DatasetController extends UIController {
             UIScene(
                 DatasetTabView({
                     tabModel: this.tabModels,
-                    selectedTabIndex: this.selectedTabIndex,
+                    /* selectedTabIndex: this.selectedTabIndex, */
                     onTabSelected: (index: int) => this.OnTabSelected(index)
                 })
             ).position(PositionTypes.Absolute)

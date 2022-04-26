@@ -19,14 +19,14 @@
 ******************************************************************************************************************************@*/
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"));
+		module.exports = factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$charts"));
 	else if(typeof define === 'function' && define.amd)
-		define(["tuval$core", "tuval$forms", "tuval$components$grids", "tuval$components$charts", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics"], factory);
+		define(["tuval$core", "tuval$forms", "tuval$components$grids", "tuval$components$diagram", "tuval$graphics", "tuval$core$graphics", "tuval$components$charts"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$charts"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$grids"], root["tuval$components$charts"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"]);
+		var a = typeof exports === 'object' ? factory(require("tuval$core"), require("tuval$forms"), require("tuval$components$grids"), require("tuval$components$diagram"), require("tuval$graphics"), require("tuval$core$graphics"), require("tuval$components$charts")) : factory(root["tuval$core"], root["tuval$forms"], root["tuval$components$grids"], root["tuval$components$diagram"], root["tuval$graphics"], root["tuval$core$graphics"], root["tuval$components$charts"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__) {
+})(self, function(__WEBPACK_EXTERNAL_MODULE__tuval_core__, __WEBPACK_EXTERNAL_MODULE__tuval_forms__, __WEBPACK_EXTERNAL_MODULE__tuval_components_grids__, __WEBPACK_EXTERNAL_MODULE__tuval_components_diagram__, __WEBPACK_EXTERNAL_MODULE__tuval_graphics__, __WEBPACK_EXTERNAL_MODULE__tuval_cg__, __WEBPACK_EXTERNAL_MODULE__tuval_components_charts__) {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2104,15 +2104,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
-/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
 /* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
 /* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
-/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
-/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
-/* harmony import */ var _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Filter/Controllers/FilterController */ "./src/Domains/Filter/Controllers/FilterController.ts");
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
+/* harmony import */ var _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Filter/Controllers/FilterController */ "./src/Domains/Filter/Controllers/FilterController.ts");
+/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
+/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
+/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
+/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -2165,7 +2165,7 @@ var DatasetController = /** @class */ (function (_super) {
             {
                 icon: '\\f0b4',
                 name: 'Process Overview',
-                controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_2__.ProcessOverviewController().Bind(this.projectItem) // Default Controller
+                controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_6__.ProcessOverviewController().Bind(this.projectItem) // Default Controller
             },
             {
                 icon: '\\f0b3',
@@ -2180,50 +2180,50 @@ var DatasetController = /** @class */ (function (_super) {
             {
                 icon: '\\f0a1',
                 name: 'Monitoring',
-                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_5__.ProcessStatisticController()
+                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__.ProcessStatisticController()
             },
             {
                 icon: '\\f0f2',
                 name: 'Statistics',
-                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_5__.ProcessStatisticController()
+                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__.ProcessStatisticController()
             },
             {
                 icon: '\\f13b',
                 name: 'Variant Explorer',
-                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__.VariantExplorerController()
+                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__.VariantExplorerController()
             },
             {
                 icon: '\\f096',
                 name: 'Loops',
-                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_6__.CaseExplorerController()
+                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__.CaseExplorerController()
             },
             {
                 icon: '\\f049',
                 name: 'Automation',
-                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__.VariantExplorerController()
+                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__.VariantExplorerController()
             },
             {
                 icon: '\\f033',
                 name: 'Case Explorer',
-                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_6__.CaseExplorerController()
+                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__.CaseExplorerController()
             },
             {
                 icon: '\\f130',
                 name: 'Filter',
-                controller: new _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_7__.FilterController()
+                controller: new _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_5__.FilterController()
             }
         ];
         this.selectedTabIndex = 0;
     };
     DatasetController.prototype.LoadPortalView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_8__.PortalSideMenu)({ items: this.tabModels, selectedIndex: this.selectedTabIndex, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
     };
     DatasetController.prototype.LoadDesktopView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_1__.DatasetTabView)({
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_9__.DatasetTabView)({
             tabModel: this.tabModels,
-            selectedTabIndex: this.selectedTabIndex,
+            /* selectedTabIndex: this.selectedTabIndex, */
             onTabSelected: function (index) { return _this.OnTabSelected(index); }
         })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute));
     };
@@ -2268,25 +2268,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DatasetTabView(datasetTabViewParams) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel, function (tabItem, index) {
         return (0,_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabViewItem)({
             name: tabItem.name,
             header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
                 .wrap('wrap')
-                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
-                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
-                /*  .cornerRadius('10px') */
+                .borderTop(selectedIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
+                .foregroundColor(selectedIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                 .padding(10)
-                /* .borderBottom(this.selectedTab === tabItem.name ? 'solid 1px blue' : 'solid 0px') */
-                /* .shadow(datasetTabViewParams.selectedTabIndex === index ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '') */
-                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                .transition('all 0.35s')
-                .If(datasetTabViewParams.selectedTabIndex === index, function (_) {
-                //  _.foregroundColor('blue');
-            }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)'))),
+                .background(selectedIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)'))),
             content: tabItem.controller
-        }).onSelected(function () { return datasetTabViewParams.onTabSelected(index); });
-    })).selectedTabIndex(datasetTabViewParams.selectedTabIndex)));
+        }).onSelected(function () { datasetTabViewParams.onTabSelected(index); setSelectedIndex(index); });
+    })).selectedTabIndex(selectedIndex)));
 }
 
 
@@ -2513,7 +2508,6 @@ var ProcessExplorerController = /** @class */ (function (_super) {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
             items: sideMenu,
-            selectedIndex: this.selectedIndex,
             selectedAction: function (index) { return _this.OnControllerSelected(index); },
             second: true
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
@@ -3133,8 +3127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function PortalMetricBox(params, selected) {
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), showMenu = _a[0], setShowMenu = _a[1];
-    var _b = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)('50px'), height = _b[0], setHeight = _b[1];
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title).onClick(function () { return setHeight('200px'); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.MetricBoxValueText)(params.value.toString()), 
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.MetricBoxValueText)(params.value.toString()), 
     /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
     /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
@@ -3175,7 +3168,7 @@ function PortalMetricBox(params, selected) {
         .visible(showMenu)).margin('2px'));
 }
 function DesktopMetricBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
         .height('148px')
         .backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
@@ -3226,16 +3219,14 @@ var data = [
     { x: new Date(2021, 9, 1), y: 561.4 }, { x: new Date(2021, 10, 1), y: 433.1 }
 ];
 function MetricsSection(params) {
-    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.useState)(-1), selectedIndex = _a[0], setSelectedIndex = _a[1];
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
     return (
     // We want to space 10px between every vertical block
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel, index) {
+        .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel, index) {
         return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
-    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), 
-    //Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)({ id: 'myChart' })((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
+    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)({ id: 'myChart' })((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
         .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
         .fill('#FBCD4E55')
         .data(data))
@@ -3405,7 +3396,6 @@ var ProcessOverviewController = /** @class */ (function (_super) {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__.PortalSideMenu)({
             items: sideMenu,
-            selectedIndex: this.selectedIndex,
             selectedAction: function (index) { return _this.OnControllerChanged(index); },
             second: true
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
@@ -4101,6 +4091,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
 /* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
 /* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4127,6 +4118,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var overviewTypes = [
     'Events over time',
     'Active cases over time',
@@ -4144,7 +4136,7 @@ var staticticInfos = [
     },
     {
         title: 'end time',
-        value: '19.09.2012'
+        value: '19.09.2013'
     },
     {
         title: 'cases',
@@ -4169,6 +4161,8 @@ var metrics = [
         chart: {
             type: 'Column',
             valueType: 'Numeric',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
             dataSource: [
                 { x: 1, yval: 5 },
                 { x: 2, yval: 6 },
@@ -4177,7 +4171,23 @@ var metrics = [
                 { x: 5, yval: 4 },
                 { x: 6, yval: 3 },
                 { x: 7, yval: 9 },
-                { x: 8, yval: 5 }
+                { x: 8, yval: 5 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 6 },
+                { x: 11, yval: 5 },
+                { x: 12, yval: 7 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 4 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
             ],
             xName: 'x',
             yName: 'yval'
@@ -4241,7 +4251,38 @@ var metrics = [
     {
         name: 'Automation rate',
         chart: {
-            type: 'Pie'
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
         },
         value: '2.78 %',
         subValue: '(+2.8 %)'
@@ -4249,7 +4290,31 @@ var metrics = [
     {
         name: 'Cases with long lead time',
         chart: {
-            type: 'Line'
+            lineWidth: 1,
+            type: 'Area',
+            opacity: 1,
+            border: { width: 2 },
+            valueType: 'Category',
+            axisSettings: {
+                lineSettings: {
+                    visible: true
+                }
+            },
+            dataSource: [
+                { x: 1, xval: 'Jan', yval: 34 },
+                { x: 2, xval: 'Feb', yval: 36 },
+                { x: 3, xval: 'Mar', yval: 32 },
+                { x: 4, xval: 'Apr', yval: 35 },
+                { x: 5, xval: 'May', yval: 40 },
+                { x: 6, xval: 'Jun', yval: 38 },
+                { x: 7, xval: 'Jul', yval: 33 },
+                { x: 8, xval: 'Aug', yval: 37 },
+                { x: 9, xval: 'Sep', yval: 34 },
+                { x: 10, xval: 'Oct', yval: 31 },
+                { x: 11, xval: 'Nov', yval: 30 },
+                { x: 12, xval: 'Dec', yval: 29 },
+            ],
+            xName: 'xval', yName: 'yval',
         },
         value: '13.33 %',
         subValue: '(-4.4 %)'
@@ -4257,7 +4322,38 @@ var metrics = [
     {
         name: 'Cases with many process steps',
         chart: {
-            type: 'Line'
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 7 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 9 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 3 },
+                { x: 6, yval: 2 },
+                { x: 7, yval: 5 },
+                { x: 8, yval: 8 },
+                { x: 9, yval: 4 },
+                { x: 10, yval: 8 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 10 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 12 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 13 },
+                { x: 19, yval: 17 },
+                { x: 20, yval: 15 },
+                { x: 21, yval: 15 },
+                { x: 22, yval: 16 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
         },
         value: '13.33 %',
         subValue: '(+57.1 %)'
@@ -4265,7 +4361,39 @@ var metrics = [
     {
         name: 'Number of resources per process step',
         chart: {
-            type: 'Line'
+            type: 'Area',
+            lineWidth: 5,
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
         },
         value: '2.63 %',
         subValue: '(+57.1 %)'
@@ -4309,8 +4437,8 @@ var OverviewController = /** @class */ (function (_super) {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
             // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
-            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('11px').foregroundColor('#999')).padding(20)).maxHeight('120px');
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
+            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
         })).height(), MetricSelectionButtons(overviewTypes, this.selectedIndex, function (index) { return _this.selectedIndex = index; }).visible(false), 
         // Chart
         (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex])
@@ -4334,7 +4462,7 @@ var OverviewController = /** @class */ (function (_super) {
         // Metrics
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1])(function (indexJ) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1, 2])(function (indexI) {
-                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px').fontSize(20).foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].value).fontSize('30px').foregroundColor('#666'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
+                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
                     .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__.Sparkline)()
                     .model(metrics[(indexJ * 3) + indexI].chart)
                     .padding(10))).height(290);
@@ -4409,10 +4537,10 @@ var ProcessStatisticController = /** @class */ (function (_super) {
     };
     ProcessStatisticController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0f2', 'Process statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name, index) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0f2', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
                 .action(function () { return _this.currentController = controllers[index]; })
-                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
+                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px').visible(false);
         })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
@@ -7632,16 +7760,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalSideMenu(params) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
     if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal) {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.items, function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(26), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).fontSize('12px').fontFamily('-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'))
                 .padding(5)
-                .background(params.selectedIndex === index ? (params.second ? '#777b80' : '#52565b') : { hover: '#eee' })
-                .borderBottom(params.selectedIndex === index ? '2px solid #e7b54a' : '2px solid transparent')
+                .background(selectedIndex === index ? (params.second ? '#777b80' : '#52565b') : { hover: '#eee' })
+                .borderBottom(selectedIndex === index ? '2px solid #e7b54a' : '2px solid transparent')
                 .cursor('pointer')
-                .foregroundColor(params.selectedIndex === index ? 'white' : { hover: '#333', default: 'white' })
+                .foregroundColor(selectedIndex === index ? 'white' : { hover: '#333', default: 'white' })
                 .height(80)
-                .onClick(function () { return params.selectedAction(index); });
+                .onClick(function () { setSelectedIndex(index); params.selectedAction(index); });
         })).minWidth(params.second ? '75px' : '80px')
             .width(params.second ? 75 : 80)
             .background(params.second ? '#52565b' : '#212932')
@@ -7930,6 +8059,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Title": () => (/* binding */ Title),
 /* harmony export */   "TileBoxHeaderText": () => (/* binding */ TileBoxHeaderText),
+/* harmony export */   "TileBoxValueCaption": () => (/* binding */ TileBoxValueCaption),
 /* harmony export */   "MetricBoxValueText": () => (/* binding */ MetricBoxValueText),
 /* harmony export */   "CalculationMethodText": () => (/* binding */ CalculationMethodText)
 /* harmony export */ });
@@ -7943,7 +8073,22 @@ function Title(value) {
         .fontFamily(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop ? "Proxima Nova" : "Ubuntu, sans-serif"));
 }
 function TileBoxHeaderText(value) {
-    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline5)(value).padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD'));
+    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal) {
+        return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline5)(value).fontFamily('Ubuntu, sans-serif').padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD'));
+    }
+    else {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'));
+    }
+}
+function TileBoxValueCaption(value) {
+    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal) {
+        return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Subtitle1)(value)
+        //Headline5(value).fontFamily('Ubuntu, sans-serif').padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD')
+        );
+    }
+    else {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'));
+    }
 }
 function MetricBoxValueText(value) {
     return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline4)(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'));

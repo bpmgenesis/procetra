@@ -1,5 +1,5 @@
 import { Text, TApplication, ApplicationModes, UIView } from '@tuval/forms';
-import { Headline4, Headline5 } from './Texts';
+import { Headline4, Headline5, Subtitle1 } from './Texts';
 
 export function Title(value: string): UIView {
     return (
@@ -9,9 +9,28 @@ export function Title(value: string): UIView {
 }
 
 export function TileBoxHeaderText(value: string): UIView {
-    return (
-        Headline5(value).padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD')
-    )
+    if (TApplication.IsPortal) {
+        return (
+            Headline5(value).fontFamily('Ubuntu, sans-serif').padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD')
+        )
+    } else {
+        return (
+            Text(value).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888')
+        )
+    }
+}
+
+export function TileBoxValueCaption(value: string): UIView {
+    if (TApplication.IsPortal) {
+        return (
+            Subtitle1(value)
+            //Headline5(value).fontFamily('Ubuntu, sans-serif').padding('20px 30px 0 30px').fontWeight('700').foregroundColor('#495057DD')
+        )
+    } else {
+        return (
+            Text(value).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888')
+        )
+    }
 }
 
 export function MetricBoxValueText(value: string): UIView {

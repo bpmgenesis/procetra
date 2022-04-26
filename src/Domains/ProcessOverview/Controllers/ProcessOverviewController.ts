@@ -117,7 +117,6 @@ export class ProcessOverviewController extends UIController {
                     PortalSideMenu(
                         {
                             items: sideMenu,
-                            selectedIndex: this.selectedIndex,
                             selectedAction: (index) => this.OnControllerChanged(index),
                             second: true
                         }

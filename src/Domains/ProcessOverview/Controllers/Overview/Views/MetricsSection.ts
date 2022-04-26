@@ -1,6 +1,6 @@
 import { int } from '@tuval/core';
 import { TvChart, ChartView, AreaSerie, MyControlBody } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading, useState } from '@tuval/forms';
+import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading, useState, bindState } from '@tuval/forms';
 import { TileBox } from '../../../../../UI/Views/TileBox';
 import { TileBoxHeaderText } from '../../../../../UI/Views/Title';
 import { MetricBox, MVIMetricBox } from './MetricBox';
@@ -17,28 +17,27 @@ export interface MVIMetricSection {
     chart: TvChart;
 }
 export function MetricsSection(params: MVIMetricSection): UIView {
-    const [selectedIndex, setSelectedIndex] = useState(-1);
+    const [selectedIndex, setSelectedIndex] = bindState(0);
     return (
         // We want to space 10px between every vertical block
         VStack({ alignment: cTopLeading, spacing: 10 })(
             HStack(
-                Text('Metrics').paddingTop('5px').height('38px').fontFamily('Proxima Nova').fontSize('20px').foregroundColor('#333333'),
+                Text('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'),
                 Spacer(),
                 UIButton(
                     Icon('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' }),
                 )
             )
                 // We prevent this stack to large more than its content
-                .height('auto'),
+                .height(),
             HStack({ spacing: 10 })(
-                ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox, index:int) =>
-                    MetricBox(metricBoxModel, selectedIndex === index).onClick(()=>setSelectedIndex(index)),
+                ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox, index: int) =>
+                    MetricBox(metricBoxModel, selectedIndex === index).onClick(() => setSelectedIndex(index)),
                 )
             ).height(150),
             TileBox(
                 VStack({ alignment: cTopLeading })(
                     TileBoxHeaderText('Daily cases per month').marginBottom('10px'),
-                    //Text('Daily cases per month').padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
                     VStack(
                         ChartView({ id: 'myChart' })(
                             AreaSerie().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })

@@ -16,11 +16,10 @@ export interface MVIMetricBox {
 
 export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView {
     const [showMenu, setShowMenu] = useState(false);
-    const [height, setHeight] = useState('50px');
     return (
         ZStack(
             VStack(
-                TileBoxHeaderText(params.title).onClick(() => setHeight('200px')),
+                TileBoxHeaderText(params.title),
                 HStack(
                     MetricBoxValueText(params.value.toString()),
                     /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
@@ -83,7 +82,7 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
 export function DesktopMetricBox(params: MVIMetricBox): UIView {
     return (
         VStack(
-            Text(params.title).padding('20px 30px 0 30px').fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888888'),
+            TileBoxHeaderText(params.title),
             Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
             Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'),
         )
