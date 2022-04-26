@@ -1756,6 +1756,54 @@ function TimeLineFilter() {
 
 /***/ }),
 
+/***/ "./src/Domains/Automation/Controllers/AutomationController.ts":
+/*!********************************************************************!*\
+  !*** ./src/Domains/Automation/Controllers/AutomationController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AutomationController": () => (/* binding */ AutomationController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var AutomationController = /** @class */ (function (_super) {
+    __extends(AutomationController, _super);
+    function AutomationController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AutomationController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f049', 'Automations'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return AutomationController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
 /***/ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts":
 /*!************************************************************************!*\
   !*** ./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts ***!
@@ -2113,6 +2161,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
 /* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
 /* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
+/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
+/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
+/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -2134,6 +2185,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
 
 
 
@@ -2180,7 +2234,7 @@ var DatasetController = /** @class */ (function (_super) {
             {
                 icon: '\\f0a1',
                 name: 'Monitoring',
-                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__.ProcessStatisticController()
+                controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_10__.MonitoringController()
             },
             {
                 icon: '\\f0f2',
@@ -2195,12 +2249,12 @@ var DatasetController = /** @class */ (function (_super) {
             {
                 icon: '\\f096',
                 name: 'Loops',
-                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__.CaseExplorerController()
+                controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_11__.LoopsController()
             },
             {
                 icon: '\\f049',
                 name: 'Automation',
-                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__.VariantExplorerController()
+                controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_12__.AutomationController()
             },
             {
                 icon: '\\f033',
@@ -2697,6 +2751,441 @@ var FilterController = /** @class */ (function (_super) {
         })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
     return FilterController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/Domains/Loops/Controllers/LoopsController.ts":
+/*!**********************************************************!*\
+  !*** ./src/Domains/Loops/Controllers/LoopsController.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LoopsController": () => (/* binding */ LoopsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var LoopsController = /** @class */ (function (_super) {
+    __extends(LoopsController, _super);
+    function LoopsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    LoopsController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f096', 'Loops'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return LoopsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/Domains/Monitoring/Controllers/MonitoringController.ts":
+/*!********************************************************************!*\
+  !*** ./src/Domains/Monitoring/Controllers/MonitoringController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MonitoringController": () => (/* binding */ MonitoringController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+var metrics = [
+    {
+        name: 'Unique Variants',
+        chart: {
+            type: 'Column',
+            valueType: 'Numeric',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 6 },
+                { x: 11, yval: 5 },
+                { x: 12, yval: 7 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 4 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '57.14 %',
+        subValue: '(+57.1 %)'
+    },
+    {
+        name: 'Cases with (self)loops',
+        chart: {
+            type: 'Line',
+            lineWidth: 5,
+            width: '100%',
+            height: '100%',
+            padding: {
+                left: 10,
+                right: 10
+            },
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 6 },
+                { x: 10, yval: 5 },
+                { x: 11, yval: 7 },
+                { x: 12, yval: 8 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 5 },
+                { x: 15, yval: 3 },
+                { x: 16, yval: 4 },
+                { x: 17, yval: 11 },
+                { x: 18, yval: 10 },
+                { x: 19, yval: 2 },
+                { x: 20, yval: 12 },
+                { x: 21, yval: 4 },
+                { x: 22, yval: 7 },
+                { x: 23, yval: 6 },
+                { x: 24, yval: 8 },
+            ],
+            xName: 'x',
+            yName: 'yval',
+            markerSettings: {
+                visible: ['All'],
+                border: {
+                    color: '#00BDAE',
+                    width: 5
+                },
+                fill: 'white',
+                size: 10,
+            }
+        },
+        value: '20.00 %',
+        subValue: '(-75.6 %)'
+    },
+    {
+        name: 'Automation rate',
+        chart: {
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '2.78 %',
+        subValue: '(+2.8 %)'
+    },
+    {
+        name: 'Cases with long lead time',
+        chart: {
+            lineWidth: 1,
+            type: 'Area',
+            opacity: 1,
+            border: { width: 2 },
+            valueType: 'Category',
+            axisSettings: {
+                lineSettings: {
+                    visible: true
+                }
+            },
+            dataSource: [
+                { x: 1, xval: 'Jan', yval: 34 },
+                { x: 2, xval: 'Feb', yval: 36 },
+                { x: 3, xval: 'Mar', yval: 32 },
+                { x: 4, xval: 'Apr', yval: 35 },
+                { x: 5, xval: 'May', yval: 40 },
+                { x: 6, xval: 'Jun', yval: 38 },
+                { x: 7, xval: 'Jul', yval: 33 },
+                { x: 8, xval: 'Aug', yval: 37 },
+                { x: 9, xval: 'Sep', yval: 34 },
+                { x: 10, xval: 'Oct', yval: 31 },
+                { x: 11, xval: 'Nov', yval: 30 },
+                { x: 12, xval: 'Dec', yval: 29 },
+            ],
+            xName: 'xval', yName: 'yval',
+        },
+        value: '13.33 %',
+        subValue: '(-4.4 %)'
+    },
+    {
+        name: 'Cases with many process steps',
+        chart: {
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 7 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 9 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 3 },
+                { x: 6, yval: 2 },
+                { x: 7, yval: 5 },
+                { x: 8, yval: 8 },
+                { x: 9, yval: 4 },
+                { x: 10, yval: 8 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 10 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 12 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 13 },
+                { x: 19, yval: 17 },
+                { x: 20, yval: 15 },
+                { x: 21, yval: 15 },
+                { x: 22, yval: 16 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '13.33 %',
+        subValue: '(+57.1 %)'
+    },
+    {
+        name: 'Number of resources per process step',
+        chart: {
+            type: 'Area',
+            lineWidth: 5,
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '2.63 %',
+        subValue: '(+57.1 %)'
+    }
+];
+var staticticInfos = [
+    {
+        title: 'start time',
+        value: '19.09.2012'
+    },
+    {
+        title: 'end time',
+        value: '19.09.2013'
+    },
+    {
+        title: 'cases',
+        value: '968'
+    },
+    {
+        title: 'variants',
+        value: '79'
+    },
+    {
+        title: 'process step types',
+        value: '12'
+    },
+    {
+        title: 'total process steps',
+        value: '7416'
+    }
+];
+var MonitoringController = /** @class */ (function (_super) {
+    __extends(MonitoringController, _super);
+    function MonitoringController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MonitoringController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a1', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
+            // We prevent this stack to large more than its content
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
+            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
+        })).height(), 
+        // Metrics
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1])(function (indexJ) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1, 2])(function (indexI) {
+                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
+                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__.Sparkline)()
+                    .model(metrics[(indexJ * 3) + indexI].chart)
+                    .padding(10))).height(290);
+            }));
+        })).height()))).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return MonitoringController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+function MetricSelectionButtons(overviewTypes, selectedIndex, arg2) {
+    throw new Error('Function not implemented.');
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts":
+/*!********************************************************************************!*\
+  !*** ./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivityController": () => (/* binding */ ActivityController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var ActivityController = /** @class */ (function (_super) {
+    __extends(ActivityController, _super);
+    function ActivityController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ActivityController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activity Controller')));
+    };
+    return ActivityController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
@@ -3312,6 +3801,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
 /* harmony import */ var _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/OverviewController */ "./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts");
 /* harmony import */ var _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThroughputTimes/ThroughputTimesController */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts");
+/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -3333,6 +3823,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -3363,7 +3854,7 @@ var sideMenu = [
     {
         name: 'Activities',
         icon: '\\f0d5',
-        controller: new _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__.ThroughputTimesController()
+        controller: new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__.ActivityController()
     }
 ];
 var ProcessOverviewController = /** @class */ (function (_super) {
@@ -4089,9 +4580,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
 /* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
 /* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4113,7 +4602,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -4153,250 +4641,6 @@ var staticticInfos = [
     {
         title: 'total process steps',
         value: '7416'
-    }
-];
-var metrics = [
-    {
-        name: 'Unique Variants',
-        chart: {
-            type: 'Column',
-            valueType: 'Numeric',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            dataSource: [
-                { x: 1, yval: 5 },
-                { x: 2, yval: 6 },
-                { x: 3, yval: 5 },
-                { x: 4, yval: 7 },
-                { x: 5, yval: 4 },
-                { x: 6, yval: 3 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 5 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 6 },
-                { x: 11, yval: 5 },
-                { x: 12, yval: 7 },
-                { x: 13, yval: 4 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 4 },
-                { x: 16, yval: 5 },
-                { x: 17, yval: 4 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '57.14 %',
-        subValue: '(+57.1 %)'
-    },
-    {
-        name: 'Cases with (self)loops',
-        chart: {
-            type: 'Line',
-            lineWidth: 5,
-            width: '100%',
-            height: '100%',
-            padding: {
-                left: 10,
-                right: 10
-            },
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 5 },
-                { x: 2, yval: 6 },
-                { x: 3, yval: 5 },
-                { x: 4, yval: 7 },
-                { x: 5, yval: 4 },
-                { x: 6, yval: 3 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 5 },
-                { x: 9, yval: 6 },
-                { x: 10, yval: 5 },
-                { x: 11, yval: 7 },
-                { x: 12, yval: 8 },
-                { x: 13, yval: 4 },
-                { x: 14, yval: 5 },
-                { x: 15, yval: 3 },
-                { x: 16, yval: 4 },
-                { x: 17, yval: 11 },
-                { x: 18, yval: 10 },
-                { x: 19, yval: 2 },
-                { x: 20, yval: 12 },
-                { x: 21, yval: 4 },
-                { x: 22, yval: 7 },
-                { x: 23, yval: 6 },
-                { x: 24, yval: 8 },
-            ],
-            xName: 'x',
-            yName: 'yval',
-            markerSettings: {
-                visible: ['All'],
-                border: {
-                    color: '#00BDAE',
-                    width: 5
-                },
-                fill: 'white',
-                size: 10,
-            }
-        },
-        value: '20.00 %',
-        subValue: '(-75.6 %)'
-    },
-    {
-        name: 'Automation rate',
-        chart: {
-            type: 'Column',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 3 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 4 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 2 },
-                { x: 6, yval: 8 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 6 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 7 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 15 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 14 },
-                { x: 16, yval: 15 },
-                { x: 17, yval: 14 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '2.78 %',
-        subValue: '(+2.8 %)'
-    },
-    {
-        name: 'Cases with long lead time',
-        chart: {
-            lineWidth: 1,
-            type: 'Area',
-            opacity: 1,
-            border: { width: 2 },
-            valueType: 'Category',
-            axisSettings: {
-                lineSettings: {
-                    visible: true
-                }
-            },
-            dataSource: [
-                { x: 1, xval: 'Jan', yval: 34 },
-                { x: 2, xval: 'Feb', yval: 36 },
-                { x: 3, xval: 'Mar', yval: 32 },
-                { x: 4, xval: 'Apr', yval: 35 },
-                { x: 5, xval: 'May', yval: 40 },
-                { x: 6, xval: 'Jun', yval: 38 },
-                { x: 7, xval: 'Jul', yval: 33 },
-                { x: 8, xval: 'Aug', yval: 37 },
-                { x: 9, xval: 'Sep', yval: 34 },
-                { x: 10, xval: 'Oct', yval: 31 },
-                { x: 11, xval: 'Nov', yval: 30 },
-                { x: 12, xval: 'Dec', yval: 29 },
-            ],
-            xName: 'xval', yName: 'yval',
-        },
-        value: '13.33 %',
-        subValue: '(-4.4 %)'
-    },
-    {
-        name: 'Cases with many process steps',
-        chart: {
-            type: 'Column',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 7 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 9 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 3 },
-                { x: 6, yval: 2 },
-                { x: 7, yval: 5 },
-                { x: 8, yval: 8 },
-                { x: 9, yval: 4 },
-                { x: 10, yval: 8 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 10 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 12 },
-                { x: 16, yval: 5 },
-                { x: 17, yval: 4 },
-                { x: 18, yval: 13 },
-                { x: 19, yval: 17 },
-                { x: 20, yval: 15 },
-                { x: 21, yval: 15 },
-                { x: 22, yval: 16 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '13.33 %',
-        subValue: '(+57.1 %)'
-    },
-    {
-        name: 'Number of resources per process step',
-        chart: {
-            type: 'Area',
-            lineWidth: 5,
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 3 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 4 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 2 },
-                { x: 6, yval: 8 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 6 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 7 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 15 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 14 },
-                { x: 16, yval: 15 },
-                { x: 17, yval: 14 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '2.63 %',
-        subValue: '(+57.1 %)'
     }
 ];
 function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
@@ -4439,13 +4683,15 @@ var OverviewController = /** @class */ (function (_super) {
             // We prevent this stack to large more than its content
             .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
             return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
-        })).height(), MetricSelectionButtons(overviewTypes, this.selectedIndex, function (index) { return _this.selectedIndex = index; }).visible(false), 
+        })).height(), 
+        //MetricSelectionButtons(overviewTypes, this.selectedIndex, (index) => this.selectedIndex = index).visible(true),
         // Chart
-        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex])
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex])
             .fontSize('30px')
             .cursor('pointer')
             .border('dashed 1px var(--sub-border-color)')
-            .transition('border .3s'))
+            .transition('border .3s')
+            .onClick(function () { return _this.showMenu = true; }))
             .padding()
             .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
@@ -4456,18 +4702,18 @@ var OverviewController = /** @class */ (function (_super) {
                 .border('solid 1px #ccc')
                 .padding()
                 .cornerRadius(12);
-        })).width(250).padding(10), this.chart)).visible(false)
+        })).width(250).padding(10), this.chart))
+            .visible(true)
+            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
+                .padding(10)
+                .onClick(function () { _this.selectedIndex = index; _this.showMenu = false; });
+        })))
             .height(400)
-            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), 
-        // Metrics
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1])(function (indexJ) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1, 2])(function (indexI) {
-                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_5__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
-                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_4__.Sparkline)()
-                    .model(metrics[(indexJ * 3) + indexI].chart)
-                    .padding(10))).height(290);
-            }));
-        })).height())));
+            .overflow('hidden')
+            .backgroundColor('white')
+            .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_4__.ListBounceAnimation, '.3s')
+            .visible(this.showMenu)))));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
@@ -4478,6 +4724,9 @@ var OverviewController = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "selectedIndex", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "showMenu", void 0);
     return OverviewController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 

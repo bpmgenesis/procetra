@@ -12,6 +12,9 @@ import { ProcessStatisticController } from '../../Statistics/Controllers/Process
 import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
+import { MonitoringController } from '../../Monitoring/Controllers/MonitoringController';
+import { LoopsController } from '../../Loops/Controllers/LoopsController';
+import { AutomationController } from '../../Automation/Controllers/AutomationController';
 
 export class DatasetController extends UIController {
 
@@ -61,7 +64,7 @@ export class DatasetController extends UIController {
             {
                 icon: '\\f0a1',
                 name: 'Monitoring',
-                controller: new ProcessStatisticController()
+                controller: new MonitoringController()
             },
             {
                 icon: '\\f0f2',
@@ -76,12 +79,12 @@ export class DatasetController extends UIController {
             {
                 icon: '\\f096',
                 name: 'Loops',
-                controller: new CaseExplorerController()
+                controller: new LoopsController()
             },
             {
                 icon: '\\f049',
                 name: 'Automation',
-                controller: new VariantExplorerController()
+                controller: new AutomationController()
             },
             {
                 icon: '\\f033',

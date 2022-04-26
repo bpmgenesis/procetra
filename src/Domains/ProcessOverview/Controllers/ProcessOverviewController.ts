@@ -22,6 +22,7 @@ import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../UI/Views/PortalS
 import { OverviewController } from './Overview/OverviewController';
 import { ThroughputTimesController } from './ThroughputTimes/ThroughputTimesController';
 import { cLeading, cTopLeading } from '@tuval/forms';
+import { ActivityController } from './Activity/ActivityController';
 
 
 function getMax(array: any[]) {
@@ -48,7 +49,7 @@ const sideMenu: MVIPortalSideMenuItem[] = [
     {
         name: 'Activities',
         icon: '\\f0d5',
-        controller: new ThroughputTimesController()
+        controller: new ActivityController()
     }
 ]
 
