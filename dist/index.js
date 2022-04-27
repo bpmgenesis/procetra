@@ -1501,7 +1501,8 @@ var AppController = /** @class */ (function (_super) {
     };
     AppController.prototype.LoadView = function () {
         if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null, this.MainPage(), this.controller);
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
+                .else(this.controller));
         }
         else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal) {
             return this.LoadPortalView();
@@ -1986,8 +1987,7 @@ var ProcessDashboardController = /** @class */ (function (_super) {
         this.test = 2;
     };
     ProcessDashboardController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)('Test')).action(function () { return _this.test = 10; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', this.test.toString()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', 'Dashboard'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
         })).width()).height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
             left: [
@@ -2150,20 +2150,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DatasetController": () => (/* binding */ DatasetController)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
-/* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
-/* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
-/* harmony import */ var _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Filter/Controllers/FilterController */ "./src/Domains/Filter/Controllers/FilterController.ts");
-/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
-/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
-/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
-/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
-/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
-/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
-/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
+/* harmony import */ var _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Models/MVIDatasetTabModel */ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -2189,15 +2180,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
-
-
-
-
-
-
-
 var DatasetController = /** @class */ (function (_super) {
     __extends(DatasetController, _super);
     function DatasetController() {
@@ -2205,84 +2187,37 @@ var DatasetController = /** @class */ (function (_super) {
     }
     DatasetController.prototype.InitController = function () {
         this.selectedTabIndex = 0;
+        this.tabModels = _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_0__.topModels;
     };
     DatasetController.prototype.OnTabSelected = function (index) {
         this.selectedTabIndex = index;
         var tabModel = this.tabModels[index];
-        if (tabModel != null && !tabModel.controller.IsModelBind) {
-            tabModel.controller.Bind(this.projectItem);
+        if (tabModel != null) {
+            this.currentController = tabModel.controller;
+            if (this.currentController.IsModelBind) {
+                this.currentController.Bind(this.projectItem);
+            }
         }
     };
     DatasetController.prototype.OnBindModel = function (model) {
         this.projectItem = model;
-        this.tabModels = [
-            {
-                icon: '\\f0b4',
-                name: 'Process Overview',
-                controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_6__.ProcessOverviewController().Bind(this.projectItem) // Default Controller
-            },
-            {
-                icon: '\\f0b3',
-                name: 'Dashboard',
-                controller: new _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_3__.ProcessDashboardController()
-            },
-            {
-                icon: '\\f0f8',
-                name: 'Discovery',
-                controller: new _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_4__.ProcessExplorerController()
-            },
-            {
-                icon: '\\f0a1',
-                name: 'Monitoring',
-                controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_10__.MonitoringController()
-            },
-            {
-                icon: '\\f0f2',
-                name: 'Statistics',
-                controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_7__.ProcessStatisticController()
-            },
-            {
-                icon: '\\f13b',
-                name: 'Variant Explorer',
-                controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_8__.VariantExplorerController()
-            },
-            {
-                icon: '\\f096',
-                name: 'Loops',
-                controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_11__.LoopsController()
-            },
-            {
-                icon: '\\f049',
-                name: 'Automation',
-                controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_12__.AutomationController()
-            },
-            {
-                icon: '\\f033',
-                name: 'Case Explorer',
-                controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_2__.CaseExplorerController()
-            },
-            {
-                icon: '\\f130',
-                name: 'Filter',
-                controller: new _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_5__.FilterController()
-            }
-        ];
         this.selectedTabIndex = 0;
+        this.OnTabSelected(0);
     };
     DatasetController.prototype.LoadPortalView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
     };
     DatasetController.prototype.LoadDesktopView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_9__.DatasetTabView)({
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_3__.DatasetTabView)({
             tabModel: this.tabModels,
             /* selectedTabIndex: this.selectedTabIndex, */
             onTabSelected: function (index) { return _this.OnTabSelected(index); }
-        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute));
+        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PositionTypes.Absolute));
     };
     DatasetController.prototype.LoadView = function () {
-        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
+        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ApplicationModes.Desktop) {
             return this.LoadDesktopView();
         }
         else {
@@ -2290,17 +2225,107 @@ var DatasetController = /** @class */ (function (_super) {
         }
     };
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], DatasetController.prototype, "projectItem", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], DatasetController.prototype, "tabModels", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], DatasetController.prototype, "selectedTabIndex", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], DatasetController.prototype, "currentController", void 0);
     return DatasetController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts":
+/*!**********************************************************!*\
+  !*** ./src/Domains/Dataset/Models/MVIDatasetTabModel.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "topModels": () => (/* binding */ topModels)
+/* harmony export */ });
+/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
+/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
+/* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
+/* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
+/* harmony import */ var _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Filter/Controllers/FilterController */ "./src/Domains/Filter/Controllers/FilterController.ts");
+/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
+/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
+/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
+/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
+/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
+
+
+
+
+
+
+
+
+
+
+var topModels = [
+    {
+        icon: '\\f0b4',
+        name: 'Process Overview',
+        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__.ProcessOverviewController()
+    },
+    {
+        icon: '\\f0b3',
+        name: 'Dashboard',
+        controller: new _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_2__.ProcessDashboardController()
+    },
+    {
+        icon: '\\f0f8',
+        name: 'Discovery',
+        controller: new _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_3__.ProcessExplorerController()
+    },
+    {
+        icon: '\\f0a1',
+        name: 'Monitoring',
+        controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_6__.MonitoringController()
+    },
+    {
+        icon: '\\f0f2',
+        name: 'Statistics',
+        controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_8__.ProcessStatisticController()
+    },
+    {
+        icon: '\\f13b',
+        name: 'Variant Explorer',
+        controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__.VariantExplorerController()
+    },
+    {
+        icon: '\\f096',
+        name: 'Loops',
+        controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_5__.LoopsController()
+    },
+    {
+        icon: '\\f049',
+        name: 'Automation',
+        controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_0__.AutomationController()
+    },
+    {
+        icon: '\\f033',
+        name: 'Case Explorer',
+        controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_1__.CaseExplorerController()
+    },
+    {
+        icon: '\\f130',
+        name: 'Filter',
+        controller: new _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_4__.FilterController()
+    }
+];
 
 
 /***/ }),
@@ -3545,7 +3570,10 @@ __webpack_require__.r(__webpack_exports__);
 
 function HappyPathDiagram(items) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items, function (item, index) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0, null, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px'))))
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)(null)
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px'))))
             .height() // auto
             .marginTop('20px');
     })))
@@ -3715,7 +3743,7 @@ function MetricsSection(params) {
         // We prevent this stack to large more than its content
         .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel, index) {
         return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
-    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)({ id: 'myChart' })((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
+    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
         .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
         .fill('#FBCD4E55')
         .data(data))
@@ -3842,7 +3870,7 @@ function getMax(array) {
 }
 var sideMenu = [
     {
-        name: 'Process overview',
+        name: 'Overview',
         icon: '\\f0b6',
         controller: new _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__.OverviewController()
     },
@@ -4446,10 +4474,10 @@ function ListFooterButton(iconContent) {
 
 /***/ }),
 
-/***/ "./src/Domains/Statistics/Controllers/ActivityController.ts":
-/*!******************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/ActivityController.ts ***!
-  \******************************************************************/
+/***/ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts":
+/*!***************************************************************************!*\
+  !*** ./src/Domains/Statistics/Controllers/Activity/ActivityController.ts ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4459,10 +4487,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-/* harmony import */ var _Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Application/Views/PortalFilterBarWidget */ "./src/Domains/Application/Views/PortalFilterBarWidget.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+/* harmony import */ var _Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Application/Views/PortalFilterBarWidget */ "./src/Domains/Application/Views/PortalFilterBarWidget.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4564,10 +4592,89 @@ var ActivityController = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/Domains/Statistics/Controllers/OverviewController.ts":
-/*!******************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/OverviewController.ts ***!
-  \******************************************************************/
+/***/ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts":
+/*!********************************************************************************!*\
+  !*** ./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MultiOverviewController": () => (/* binding */ MultiOverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _OverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OverviewController */ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ControllerList = /** @class */ (function (_super) {
+    __extends(ControllerList, _super);
+    function ControllerList(parentController) {
+        var _this = _super.call(this) || this;
+        _this.parentController = parentController;
+        return _this;
+    }
+    ControllerList.prototype.Add = function (item) {
+        _super.prototype.Add.call(this, item);
+        this.parentController.ForceUpdate();
+        return 1;
+    };
+    return ControllerList;
+}(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.List));
+var MultiOverviewController = /** @class */ (function (_super) {
+    __extends(MultiOverviewController, _super);
+    function MultiOverviewController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MultiOverviewController.prototype.InitController = function () {
+        this.controllerList = new ControllerList(this);
+        this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController());
+    };
+    MultiOverviewController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f078').size(20).foregroundColor({ default: 'rgb(51,51,51, 70%)', hover: 'rgb(51,51,51, 90%)' })).action(function () { return _this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController()); })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.controllerList)(function (item) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(item);
+        }))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], MultiOverviewController.prototype, "controllerList", void 0);
+    return MultiOverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts":
+/*!***************************************************************************!*\
+  !*** ./src/Domains/Statistics/Controllers/Overview/OverviewController.ts ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4577,10 +4684,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
+/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _Views_CasesGrid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/CasesGrid */ "./src/Domains/Statistics/Views/CasesGrid.ts");
+/* harmony import */ var _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Views/EventsOverTimeChart */ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts");
+/* harmony import */ var _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Views/ActiveCasesOverTime */ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4607,40 +4716,122 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var overviewTypes = [
-    'Events over time',
-    'Active cases over time',
-    'Case variants',
-    'Events per case',
-    'Case duration',
-    'Case utilization',
-    'Mean activity duration',
-    'Mean waiting time'
+
+
+
+var datas = [
+    [
+        { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+        { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+        { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+        { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+        { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+        { x: 'Nov', y: 422.8 }
+    ],
+    [
+        { x: new Date(2021, 1, 1), y: 252.2 }, { x: new Date(2021, 2, 1), y: 243.4 },
+        { x: new Date(2021, 3, 1), y: 142.8 }, { x: new Date(2021, 4, 1), y: 331.6 },
+        { x: new Date(2021, 5, 1), y: 262.3 }, { x: new Date(2021, 6, 1), y: 142.5 },
+        { x: new Date(2021, 7, 1), y: 142.9 }, { x: new Date(2021, 8, 1), y: 145.8 },
+        { x: new Date(2021, 9, 1), y: 251.4 }, { x: new Date(2021, 10, 1), y: 143.1 }
+    ]
 ];
-var staticticInfos = [
+var overviewTypes = [
     {
-        title: 'start time',
-        value: '19.09.2012'
+        title: 'Events over time',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     },
     {
-        title: 'end time',
-        value: '19.09.2013'
+        title: 'Active cases over time',
+        builder: _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_6__.ActiveCasesOverTime,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     },
     {
-        title: 'cases',
-        value: '968'
+        title: 'Case variants',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     },
     {
-        title: 'variants',
-        value: '79'
+        title: 'Events per case',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     },
     {
-        title: 'process step types',
-        value: '12'
+        title: 'Case duration',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     },
     {
-        title: 'total process steps',
-        value: '7416'
+        title: 'Case utilization',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Mean activity duration',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Mean waiting time',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
     }
 ];
 function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
@@ -4663,30 +4854,12 @@ var OverviewController = /** @class */ (function (_super) {
     }
     OverviewController.prototype.InitController = function () {
         this.selectedIndex = 0;
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_1__.EventsOverTimeChart();
-        var map = new Map();
-        // this.map = [];
-        for (var i = 0; i < 100; i++) {
-            map[i] = i;
-        }
-        var map1 = new Map();
-        // this.map = [];
-        for (var i = 0; i < 10; i++) {
-            map1[i] = i;
-        }
-        /*  this.chart.SetChartData(map);
-         foreach(metrics, item => item.chart.SetChartData(map1)) */
     };
     OverviewController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
-            // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
-            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
-        })).height(), 
-        //MetricSelectionButtons(overviewTypes, this.selectedIndex, (index) => this.selectedIndex = index).visible(true),
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
         // Chart
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex])
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex].title)
             .fontSize('30px')
             .cursor('pointer')
             .border('dashed 1px var(--sub-border-color)')
@@ -4694,7 +4867,7 @@ var OverviewController = /** @class */ (function (_super) {
             .onClick(function () { return _this.showMenu = true; }))
             .padding()
             .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title))
                 .action(function () { return _this.selectedIndex = index; })
                 .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
                 .width(180)
@@ -4702,25 +4875,23 @@ var OverviewController = /** @class */ (function (_super) {
                 .border('solid 1px #ccc')
                 .padding()
                 .cornerRadius(12);
-        })).width(250).padding(10), this.chart))
+        })).width(250).padding(10).visible(false), 
+        // Chart here
+        overviewTypes[this.selectedIndex].builder(overviewTypes[this.selectedIndex].data)))
             .visible(true)
             .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
                 .padding(10)
                 .onClick(function () { _this.selectedIndex = index; _this.showMenu = false; });
         })))
-            .height(400)
             .overflow('hidden')
             .backgroundColor('white')
-            .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_4__.ListBounceAnimation, '.3s')
-            .visible(this.showMenu)))));
+            .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__.ListBounceAnimation, '.3s')
+            .visible(this.showMenu))
+            .minHeight('350px'), 
+        // Grid
+        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing, spacing: -2 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Cases (31)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('5px 0 0 5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Variants (8)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('0 5px 5px 0')), (0,_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_4__.CasesGrid)())))));
     };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "chart", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "chart1", void 0);
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], OverviewController.prototype, "selectedIndex", void 0);
@@ -4748,8 +4919,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _ActivityController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ActivityController */ "./src/Domains/Statistics/Controllers/ActivityController.ts");
-/* harmony import */ var _OverviewController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./OverviewController */ "./src/Domains/Statistics/Controllers/OverviewController.ts");
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Models/SideMenu */ "./src/Domains/Statistics/Models/SideMenu.ts");
+/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts");
+/* harmony import */ var _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview/MultiOverviewController */ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4775,31 +4948,360 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-var controllers = [new _OverviewController__WEBPACK_IMPORTED_MODULE_3__.OverviewController, new _ActivityController__WEBPACK_IMPORTED_MODULE_2__.ActivityController];
+
+
+var controllers = [new _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__.MultiOverviewController, new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__.ActivityController];
 var ProcessStatisticController = /** @class */ (function (_super) {
     __extends(ProcessStatisticController, _super);
     function ProcessStatisticController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ProcessStatisticController.prototype.InitController = function () {
+        this.selectedIndex = 0;
         this.currentController = controllers[0];
+    };
+    ProcessStatisticController.prototype.OnControllerChanged = function (index) {
+        this.selectedIndex = index;
+        this.currentController = _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[index].controller;
     };
     ProcessStatisticController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0f2', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
-                .action(function () { return _this.currentController = controllers[index]; })
-                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px').visible(false);
-        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
+            items: _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel,
+            selectedAction: function (index) { return _this.OnControllerChanged(index); },
+            second: true
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].icon, _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].name + ' statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel)(function (item, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
+                .action(function () { return _this.OnControllerChanged(index); })
+                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
+                .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop);
+        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], ProcessStatisticController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProcessStatisticController.prototype, "selectedIndex", void 0);
     return ProcessStatisticController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/Domains/Statistics/Models/SideMenu.ts":
+/*!***************************************************!*\
+  !*** ./src/Domains/Statistics/Models/SideMenu.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sideMenuModel": () => (/* binding */ sideMenuModel)
+/* harmony export */ });
+/* harmony import */ var _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Controllers/Activity/ActivityController */ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts");
+/* harmony import */ var _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Controllers/Overview/MultiOverviewController */ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts");
+/* harmony import */ var _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Controllers/Overview/OverviewController */ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts");
+
+
+
+var sideMenuModel = [
+    {
+        name: 'Overview',
+        icon: '\\f0d8',
+        controller: new _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__.MultiOverviewController()
+    },
+    {
+        name: 'Activity',
+        icon: '\\f0e7',
+        controller: new _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__.ActivityController()
+    },
+    {
+        name: 'Resource',
+        icon: '\\f006',
+        controller: new _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__.OverviewController()
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts":
+/*!*************************************************************!*\
+  !*** ./src/Domains/Statistics/Views/ActiveCasesOverTime.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActiveCasesOverTime": () => (/* binding */ ActiveCasesOverTime)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function ActiveCasesOverTime(data) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.BarSerie)().xName('x').yName('y')
+        .columnWidth(0.5)
+        .fill('#FFD062')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'Category',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent'));
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/Statistics/Views/CasesGrid.ts":
+/*!***************************************************!*\
+  !*** ./src/Domains/Statistics/Views/CasesGrid.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CasesGrid": () => (/* binding */ CasesGrid)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+
+
+
+var columns = [
+    {
+        key: 'caseId',
+        title: 'Case ID',
+        width: 120
+    },
+    {
+        key: 'events',
+        title: 'Events',
+        width: 120,
+        builder: function (row) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['events']).marginRight('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width('100%').height(15).background('#7A9BCD'));
+        }
+    },
+    {
+        key: 'variant',
+        title: 'Variant',
+        width: 20
+    },
+    {
+        key: 'started',
+        title: 'Started',
+        width: 20
+    },
+    {
+        key: 'finished',
+        title: 'Finished',
+        width: 20
+    },
+    {
+        key: 'duration',
+        title: 'Duration',
+        width: 30,
+        builder: function (row) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['duration']).marginRight('10px').whiteSpace('nowrap'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width('100%').height(15).background('#7A9BCD'));
+        }
+    }
+];
+var data = [
+    {
+        caseId: '1000-2645004',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    }
+];
+function GridHeader(columnInfo) {
+    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(columnInfo)(function (cInfo) {
+        return (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(cInfo.title)
+            .fontSize('12px')
+            .fontWeight('500')
+            .textTransform('uppercase')
+            .whiteSpace('nowrap')
+            .width(width + '%')
+            .textOverflow('ellipsis')
+            .padding('0 10px')
+            .borderRight('2px solid transparent');
+    })).height(40).borderBottom('2px solid #e4e4e4'));
+}
+function GridRow(columnInfo, row) {
+    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
+    debugger;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(columnInfo)(function (cInfo) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(cInfo.builder) ? cInfo.builder(row) :
+            (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row[cInfo.key])
+                .width('100%')
+                .whiteSpace('nowrap')
+                .textOverflow('ellipsis')).borderTop('1px solid #e4e4e4').padding('5px 10px').width(width + '%');
+    })).height());
+}
+function CasesGrid() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([GridHeader(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(data)((function (row) {
+        return GridRow(columns, row);
+    })))));
+}
+
+
+/***/ }),
+
+/***/ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts":
+/*!*************************************************************!*\
+  !*** ./src/Domains/Statistics/Views/EventsOverTimeChart.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EventsOverViewChart": () => (/* binding */ EventsOverViewChart)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function EventsOverViewChart(data) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y')
+        .columnWidth(0.5)
+        .fill('#FFD062')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'Category',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent'));
+}
 
 
 /***/ }),
@@ -8284,11 +8786,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function TileBox() {
-    var views = [];
+    var content = [];
     for (var _i = 0; _i < arguments.length; _i++) {
-        views[_i] = arguments[_i];
+        content[_i] = arguments[_i];
     }
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, views).backgroundColor('rgb(255,255,255,60%)')
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, content).padding(10)
+        .backgroundColor('rgb(255,255,255,60%)')
         .cornerRadius('12px')
         .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
         .tabIndex(0)).padding(2));
@@ -8340,7 +8843,7 @@ function TileBoxValueCaption(value) {
     }
 }
 function MetricBoxValueText(value) {
-    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline4)(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'));
+    return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline4)(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5').whiteSpace('nowrap'));
 }
 function CalculationMethodText(value) {
     return ((0,_Texts__WEBPACK_IMPORTED_MODULE_1__.Headline5)(value).fontFamily('Proxima Nova, sans serif').foregroundColor('#AAA'));

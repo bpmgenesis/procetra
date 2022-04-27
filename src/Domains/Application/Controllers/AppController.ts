@@ -97,7 +97,10 @@ export class AppController extends UIController {
     public override LoadView(): UIView {
         if (TApplication.IsDesktop) {
             return (
-                  If(this.currentProject == null, this.MainPage(), this.controller) as any
+                If(this.currentProject == null)
+                    (this.MainPage())
+                    .else
+                    (this.controller as any)
             )
         } else if (TApplication.IsPortal) {
             return this.LoadPortalView();

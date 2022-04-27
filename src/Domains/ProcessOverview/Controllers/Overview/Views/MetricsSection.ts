@@ -39,7 +39,7 @@ export function MetricsSection(params: MVIMetricSection): UIView {
                 VStack({ alignment: cTopLeading })(
                     TileBoxHeaderText('Daily cases per month').marginBottom('10px'),
                     VStack(
-                        ChartView({ id: 'myChart' })(
+                        ChartView()(
                             AreaSerie().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
                                 .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
                                 .fill('#FBCD4E55')

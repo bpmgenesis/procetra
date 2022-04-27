@@ -1,46 +1,71 @@
+import { int } from '@tuval/core';
 import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication, _ForEach, cVertical, cLeading, cTopLeading } from '@tuval/forms';
 import { PageTitle } from '../../../UI/Views/PageHeader';
-import { ActivityController } from './ActivityController';
-import { OverviewController } from './OverviewController';
+import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
+import { sideMenuModel } from '../Models/SideMenu';
+import { ActivityController } from './Activity/ActivityController';
+import { MultiOverviewController } from './Overview/MultiOverviewController';
+import { OverviewController } from './Overview/OverviewController';
 
 
-const controllers = [new OverviewController, new ActivityController]
+const controllers = [new MultiOverviewController, new ActivityController]
 
 export class ProcessStatisticController extends UIController {
 
     @State()
     private currentController: UIController;
+
+    @State()
+    private selectedIndex: int;
     protected InitController(): void {
+        this.selectedIndex = 0;
         this.currentController = controllers[0];
+    }
+
+    private OnControllerChanged(index: int) {
+        this.selectedIndex = index;
+        this.currentController = sideMenuModel[index].controller;
+
     }
 
     public LoadView(): UIView {
         return (
             UIScene(
-                VStack({ alignment: cTopLeading, spacing: 10 })(
-                    HStack({ alignment: cLeading, spacing: 10 })(
-                        PageTitle('\\f0f2', 'Process monitoring'),
-                        Spacer(),
-                        HStack({ spacing: 5 })(
-                            ..._ForEach(['Overview', 'Throughput times', 'Activities'])((name, index) =>
-                                UIButton(
-                                    Text(name)
+                HStack({ alignment: cTopLeading })(
+                    PortalSideMenu(
+                        {
+                            items: sideMenuModel,
+                            selectedAction: (index) => this.OnControllerChanged(index),
+                            second: true
+                        }
+                    ),
+                    VStack({ alignment: cTopLeading, spacing: 10 })(
+                        HStack({ alignment: cLeading, spacing: 10 })(
+                            PageTitle(sideMenuModel[this.selectedIndex].icon, sideMenuModel[this.selectedIndex].name + ' statistics'),
+                            Spacer(),
+                            HStack({ spacing: 5 })(
+                                ..._ForEach(sideMenuModel)((item, index) =>
+                                    UIButton(
+                                        Icon(item.icon).size(14).foregroundColor('gray').marginRight('5px'),
+                                        Text(item.name)
+                                    )
+                                        .action(() => this.OnControllerChanged(index))
+                                        .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
+                                        .visible(TApplication.IsDesktop)
                                 )
-                                    .action(() => this.currentController = controllers[index])
-                                    .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px').visible(false)
-                            )
-                        ).width()
-                    ).height(),
-                    HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
-                    ScrollView({ axes: cVertical })(
-                        this.currentController as any
-                    )
+                            ).width()
+                        ).height(),
+                        HDivider().height(1).backgroundColor('rgb(120,120,120,20%)'),
+                        ScrollView({ axes: cVertical })(
+                            this.currentController as any,
+                        )
 
 
-                ).padding('10px')
+                    ).padding('10px')
+                )
+                    .background(TApplication.IsPortal ? '#f1f1f1' : '')
+                    .alignment(Alignment.topLeading)
             )
-                .background(TApplication.IsPortal ? '#f1f1f1' : '')
-                .alignment(Alignment.topLeading)
         )
     }
 }

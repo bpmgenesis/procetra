@@ -60,12 +60,9 @@ export class ProcessDashboardController extends UIController {
     public LoadView(): UIView {
         return (
             UIScene(
-                UIButton(
-                    Text('Test')
-                ).action(() => this.test = 10),
                 VStack({ alignment: cTopLeading, spacing: 10 })(
                     HStack({ alignment: cTopLeading, spacing: 10 })(
-                        PageTitle('\\f0b3', this.test.toString()),
+                        PageTitle('\\f0b3', 'Dashboard'),
                         Spacer(),
                         HStack({ spacing: 5 })(
                             ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>

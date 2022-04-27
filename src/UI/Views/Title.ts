@@ -35,7 +35,7 @@ export function TileBoxValueCaption(value: string): UIView {
 
 export function MetricBoxValueText(value: string): UIView {
     return (
-        Headline4(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5')
+        Headline4(value).fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5').whiteSpace('nowrap')
     )
 }
 

@@ -37,7 +37,7 @@ function getMax(array: any[]) {
 
 const sideMenu: MVIPortalSideMenuItem[] = [
     {
-        name: 'Process overview',
+        name: 'Overview',
         icon: '\\f0b6',
         controller: new OverviewController()
     },

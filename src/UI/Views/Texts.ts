@@ -1,4 +1,4 @@
-import { UIView, Text } from '@tuval/forms';
+import { UIView, Text, UITextClass } from '@tuval/forms';
 
 
 export function Headline1(value: string): UIView {
@@ -18,7 +18,7 @@ export function Headline3(value: string): UIView {
         Text(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').fontSize('48.9231px').kerning('0px')
     )
 }
-export function Headline4(value: string): UIView {
+export function Headline4(value: string): UITextClass {
     return (
         Text(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').fontSize('34.6538px').kerning('0.25px')
     )
@@ -80,7 +80,7 @@ export function Overline(value: string): UIView {
 
 
 
-export function RegularText(value: string): UIView {
+export function RegularText(value: string): UITextClass {
     return (
         Text(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('14px').lineHeight('1.42857').foregroundColor('#333')
     )
