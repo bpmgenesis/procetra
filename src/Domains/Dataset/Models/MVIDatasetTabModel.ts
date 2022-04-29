@@ -18,6 +18,11 @@ export interface MVIDatasetTabModel {
 
 export const topModels:MVIDatasetTabModel[] = [
     {
+        icon: '\\efc2',
+        name: 'New Analyse',
+        controller: new ProcessOverviewController()
+    },
+    {
         icon: '\\f0b4',
         name: 'Process Overview',
         controller: new ProcessOverviewController()

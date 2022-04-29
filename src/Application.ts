@@ -2,7 +2,7 @@ import { instance as container, TStorage, TuvalStorage } from '@tuval/core';
 import { TApplication } from '@tuval/forms';
 import { MiningBrokerClient } from './BrokerClients/MiningBrokerClient';
 
-import { BrokerProjectService } from './BrokerProjectService';
+import { BrokerProjectService } from './Services/BrokerProjectService';
 import { MainView } from './MainView';
 import { Resources } from './Resources';
 import { StateService } from './Services/StateService';

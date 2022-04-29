@@ -1,12 +1,13 @@
-import { MIProject } from './Domains/Project/Models/ProjectModel';
-import { IActivityInfo } from "./Bussiness/IActivityInfo";
-import { IDataSet } from "./Bussiness/IDataSet";
-import { IProject } from "./Bussiness/IProject";
-import { Project } from "./Bussiness/Project";
-import { IProjectService } from "./Services/IProjectService";
-import { StateService } from "./Services/StateService";
-import { MiningBrokerClient, ICreateProjectResponse } from './BrokerClients/MiningBrokerClient';
-import { MIProjectItem } from './Domains/Project/Models/MIProjectItem';
+import { MIProject } from '../Domains/Project/Models/ProjectModel';
+import { IActivityInfo } from "../Bussiness/IActivityInfo";
+import { IDataSet } from "../Bussiness/IDataSet";
+import { IProject } from "../Bussiness/IProject";
+import { Project } from "../Bussiness/Project";
+import { IProjectService } from "./IProjectService";
+import { StateService } from "./StateService";
+import { MiningBrokerClient, ICreateProjectResponse } from '../BrokerClients/MiningBrokerClient';
+import { MIProjectItem } from '../Domains/Project/Models/MIProjectItem';
+import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
 
 export class BrokerProjectService implements IProjectService {
     public CreateProject(name: string): Promise<IProject> {
@@ -39,16 +40,16 @@ export class BrokerProjectService implements IProjectService {
             resolve(datasetObject as any);
         });
     }
-    DataSetFromXes(projectId: string, datasetName: string, xes: string):Promise<any> {
+    DataSetFromXes(projectId: string, datasetName: string, xes: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    CloneDataSet(projectId: string, datasetName: string) :Promise<any>{
+    CloneDataSet(projectId: string, datasetName: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetDatasetById(projectId: string, id: string):Promise<any> {
+    GetDatasetById(projectId: string, id: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    SaveProject(projectId: string):Promise<any> {
+    SaveProject(projectId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
     GetProjectListFromStorage(): Promise<string[]> {
@@ -67,22 +68,22 @@ export class BrokerProjectService implements IProjectService {
         });
 
     }
-    GetDatasetAsData(projectId: string, datasetId: string):Promise<any> {
+    GetDatasetAsData(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetDatasetEventCount(projectId: string, datasetId: string):Promise<any> {
+    GetDatasetEventCount(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    CasesStartedPerDay(projectId: string, datasetId: string):Promise<any> {
+    CasesStartedPerDay(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    ActivitiesStartedPerDay(projectId: string, datasetId: string):Promise<any> {
+    ActivitiesStartedPerDay(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    ActivitiesPerCase(projectId: string, datasetId: string):Promise<any> {
+    ActivitiesPerCase(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetVariantsInfo(projectId: string, datasetId: string):Promise<any> {
+    GetVariantsInfo(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
     GetEventsOverTime(projectId: string, datasetId: string): Promise<any> {
@@ -91,46 +92,46 @@ export class BrokerProjectService implements IProjectService {
 
         });
     }
-    GetStartEvents(projectId: string, datasetId: string):Promise<any> {
+    GetStartEvents(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetEndEvents(projectId: string, datasetId: string):Promise<any> {
+    GetEndEvents(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetTraceCount(projectId: string, datasetId: string):Promise<any> {
+    GetTraceCount(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetEventCount(projectId: string, datasetId: string) :Promise<any>{
+    GetEventCount(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetActivities(projectId: string, datasetId: string):Promise<any> {
+    GetActivities(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetMedianCaseDuration(projectId: string, datasetId: string) :Promise<any>{
+    GetMedianCaseDuration(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetMeanCaseDuration(projectId: string, datasetId: string):Promise<any> {
+    GetMeanCaseDuration(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetDatasetName(projectId: string, datasetId: string):Promise<any> {
+    GetDatasetName(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    SetActivityInfo(projectId: string, datasetId: string, activityInfos: IActivityInfo[]):Promise<any> {
+    SetActivityInfo(projectId: string, datasetId: string, activityInfos: IActivityInfo[]): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetActivityInfo(projectId: string, datasetId: string):Promise<any> {
+    GetActivityInfo(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetAverageCostOfDataset(projectId: string, datasetId: string):Promise<any> {
+    GetAverageCostOfDataset(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    GetTotalCostOfDataset(projectId: string, datasetId: string):Promise<any> {
+    GetTotalCostOfDataset(projectId: string, datasetId: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
     SetDatasetFilteredData(projectId: string, datasetId: string, filteredData: any[]): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    SetDatasetCondition(projectId: string, datasetId: string, condition: string):Promise<any> {
+    SetDatasetCondition(projectId: string, datasetId: string, condition: string): Promise<any> {
         throw new Error("Method not implemented.");
     }
 
@@ -141,7 +142,7 @@ export class BrokerProjectService implements IProjectService {
 
     public GetProjectItems(session_id: string, org_name: string, project_id: string): Promise<MIProjectItem[]> {
         //return MiningBrokerClient.GetProjectItems(session_id, org_name, project_id);
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             resolve(
                 [
                     {
@@ -161,6 +162,15 @@ export class BrokerProjectService implements IProjectService {
 
     public GetProjectById(session_id: string, org_name: string, project_id: string): Promise<any> {
         return MiningBrokerClient.GetProjectById(session_id, org_name, project_id);
+    }
+    //#endregion
+
+    //#region Analyse Models
+    public CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIAnalyseModel> {
+        return MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
+    }
+    public GetAnalyseModels(session_id: string, org_name: string, project_id: string,): Promise<MIAnalyseModel[]> {
+        return MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
     }
     //#endregion
 

@@ -755,7 +755,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
-/* harmony import */ var _BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BrokerProjectService */ "./src/BrokerProjectService.ts");
+/* harmony import */ var _Services_BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Services/BrokerProjectService */ "./src/Services/BrokerProjectService.ts");
 /* harmony import */ var _MainView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MainView */ "./src/MainView.ts");
 /* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Resources */ "./src/Resources.ts");
 /* harmony import */ var _Services_StateService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Services/StateService */ "./src/Services/StateService.ts");
@@ -815,7 +815,7 @@ var ProcessMining = /** @class */ (function (_super) {
         //container.registerInstance('IProjectService', new LocalProjectService());
         _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_2__.MiningBrokerClient.Login('admin', 'admin').then(function (session_id) {
             _Services_StateService__WEBPACK_IMPORTED_MODULE_6__.StateService.SetSessionId(session_id);
-            var brokerProjectService = new _BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__.BrokerProjectService();
+            var brokerProjectService = new _Services_BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__.BrokerProjectService();
             _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.registerInstance('IProjectService_Thread', brokerProjectService);
             var fileExprorer = new _MainView__WEBPACK_IMPORTED_MODULE_4__.MainView();
             _this.SetMainForm(fileExprorer);
@@ -1219,6 +1219,40 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
+    //#region Anayse Models
+    MiningBrokerClient.CreateAnalyseModel = function (session_id, org_name, project_id, analyse_model_name) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('session_id', session_id);
+                        form.append('org_name', org_name);
+                        form.append('project_id', project_id);
+                        form.append('analyse_model_name', analyse_model_name);
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateAnalyseModel', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
+    MiningBrokerClient.GetAnalyseModels = function (session_id, org_name, project_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var form = new FormData();
+                        form.append('session_id', session_id);
+                        form.append('org_name', org_name);
+                        form.append('project_id', project_id);
+                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAnalyseModels', form)
+                            .then(function (response) {
+                            resolve(response.data);
+                        });
+                    })];
+            });
+        });
+    };
     return MiningBrokerClient;
 }());
 
@@ -1252,169 +1286,168 @@ var SymbolBroker = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/BrokerProjectService.ts":
-/*!*************************************!*\
-  !*** ./src/BrokerProjectService.ts ***!
-  \*************************************/
+/***/ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts":
+/*!**************************************************************************!*\
+  !*** ./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BrokerProjectService": () => (/* binding */ BrokerProjectService)
+/* harmony export */   "AnalyseModelsController": () => (/* binding */ AnalyseModelsController)
 /* harmony export */ });
-/* harmony import */ var _Services_StateService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Services/StateService */ "./src/Services/StateService.ts");
-/* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/HeadLineButton */ "./src/UI/Views/HeadLineButton.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/AnalyseModelTileBox */ "./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/UIServices/AnalyseModelUIService */ "./src/UI/UIServices/AnalyseModelUIService.ts");
+/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 
 
-var BrokerProjectService = /** @class */ (function () {
-    function BrokerProjectService() {
+
+
+
+
+
+var AnalyseModelsController = /** @class */ (function (_super) {
+    __extends(AnalyseModelsController, _super);
+    function AnalyseModelsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    BrokerProjectService.prototype.CreateProject = function (name) {
-        return new Promise(function (resolve, reject) {
-            var session_id = _Services_StateService__WEBPACK_IMPORTED_MODULE_0__.StateService.GetSessionId();
-            if (session_id == null) {
-                throw 'Invalid session.';
+    AnalyseModelsController.prototype.InitController = function () {
+        this.AnalyseModelSelected = new _tuval_core__WEBPACK_IMPORTED_MODULE_4__.Event();
+        this.menuItems = [
+            {
+                icon: '\\f0a0',
+                title: 'Rename',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\f07c',
+                title: 'Permissions',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\f122',
+                title: 'Duplicate',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\f0b2',
+                title: 'Tags',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\f071',
+                title: 'Move To',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\f07e',
+                title: 'Delete',
+                onClick: function (item) { return console.log(item); }
             }
-            _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name).then(function (project) {
-                resolve({
-                    Id: project.project_id,
-                    Name: project.project_name
-                });
+        ];
+    };
+    AnalyseModelsController.prototype.OnBindModel = function (project) {
+        var _this = this;
+        debugger;
+        this.project = project;
+        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
+        _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then(function (analyseModels) {
+            _this.model = analyseModels;
+        });
+    };
+    AnalyseModelsController.prototype.OnAddEditAnalyseModelName = function () {
+        var _this = this;
+        _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__.AnalyseModelUIService.AddEditAnalyseModelName().then(function (name) {
+            // Adding to our project
+            var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
+            _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', _this.project.project_id, name).then(function (analyseModelInfo) {
+                debugger;
+                var models = Array.from(_this.model); // for immutable array
+                models.push({ name: analyseModelInfo.name });
+                _this.model = models; // updating state
+                //this.ForceUpdate();
             });
         });
     };
-    BrokerProjectService.prototype.AddDataSet = function (dataset) {
-        throw new Error("Method not implemented.");
+    AnalyseModelsController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.Headline5)('Ticket Management').marginVertical(10)).height(), //auto height
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
+        ).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.model)(function (item) {
+            return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems);
+        } /* .onClick(() => this.AnalyseModelSelected(item)) */)).width().height().padding(10).wrap('wrap'))));
     };
-    BrokerProjectService.prototype.DataSetFromCvs = function (projectId, datasetId, datasetName, csv, case_column, activity_column, time_stamp, start_date, date_format) {
-        return new Promise(function (resolve, reject) {
-            var datasetObject = {
-                ProjectId: projectId,
-                Id: datasetId
-            };
-            resolve(datasetObject);
-        });
-    };
-    BrokerProjectService.prototype.DataSetFromXes = function (projectId, datasetName, xes) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CloneDataSet = function (projectId, datasetName) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetById = function (projectId, id) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SaveProject = function (projectId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetProjectListFromStorage = function () {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.LoadProject = function (name) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CloseProject = function (id) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ConvertCsvToJson = function (csv) {
-        return new Promise(function (resolve, reject) {
-            /* const data = CvsToJson.Convert(csv, { parseNumbers: true }); */
-            return resolve(null);
-        });
-    };
-    BrokerProjectService.prototype.GetDatasetAsData = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetEventCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CasesStartedPerDay = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ActivitiesStartedPerDay = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ActivitiesPerCase = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetVariantsInfo = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEventsOverTime = function (projectId, datasetId) {
-        debugger;
-        return new Promise(function (resolve, reject) {
-        });
-    };
-    BrokerProjectService.prototype.GetStartEvents = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEndEvents = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetTraceCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEventCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetActivities = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetMedianCaseDuration = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetMeanCaseDuration = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetName = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetActivityInfo = function (projectId, datasetId, activityInfos) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetActivityInfo = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetAverageCostOfDataset = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetTotalCostOfDataset = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetDatasetFilteredData = function (projectId, datasetId, filteredData) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetDatasetCondition = function (projectId, datasetId, condition) {
-        throw new Error("Method not implemented.");
-    };
-    //#region Project Methods
-    BrokerProjectService.prototype.GetProjects = function (session_id, org_name) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetProjects(session_id, org_name);
-    };
-    BrokerProjectService.prototype.GetProjectItems = function (session_id, org_name, project_id) {
-        //return MiningBrokerClient.GetProjectItems(session_id, org_name, project_id);
-        return new Promise(function (resolve, reject) {
-            resolve([
-                {
-                    project_item_id: '1',
-                    name: 'Test Dataset 2',
-                    type: 'Dataset'
-                },
-                {
-                    project_item_id: '2',
-                    name: 'İnsan kaynakları',
-                    type: 'Dashboard'
-                }
-            ]);
-        });
-    };
-    BrokerProjectService.prototype.GetProjectById = function (session_id, org_name, project_id) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetProjectById(session_id, org_name, project_id);
-    };
-    return BrokerProjectService;
-}());
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "project", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "model", void 0);
+    return AnalyseModelsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
+
+
+/***/ }),
+
+/***/ "./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts":
+/*!****************************************************************!*\
+  !*** ./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AnalyseModelTileBox": () => (/* binding */ AnalyseModelTileBox)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+
+
+function AnalyseModelTileBox(params, menuItems) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f2').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(menuItems)(function (item) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title)).onClick(function () { return item.onClick(params); });
+    }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f09e').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width('100%').height().padding(15)))
+        .margin('10px')
+        .cornerRadius(5)
+        .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
+        .minWidth('250px')
+        .minHeight('130px')
+        .maxWidth('250px')
+        .maxHeight('130px')
+        .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.3))
+        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }));
+}
 
 
 /***/ }),
@@ -1441,6 +1474,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/Domains/Application/Views/MenuButton.ts");
 /* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/Domains/Application/Views/PortalFilterBarView.ts");
 /* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
+/* harmony import */ var _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../AnalyseModels/Controllers/AnalyseModelsController */ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1462,6 +1496,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1495,14 +1530,14 @@ var AppController = /** @class */ (function (_super) {
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading)
             .minHeight('50px')
             .maxHeight('50px')
-            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.controller).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
+            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.currentController).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
             .backgroundColor('white')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
     };
     AppController.prototype.LoadView = function () {
         if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
-                .else(this.controller));
+                .else(this.currentController));
         }
         else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal) {
             return this.LoadPortalView();
@@ -1515,7 +1550,13 @@ var AppController = /** @class */ (function (_super) {
         var _this = this;
         _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.OpenProjectDialog().then(function (project) {
             _this.currentProject = project;
-            _this.controller = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__.ProjectController)(_this, project);
+            // this.controller = ProjectController(this, project);
+            var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_9__.AnalyseModelsController();
+            controller.Bind(project);
+            controller.AnalyseModelSelected.add(function (item) {
+                _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__.ProjectController)(_this, project);
+            });
+            _this.currentController = controller;
         });
     };
     AppController.prototype.CLoseProject = function () {
@@ -1555,6 +1596,9 @@ var AppController = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "currentProject", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "currentController", void 0);
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "recentFiles", void 0);
@@ -2275,6 +2319,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var topModels = [
+    {
+        icon: '\\efc2',
+        name: 'New Analyse',
+        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__.ProcessOverviewController()
+    },
     {
         icon: '\\f0b4',
         name: 'Process Overview',
@@ -3212,6 +3261,36 @@ var ActivityController = /** @class */ (function (_super) {
     };
     return ActivityController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts":
+/*!**********************************************************************!*\
+  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Bindable": () => (/* binding */ Bindable)
+/* harmony export */ });
+var Bindable = /** @class */ (function () {
+    function Bindable(initValue, controller) {
+        this.value = initValue;
+        this.controller = controller;
+    }
+    Bindable.prototype.get = function () {
+        return this.value;
+    };
+    Bindable.prototype.set = function (value) {
+        this.value = value;
+        this.controller.ForceUpdate();
+    };
+    return Bindable;
+}());
 
 
 
@@ -5561,6 +5640,181 @@ var Resources = {
 
 /***/ }),
 
+/***/ "./src/Services/BrokerProjectService.ts":
+/*!**********************************************!*\
+  !*** ./src/Services/BrokerProjectService.ts ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BrokerProjectService": () => (/* binding */ BrokerProjectService)
+/* harmony export */ });
+/* harmony import */ var _StateService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StateService */ "./src/Services/StateService.ts");
+/* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
+
+
+var BrokerProjectService = /** @class */ (function () {
+    function BrokerProjectService() {
+    }
+    BrokerProjectService.prototype.CreateProject = function (name) {
+        return new Promise(function (resolve, reject) {
+            var session_id = _StateService__WEBPACK_IMPORTED_MODULE_0__.StateService.GetSessionId();
+            if (session_id == null) {
+                throw 'Invalid session.';
+            }
+            _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name).then(function (project) {
+                resolve({
+                    Id: project.project_id,
+                    Name: project.project_name
+                });
+            });
+        });
+    };
+    BrokerProjectService.prototype.AddDataSet = function (dataset) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.DataSetFromCvs = function (projectId, datasetId, datasetName, csv, case_column, activity_column, time_stamp, start_date, date_format) {
+        return new Promise(function (resolve, reject) {
+            var datasetObject = {
+                ProjectId: projectId,
+                Id: datasetId
+            };
+            resolve(datasetObject);
+        });
+    };
+    BrokerProjectService.prototype.DataSetFromXes = function (projectId, datasetName, xes) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.CloneDataSet = function (projectId, datasetName) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetDatasetById = function (projectId, id) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.SaveProject = function (projectId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetProjectListFromStorage = function () {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.LoadProject = function (name) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.CloseProject = function (id) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.ConvertCsvToJson = function (csv) {
+        return new Promise(function (resolve, reject) {
+            /* const data = CvsToJson.Convert(csv, { parseNumbers: true }); */
+            return resolve(null);
+        });
+    };
+    BrokerProjectService.prototype.GetDatasetAsData = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetDatasetEventCount = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.CasesStartedPerDay = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.ActivitiesStartedPerDay = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.ActivitiesPerCase = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetVariantsInfo = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetEventsOverTime = function (projectId, datasetId) {
+        debugger;
+        return new Promise(function (resolve, reject) {
+        });
+    };
+    BrokerProjectService.prototype.GetStartEvents = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetEndEvents = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetTraceCount = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetEventCount = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetActivities = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetMedianCaseDuration = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetMeanCaseDuration = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetDatasetName = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.SetActivityInfo = function (projectId, datasetId, activityInfos) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetActivityInfo = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetAverageCostOfDataset = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.GetTotalCostOfDataset = function (projectId, datasetId) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.SetDatasetFilteredData = function (projectId, datasetId, filteredData) {
+        throw new Error("Method not implemented.");
+    };
+    BrokerProjectService.prototype.SetDatasetCondition = function (projectId, datasetId, condition) {
+        throw new Error("Method not implemented.");
+    };
+    //#region Project Methods
+    BrokerProjectService.prototype.GetProjects = function (session_id, org_name) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetProjects(session_id, org_name);
+    };
+    BrokerProjectService.prototype.GetProjectItems = function (session_id, org_name, project_id) {
+        //return MiningBrokerClient.GetProjectItems(session_id, org_name, project_id);
+        return new Promise(function (resolve, reject) {
+            resolve([
+                {
+                    project_item_id: '1',
+                    name: 'Test Dataset 2',
+                    type: 'Dataset'
+                },
+                {
+                    project_item_id: '2',
+                    name: 'İnsan kaynakları',
+                    type: 'Dashboard'
+                }
+            ]);
+        });
+    };
+    BrokerProjectService.prototype.GetProjectById = function (session_id, org_name, project_id) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetProjectById(session_id, org_name, project_id);
+    };
+    //#endregion
+    //#region Analyse Models
+    BrokerProjectService.prototype.CreateAnalyseModel = function (session_id, org_name, project_id, analyse_model_name) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
+    };
+    BrokerProjectService.prototype.GetAnalyseModels = function (session_id, org_name, project_id) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
+    };
+    return BrokerProjectService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/Services/ConfigService.ts":
 /*!***************************************!*\
   !*** ./src/Services/ConfigService.ts ***!
@@ -6558,6 +6812,85 @@ var EventsOverTimeChart = /** @class */ (function (_super) {
     return EventsOverTimeChart;
 }(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart));
 
+
+
+/***/ }),
+
+/***/ "./src/UI/Dialogs/AddEditAnalyseModelName/AddEditAnalyseModelNameController.ts":
+/*!*************************************************************************************!*\
+  !*** ./src/UI/Dialogs/AddEditAnalyseModelName/AddEditAnalyseModelNameController.ts ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AddEditAnalyseModelNameDialog": () => (/* binding */ AddEditAnalyseModelNameDialog)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Domains/ProcessOverview/Controllers/Overview/Bindable */ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts");
+/* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Views/Buttons */ "./src/UI/Views/Buttons.ts");
+/* harmony import */ var _Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Views/RegularTextBox */ "./src/UI/Views/RegularTextBox.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+var AddEditAnalyseModelNameDialog = /** @class */ (function (_super) {
+    __extends(AddEditAnalyseModelNameDialog, _super);
+    function AddEditAnalyseModelNameDialog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AddEditAnalyseModelNameDialog.prototype.InitComponents = function () {
+        this.Text = 'New Analyse Model';
+        this.Width = 600;
+        this.Height = 230;
+        this.openProjectDialogController = new AddEditAnalyseModelNameController();
+        this.openProjectDialogController.Bind(this);
+        this.Controls.Add(this.openProjectDialogController);
+    };
+    AddEditAnalyseModelNameDialog.prototype.OnShown = function () {
+    };
+    AddEditAnalyseModelNameDialog.prototype.OnOKClick = function (value) {
+        this.ShowDialogAsyncResolve(value);
+        this.Hide();
+    };
+    return AddEditAnalyseModelNameDialog;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialog));
+
+var AddEditAnalyseModelNameController = /** @class */ (function (_super) {
+    __extends(AddEditAnalyseModelNameController, _super);
+    function AddEditAnalyseModelNameController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AddEditAnalyseModelNameController.prototype.InitController = function () {
+        this.$txtName = new _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__.Bindable('', this);
+    };
+    AddEditAnalyseModelNameController.prototype.OnBindModel = function (dialog) {
+        this.dialog = dialog;
+    };
+    AddEditAnalyseModelNameController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('New Analyse Model').fontSize('24px').fontWeight('700').marginBottom('50px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_3__.RegularTextBox)({ value: this.$txtName })).height(), //auto
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.AcceptButton)('OK').action(function () { return _this.dialog.OnOKClick(_this.$txtName.get()); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.CancelButton)('Cancel')))).padding(10));
+    };
+    return AddEditAnalyseModelNameController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
 /***/ }),
@@ -8227,6 +8560,37 @@ var eBAProjectListControl = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "./src/UI/UIServices/AnalyseModelUIService.ts":
+/*!****************************************************!*\
+  !*** ./src/UI/UIServices/AnalyseModelUIService.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AnalyseModelUIService": () => (/* binding */ AnalyseModelUIService)
+/* harmony export */ });
+/* harmony import */ var _Dialogs_AddEditAnalyseModelName_AddEditAnalyseModelNameController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Dialogs/AddEditAnalyseModelName/AddEditAnalyseModelNameController */ "./src/UI/Dialogs/AddEditAnalyseModelName/AddEditAnalyseModelNameController.ts");
+
+var AnalyseModelUIService = /** @class */ (function () {
+    function AnalyseModelUIService() {
+    }
+    AnalyseModelUIService.AddEditAnalyseModelName = function () {
+        return new Promise(function (resolve, reject) {
+            var npd = new _Dialogs_AddEditAnalyseModelName_AddEditAnalyseModelNameController__WEBPACK_IMPORTED_MODULE_0__.AddEditAnalyseModelNameDialog();
+            npd.ShowDialogAsync().then(function (name) {
+                resolve(name);
+            });
+        });
+    };
+    return AnalyseModelUIService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/UI/UIServices/ProjectUIService.ts":
 /*!***********************************************!*\
   !*** ./src/UI/UIServices/ProjectUIService.ts ***!
@@ -8358,6 +8722,43 @@ function DefaultButton() {
         .width('90px')
         .margin('8px 10px 8px 0px')
         .cornerRadius('3px'));
+}
+
+
+/***/ }),
+
+/***/ "./src/UI/Views/HeadLineButton.ts":
+/*!****************************************!*\
+  !*** ./src/UI/Views/HeadLineButton.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HeadLineButton": () => (/* binding */ HeadLineButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function HeadLineButton(title, icon) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(icon) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title))
+        .border({
+        default: 'solid 1px #C8D2DC',
+        hover: 'solid 1px #B4BEC8',
+        active: 'solid 1px #B4BEC8'
+    })
+        .backgroundColor({
+        default: '#EBF0F5',
+        hover: '#E7ECF1',
+        active: '#E1E6EB'
+    })
+        .cornerRadius(10)
+        .padding('3px 10px 3px 10px')
+        .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop));
 }
 
 
@@ -8528,6 +8929,41 @@ function PortalSideMenu(params) {
             .shadow(params.second ? 'inset 24px 0 20px -20px #373b40' : '')
             .borderBottom('2px solid #212932'));
     }
+}
+
+
+/***/ }),
+
+/***/ "./src/UI/Views/RegularTextBox.ts":
+/*!****************************************!*\
+  !*** ./src/UI/Views/RegularTextBox.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RegularTextBox": () => (/* binding */ RegularTextBox)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function RegularTextBox(_a) {
+    var value = _a.value;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109')
+        .size(15)
+        .padding(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().fontSize('1rem')
+        .foregroundColor('#495057')
+        .padding('0.75rem 0.75rem 0.75rem 0rem')
+        .onTextChange(function (text) { value.set(text); console.log(text); }))
+        .paddingRight('5px')
+        .overflow('hidden')
+        .cornerRadius(10)
+        .border({ default: '1px solid #ced4da', focus: 'solid 1px #6366F1' })
+        .shadow({ default: '', focus: '0 0 0 0.2rem #c7d2fe' })
+        .transition('background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s')
+        .height()
+        .tabIndex(0));
 }
 
 

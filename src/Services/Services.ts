@@ -1,7 +1,7 @@
 import { StateService } from './StateService';
 import { IProjectService } from "./IProjectService";
 import { instance as container } from '@tuval/core';
-import { BrokerProjectService } from '../BrokerProjectService';
+import { BrokerProjectService } from './BrokerProjectService';
 
 export class Services {
     public static get ProjectService(): BrokerProjectService/* IProjectService */ {

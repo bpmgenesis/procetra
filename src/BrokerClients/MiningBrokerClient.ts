@@ -1,6 +1,7 @@
 import { HttpClient } from '@tuval/core';
 import { ConfigService } from '../Services/ConfigService';
 import { MIProject } from '../Domains/Project/Models/ProjectModel';
+import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
 
 
 export interface ICreateProjectResponse {
@@ -309,5 +310,35 @@ export class MiningBrokerClient {
                 });
         });
     }
+
+    //#region Anayse Models
+    public static async CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIAnalyseModel> {
+        return new Promise((resolve, reject) => {
+            const form = new FormData();
+            form.append('session_id', session_id);
+            form.append('org_name', org_name);
+            form.append('project_id', project_id);
+            form.append('analyse_model_name', analyse_model_name);
+
+            HttpClient.Post(ConfigService.GetMiningBrokerUrl() + 'CreateAnalyseModel', form)
+                .then(response => {
+                    resolve(response.data);
+                });
+        });
+    }
+    public static async GetAnalyseModels(session_id: string, org_name: string, project_id: string): Promise<MIAnalyseModel[]> {
+        return new Promise((resolve, reject) => {
+            const form = new FormData();
+            form.append('session_id', session_id);
+            form.append('org_name', org_name);
+            form.append('project_id', project_id);
+
+            HttpClient.Post(ConfigService.GetMiningBrokerUrl() + 'GetAnalyseModels', form)
+                .then(response => {
+                    resolve(response.data);
+                });
+        });
+    }
+    //#endregion
 
 }

@@ -24,6 +24,8 @@ import { MIProject } from '../../Project/Models/ProjectModel';
 import { MenuButton } from '../Views/MenuButton';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 import { RecentProjects } from '../Views/RecentProjects';
+import { AnalyseModelsController } from '../../AnalyseModels/Controllers/AnalyseModelsController';
+import { MVIAnalyseModel } from '../../../../dist_types/types/Domains/AnalyseModels/Models/MVIAnalyseModel';
 
 export class AppController extends UIController {
 
@@ -33,7 +35,8 @@ export class AppController extends UIController {
     @State()
     private currentProject: any;
 
-    private controller: ProjectControllerClass;
+    @State()
+    private currentController: UIController;
 
     @State()
     private recentFiles: any;
@@ -81,7 +84,7 @@ export class AppController extends UIController {
                         .background('rgb(208, 63, 64)'),
                     PortalFilterBarView({ projectName: this.currentProject?.project_name, selectProjectAction: () => this.OnOpenProject() })
                 ).height(),
-                this.controller
+                this.currentController
             ).alignment(Alignment.topLeading)
         )
             .backgroundColor('white')
@@ -100,7 +103,7 @@ export class AppController extends UIController {
                 If(this.currentProject == null)
                     (this.MainPage())
                     .else
-                    (this.controller as any)
+                    (this.currentController as any)
             )
         } else if (TApplication.IsPortal) {
             return this.LoadPortalView();
@@ -114,7 +117,13 @@ export class AppController extends UIController {
     private OnOpenProject() {
         ProjectUIService.OpenProjectDialog().then((project: MIProject) => {
             this.currentProject = project;
-            this.controller = ProjectController(this, project);
+            // this.controller = ProjectController(this, project);
+            const controller = new AnalyseModelsController();
+            controller.Bind(project);
+            controller.AnalyseModelSelected.add((item: MVIAnalyseModel) => {
+                this.currentController = ProjectController(this, project);
+            });
+            this.currentController = controller;
         });
     }
 
