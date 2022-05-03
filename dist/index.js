@@ -1399,11 +1399,11 @@ var AnalyseModelsController = /** @class */ (function (_super) {
     };
     AnalyseModelsController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.Headline5)('Ticket Management').marginVertical(10)).height(), //auto height
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.Headline5)('Ticket Management').marginVertical(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0a0').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width()).height(), //auto height
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
         ).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.model)(function (item) {
             return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems);
-        } /* .onClick(() => this.AnalyseModelSelected(item)) */)).width().height().padding(10).wrap('wrap'))));
+        })).width().height().padding(10).wrap('wrap'))));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
@@ -1438,6 +1438,8 @@ function AnalyseModelTileBox(params, menuItems) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f2').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(menuItems)(function (item) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title)).onClick(function () { return item.onClick(params); });
     }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f09e').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width('100%').height().padding(15)))
+        .initial({ scale: 1 })
+        .hover({ scale: 1.1 })
         .margin('10px')
         .cornerRadius(5)
         .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
@@ -1534,7 +1536,25 @@ var AppController = /** @class */ (function (_super) {
             .backgroundColor('white')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
     };
+    AppController.prototype.onTextChanged = function () {
+        alert(this.test);
+    };
+    AppController.prototype.getSubView = function () {
+        var _this = this;
+        return function (_a) {
+            var onTextChanged = _a.onTextChanged;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('click me')).cursor('pointer').action(function () { onTextChanged(); _this.test = { fontSize: '50px' }; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Hello')));
+        };
+    };
+    AppController.prototype.getContextView = function () {
+        var _this = this;
+        return function (_a) {
+            var onTextChanged = _a.onTextChanged;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIMotion)(_this.getSubView()).animate(_this.test)));
+        };
+    };
     AppController.prototype.LoadView = function () {
+        //return this.getContextView() as any;
         if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
                 .else(this.currentController));
@@ -1608,6 +1628,9 @@ var AppController = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
     ], AppController.prototype, "test", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], AppController.prototype, "onTextChanged", null);
     return AppController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
@@ -1667,13 +1690,14 @@ __webpack_require__.r(__webpack_exports__);
  */
 function MenuButton(title, icon, action) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30)))
+        .initial({ scale: 1, boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' })
+        .hover({ scale: 1.1, boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px' })
         .width(64).height(64)
-        .transition('all 0.35s')
         .background('rgb(255,255,255,50%)')
         .padding(8)
         .border('solid 1px rgb(120,120,120,20%)')
         .cornerRadius(12)
-        .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px')
+        /* .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px') */
         .action(function () { return action(); }));
 }
 
@@ -7884,11 +7908,11 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     OpenProjectDialogController.prototype.LoadView = function () {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
-            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects, function (project) {
+            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.projects)(function (project) {
             return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : '').fontWeight('500'))
                 .minHeight('50px')
                 .background(_this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' })
-                .onSelected(function () { return _this.selectedProject = project; });
+                .onSelected(function () { _this.selectedProject = project; });
         })).width('100%').backgroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#2b3641' : 'white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter : _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.AcceptButton)('OK').action(function () { return _this.OnOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.CancelButton)('Cancel').action(function () { return _this.OnCancel(); })).height(50)).grow())
             .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#212932' : '')
             .padding('10px'));
@@ -8745,7 +8769,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HeadLineButton(title, icon) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(icon) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(icon) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('gray').marginRight('5px'), _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(title) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title))
         .border({
         default: 'solid 1px #C8D2DC',
         hover: 'solid 1px #B4BEC8',
@@ -8794,23 +8818,20 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 
 var ListViewItemClass = /** @class */ (function (_super) {
     __extends(ListViewItemClass, _super);
     function ListViewItemClass() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.children = [];
+        var _this = _super.call(this) || this;
+        _this._selected = function () { };
         return _this;
     }
-    ListViewItemClass.prototype.Body = function () {
-        var _this = this;
-        this.SubViews.Add((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })(this.children)
-            .width('100%')
-            .paddingLeft('5px')
-            .cursor('pointer')
-            .onClick(function () { return _this._selected(); }));
-        return null;
-    };
     ListViewItemClass.prototype.onSelected = function (func) {
         this._selected = func;
         return this;
@@ -8820,17 +8841,23 @@ var ListViewItemClass = /** @class */ (function (_super) {
         return this;
     };
     ListViewItemClass.prototype.setChilds = function () {
+        var _this = this;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        this.children = args;
+        this.SubViews.Add((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, args).width('100%')
+            .paddingLeft('5px')
+            .cursor('pointer')
+            .onClick(function () { return _this._selected(); }));
         return this;
     };
-    ListViewItemClass.prototype.Render = function () {
-        this.Body();
-        return _super.prototype.Render.call(this);
-    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], ListViewItemClass.prototype, "_tag", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], ListViewItemClass.prototype, "_selected", void 0);
     return ListViewItemClass;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
 
@@ -8842,12 +8869,14 @@ function ListView() {
     return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, subViews).justifyContent('start').overflowX('hidden').overflowY('auto');
 }
 function ListViewItem() {
-    var _a;
-    var subViews = [];
+    var content = [];
     for (var _i = 0; _i < arguments.length; _i++) {
-        subViews[_i] = arguments[_i];
+        content[_i] = arguments[_i];
     }
-    return (_a = new ListViewItemClass()).setChilds.apply(_a, subViews).width('100%');
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.viewFunc)(ListViewItemClass, function (controller, propertyBag) {
+        var _a;
+        return (_a = new ListViewItemClass().setController(controller).PropertyBag(propertyBag)).setChilds.apply(_a, content).width('100%');
+    });
 }
 
 
@@ -9104,15 +9133,19 @@ var TabViewClass = /** @class */ (function (_super) {
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
 
 function TabView() {
-    var _a;
     var subViews = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         subViews[_i] = arguments[_i];
     }
-    return (_a = new TabViewClass()).setChilds.apply(_a, subViews);
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.viewFunc)(TabViewClass, function (controller, propertyBag) {
+        var _a;
+        return (_a = new TabViewClass().setController(controller).PropertyBag(propertyBag)).setChilds.apply(_a, subViews);
+    });
 }
 function TabViewItem(params) {
-    return new TabViewItemClass().name(params.name).header(params.header).content(params.content);
+    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.viewFunc)(TabViewItemClass, function (controller, propertyBag) {
+        return new TabViewItemClass().setController(controller).PropertyBag(propertyBag).name(params.name).header(params.header).content(params.content);
+    });
 }
 
 

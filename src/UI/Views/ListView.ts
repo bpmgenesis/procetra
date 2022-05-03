@@ -1,21 +1,18 @@
-import { UIView, HStack, Alignment, IControl, VStack, cLeading } from '@tuval/forms';
+import { UIView, HStack, Alignment, IControl, VStack, cLeading, viewFunc, ViewProperty } from '@tuval/forms';
 
 export class ListViewItemClass extends UIView {
+
+    @ViewProperty()
     private _tag: any;
-    private _selected: () => void;
-    private children: any[] = [];
-    public Body(): UIView {
-        this.SubViews.Add(
-            HStack({alignment:cLeading, spacing:10})(
-                this.children as any
-            )
-                .width('100%')
-                .paddingLeft('5px')
-                .cursor('pointer')
-                .onClick(() => this._selected())
-        );
-        return null;
+
+    @ViewProperty()
+    private _selected: Function;
+
+    public constructor() {
+        super();
+        this._selected = () => { };
     }
+
     public onSelected(func: Function) {
         this._selected = func as any;
         return this;
@@ -25,19 +22,26 @@ export class ListViewItemClass extends UIView {
         return this;
     }
     public setChilds(...args: any[]) {
-        this.children = args;
+        this.SubViews.Add(
+            HStack({ alignment: cLeading, spacing: 10 })(
+                ...args
+            )
+                .width('100%')
+                .paddingLeft('5px')
+                .cursor('pointer')
+                .onClick(() => this._selected())
+        );
         return this;
     }
-    public Render() {
-        this.Body();
-        return super.Render();
-    }
+
 }
 
 export function ListView(...subViews: (UIView | IControl)[]): UIView {
     return VStack(...subViews).justifyContent('start').overflowX('hidden').overflowY('auto');
 }
 
-export function ListViewItem(...subViews: (UIView | UIView[])[]): ListViewItemClass {
-    return new ListViewItemClass().setChilds(...subViews).width('100%');
+export function ListViewItem(...content: (UIView | UIView[])[]): ListViewItemClass {
+    return viewFunc(ListViewItemClass, (controller, propertyBag) => {
+        return new ListViewItemClass().setController(controller).PropertyBag(propertyBag).setChilds(...content).width('100%');
+    });
 }

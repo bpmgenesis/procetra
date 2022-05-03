@@ -86,6 +86,11 @@ export class AnalyseModelsController extends UIController {
                     HStack({ alignment: cLeading, spacing: 10 })(
                         Icon('\\f04f').size(30),
                         Headline5('Ticket Management').marginVertical(10),
+                        Spacer(),
+                        HStack(
+                            HeadLineButton('', '\\f0a0').action(() => this.OnAddEditAnalyseModelName()),
+                            HeadLineButton('New Analyse Model').action(() => this.OnAddEditAnalyseModelName())
+                        ).width()
                     ).height(), //auto height
                     HStack({ alignment: cLeading, spacing: 10 })(
                         Icon('\\f109').size(20),
@@ -98,7 +103,7 @@ export class AnalyseModelsController extends UIController {
                     HDivider().marginVertical(10).height(1).background('rgb(120,120,120,50%)'),
                     HStack({ alignment: cTopLeading })(
                         ..._ForEach(this.model)(item =>
-                            AnalyseModelTileBox(item, this.menuItems)/* .onClick(() => this.AnalyseModelSelected(item)) */
+                            AnalyseModelTileBox(item, this.menuItems)
                         )
                     ).width().height().padding(10).wrap('wrap')
                 )

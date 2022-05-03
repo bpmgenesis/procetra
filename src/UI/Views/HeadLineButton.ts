@@ -5,7 +5,7 @@ export function HeadLineButton(title: string, icon?: string): UIButtonClass {
     return (
         UIButton(
             is.nullOrEmpty(icon) ? null : Icon(icon).size(14).foregroundColor('gray').marginRight('5px'),
-            Text(title)
+            is.nullOrEmpty(title) ? null :  Text(title)
         )
             .border({
                 default: 'solid 1px #C8D2DC',

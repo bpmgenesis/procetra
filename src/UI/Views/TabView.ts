@@ -1,4 +1,4 @@
-import { UIView, VStack, IRenderable, ForEach, Alignment, HStack, Filter, IControl } from '@tuval/forms';
+import { UIView, VStack, IRenderable, ForEach, Alignment, HStack, Filter, IControl, UIController, viewFunc } from '@tuval/forms';
 import { List, foreach, Event, int } from '@tuval/core';
 import { Binding } from '../../Domains/Binding';
 
@@ -95,9 +95,13 @@ export class TabViewClass extends UIView {
 }
 
 export function TabView(...subViews: UIView[]): TabViewClass {
-    return new TabViewClass().setChilds(...subViews);
+    return viewFunc(TabViewClass, (controller, propertyBag) => {
+        return new TabViewClass().setController(controller).PropertyBag(propertyBag).setChilds(...subViews);
+    });
 }
 
 export function TabViewItem(params: TabViewItemParameters): TabViewItemClass {
-    return new TabViewItemClass().name(params.name).header(params.header).content(params.content);
+    return viewFunc(TabViewItemClass, (controller, propertyBag) => {
+        return new TabViewItemClass().setController(controller).PropertyBag(propertyBag).name(params.name).header(params.header).content(params.content);
+    });
 }

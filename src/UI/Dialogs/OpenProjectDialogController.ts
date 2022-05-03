@@ -22,7 +22,7 @@ import { ListView, ListViewItem } from '../Views/ListView';
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
-import { cLeading } from '@tuval/forms';
+import { cLeading, _ForEach } from '@tuval/forms';
 
 export class OpenProjectDialogController extends UIController {
 
@@ -41,6 +41,7 @@ export class OpenProjectDialogController extends UIController {
             throw 'Invalid session.';
         }
         Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then((projects: MIProject[]) => {
+
             this.projects = projects;
         });
     }
@@ -66,13 +67,13 @@ export class OpenProjectDialogController extends UIController {
                     ).height(),
                     HDivider().height(1).background(TApplication.IsPortal ? '#288ae2' : 'gray'),
                     ListView(
-                        ...ForEach(this.projects, (project: MIProject) =>
+                        ..._ForEach(this.projects)((project: MIProject) =>
                             ListViewItem(
                                 Text(project.project_name).foregroundColor(TApplication.IsPortal ? '#bbb' : '').fontWeight('500'),
                             )
                                 .minHeight('50px')
                                 .background(this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' } as any)
-                                .onSelected(() => this.selectedProject = project)
+                                .onSelected(() => {this.selectedProject = project; })
                         )
                     ).width('100%').backgroundColor(TApplication.IsPortal ? '#2b3641' : 'white'),
                     HStack({ alignment: TApplication.IsPortal ? cCenter : cTrailing })(

@@ -7,7 +7,6 @@ import { MVITitleMenu } from '../Models/MVITitleMenu';
 
 export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitleMenu[]): UIView {
     return (
-
         VStack({ alignment: cTopLeading })(
             ZStack(
                 Icon('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'),
@@ -28,8 +27,9 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
                     ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
                 ).width('100%').height().padding(15)
             )
-
         )
+            .initial({ scale: 1 })
+            .hover({ scale: 1.1 })
             .margin('10px')
             .cornerRadius(5)
             .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')

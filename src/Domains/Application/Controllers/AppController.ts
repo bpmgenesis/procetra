@@ -14,6 +14,8 @@ import {
     UIScene,
     UIView,
     VStack,
+    UIMotion,
+    Context
 } from '@tuval/forms';
 import { Sparkline } from '@tuval/components/charts';
 import { ProcessMining } from '../../../Application';
@@ -26,6 +28,7 @@ import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 import { RecentProjects } from '../Views/RecentProjects';
 import { AnalyseModelsController } from '../../AnalyseModels/Controllers/AnalyseModelsController';
 import { MVIAnalyseModel } from '../../../../dist_types/types/Domains/AnalyseModels/Models/MVIAnalyseModel';
+import { TextField } from '@tuval/forms';
 
 export class AppController extends UIController {
 
@@ -94,20 +97,50 @@ export class AppController extends UIController {
     @State()
     private showAnim: boolean;
 
-    @State()
-    private test: string;
 
-    public override LoadView(): UIView {
-        if (TApplication.IsDesktop) {
+    @State()
+    private test: any;
+
+    @Context()
+    public onTextChanged() {
+        alert(this.test);
+    }
+
+    private getSubView() {
+        return ({ onTextChanged }) => {
             return (
-                If(this.currentProject == null)
-                    (this.MainPage())
-                    .else
-                    (this.currentController as any)
+                HStack(
+                    UIButton(
+                        Text('click me')
+                    ).cursor('pointer').action(() => { onTextChanged(); this.test = { fontSize: '50px' } }),
+                    Text('Hello')
+                )
             )
-        } else if (TApplication.IsPortal) {
-            return this.LoadPortalView();
         }
+    }
+    private getContextView() {
+        return ({ onTextChanged }) => {
+            return (
+                UIScene(
+                    UIMotion(
+                        this.getSubView() as any
+                    ).animate(this.test)
+                )
+            )
+        }
+    }
+    public override LoadView(): UIView {
+        //return this.getContextView() as any;
+         if (TApplication.IsDesktop) {
+             return (
+                 If(this.currentProject == null)
+                     (this.MainPage())
+                     .else
+                     (this.currentController as any)
+             )
+         } else if (TApplication.IsPortal) {
+             return this.LoadPortalView();
+         }
     }
 
     private OnNewProject() {
