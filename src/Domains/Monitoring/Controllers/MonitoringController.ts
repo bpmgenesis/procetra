@@ -1,4 +1,4 @@
-import { UIController, UIView, UIScene, VStack, cTopLeading, HStack, cLeading, Spacer, _ForEach, UIButton, Text, HDivider, ScrollView, cVertical, TApplication, Alignment, PositionTypes } from '@tuval/forms';
+import { UIController, UIView, UIScene, VStack, cTopLeading, HStack, cLeading, Spacer, ForEach, UIButton, Text, HDivider, ScrollView, cVertical, TApplication, Alignment, PositionTypes } from '@tuval/forms';
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../UI/Views/Texts';
 import { TileBox } from '../../../UI/Views/TileBox';
@@ -302,7 +302,7 @@ export class MonitoringController extends UIController {
                             SectionSubHeadline('Global metrics for monitoring.'),
 
                             HStack({ alignment: cLeading, spacing: 10 })(
-                                ..._ForEach(staticticInfos)(info =>
+                                ...ForEach(staticticInfos)(info =>
                                     TileBox(
                                         VStack(
                                             RegularText(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
@@ -313,9 +313,9 @@ export class MonitoringController extends UIController {
                             ).height(),
                             // Metrics
                             VStack({ spacing: 10 })(
-                                ..._ForEach([0, 1])(indexJ =>
+                                ...ForEach([0, 1])(indexJ =>
                                     HStack({ spacing: 10 })(
-                                        ..._ForEach([0, 1, 2])(indexI =>
+                                        ...ForEach([0, 1, 2])(indexI =>
                                             TileBox(
                                                 VStack(
                                                     TileBoxHeaderText(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'),

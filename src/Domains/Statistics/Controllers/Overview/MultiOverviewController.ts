@@ -1,4 +1,4 @@
-import { UIController, UIView, HStack, _ForEach, State, Text, cTopLeading, VStack, Spacer, UIButton, Icon } from '@tuval/forms';
+import { UIController, UIView, HStack, ForEach, State, Text, cTopLeading, VStack, Spacer, UIButton, Icon } from '@tuval/forms';
 import { OverviewController } from './OverviewController';
 import { List } from '@tuval/core';
 
@@ -35,7 +35,7 @@ export class MultiOverviewController extends UIController {
                     ).action(() => this.controllerList.Add(new OverviewController()))
                 ),
                 HStack({ alignment: cTopLeading })(
-                    ..._ForEach(this.controllerList)(item =>
+                    ...ForEach(this.controllerList)(item =>
                         VStack(
                             item
                         )

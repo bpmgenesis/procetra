@@ -10,7 +10,7 @@ export function PaletteView(paletteData: MIPaletteCategory[]): UIView {
     return (
         VStack({ alignment: cTopLeading })( // For better scrolling
             VStack({ alignment: cTopLeading, spacing: 10 })(
-                ...ForEach(paletteData, (paletteCategory: MIPaletteCategory) =>
+                ...ForEach(paletteData)((paletteCategory: MIPaletteCategory) =>
                     VStack({ alignment: cTopLeading })(
                         /*  HDivider().height('1px').background('#e4e4e4'), */
                         Text(paletteCategory.name)
@@ -20,7 +20,7 @@ export function PaletteView(paletteData: MIPaletteCategory[]): UIView {
                             .foregroundColor('#0D6B87')
                             /* .background('#f1f1f1') */
                             .padding(10),
-                        ...ForEach(paletteCategory.items, (paletteItem: MIPaletteItem) =>
+                        ...ForEach(paletteCategory.items)((paletteItem: MIPaletteItem) =>
                             VStack({ alignment: cTopLeading })(
                                 /*  HDivider().height('1px').background('#e4e4e4'), */
                                 HStack({ alignment: cLeading, spacing: 10 })(

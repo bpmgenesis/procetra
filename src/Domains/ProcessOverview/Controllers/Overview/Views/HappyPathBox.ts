@@ -39,7 +39,7 @@ export function HappyPathBox2(params: MVIHappyPathAbsoluteBoxModel): UIView {
                 VDivider().width('1px').background('gray'),
                 VStack(
                     RoundedRectangle().background('transparent').height('10px'),
-                    RoundedRectangle().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width(`${(params.value / params.totalValue) * 100}%`),
+                    RoundedRectangle().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width().initial({ width: 0 }).animate({ width: `${(params.value / params.totalValue) * 100}%` }).__transition({ duration: 1 }),
                     RoundedRectangle().background('#E4E4E4').height('20px'),
                     RoundedRectangle().background('transparent').height('10px'),
                 ).alignment(Alignment.leading)

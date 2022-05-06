@@ -2,7 +2,7 @@ import { UIView, HStack, Icon, Text, TApplication, ApplicationModes } from '@tuv
 
 function PortalPageTitle(icon: string, text: string): UIView {
     return (
-        HStack({spacing:10})(
+        HStack({ spacing: 10 })(
             Icon(icon).size(30).foregroundColor('#333333'),
             Text(text)
                 .fontWeight('700')
@@ -17,13 +17,14 @@ function PortalPageTitle(icon: string, text: string): UIView {
 }
 function DesktopPageTitle(icon: string, text: string): UIView {
     return (
-        HStack({spacing:10})(
+        HStack({ spacing: 10 })(
             Icon(icon).size(30).foregroundColor('gray'),
             Text(text)
                 .fontFamily('Proxima Nova')
                 .fontSize('22px')
                 .foregroundColor('#333333')
         )
+            .height() // auto
             .width() //auto
     )
 }

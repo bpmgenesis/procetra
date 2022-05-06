@@ -1,21 +1,11 @@
-import { topModels } from './../Models/MVIDatasetTabModel';
 import { int } from '@tuval/core';
-import { ApplicationModes, HStack, PositionTypes, State, TApplication, UIController, UIScene, UIView } from '@tuval/forms';
+import { ApplicationModes, HStack, PositionTypes, State, TApplication, UIController, UIScene, UIView, Context } from '@tuval/forms';
 
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
-import { CaseExplorerController } from '../../CaseExplorer/Controllers/CaseExplorerController';
-import { ProcessDashboardController } from '../../Dashboard/Controllers/ProcessDashboardController';
-import { ProcessExplorerController } from '../../Discovery/Controllers/ProcessExplorerController';
-import { FilterController } from '../../Filter/Controllers/FilterController';
-import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
 import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
-import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
-import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
-import { MonitoringController } from '../../Monitoring/Controllers/MonitoringController';
-import { LoopsController } from '../../Loops/Controllers/LoopsController';
-import { AutomationController } from '../../Automation/Controllers/AutomationController';
+import { topModels } from './../Models/MVIDatasetTabModel';
 
 export class DatasetController extends UIController {
 
@@ -34,7 +24,15 @@ export class DatasetController extends UIController {
 
     protected InitController(): void {
         this.selectedTabIndex = 0;
-        this.tabModels = topModels;
+        this.tabModels = [...topModels];
+    }
+
+    @Context()
+    private OnNewAnalyse(value: MVIDatasetTabModel) {
+        this.tabModels = [...this.tabModels, value];
+        this.OnTabSelected(this.tabModels.length - 1);
+
+
     }
 
     private OnTabSelected(index: int) {
@@ -70,7 +68,7 @@ export class DatasetController extends UIController {
             UIScene(
                 DatasetTabView({
                     tabModel: this.tabModels,
-                    /* selectedTabIndex: this.selectedTabIndex, */
+                    selectedTabIndex: this.selectedTabIndex,
                     onTabSelected: (index: int) => this.OnTabSelected(index)
                 })
             ).position(PositionTypes.Absolute)

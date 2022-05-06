@@ -98,8 +98,8 @@ export class ProjectControllerClass extends UIController {
 
     //When user click add button that under list
     private OnNewProjectItem() {
-         const connectorDialog = new ConnectorDialog();
-         connectorDialog.ShowDialog();
+        const connectorDialog = new ConnectorDialog();
+        connectorDialog.ShowDialog();
     }
 
     // When user select items froım list
@@ -121,7 +121,7 @@ export class ProjectControllerClass extends UIController {
     }
 
 
-    private LoadDesktopView(): UIView {
+    private LoadDesktopView() {
         return DesktopView({
             selectedProjectItems: this.selectedProjectItems,
             selectedProjectItem: this.selectedProjectItem,
@@ -143,8 +143,8 @@ export class ProjectControllerClass extends UIController {
                 )
         );
     }
-    public override LoadView(): UIView {
-        return this.LoadDesktopView()
+    public override LoadView() {
+        return this.LoadDesktopView() as any
     }
 }
 

@@ -1,4 +1,4 @@
-import { UIView, VStack, cTopLeading, ZStack, Icon, HStack, Color, UIContextMenu, Spacer, Text, _ForEach, cLeading } from '@tuval/forms';
+import { UIView, VStack, cTopLeading, ZStack, Icon, HStack, Color, UIContextMenu, Spacer, Text, ForEach, cLeading } from '@tuval/forms';
 import { RegularText } from '../../../UI/Views/Texts';
 import { MVIAnalyseModel } from '../Models/MVIAnalyseModel';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
@@ -16,11 +16,11 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
                     RegularText(params.name).fontSize('18px').lineHeight('20px'),
                     Spacer(),
                     UIContextMenu(
-                        ..._ForEach(menuItems)(item =>
+                        ...ForEach(menuItems)(item =>
                             HStack({ alignment: cLeading, spacing: 10 })(
                                 Icon(item.icon).size(16),
                                 Text(item.title)
-                            ).onClick(() => item.onClick(params))
+                            ).onClick((e) => { item.onClick(params) })
                         )
                     )(
                         Icon('\\f09e').size(20),
@@ -28,11 +28,11 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
                 ).width('100%').height().padding(15)
             )
         )
-            .initial({ scale: 1 })
-            .hover({ scale: 1.1 })
+            .initial({ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' })
+            .hover({ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px' })
             .margin('10px')
             .cornerRadius(5)
-            .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
+            // .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
             .minWidth('250px')
             .minHeight('130px')
             .maxWidth('250px')

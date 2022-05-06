@@ -1,7 +1,7 @@
 import { BarSerie, ChartView } from '@tuval/components/charts';
 import { int } from '@tuval/core';
 import {
-    _ForEach,
+    ForEach,
     AnimationStack,
     cTopLeading,
     HStack,
@@ -144,7 +144,7 @@ const overviewTypes = [
 function MetricSelectionButtons(buttons: string[], selectedIndex: int, onSelectedAction: (index: int) => void): UIView {
     return (
         HStack(
-            ..._ForEach(buttons)((name, index) =>
+            ...ForEach(buttons)((name, index) =>
                 UIButton(
                     Text(name).fontSize('13px')
                 )
@@ -192,7 +192,7 @@ export class OverviewController extends UIController {
                                 .height(),
                             HStack({ spacing: 10 })(
                                 VStack({ spacing: 10 })(
-                                    ..._ForEach(overviewTypes)((name, index) =>
+                                    ...ForEach(overviewTypes)((name, index) =>
                                         UIButton(
                                             Text(name.title)
                                         )
@@ -213,19 +213,22 @@ export class OverviewController extends UIController {
                             .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }),
                         AnimationStack(
                             VStack(
-                                ..._ForEach(overviewTypes)((name, index) =>
+                                ...ForEach(overviewTypes)((name, index) =>
                                     Text(name.title).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
                                         .padding(10)
                                         .onClick(() => { this.selectedIndex = index; this.showMenu = false }),
                                 )
                             )
                         )
+                            .initial({ y: 20, opacity: 0 }).animate({ y: 0, opacity: 1 }).__transition({ type: "spring", bounce: 0.3 })
                             .overflow('hidden')
                             .backgroundColor('white')
-                            .animation(ListBounceAnimation, '.3s')
+                            // .animation(ListBounceAnimation, '.3s')
                             .visible(this.showMenu)
                     )
+                        .overflow('hidden')
                         .minHeight('350px'),
+
 
                     // Grid
                     TileBox(

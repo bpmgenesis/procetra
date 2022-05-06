@@ -26,17 +26,20 @@ const sideMenu: MVIPortalSideMenuItem[] = [
     {
         name: 'Frequency Map',
         icon: '\\f0a7',
-        controller: new FrequencyMapController()
+        controller: new FrequencyMapController(),
+        isVisible: ()=>true
     },
     {
         name: 'Performance Map',
         icon: '\\f0a8',
-        controller: new PerformanceMapController()
+        controller: new PerformanceMapController(),
+        isVisible: ()=>true
     },
     {
         name: 'Resource Map',
         icon: '\\f098',
-        controller: new PerformanceMapController()
+        controller: new PerformanceMapController(),
+        isVisible: ()=>true
     }
 ]
 
@@ -72,13 +75,13 @@ export class ProcessExplorerController extends UIController {
                         }
                     ),
 
-                    VStack({alignment:cTopLeading, spacing:10})(
+                    VStack({ alignment: cTopLeading, spacing: 10 })(
                         // Header
                         HStack({ alignment: cLeading, spacing: 10 })(
                             PageTitle('\\f0a4', 'Process explorer'),
                             Spacer(),
                             HStack({ spacing: 5 })(
-                                ...ForEach(sideMenu, (item: MVIPortalSideMenuItem, index: int) =>
+                                ...ForEach(sideMenu)((item: MVIPortalSideMenuItem, index: int) =>
                                     UIButton(
                                         Icon(item.icon),
                                         Text(item.name)

@@ -39,17 +39,20 @@ const sideMenu: MVIPortalSideMenuItem[] = [
     {
         name: 'Overview',
         icon: '\\f0b6',
-        controller: new OverviewController()
+        controller: new OverviewController(),
+        isVisible: () => true
     },
     {
         name: 'Throughput times',
         icon: '\\f144',
-        controller: new ThroughputTimesController()
+        controller: new ThroughputTimesController(),
+        isVisible: () => true
     },
     {
         name: 'Activities',
         icon: '\\f0d5',
-        controller: new ActivityController()
+        controller: new ActivityController(),
+        isVisible: () => true
     }
 ]
 
@@ -130,7 +133,7 @@ export class ProcessOverviewController extends UIController {
                             // View Buttons Overview, Throuthput Times
                             // Only Desktop
                             HStack({ spacing: 5 })(
-                                ...ForEach(sideMenu, (item: MVIPortalSideMenuItem, index: int) =>
+                                ...ForEach(sideMenu)((item: MVIPortalSideMenuItem, index: int) =>
                                     UIButton(
                                         Icon(item.icon).size(14).foregroundColor('gray'),
                                         Text(item.name).paddingLeft('5px')

@@ -18,7 +18,7 @@ export function BottleneckSection(): UIView {
             SectionSubHeadline('These connections increase process throughput time considerably'),
 
             VStack({ spacing: 15 })(
-                ...ForEach([1, 2, 3, 4, 5], (index) =>
+                ...ForEach([1, 2, 3, 4, 5])((index) =>
                     HStack({ alignment: cTop })(
                         RoundedRectangle().width(3).backgroundColor('rgb(255, 136, 132)'),
                         VStack({ alignment: cTopLeading })(

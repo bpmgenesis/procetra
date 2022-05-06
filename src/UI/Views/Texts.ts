@@ -30,6 +30,12 @@ export function Headline5(value: string): UIView {
     )
 }
 
+export function AnimHeadline5(value: string): UIView {
+    return (
+        Text(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').kerning('0px').initial({ fontSize: '1px' }).animate({ fontSize: '25px' })
+    )
+}
+
 export function Headline6(value: string): UIView {
     return (
         Text(value).fontFamily('Ubuntu, sans-serif').fontWeight('500').fontSize('20.3846px').kerning('0.15px')

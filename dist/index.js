@@ -1353,6 +1353,11 @@ var AnalyseModelsController = /** @class */ (function (_super) {
                 onClick: function (item) { return console.log(item); }
             },
             {
+                icon: '\\eff3',
+                title: 'Publish',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
                 icon: '\\f122',
                 title: 'Duplicate',
                 onClick: function (item) { return console.log(item); }
@@ -1397,13 +1402,22 @@ var AnalyseModelsController = /** @class */ (function (_super) {
             });
         });
     };
-    AnalyseModelsController.prototype.LoadView = function () {
+    AnalyseModelsController.prototype.OnSelectedAnalyseModelChange = function (item) {
+        this.selectedAnalyseModel = item;
+    };
+    AnalyseModelsController.prototype.AnalyseModelView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.Headline5)('Ticket Management').marginVertical(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0a0').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width()).height(), //auto height
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
-        ).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.model)(function (item) {
-            return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems);
-        })).width().height().padding(10).wrap('wrap'))));
+        return function (_a) {
+            var onCloseProject = _a.onCloseProject;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ticket Management').marginVertical(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0a0').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f07c').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f122').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0b2').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f071').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f07e').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('Close Project').action(function () { return onCloseProject(); })).width()).height(), //auto height
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
+            ).height().visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)').visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_this.model)(function (item) {
+                return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems).onClick(function () { return _this.AnalyseModelSelected(item); });
+            })).width().height().padding(10).wrap('wrap'))));
+        };
+    };
+    AnalyseModelsController.prototype.LoadView = function () {
+        return this.AnalyseModelView();
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
@@ -1411,6 +1425,9 @@ var AnalyseModelsController = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], AnalyseModelsController.prototype, "model", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "selectedAnalyseModel", void 0);
     return AnalyseModelsController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
@@ -1435,14 +1452,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AnalyseModelTileBox(params, menuItems) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f2').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(menuItems)(function (item) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title)).onClick(function () { return item.onClick(params); });
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f2').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menuItems)(function (item) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title)).onClick(function (e) { item.onClick(params); });
     }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f09e').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width('100%').height().padding(15)))
-        .initial({ scale: 1 })
-        .hover({ scale: 1.1 })
+        .initial({ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' })
+        .hover({ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px' })
         .margin('10px')
         .cornerRadius(5)
-        .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
+        // .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
         .minWidth('250px')
         .minHeight('130px')
         .maxWidth('250px')
@@ -1472,11 +1489,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Application */ "./src/Application.ts");
 /* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Resources */ "./src/Resources.ts");
 /* harmony import */ var _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/UIServices/ProjectUIService */ "./src/UI/UIServices/ProjectUIService.ts");
-/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/Domains/Project/Controllers/ProjectController.ts");
-/* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/Domains/Application/Views/MenuButton.ts");
-/* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/Domains/Application/Views/PortalFilterBarView.ts");
-/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
-/* harmony import */ var _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../AnalyseModels/Controllers/AnalyseModelsController */ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts");
+/* harmony import */ var _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../AnalyseModels/Controllers/AnalyseModelsController */ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts");
+/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/Domains/Project/Controllers/ProjectController.ts");
+/* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/Domains/Application/Views/MenuButton.ts");
+/* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/Domains/Application/Views/PortalFilterBarView.ts");
+/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -1520,7 +1537,7 @@ var AppController = /** @class */ (function (_super) {
     };
     AppController.prototype.MainPage = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f064', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f06d', function () { return _this.OnOpenProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f051', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f183', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_6__.MenuButton)('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_8__.RecentProjects)())
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f064', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f06d', function () { return _this.OnOpenProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f051', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f183', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_9__.RecentProjects)())
             // UIScene içerisine yayılması için
             .width('100%')));
     };
@@ -1532,12 +1549,15 @@ var AppController = /** @class */ (function (_super) {
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading)
             .minHeight('50px')
             .maxHeight('50px')
-            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_7__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.currentController).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
+            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_8__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.currentController).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
             .backgroundColor('white')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
     };
     AppController.prototype.onTextChanged = function () {
         alert(this.test);
+    };
+    AppController.prototype.onCloseProject = function () {
+        this.currentProject = null;
     };
     AppController.prototype.getSubView = function () {
         var _this = this;
@@ -1554,7 +1574,12 @@ var AppController = /** @class */ (function (_super) {
         };
     };
     AppController.prototype.LoadView = function () {
-        //return this.getContextView() as any;
+        /*  return (
+             UIScene(
+                 UILink('test'),
+                 UIRoutes('dfsdf')
+             )
+         ) */
         if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
             return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
                 .else(this.currentController));
@@ -1571,10 +1596,10 @@ var AppController = /** @class */ (function (_super) {
         _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.OpenProjectDialog().then(function (project) {
             _this.currentProject = project;
             // this.controller = ProjectController(this, project);
-            var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_9__.AnalyseModelsController();
+            var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_5__.AnalyseModelsController();
             controller.Bind(project);
             controller.AnalyseModelSelected.add(function (item) {
-                _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_5__.ProjectController)(_this, project);
+                _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_6__.ProjectController)(_this, project);
             });
             _this.currentController = controller;
         });
@@ -1631,6 +1656,9 @@ var AppController = /** @class */ (function (_super) {
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
     ], AppController.prototype, "onTextChanged", null);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], AppController.prototype, "onCloseProject", null);
     return AppController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
@@ -1912,7 +1940,7 @@ var CaseExplorerController = /** @class */ (function (_super) {
     CaseExplorerController.prototype.LoadView = function () {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Case explorer')
             .fontFamily('Proxima Nova').fontSize('22px')
-            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
         })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
     };
@@ -2055,7 +2083,7 @@ var ProcessDashboardController = /** @class */ (function (_super) {
         this.test = 2;
     };
     ProcessDashboardController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', 'Dashboard'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', 'Dashboard'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
         })).width()).height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
             left: [
@@ -2176,7 +2204,7 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 function PaletteView(paletteData) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(// For better scrolling
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData, function (paletteCategory) {
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData)(function (paletteCategory) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([
             /*  HDivider().height('1px').background('#e4e4e4'), */
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteCategory.name)
@@ -2185,7 +2213,7 @@ function PaletteView(paletteData) {
                 .fontFamily('Proxima Nova')
                 .foregroundColor('#0D6B87')
                 /* .background('#f1f1f1') */
-                .padding(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteCategory.items, function (paletteItem) {
+                .padding(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteCategory.items)(function (paletteItem) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
             /*  HDivider().height('1px').background('#e4e4e4'), */
             (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(paletteItem.icon).size(20).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteItem.label)
@@ -2218,11 +2246,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DatasetController": () => (/* binding */ DatasetController)
 /* harmony export */ });
-/* harmony import */ var _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../Models/MVIDatasetTabModel */ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
+/* harmony import */ var _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Models/MVIDatasetTabModel */ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -2244,6 +2272,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 
 
 
@@ -2255,7 +2288,11 @@ var DatasetController = /** @class */ (function (_super) {
     }
     DatasetController.prototype.InitController = function () {
         this.selectedTabIndex = 0;
-        this.tabModels = _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_0__.topModels;
+        this.tabModels = __spreadArray([], _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__.topModels);
+    };
+    DatasetController.prototype.OnNewAnalyse = function (value) {
+        this.tabModels = __spreadArray(__spreadArray([], this.tabModels), [value]);
+        this.OnTabSelected(this.tabModels.length - 1);
     };
     DatasetController.prototype.OnTabSelected = function (index) {
         this.selectedTabIndex = index;
@@ -2274,18 +2311,18 @@ var DatasetController = /** @class */ (function (_super) {
     };
     DatasetController.prototype.LoadPortalView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
     };
     DatasetController.prototype.LoadDesktopView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_3__.DatasetTabView)({
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__.DatasetTabView)({
             tabModel: this.tabModels,
-            /* selectedTabIndex: this.selectedTabIndex, */
+            selectedTabIndex: this.selectedTabIndex,
             onTabSelected: function (index) { return _this.OnTabSelected(index); }
-        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.PositionTypes.Absolute));
+        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute));
     };
     DatasetController.prototype.LoadView = function () {
-        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ApplicationModes.Desktop) {
+        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
             return this.LoadDesktopView();
         }
         else {
@@ -2293,19 +2330,22 @@ var DatasetController = /** @class */ (function (_super) {
         }
     };
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], DatasetController.prototype, "projectItem", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], DatasetController.prototype, "tabModels", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], DatasetController.prototype, "selectedTabIndex", void 0);
     __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
     ], DatasetController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Context)()
+    ], DatasetController.prototype, "OnNewAnalyse", null);
     return DatasetController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
 
 
 
@@ -2322,82 +2362,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "topModels": () => (/* binding */ topModels)
 /* harmony export */ });
-/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
-/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
-/* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
-/* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
-/* harmony import */ var _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Filter/Controllers/FilterController */ "./src/Domains/Filter/Controllers/FilterController.ts");
-/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
-/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
-/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
-/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
-/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
-
-
-
-
-
-
-
-
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../NewAnalyse/Controllers/NewAnalyseController */ "./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts");
 
 
 var topModels = [
     {
         icon: '\\efc2',
         name: 'New Analyse',
-        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__.ProcessOverviewController()
+        controller: new _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__.NewAnalyseController(),
+        isVisible: function () { return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop; }
     },
-    {
-        icon: '\\f0b4',
-        name: 'Process Overview',
-        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_7__.ProcessOverviewController()
-    },
-    {
-        icon: '\\f0b3',
-        name: 'Dashboard',
-        controller: new _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_2__.ProcessDashboardController()
-    },
-    {
-        icon: '\\f0f8',
-        name: 'Discovery',
-        controller: new _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_3__.ProcessExplorerController()
-    },
-    {
-        icon: '\\f0a1',
-        name: 'Monitoring',
-        controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_6__.MonitoringController()
-    },
-    {
-        icon: '\\f0f2',
-        name: 'Statistics',
-        controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_8__.ProcessStatisticController()
-    },
-    {
-        icon: '\\f13b',
-        name: 'Variant Explorer',
-        controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_9__.VariantExplorerController()
-    },
-    {
-        icon: '\\f096',
-        name: 'Loops',
-        controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_5__.LoopsController()
-    },
-    {
-        icon: '\\f049',
-        name: 'Automation',
-        controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_0__.AutomationController()
-    },
-    {
-        icon: '\\f033',
-        name: 'Case Explorer',
-        controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_1__.CaseExplorerController()
-    },
-    {
-        icon: '\\f130',
-        name: 'Filter',
-        controller: new _Filter_Controllers_FilterController__WEBPACK_IMPORTED_MODULE_4__.FilterController()
-    }
+    /*  {
+         icon: '\\f0b4',
+         name: 'Process Overview',
+         controller: new ProcessOverviewController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0b3',
+         name: 'Dashboard',
+         controller: new ProcessDashboardController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0f8',
+         name: 'Discovery',
+         controller: new ProcessExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0a1',
+         name: 'Monitoring',
+         controller: new MonitoringController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0f2',
+         name: 'Statistics',
+         controller: new ProcessStatisticController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f13b',
+         name: 'Variant Explorer',
+         controller: new VariantExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f096',
+         name: 'Loops',
+         controller: new LoopsController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f049',
+         name: 'Automation',
+         controller: new AutomationController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f033',
+         name: 'Case Explorer',
+         controller: new CaseExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f130',
+         name: 'Filter',
+         controller: new FilterController(),
+         isVisible: () => true
+     } */
 ];
 
 
@@ -2420,20 +2456,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function DatasetTabView(datasetTabViewParams) {
-    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel, function (tabItem, index) {
+    // const [selectedIndex, setSelectedIndex] = bindState(0);
+    console.log(datasetTabViewParams.tabModel);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel)(function (tabItem, index) {
         return (0,_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabViewItem)({
             name: tabItem.name,
             header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
                 .wrap('wrap')
-                .borderTop(selectedIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
-                .foregroundColor(selectedIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
+                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
+                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                 .padding(10)
-                .background(selectedIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)'))),
+                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)')).maxWidth('100px')),
             content: tabItem.controller
-        }).onSelected(function () { datasetTabViewParams.onTabSelected(index); setSelectedIndex(index); });
-    })).selectedTabIndex(selectedIndex)));
+        }).onSelected(function () { datasetTabViewParams.onTabSelected(index); });
+    })).selectedTabIndex(datasetTabViewParams.selectedTabIndex)));
 }
 
 
@@ -2630,17 +2667,20 @@ var sideMenu = [
     {
         name: 'Frequency Map',
         icon: '\\f0a7',
-        controller: new _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__.FrequencyMapController()
+        controller: new _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__.FrequencyMapController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Performance Map',
         icon: '\\f0a8',
-        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController()
+        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Resource Map',
         icon: '\\f098',
-        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController()
+        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
+        isVisible: function () { return true; }
     }
 ];
 var ProcessExplorerController = /** @class */ (function (_super) {
@@ -2664,7 +2704,7 @@ var ProcessExplorerController = /** @class */ (function (_super) {
             second: true
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
         // Header
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu, function (item, index) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu)(function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
                 .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '')
                 .border('solid 1px gray')
@@ -2801,56 +2841,6 @@ function SliderIconButton(icon, text) {
         .fontSize('12px')
         .height(25));
 }
-
-
-/***/ }),
-
-/***/ "./src/Domains/Filter/Controllers/FilterController.ts":
-/*!************************************************************!*\
-  !*** ./src/Domains/Filter/Controllers/FilterController.ts ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FilterController": () => (/* binding */ FilterController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var FilterController = /** @class */ (function (_super) {
-    __extends(FilterController, _super);
-    function FilterController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    FilterController.prototype.InitController = function () {
-    };
-    FilterController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Filter')
-            .fontFamily('Proxima Nova').fontSize('22px')
-            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return FilterController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
 
 
 /***/ }),
@@ -3221,12 +3211,12 @@ var MonitoringController = /** @class */ (function (_super) {
     MonitoringController.prototype.LoadView = function () {
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a1', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
             // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(staticticInfos)(function (info) {
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(staticticInfos)(function (info) {
             return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
         })).height(), 
         // Metrics
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1])(function (indexJ) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)([0, 1, 2])(function (indexI) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1])(function (indexJ) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1, 2])(function (indexI) {
                 return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
                     .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__.Sparkline)()
                     .model(metrics[(indexJ * 3) + indexI].chart)
@@ -3242,6 +3232,243 @@ var MonitoringController = /** @class */ (function (_super) {
 function MetricSelectionButtons(overviewTypes, selectedIndex, arg2) {
     throw new Error('Function not implemented.');
 }
+
+
+/***/ }),
+
+/***/ "./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts":
+/*!********************************************************************!*\
+  !*** ./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NewAnalyseController": () => (/* binding */ NewAnalyseController)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
+/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
+/* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
+/* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
+/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
+/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
+/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
+/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
+/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+var NewAnalyseTypes = [
+    {
+        icon: '\\f0b4',
+        title: 'Process Overview',
+        description: 'An overhead view of your process',
+        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__.ProcessOverviewController(),
+    },
+    {
+        icon: '\\f0b3',
+        title: 'New Dashboard',
+        description: 'A new dashboard waiting to be built.',
+        controller: new _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__.ProcessDashboardController(),
+    },
+    {
+        icon: '\\f0f8',
+        title: 'Discover',
+        description: 'To understand and analyze your business',
+        controller: new _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__.ProcessExplorerController(),
+    },
+    {
+        icon: '\\f0a1',
+        title: 'Monitoring',
+        description: 'Follow the process indicators',
+        controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__.MonitoringController(),
+    },
+    {
+        icon: '\\f0f2',
+        title: 'Statistics',
+        description: 'General statistics of the process',
+        controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__.ProcessStatisticController(),
+    },
+    {
+        icon: '\\f13b',
+        title: 'Variant Explorer',
+        controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__.VariantExplorerController(),
+    },
+    {
+        icon: '\\f096',
+        title: 'Loops',
+        controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__.LoopsController(),
+    },
+    {
+        icon: '\\f049',
+        title: 'Automation',
+        controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__.AutomationController(),
+    },
+    {
+        icon: '\\f033',
+        title: 'Case Explorer',
+        controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__.CaseExplorerController(),
+    },
+    {
+        icon: '\\f07f',
+        title: 'Difference Analyse'
+    },
+    {
+        icon: '\\eff0',
+        title: 'Benchmarking'
+    },
+    {
+        icon: '\\f143',
+        title: 'Lead Times'
+    },
+    {
+        icon: '\\efe4',
+        title: 'Process Steps'
+    },
+    {
+        icon: '\\eff1',
+        title: 'Complience Analyse'
+    },
+    {
+        icon: '\\eff2',
+        title: 'Comformance Check'
+    },
+    {
+        icon: '\\eff4',
+        title: 'Social'
+    },
+    {
+        icon: '\\f04b',
+        title: 'Process AI'
+    },
+    {
+        icon: '\\f014',
+        title: 'Cost'
+    },
+    {
+        icon: '\\f001',
+        title: 'Forecast'
+    },
+    {
+        icon: '\\effa',
+        title: 'Mosts'
+    },
+    {
+        icon: '\\f01e',
+        title: 'Bottlenecks'
+    },
+    {
+        icon: '\\efdf',
+        title: 'Durations'
+    }
+];
+function NewAnalyseModelTitleBox(tag, _a) {
+    var icon = _a.icon, title = _a.title, description = _a.description, controller = _a.controller;
+    return function (_a) {
+        var OnNewAnalyse = _a.OnNewAnalyse;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(icon && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(icon).size(50).foregroundColor('#33333366').marginBottom('20px'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(title).fontSize('18px').searchWords([tag]), description && (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(description).fontSize('12px'))
+            .marginTop('10px')
+            .marginRight('10px')
+            .cornerRadius(10)
+            .width(240).height(150)
+            .backgroundColor('rgba(255,255,255,0.3)')
+            .shadow('rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px')
+            .initial({ opacity: 0 }).animate({ opacity: 1 })
+            .onClick(function () { return OnNewAnalyse({
+            icon: icon,
+            name: title,
+            controller: controller,
+            isVisible: function () { return true; }
+        }); }));
+    };
+}
+function searchBox() {
+    return function (_a) {
+        var onSearchTextChanged = _a.onSearchTextChanged;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f004')
+            .size(20)
+            .paddingRight('10px')
+            .paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1rem')
+            .backgroundColor('transparent')
+            .foregroundColor('#495057')
+            .padding('0.75rem 0.75rem 0.75rem 0rem')
+            .onTextChange(function (text) { setTimeout(function () { return onSearchTextChanged(text); }, 100); }))
+            .width()
+            .initial({ width: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }).animate({ width: '50%' }).focus({ width: '80%', backgroundColor: 'rgba(255,255,255,0.6)' })
+            .paddingRight('5px')
+            .overflow('hidden')
+            .cornerRadius(20)
+            .border({ default: '1px solid #ced4da', focus: 'solid 1px #6366F1' })
+            .shadow({ default: '', focus: '0 0 0 0.2rem #c7d2fe' })
+            //.transition('background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s')
+            //.backgroundColor('rgba(255,255,255,0.3)')
+            .height()
+            .tabIndex(0)).height().marginVertical(20));
+    };
+}
+var NewAnalyseController = /** @class */ (function (_super) {
+    __extends(NewAnalyseController, _super);
+    function NewAnalyseController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    NewAnalyseController.prototype.onSearchTextChanged = function (value) {
+        this.searchText = value;
+    };
+    NewAnalyseController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f0a1', 'Add New Analyse'), searchBox(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(NewAnalyseTypes)(function (item) {
+            return (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(_this.searchText) ||
+                item.title.toLowerCase().indexOf(_this.searchText.toLowerCase()) > -1)
+                && NewAnalyseModelTitleBox(_this.searchText, item);
+        })).wrap('wrap').height().padding(10)))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], NewAnalyseController.prototype, "searchText", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], NewAnalyseController.prototype, "onSearchTextChanged", null);
+    return NewAnalyseController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+
 
 
 /***/ }),
@@ -3585,7 +3812,7 @@ function ActivitySection(activities) {
         .fontSize('20px')
         .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(activities)(function (activity) {
+        .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(activities)(function (activity) {
         return (0,_ActivityBox__WEBPACK_IMPORTED_MODULE_1__.ActivityBox)({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount });
     })).height('auto').wrap('wrap').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
 }
@@ -3625,7 +3852,7 @@ function HappyPathGaugeBox(params) {
         .tabIndex(0));
 }
 function HappyPathBox2(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width((params.value / params.totalValue) * 100 + "%"), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width().initial({ width: 0 }).animate({ width: (params.value / params.totalValue) * 100 + "%" }).__transition({ duration: 1 }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
         .marginBottom('15px')
         .fontFamily('Proxima Nova')
         .fontWeight('500')
@@ -3672,7 +3899,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HappyPathDiagram(items) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items, function (item, index) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items)(function (item, index) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
             .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)(null)
             .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
@@ -3844,7 +4071,7 @@ function MetricsSection(params) {
     // We want to space 10px between every vertical block
     (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels, function (metricBoxModel, index) {
+        .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels)(function (metricBoxModel, index) {
         return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
     })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
         .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
@@ -3975,17 +4202,20 @@ var sideMenu = [
     {
         name: 'Overview',
         icon: '\\f0b6',
-        controller: new _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__.OverviewController()
+        controller: new _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__.OverviewController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Throughput times',
         icon: '\\f144',
-        controller: new _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__.ThroughputTimesController()
+        controller: new _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__.ThroughputTimesController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Activities',
         icon: '\\f0d5',
-        controller: new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__.ActivityController()
+        controller: new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__.ActivityController(),
+        isVisible: function () { return true; }
     }
 ];
 var ProcessOverviewController = /** @class */ (function (_super) {
@@ -4023,7 +4253,7 @@ var ProcessOverviewController = /** @class */ (function (_super) {
         }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
         // View Buttons Overview, Throuthput Times
         // Only Desktop
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu, function (item, index) {
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu)(function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(14).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).paddingLeft('5px'))
                 .action(function () { return _this.OnControllerChanged(index); })
                 .border('solid 1px gray')
@@ -4154,7 +4384,7 @@ __webpack_require__.r(__webpack_exports__);
 function BottleneckSection() {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Bottlenecks'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
         // We prevent this stack to large more than its content
-        .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('These connections increase process throughput time considerably'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 15 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5], function (index) {
+        .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('These connections increase process throughput time considerably'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 15 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(3).backgroundColor('rgb(255, 136, 132)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxMHB4IiB2aWV3Qm94PSIwIDAgMTggMTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4zICgzMzgzOSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+NDY5OEVGQ0UtNDQ0NC00MjU5LUE3NjItMzFGMDBGQjRFRDlFPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tdGhyb3VnaHB1dC10aW1lIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDIyLjAwMDAwMCwgLTExODMuMDAwMDAwKSIgZmlsbD0iIzBCNUY3OCI+CiAgICAgICAgICAgIDxnIGlkPSJNQUlOIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA1NC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJCb3R0bGVuZWNrcyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS4wMDAwMDAsIDEwNDMuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkJvdHRsZW5lY2staXRlbSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4wMDAwMDAsIDY5LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iSGVhZGVyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC4wMDAwMDAsIDExLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkNvbm5lY3Rpb24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxNy4wMDAwMDAsIDExLjAwMDAwMCkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtMjE3LjAwMDAwMCwgLTExLjAwMDAwMCkgdHJhbnNsYXRlKDIxMi4wMDAwMDAsIDIuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQsOS42IEwtMS43NzYzNTY4NGUtMTUsOCBMNSwxOCBMMTAsOCBMNiw5LjYgTDYsMCBMNCwwIEw0LDkuNiBaIiBpZD0iaWNvbi1hcnJvdy1yaWdodCI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4='), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83')).width().height().padding('10px 15px 10px 15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('View cases in…').paddingLeft('15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Throughput time'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('10 work day(s)')).width(), //auto
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Cases affected'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('14%')).width() //auto
         ).paddingLeft('15px')).padding())
@@ -4488,47 +4718,57 @@ function DashboardListView(projectItem) {
 }
 function DesktopView(_a) {
     var selectedProjectItem = _a.selectedProjectItem, selectedProjectItems = _a.selectedProjectItems, ProjectItemSelectedAction = _a.ProjectItemSelectedAction, NewProjectItemAction = _a.NewProjectItemAction, selectedProjectItemController = _a.selectedProjectItemController;
-    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
-        header: [
-        /*   Text(this.selectedProject?.project_name).fontSize('24px'),
-          UIButton(
-              Text('Close')
-          ).action(() => this.parentAppController.CLoseProject()) */
-        ],
-        left: [
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(19).marginRight('10px').foregroundColor('#ccc'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Set').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height())).height(500).width(200).padding(20), 
-            //Project Title
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
-                .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
-                .padding('8px')
-                .fontWeight('bold')
-                .foregroundColor('black')).height('auto').visible(false), 
-            // Poject items list view
-            _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(selectedProjectItems, function (projectItem) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
-                    'Dataset': DatasetListView(projectItem),
-                    'Dashboard': DashboardListView(projectItem)
-                })
-                    .borderBottom('solid 1px rgb(200,200,200,10%)')
-                    .cornerRadius('5px')
-                    .transition('all 0.35s')
-                    .shadow((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
-                    .background((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                    .onSelected(function () { return ProjectItemSelectedAction(projectItem); });
-            })).width('200px').background('rgb(255,255,255,10%)').grow(), 
-            // Project items buttons
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter, spacing: 5 })((0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\efff').action(function () { return NewProjectItemAction(); }), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\effd'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f04a'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f0bb')).height('auto').width('100%'))
-                .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop)
-        ],
-        right: [
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
-            /*  this.TestTabView(), */
-            selectedProjectItemController).grow()
-        ],
-        /*  footer: [
-             Text('Test').fontSize('24px')
-         ] */
-    }));
+    return function (_a) {
+        var onCloseProject = _a.onCloseProject;
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
+            header: [
+            /*   Text(this.selectedProject?.project_name).fontSize('24px'),
+              UIButton(
+                  Text('Close')
+              ).action(() => this.parentAppController.CLoseProject()) */
+            ],
+            left: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f112').size(19).marginRight('10px').foregroundColor('#ccc').onClick(function () { return onCloseProject(); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('insan kaynakları süreci').textTransform('uppercase')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)()
+                    .width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ duration: 2 })
+                    .background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 1, duration: 2 })
+                    .background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Model').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 2, duration: 2 })
+                    .background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Current').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height())).height(500).width(200).padding(20), 
+                //Project Title
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
+                    .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
+                    .padding('8px')
+                    .fontWeight('bold')
+                    .foregroundColor('black')).height('auto').visible(false), 
+                // Poject items list view
+                _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(selectedProjectItems)(function (projectItem) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
+                        'Dataset': DatasetListView(projectItem),
+                        'Dashboard': DashboardListView(projectItem)
+                    })
+                        .borderBottom('solid 1px rgb(200,200,200,10%)')
+                        .cornerRadius('5px')
+                        .transition('all 0.35s')
+                        .shadow((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
+                        .background((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                        .onSelected(function () { return ProjectItemSelectedAction(projectItem); });
+                })).width('200px').background('rgb(255,255,255,10%)').grow(), 
+                // Project items buttons
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter, spacing: 5 })((0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\efff').action(function () { return NewProjectItemAction(); }), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\effd'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f04a'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_2__.ListFooterButton)('\\f0bb')).height('auto').width('100%'))
+                    .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop)
+            ],
+            right: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+                /*  this.TestTabView(), */
+                selectedProjectItemController).grow()
+            ],
+            /*  footer: [
+                 Text('Test').fontSize('24px')
+             ] */
+        }));
+    };
 }
 
 
@@ -4628,7 +4868,7 @@ var overviewTypes = [
     'Aggreate duration'
 ];
 function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
-    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(buttons)(function (name, index) {
+    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
             .action(function () { return onSelectedAction(index); })
             .height(30)
@@ -4669,7 +4909,7 @@ var ActivityController = /** @class */ (function (_super) {
             .border('dashed 1px var(--sub-border-color)')
             .transition('border .3s'))
             .padding()
-            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
                 .action(function () { return _this.selectedIndex = index; })
                 .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
@@ -4760,7 +5000,7 @@ var MultiOverviewController = /** @class */ (function (_super) {
     };
     MultiOverviewController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f078').size(20).foregroundColor({ default: 'rgb(51,51,51, 70%)', hover: 'rgb(51,51,51, 90%)' })).action(function () { return _this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController()); })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.controllerList)(function (item) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f078').size(20).foregroundColor({ default: 'rgb(51,51,51, 70%)', hover: 'rgb(51,51,51, 90%)' })).action(function () { return _this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController()); })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.controllerList)(function (item) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(item);
         }))));
     };
@@ -4787,12 +5027,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _Views_CasesGrid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/CasesGrid */ "./src/Domains/Statistics/Views/CasesGrid.ts");
-/* harmony import */ var _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Views/EventsOverTimeChart */ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts");
-/* harmony import */ var _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Views/ActiveCasesOverTime */ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Views/CasesGrid */ "./src/Domains/Statistics/Views/CasesGrid.ts");
+/* harmony import */ var _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/EventsOverTimeChart */ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts");
+/* harmony import */ var _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Views/ActiveCasesOverTime */ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -4821,7 +5060,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var datas = [
     [
         { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
@@ -4842,7 +5080,7 @@ var datas = [
 var overviewTypes = [
     {
         title: 'Events over time',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4854,7 +5092,7 @@ var overviewTypes = [
     },
     {
         title: 'Active cases over time',
-        builder: _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_6__.ActiveCasesOverTime,
+        builder: _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__.ActiveCasesOverTime,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4866,7 +5104,7 @@ var overviewTypes = [
     },
     {
         title: 'Case variants',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4878,7 +5116,7 @@ var overviewTypes = [
     },
     {
         title: 'Events per case',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4890,7 +5128,7 @@ var overviewTypes = [
     },
     {
         title: 'Case duration',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4902,7 +5140,7 @@ var overviewTypes = [
     },
     {
         title: 'Case utilization',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4914,7 +5152,7 @@ var overviewTypes = [
     },
     {
         title: 'Mean activity duration',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4926,7 +5164,7 @@ var overviewTypes = [
     },
     {
         title: 'Mean waiting time',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_5__.EventsOverViewChart,
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
         data: [
             { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
             { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
@@ -4938,7 +5176,7 @@ var overviewTypes = [
     }
 ];
 function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
-    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(buttons)(function (name, index) {
+    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
             .action(function () { return onSelectedAction(index); })
             .height(30)
@@ -4962,14 +5200,14 @@ var OverviewController = /** @class */ (function (_super) {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
         // Chart
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(overviewTypes[this.selectedIndex].title)
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(overviewTypes[this.selectedIndex].title)
             .fontSize('30px')
             .cursor('pointer')
             .border('dashed 1px var(--sub-border-color)')
             .transition('border .3s')
             .onClick(function () { return _this.showMenu = true; }))
             .padding()
-            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title))
                 .action(function () { return _this.selectedIndex = index; })
                 .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
@@ -4982,18 +5220,20 @@ var OverviewController = /** @class */ (function (_super) {
         // Chart here
         overviewTypes[this.selectedIndex].builder(overviewTypes[this.selectedIndex].data)))
             .visible(true)
-            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(overviewTypes)(function (name, index) {
+            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
                 .padding(10)
                 .onClick(function () { _this.selectedIndex = index; _this.showMenu = false; });
         })))
+            .initial({ y: 20, opacity: 0 }).animate({ y: 0, opacity: 1 }).__transition({ type: "spring", bounce: 0.3 })
             .overflow('hidden')
             .backgroundColor('white')
-            .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__.ListBounceAnimation, '.3s')
+            // .animation(ListBounceAnimation, '.3s')
             .visible(this.showMenu))
+            .overflow('hidden')
             .minHeight('350px'), 
         // Grid
-        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing, spacing: -2 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Cases (31)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('5px 0 0 5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Variants (8)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('0 5px 5px 0')), (0,_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_4__.CasesGrid)())))));
+        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing, spacing: -2 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Cases (31)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('5px 0 0 5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Variants (8)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('0 5px 5px 0')), (0,_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__.CasesGrid)())))));
     };
     __decorate([
         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
@@ -5073,7 +5313,7 @@ var ProcessStatisticController = /** @class */ (function (_super) {
             items: _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel,
             selectedAction: function (index) { return _this.OnControllerChanged(index); },
             second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].icon, _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].name + ' statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel)(function (item, index) {
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].icon, _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].name + ' statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel)(function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
                 .action(function () { return _this.OnControllerChanged(index); })
                 .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
@@ -5116,17 +5356,20 @@ var sideMenuModel = [
     {
         name: 'Overview',
         icon: '\\f0d8',
-        controller: new _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__.MultiOverviewController()
+        controller: new _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__.MultiOverviewController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Activity',
         icon: '\\f0e7',
-        controller: new _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__.ActivityController()
+        controller: new _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__.ActivityController(),
+        isVisible: function () { return true; }
     },
     {
         name: 'Resource',
         icon: '\\f006',
-        controller: new _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__.OverviewController()
+        controller: new _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__.OverviewController(),
+        isVisible: function () { return true; }
     }
 ];
 
@@ -5213,7 +5456,7 @@ var columns = [
         title: 'Events',
         width: 120,
         builder: function (row) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['events']).marginRight('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width('100%').height(15).background('#7A9BCD'));
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['events']).marginRight('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width().height(15).background('#7A9BCD').initial({ width: 0 }).animate({ width: '100%' }).__transition({ duration: 1 }));
         }
     },
     {
@@ -5332,7 +5575,7 @@ var data = [
 ];
 function GridHeader(columnInfo) {
     var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(columnInfo)(function (cInfo) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
         return (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(cInfo.title)
             .fontSize('12px')
             .fontWeight('500')
@@ -5347,7 +5590,7 @@ function GridHeader(columnInfo) {
 function GridRow(columnInfo, row) {
     var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
     debugger;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(columnInfo)(function (cInfo) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
         return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(cInfo.builder) ? cInfo.builder(row) :
             (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row[cInfo.key])
                 .width('100%')
@@ -5356,7 +5599,7 @@ function GridRow(columnInfo, row) {
     })).height());
 }
 function CasesGrid() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([GridHeader(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(data)((function (row) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([GridHeader(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(data)((function (row) {
         return GridRow(columns, row);
     })))));
 }
@@ -5450,9 +5693,9 @@ var VariantExplorerController = /** @class */ (function (_super) {
     VariantExplorerController.prototype.InitController = function () {
     };
     VariantExplorerController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'], function (name) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5], function (index) {
+        })).width()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Satınalma onayının verilmesi'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Gerekli kontrollerin Sağlanması'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('İzin talebi başladı'))).padding(20);
         }))).padding(10).height())
             .backgroundColor('#f1f1f1')
@@ -7521,8 +7764,8 @@ var ConnectorDialogController = /** @class */ (function (_super) {
         var _a;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnLayout)({
             left: [
-                _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Item').textAlign('start').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(ListModel, function (listModelItem) {
-                    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(listModelItem.name).padding('5px').fontWeight('bold')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(listModelItem.items, function (modelItem) {
+                _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Item').textAlign('start').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(ListModel)(function (listModelItem) {
+                    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray([(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(listModelItem.name).padding('5px').fontWeight('bold')], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(listModelItem.items)(function (modelItem) {
                         return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)(
                         /*   Icon(projectItem.icon).size(20).width('auto'), */
                         (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(modelItem.title).paddingLeft('10px').width('100%'))
@@ -7538,7 +7781,7 @@ var ConnectorDialogController = /** @class */ (function (_super) {
                 }))).width(200).background('rgb(120,120,120,10%)').cornerRadius('12px 0px 0px 12px').grow(),
             ],
             right: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)((_a = this.selectedModelItem) === null || _a === void 0 ? void 0 : _a.items, function (item) {
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)((_a = this.selectedModelItem) === null || _a === void 0 ? void 0 : _a.items)(function (item /* { name: string, imagePath: string, image: HTMLImageElement } */) {
                     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)(_BrokerClients_SymbolBroker__WEBPACK_IMPORTED_MODULE_1__.SymbolBroker.GetSymbolUrl(item.imagePath.split('/')[0], item.imagePath.split('/')[1], item.imagePath.split('/')[2])).width('104px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).textAlign('center'))
                         .cursor('pointer')
                         // selection frame
@@ -7908,7 +8151,7 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     OpenProjectDialogController.prototype.LoadView = function () {
         var _this = this;
         return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
-            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__._ForEach)(this.projects)(function (project) {
+            .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects)(function (project) {
             return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : '').fontWeight('500'))
                 .minHeight('50px')
                 .background(_this.selectedProject === project ? 'rgb(120,120,120,50%)' : { default: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '' : 'white', hover: 'rgb(120,120,120,10%)' })
@@ -8769,19 +9012,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HeadLineButton(title, icon) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(icon) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('gray').marginRight('5px'), _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(title) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title))
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(icon) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('gray'), _tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.nullOrEmpty(title) ? null : (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(title))
         .border({
-        default: 'solid 1px #C8D2DC',
+        default: 'solid 1px #CCC',
         hover: 'solid 1px #B4BEC8',
         active: 'solid 1px #B4BEC8'
     })
         .backgroundColor({
-        default: '#EBF0F5',
-        hover: '#E7ECF1',
-        active: '#E1E6EB'
+        default: '#FFFFFFAA',
+        /*   hover: '#E7ECF1',
+          active: '#E1E6EB' */
     })
-        .cornerRadius(10)
-        .padding('3px 10px 3px 10px')
+        //.initial({ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' })
+        .hover({ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px' })
+        .minHeight('25px')
+        .cornerRadius(5)
+        .padding('3px 5px 3px 5px')
         .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop));
 }
 
@@ -8911,6 +9157,7 @@ function DesktopPageTitle(icon, text) {
         .fontFamily('Proxima Nova')
         .fontSize('22px')
         .foregroundColor('#333333'))
+        .height() // auto
         .width() //auto
     );
 }
@@ -8943,7 +9190,7 @@ __webpack_require__.r(__webpack_exports__);
 function PortalSideMenu(params) {
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
     if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal) {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.items, function (item, index) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(params.items)(function (item, index) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(26), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).fontSize('12px').fontFamily('-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'))
                 .padding(5)
                 .background(selectedIndex === index ? (params.second ? '#777b80' : '#52565b') : { hover: '#eee' })
@@ -8951,9 +9198,10 @@ function PortalSideMenu(params) {
                 .cursor('pointer')
                 .foregroundColor(selectedIndex === index ? 'white' : { hover: '#333', default: 'white' })
                 .height(80)
-                .onClick(function () { setSelectedIndex(index); params.selectedAction(index); });
-        })).minWidth(params.second ? '75px' : '80px')
-            .width(params.second ? 75 : 80)
+                .onClick(function () { setSelectedIndex(index); params.selectedAction(index); })
+                .visible(item.isVisible());
+        })).width()
+            .initial({ width: 0 }).animate({ width: params.second ? 75 : 80 })
             .background(params.second ? '#52565b' : '#212932')
             .shadow(params.second ? 'inset 24px 0 20px -20px #373b40' : '')
             .borderBottom('2px solid #212932'));
@@ -9030,6 +9278,12 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
     for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
         to[j] = from[i];
@@ -9042,39 +9296,25 @@ var TabViewItemClass = /** @class */ (function (_super) {
     function TabViewItemClass() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Object.defineProperty(TabViewItemClass.prototype, "Header", {
-        get: function () {
-            var _this = this;
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, this.headerContent).onClick(function () { return _this._onSelected(); });
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(TabViewItemClass.prototype, "Content", {
-        get: function () {
-            return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, this._content);
-        },
-        enumerable: false,
-        configurable: true
-    });
+    TabViewItemClass.prototype.GetHeader = function () {
+        var _this = this;
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })(this.headerContent)
+            .width() //auto
+            .onClick(function () { return _this._onSelected(); });
+    };
+    TabViewItemClass.prototype.GetContent = function () {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(this._content);
+    };
     TabViewItemClass.prototype.onSelected = function (func) {
         this._onSelected = func;
         return this;
     };
-    TabViewItemClass.prototype.header = function () {
-        var content = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            content[_i] = arguments[_i];
-        }
-        this.headerContent = this.DoFlatten.apply(this, content);
+    TabViewItemClass.prototype.header = function (content) {
+        this.headerContent = content;
         return this;
     };
-    TabViewItemClass.prototype.content = function () {
-        var content = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            content[_i] = arguments[_i];
-        }
-        this._content = this.DoFlatten.apply(this, content);
+    TabViewItemClass.prototype.content = function (content) {
+        this._content = content;
         return this;
     };
     TabViewItemClass.prototype.name = function (value) {
@@ -9082,25 +9322,37 @@ var TabViewItemClass = /** @class */ (function (_super) {
         ;
         return this;
     };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], TabViewItemClass.prototype, "headerContent", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], TabViewItemClass.prototype, "_content", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], TabViewItemClass.prototype, "_onSelected", void 0);
     return TabViewItemClass;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
 var TabViewClass = /** @class */ (function (_super) {
     __extends(TabViewClass, _super);
     function TabViewClass() {
         var _this = _super.call(this) || this;
-        _this.tabs = new _tuval_core__WEBPACK_IMPORTED_MODULE_1__.List();
         _this.Appearance.Display = 'flex';
         _this.Appearance.Width = '100%';
         _this.Appearance.Height = '100%';
+        _this._selectedTabIndex = 0;
+        _this.tabs = new _tuval_core__WEBPACK_IMPORTED_MODULE_1__.List();
         return _this;
     }
     TabViewClass.prototype.Body = function () {
         var _this = this;
-        this.SubViews.Add(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs, function (tabItem, index) {
+        this.SubViews.Add(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs)(function (tabItem, index) {
             if (index === _this._selectedTabIndex) {
-                return tabItem._content;
+                return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(tabItem._content));
             }
-        })), [_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs, function (tabItem) { return tabItem.Header; })).height('auto').width('100%')])).width('100%')
+        })), [
+            // Header
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs)(function (tabItem) { return tabItem.GetHeader(); })).height('auto').width('100%')])).width('100%')
             /*  .spacing('10px') */
             .paddingLeft('5px')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
@@ -9115,8 +9367,9 @@ var TabViewClass = /** @class */ (function (_super) {
         }
         var childs = this.DoFlatten.apply(this, args);
         (0,_tuval_core__WEBPACK_IMPORTED_MODULE_1__.foreach)(childs, function (item) {
-            if (item instanceof TabViewItemClass) {
-                _this.tabs.Add(item);
+            var tabItem = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.getView)(_this.controller, item);
+            if (tabItem instanceof TabViewItemClass) {
+                _this.tabs.Add(tabItem);
             }
         });
         return this;
@@ -9129,6 +9382,12 @@ var TabViewClass = /** @class */ (function (_super) {
         this.Body();
         return _super.prototype.Render.call(this);
     };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], TabViewClass.prototype, "tabs", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ViewProperty)()
+    ], TabViewClass.prototype, "_selectedTabIndex", void 0);
     return TabViewClass;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIView));
 
@@ -9137,6 +9396,7 @@ function TabView() {
     for (var _i = 0; _i < arguments.length; _i++) {
         subViews[_i] = arguments[_i];
     }
+    console.log(subViews);
     return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.viewFunc)(TabViewClass, function (controller, propertyBag) {
         var _a;
         return (_a = new TabViewClass().setController(controller).PropertyBag(propertyBag)).setChilds.apply(_a, subViews);
@@ -9165,6 +9425,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Headline3": () => (/* binding */ Headline3),
 /* harmony export */   "Headline4": () => (/* binding */ Headline4),
 /* harmony export */   "Headline5": () => (/* binding */ Headline5),
+/* harmony export */   "AnimHeadline5": () => (/* binding */ AnimHeadline5),
 /* harmony export */   "Headline6": () => (/* binding */ Headline6),
 /* harmony export */   "Subtitle1": () => (/* binding */ Subtitle1),
 /* harmony export */   "Subtitle2": () => (/* binding */ Subtitle2),
@@ -9196,6 +9457,9 @@ function Headline4(value) {
 }
 function Headline5(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').fontSize('24.4615px').kerning('0px'));
+}
+function AnimHeadline5(value) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').kerning('0px').initial({ fontSize: '1px' }).animate({ fontSize: '25px' }));
 }
 function Headline6(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('Ubuntu, sans-serif').fontWeight('500').fontSize('20.3846px').kerning('0.15px'));

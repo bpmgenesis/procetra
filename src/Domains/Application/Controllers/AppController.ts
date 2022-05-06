@@ -1,6 +1,7 @@
 import { Event, foreach } from '@tuval/core';
 import {
     Alignment,
+    Context,
     HStack,
     Icon,
     If,
@@ -11,24 +12,24 @@ import {
     UIButton,
     UIController,
     UIImage,
+    UIMotion,
     UIScene,
     UIView,
     VStack,
-    UIMotion,
-    Context
+    UILink,
+    UIRoutes
 } from '@tuval/forms';
-import { Sparkline } from '@tuval/components/charts';
+
+import { MVIAnalyseModel } from '../../../../dist_types/types/Domains/AnalyseModels/Models/MVIAnalyseModel';
 import { ProcessMining } from '../../../Application';
 import { Resources } from '../../../Resources';
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
-import { ProjectController, ProjectControllerClass } from '../../Project/Controllers/ProjectController';
+import { AnalyseModelsController } from '../../AnalyseModels/Controllers/AnalyseModelsController';
+import { ProjectController } from '../../Project/Controllers/ProjectController';
 import { MIProject } from '../../Project/Models/ProjectModel';
 import { MenuButton } from '../Views/MenuButton';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 import { RecentProjects } from '../Views/RecentProjects';
-import { AnalyseModelsController } from '../../AnalyseModels/Controllers/AnalyseModelsController';
-import { MVIAnalyseModel } from '../../../../dist_types/types/Domains/AnalyseModels/Models/MVIAnalyseModel';
-import { TextField } from '@tuval/forms';
 
 export class AppController extends UIController {
 
@@ -106,6 +107,11 @@ export class AppController extends UIController {
         alert(this.test);
     }
 
+    @Context()
+    public onCloseProject() {
+        this.currentProject = null;
+    }
+
     private getSubView() {
         return ({ onTextChanged }) => {
             return (
@@ -130,17 +136,22 @@ export class AppController extends UIController {
         }
     }
     public override LoadView(): UIView {
-        //return this.getContextView() as any;
-         if (TApplication.IsDesktop) {
-             return (
-                 If(this.currentProject == null)
-                     (this.MainPage())
-                     .else
-                     (this.currentController as any)
+        /*  return (
+             UIScene(
+                 UILink('test'),
+                 UIRoutes('dfsdf')
              )
-         } else if (TApplication.IsPortal) {
-             return this.LoadPortalView();
-         }
+         ) */
+        if (TApplication.IsDesktop) {
+            return (
+                If(this.currentProject == null)
+                    (this.MainPage())
+                    .else
+                    (this.currentController as any)
+            )
+        } else if (TApplication.IsPortal) {
+            return this.LoadPortalView();
+        }
     }
 
     private OnNewProject() {

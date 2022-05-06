@@ -1,4 +1,4 @@
-import { UIView, VStack, _ForEach, HStack, cTopLeading, cLeading, If, RoundedRectangle } from '@tuval/forms';
+import { UIView, VStack, HStack, cTopLeading, cLeading, If, RoundedRectangle, ForEach } from '@tuval/forms';
 import { int, Convert, is } from '@tuval/core';
 import { RegularText } from '../../../UI/Views/Texts';
 
@@ -19,9 +19,9 @@ const columns: IGridColumn[] = [
         title: 'Events',
         width: 120,
         builder: (row) =>
-            HStack(
+            HStack({ alignment: cLeading })(
                 RegularText(row['events']).marginRight('10px'),
-                RoundedRectangle().width('100%').height(15).background('#7A9BCD')
+                RoundedRectangle().width().height(15).background('#7A9BCD').initial({ width: 0 }).animate({ width: '100%' }).__transition({ duration: 1 })
             )
     },
     {
@@ -146,7 +146,7 @@ function GridHeader(columnInfo: IGridColumn[]) {
     const width = Convert.ToInt32(100 / columnInfo.length);
     return (
         HStack({ alignment: cLeading })(
-            ..._ForEach(columnInfo)(cInfo =>
+            ...ForEach(columnInfo)(cInfo =>
                 RegularText(cInfo.title)
                     .fontSize('12px')
                     .fontWeight('500')
@@ -166,7 +166,7 @@ function GridRow(columnInfo: IGridColumn[], row: any) {
     debugger;
     return (
         HStack({ alignment: cLeading })(
-            ..._ForEach(columnInfo)(cInfo =>
+            ...ForEach(columnInfo)(cInfo =>
                 VStack({ alignment: cLeading })(
                     is.function(cInfo.builder) ? cInfo.builder(row) :
                         RegularText(row[cInfo.key])
@@ -183,7 +183,7 @@ export function CasesGrid(): UIView {
     return (
         VStack({ alignment: cTopLeading })(
             GridHeader(columns),
-            ..._ForEach(data)((row =>
+            ...ForEach(data)((row =>
                 GridRow(columns, row)
             ))
         )

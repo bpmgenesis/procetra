@@ -1,6 +1,6 @@
-import { UIController, UIView, Text, HDivider, VStack, cTopLeading, HStack, Icon, cLeading, Spacer, Color, ZStack, _ForEach, UIScene, State, UIContextMenu } from '@tuval/forms';
+import { UIController, UIView, Text, HDivider, VStack, cTopLeading, HStack, Icon, cLeading, Spacer, Color, ZStack, ForEach, UIScene, State, UIContextMenu } from '@tuval/forms';
 import { HeadLineButton } from '../../../UI/Views/HeadLineButton';
-import { Headline3, SectionHeadline, SectionSubHeadline, Headline5, RegularText } from '../../../UI/Views/Texts';
+import { Headline3, SectionHeadline, SectionSubHeadline, Headline5, RegularText, AnimHeadline5 } from '../../../UI/Views/Texts';
 import { TileBox } from '../../../UI/Views/TileBox';
 import { MVIAnalyseModel } from '../Models/MVIAnalyseModel';
 import { AnalyseModelTileBox } from '../Views/AnalyseModelTileBox';
@@ -9,6 +9,7 @@ import { AnalyseModelUIService } from '../../../UI/UIServices/AnalyseModelUIServ
 import { Services } from '../../../Services/Services';
 import { MIProject } from '../../Project/Models/ProjectModel';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
+import { DatasetController } from '../../Dataset/Controllers/DatasetController';
 
 export class AnalyseModelsController extends UIController {
     public AnalyseModelSelected: Event<any>;
@@ -19,6 +20,9 @@ export class AnalyseModelsController extends UIController {
 
     @State()
     public model: MVIAnalyseModel[];
+
+    @State()
+    public selectedAnalyseModel: MVIAnalyseModel;
 
     protected InitController() {
         this.AnalyseModelSelected = new Event();
@@ -31,6 +35,11 @@ export class AnalyseModelsController extends UIController {
             {
                 icon: '\\f07c',
                 title: 'Permissions',
+                onClick: (item) => console.log(item)
+            },
+            {
+                icon: '\\eff3',
+                title: 'Publish',
                 onClick: (item) => console.log(item)
             },
             {
@@ -79,35 +88,52 @@ export class AnalyseModelsController extends UIController {
 
         });
     }
-    public LoadView(): UIView {
-        return (
-            UIScene(
-                VStack({ alignment: cTopLeading })(
-                    HStack({ alignment: cLeading, spacing: 10 })(
-                        Icon('\\f04f').size(30),
-                        Headline5('Ticket Management').marginVertical(10),
-                        Spacer(),
-                        HStack(
-                            HeadLineButton('', '\\f0a0').action(() => this.OnAddEditAnalyseModelName()),
-                            HeadLineButton('New Analyse Model').action(() => this.OnAddEditAnalyseModelName())
-                        ).width()
-                    ).height(), //auto height
-                    HStack({ alignment: cLeading, spacing: 10 })(
-                        Icon('\\f109').size(20),
-                        SectionHeadline('Analyse Models'),
-                        Spacer(),
-                        HStack(
-                            HeadLineButton('New Analyse Model').action(() => this.OnAddEditAnalyseModelName())
-                        ).width() //auto width
-                    ).height(),
-                    HDivider().marginVertical(10).height(1).background('rgb(120,120,120,50%)'),
-                    HStack({ alignment: cTopLeading })(
-                        ..._ForEach(this.model)(item =>
-                            AnalyseModelTileBox(item, this.menuItems)
-                        )
-                    ).width().height().padding(10).wrap('wrap')
+
+    private OnSelectedAnalyseModelChange(item: MVIAnalyseModel): void {
+        this.selectedAnalyseModel = item;
+    }
+
+    private AnalyseModelView() {
+        return ({ onCloseProject }) => {
+            return (
+                UIScene(
+                    VStack({ alignment: cTopLeading })(
+                        HStack({ alignment: cLeading, spacing: 10 })(
+                            Icon('\\f04f').size(30),
+                            AnimHeadline5('Ticket Management').marginVertical(10),
+                            Spacer(),
+                            HStack({ spacing: 5 })(
+                                HeadLineButton('', '\\f0a0').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\f07c').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\f122').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\f0b2').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\f071').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\f07e').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('New Analyse Model').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('Close Project').action(() => onCloseProject())
+                            ).width()
+                        ).height(), //auto height
+                        HStack({ alignment: cLeading, spacing: 10 })(
+                            Icon('\\f109').size(20),
+                            SectionHeadline('Analyse Models'),
+                            Spacer(),
+                            HStack(
+                                HeadLineButton('New Analyse Model').action(() => this.OnAddEditAnalyseModelName())
+                            ).width() //auto width
+                        ).height().visible(false),
+                        HDivider().marginVertical(10).height(1).background('rgb(120,120,120,50%)').visible(false),
+                        HStack({ alignment: cTopLeading })(
+                            ...ForEach(this.model)(item =>
+                                AnalyseModelTileBox(item, this.menuItems).onClick(() => this.AnalyseModelSelected(item))
+                            )
+                        ).width().height().padding(10).wrap('wrap')
+                    )
                 )
             )
-        )
+        }
+    }
+
+    public LoadView(): any {
+        return this.AnalyseModelView();
     }
 }

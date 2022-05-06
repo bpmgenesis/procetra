@@ -1,5 +1,5 @@
 import { TvChart } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, _ForEach, cTopLeading } from '@tuval/forms';
+import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading } from '@tuval/forms';
 import { MetricBox } from './MetricBox';
 import { ActivityBox, MVIActivityBox } from './ActivityBox';
 
@@ -24,7 +24,7 @@ export function ActivitySection(activities: MVIActivityBox[]): UIView {
                 // We prevent this stack to large more than its content
                 .height('auto'),
             HStack(
-                ..._ForEach(activities)(activity =>
+                ...ForEach(activities)(activity =>
                     ActivityBox({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount }),
                 )
             ).height('auto').wrap('wrap').alignment(Alignment.topLeading),

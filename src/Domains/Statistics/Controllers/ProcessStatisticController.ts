@@ -1,5 +1,5 @@
 import { int } from '@tuval/core';
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication, _ForEach, cVertical, cLeading, cTopLeading } from '@tuval/forms';
+import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication, cVertical, cLeading, cTopLeading } from '@tuval/forms';
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { sideMenuModel } from '../Models/SideMenu';
@@ -44,7 +44,7 @@ export class ProcessStatisticController extends UIController {
                             PageTitle(sideMenuModel[this.selectedIndex].icon, sideMenuModel[this.selectedIndex].name + ' statistics'),
                             Spacer(),
                             HStack({ spacing: 5 })(
-                                ..._ForEach(sideMenuModel)((item, index) =>
+                                ...ForEach(sideMenuModel)((item, index) =>
                                     UIButton(
                                         Icon(item.icon).size(14).foregroundColor('gray').marginRight('5px'),
                                         Text(item.name)

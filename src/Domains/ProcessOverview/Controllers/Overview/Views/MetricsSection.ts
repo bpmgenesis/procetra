@@ -31,7 +31,7 @@ export function MetricsSection(params: MVIMetricSection): UIView {
                 // We prevent this stack to large more than its content
                 .height(),
             HStack({ spacing: 10 })(
-                ...ForEach(params.metricBoxNodels, (metricBoxModel: MVIMetricBox, index: int) =>
+                ...ForEach(params.metricBoxNodels)((metricBoxModel, index) =>
                     MetricBox(metricBoxModel, selectedIndex === index).onClick(() => setSelectedIndex(index)),
                 )
             ).height(150),

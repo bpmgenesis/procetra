@@ -381,11 +381,11 @@ export class ConnectorDialogController extends UIController {
                     left: [
                         ListView(
                             Text('Select Item').textAlign('start').font(Fonts.title3),
-                            ...ForEach(ListModel, (listModelItem: MIListModel) => {
+                            ...ForEach(ListModel)((listModelItem: MIListModel) => {
                                 return (
                                     VStack(
                                         Text(listModelItem.name).padding('5px').fontWeight('bold'),
-                                        ...ForEach(listModelItem.items, (modelItem: MIConnectorItems) =>
+                                        ...ForEach(listModelItem.items)((modelItem: MIConnectorItems) =>
                                             ListViewItem(
                                                 /*   Icon(projectItem.icon).size(20).width('auto'), */
                                                 Text(modelItem.title).paddingLeft('10px').width('100%')
@@ -408,7 +408,7 @@ export class ConnectorDialogController extends UIController {
                     right: [
                         VStack(
                             HStack(
-                                ...ForEach(this.selectedModelItem?.items, (item: { name: string, imagePath: string, image: HTMLImageElement }) =>
+                                ...ForEach(this.selectedModelItem?.items)((item: any/* { name: string, imagePath: string, image: HTMLImageElement } */) =>
                                     VStack(
                                         UIImage(SymbolBroker.GetSymbolUrl(item.imagePath.split('/')[0], item.imagePath.split('/')[1], item.imagePath.split('/')[2])).width('104px'),
                                         Text(item.name).textAlign('center')

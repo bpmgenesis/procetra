@@ -52,94 +52,103 @@ export interface DesctopViewParams {
     NewProjectItemAction: Function,
     selectedProjectItemController: UIController
 }
-export function DesktopView({ selectedProjectItem, selectedProjectItems, ProjectItemSelectedAction, NewProjectItemAction, selectedProjectItemController }: DesctopViewParams): UIView {
-    return UIScene(
-        TwoColumnWithHeaderLayout({
-            header: [
-                /*   Text(this.selectedProject?.project_name).fontSize('24px'),
-                  UIButton(
-                      Text('Close')
-                  ).action(() => this.parentAppController.CLoseProject()) */
-            ],
-            left: [
-                VStack({ spacing: 5 })(
-                    HStack(
-                        Icon('\\f112').size(19).marginRight('10px').foregroundColor('#ccc'),
-                        Text('insan kaynakları süreci').textTransform('uppercase')
-                    ).height(),
-                    HStack({ spacing: 10 })(
-                        VStack({ spacing: 10 })(
-                            Text('100%'),
-                            Spacer(),
-                            RoundedRectangle().width(40).height('80%').background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            VStack(
-                                Text('Project').textTransform('uppercase'),
-                                Text('31.123').textTransform('uppercase').fontSize('12px')
-                            ).height()
-                        ),
-                        VStack({ spacing: 10 })(
-                            Text('100%'),
-                            Spacer(),
-                            RoundedRectangle().width(40).height('100%').background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            VStack(
-                                Text('Set').textTransform('uppercase'),
-                                Text('31.123').textTransform('uppercase').fontSize('12px')
-                            ).height()
-                        ),
-                        VStack({ spacing: 10 })(
-                            Text('100%'),
-                            Spacer(),
-                            RoundedRectangle().width(40).height('100%').background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
-                            VStack(
-                                Text('Current').textTransform('uppercase'),
-                                Text('31.123').textTransform('uppercase').fontSize('12px')
-                            ).height()
-                        )
-                    ).height(500).width(200).padding(20),
+export function DesktopView({ selectedProjectItem, selectedProjectItems, ProjectItemSelectedAction, NewProjectItemAction, selectedProjectItemController }: DesctopViewParams) {
+    return ({ onCloseProject }) => {
+        return UIScene(
+            TwoColumnWithHeaderLayout({
+                header: [
+                    /*   Text(this.selectedProject?.project_name).fontSize('24px'),
+                      UIButton(
+                          Text('Close')
+                      ).action(() => this.parentAppController.CLoseProject()) */
+                ],
+                left: [
+                    VStack({ spacing: 5 })(
+                        HStack(
+                            Icon('\\f112').size(19).marginRight('10px').foregroundColor('#ccc').onClick(() => onCloseProject()),
+                            Text('insan kaynakları süreci').textTransform('uppercase')
+                        ).height(),
+                        HStack({ spacing: 10 })(
+                            VStack({ spacing: 10 })(
+                                Text('100%'),
+                                Spacer(),
+                                RoundedRectangle()
+                                    .width(40)
+                                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ duration: 2 })
+                                    .background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
+                                VStack(
+                                    Text('Project').textTransform('uppercase'),
+                                    Text('31.123').textTransform('uppercase').fontSize('12px')
+                                ).height()
+                            ),
+                            VStack({ spacing: 10 })(
+                                Text('100%'),
+                                Spacer(),
+                                RoundedRectangle().width(40)
+                                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 1, duration: 2 })
+                                    .background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
+                                VStack(
+                                    Text('Model').textTransform('uppercase'),
+                                    Text('31.123').textTransform('uppercase').fontSize('12px')
+                                ).height()
+                            ),
+                            VStack({ spacing: 10 })(
+                                Text('100%'),
+                                Spacer(),
+                                RoundedRectangle().width(40)
+                                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 2, duration: 2 })
+                                    .background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
+                                VStack(
+                                    Text('Current').textTransform('uppercase'),
+                                    Text('31.123').textTransform('uppercase').fontSize('12px')
+                                ).height()
+                            )
+                        ).height(500).width(200).padding(20),
 
-                    //Project Title
-                    HStack(
-                        Text('Project Items')
-                            .font(Fonts.title3)
-                            .padding('8px')
-                            .fontWeight('bold')
-                            .foregroundColor('black')
-                    ).height('auto').visible(false),
-                    // Poject items list view
-                    ListView(
-                        ...ForEach(selectedProjectItems, (projectItem: MVIProjectItem) =>
-                            Case<ListViewItemClass>(projectItem.type, {
-                                'Dataset': DatasetListView(projectItem),
-                                'Dashboard': DashboardListView(projectItem)
-                            })
-                                .borderBottom('solid 1px rgb(200,200,200,10%)')
-                                .cornerRadius('5px')
-                                .transition('all 0.35s')
-                                .shadow(selectedProjectItem?.project_item_id === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
-                                .background(selectedProjectItem?.project_item_id === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                                .onSelected(() => ProjectItemSelectedAction(projectItem))
-                        )
+                        //Project Title
+                        HStack(
+                            Text('Project Items')
+                                .font(Fonts.title3)
+                                .padding('8px')
+                                .fontWeight('bold')
+                                .foregroundColor('black')
+                        ).height('auto').visible(false),
+                        // Poject items list view
+                        ListView(
+                            ...ForEach(selectedProjectItems)((projectItem: MVIProjectItem) =>
+                                Case<ListViewItemClass>(projectItem.type, {
+                                    'Dataset': DatasetListView(projectItem),
+                                    'Dashboard': DashboardListView(projectItem)
+                                })
+                                    .borderBottom('solid 1px rgb(200,200,200,10%)')
+                                    .cornerRadius('5px')
+                                    .transition('all 0.35s')
+                                    .shadow(selectedProjectItem?.project_item_id === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
+                                    .background(selectedProjectItem?.project_item_id === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                                    .onSelected(() => ProjectItemSelectedAction(projectItem))
+                            )
 
-                    ).width('200px').background('rgb(255,255,255,10%)').grow(),
-                    // Project items buttons
-                    HStack({ alignment: cCenter, spacing: 5 })(
-                        ListFooterButton('\\efff').action(() => NewProjectItemAction()),
-                        ListFooterButton('\\effd'),
-                        ListFooterButton('\\f04a'),
-                        ListFooterButton('\\f0bb')
-                    ).height('auto').width('100%')
-                )
-                    .visible(TApplication.IsDesktop)
-            ],
-            right: [
-                VStack(
-                    /*  this.TestTabView(), */
-                    selectedProjectItemController
-                ).grow()
-            ],
-            /*  footer: [
-                 Text('Test').fontSize('24px')
-             ] */
-        })
-    )
+                        ).width('200px').background('rgb(255,255,255,10%)').grow(),
+                        // Project items buttons
+                        HStack({ alignment: cCenter, spacing: 5 })(
+                            ListFooterButton('\\efff').action(() => NewProjectItemAction()),
+                            ListFooterButton('\\effd'),
+                            ListFooterButton('\\f04a'),
+                            ListFooterButton('\\f0bb')
+                        ).height('auto').width('100%')
+                    )
+                        .visible(TApplication.IsDesktop)
+                ],
+                right: [
+                    VStack(
+                        /*  this.TestTabView(), */
+                        selectedProjectItemController
+                    ).grow()
+                ],
+                /*  footer: [
+                     Text('Test').fontSize('24px')
+                 ] */
+            })
+        )
+    }
 }

@@ -1,4 +1,4 @@
-import { UIController, UIView, UIScene, Text, VStack, HStack, Spacer, UIButton, Icon, cTopLeading, _ForEach, State, TApplication, cTop } from '@tuval/forms';
+import { UIController, UIView, UIScene, Text, VStack, HStack, Spacer, UIButton, Icon, cTopLeading, ForEach, State, TApplication, cTop } from '@tuval/forms';
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../../UI/Views/Texts';
 import { TileBox } from '../../../../UI/Views/TileBox';
 import { int } from '@tuval/core';
@@ -15,7 +15,7 @@ const overviewTypes = [
 function MetricSelectionButtons(buttons: string[], selectedIndex: int, onSelectedAction: (index: int) => void): UIView {
     return (
         HStack(
-            ..._ForEach(buttons)((name, index) =>
+            ...ForEach(buttons)((name, index) =>
                 UIButton(
                     Text(name).fontSize('13px')
                 )
@@ -80,7 +80,7 @@ export class ActivityController extends UIController {
                             .height(),
                         HStack({ spacing: 5 })(
                             VStack({ alignment: cTop, spacing: 10 })(
-                                ..._ForEach(overviewTypes)((name, index) =>
+                                ...ForEach(overviewTypes)((name, index) =>
                                     UIButton(
                                         Text(name)
                                     )

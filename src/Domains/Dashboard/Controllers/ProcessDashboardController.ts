@@ -65,7 +65,7 @@ export class ProcessDashboardController extends UIController {
                         PageTitle('\\f0b3', 'Dashboard'),
                         Spacer(),
                         HStack({ spacing: 5 })(
-                            ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>
+                            ...ForEach(['Overview', 'Throughput times', 'Activities'])((name) =>
                                 UIButton(
                                     Text(name)
                                 ).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')

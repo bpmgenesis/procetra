@@ -10,7 +10,7 @@ export function HappyPathDiagram(items: MVIHappyPathDiagramItem[]): UIView {
         VStack(
             TileBoxHeaderText('Algorithmic happy path'),
             HStack(
-                ...ForEach(items, (item: MVIHappyPathDiagramItem, index: int) =>
+                ...ForEach(items)((item: MVIHappyPathDiagramItem, index: int) =>
                     VStack(
                         Text(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'),
                         HStack(

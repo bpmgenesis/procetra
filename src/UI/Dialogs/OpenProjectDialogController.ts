@@ -22,7 +22,7 @@ import { ListView, ListViewItem } from '../Views/ListView';
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
-import { cLeading, _ForEach } from '@tuval/forms';
+import { cLeading } from '@tuval/forms';
 
 export class OpenProjectDialogController extends UIController {
 
@@ -67,7 +67,7 @@ export class OpenProjectDialogController extends UIController {
                     ).height(),
                     HDivider().height(1).background(TApplication.IsPortal ? '#288ae2' : 'gray'),
                     ListView(
-                        ..._ForEach(this.projects)((project: MIProject) =>
+                        ...ForEach(this.projects)((project: MIProject) =>
                             ListViewItem(
                                 Text(project.project_name).foregroundColor(TApplication.IsPortal ? '#bbb' : '').fontWeight('500'),
                             )

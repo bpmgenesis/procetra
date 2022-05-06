@@ -1,19 +1,20 @@
 import { int } from '@tuval/core';
-import { UIView, UIScene, ForEach, HStack, VDivider, VStack, Icon, Text, bindState } from '@tuval/forms';
+import { UIView, UIScene, HStack, VDivider, VStack, Icon, Text, bindState, ForEach, cLeading } from '@tuval/forms';
 import { TabView, TabViewItem } from '../../../UI/Views/TabView';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 
 export interface DatasetTabViewParams {
     tabModel: MVIDatasetTabModel[];
-    //selectedTabIndex: int;
+    selectedTabIndex: int;
     onTabSelected: (tabname: int) => void;
 }
 export function DatasetTabView(datasetTabViewParams: DatasetTabViewParams): UIView {
-    const [selectedIndex, setSelectedIndex] = bindState(0);
+    // const [selectedIndex, setSelectedIndex] = bindState(0);
+    console.log(datasetTabViewParams.tabModel);
     return (
         UIScene(
             TabView(
-                ...ForEach(datasetTabViewParams.tabModel, (tabItem: MVIDatasetTabModel, index) =>
+                ...ForEach(datasetTabViewParams.tabModel)((tabItem: MVIDatasetTabModel, index) =>
                     TabViewItem({
                         name: tabItem.name,
                         header: (
@@ -24,19 +25,19 @@ export function DatasetTabView(datasetTabViewParams: DatasetTabViewParams): UIVi
                                     Text(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center')
                                 )
                                     .wrap('wrap')
-                                    .borderTop(selectedIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
-                                    .foregroundColor(selectedIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
+                                    .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
+                                    .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                                     .padding(10)
-                                    .background(selectedIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                                    .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
                                     .transition('all 0.35s'),
 
                                 VDivider().height('70%').background('rgb(120,120,120,30%)')
-                            )
+                            ).maxWidth('100px')
                         ),
                         content: tabItem.controller as any
-                    }).onSelected(() => { datasetTabViewParams.onTabSelected(index); setSelectedIndex(index) }),
+                    }).onSelected(() => { datasetTabViewParams.onTabSelected(index); }),
                 )
-            ).selectedTabIndex(selectedIndex)
+            ).selectedTabIndex(datasetTabViewParams.selectedTabIndex)
         )
     )
 }

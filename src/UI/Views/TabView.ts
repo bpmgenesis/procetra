@@ -1,4 +1,4 @@
-import { UIView, VStack, IRenderable, ForEach, Alignment, HStack, Filter, IControl, UIController, viewFunc } from '@tuval/forms';
+import { UIView, VStack, IRenderable, Alignment, HStack, Filter, IControl, UIController, viewFunc, getView, ForEach, ViewProperty, cLeading } from '@tuval/forms';
 import { List, foreach, Event, int } from '@tuval/core';
 import { Binding } from '../../Domains/Binding';
 
@@ -10,29 +10,37 @@ export interface TabViewItemParameters {
 class TabViewItemClass extends UIView {
     private _name: string;
 
-    private headerContent: IRenderable[];
-    private _content: IRenderable[];
+    @ViewProperty()
+    private headerContent: UIView | IControl;
+
+    @ViewProperty()
+    public _content: UIView | IControl;
+
+    @ViewProperty()
     private _onSelected: Event<any>;
-    public get Header(): UIView {
+
+    public GetHeader(): UIView {
         return HStack({ spacing: 5 })(
-            ...(this.headerContent as any)
-        ).onClick(() => this._onSelected())
+            this.headerContent as any
+        )
+            .width() //auto
+            .onClick(() => this._onSelected())
     }
-    public get Content(): UIView {
+    public GetContent(): UIView {
         return HStack(
-            ...(this._content as any)
+            this._content
         )
     }
     public onSelected(func: Function): this {
         this._onSelected = func as any;
         return this;
     }
-    public header(...content: (UIView | IControl)[]): this {
-        this.headerContent = this.DoFlatten(...content);
+    public header(content: UIView | IControl): this {
+        this.headerContent = content;
         return this;
     }
-    public content(...content: (UIView | IControl)[]): this {
-        this._content = this.DoFlatten(...content);
+    public content(content: UIView | IControl): this {
+        this._content = content;
         return this;
     }
     public name(value: string): this {
@@ -43,27 +51,38 @@ class TabViewItemClass extends UIView {
 
 
 export class TabViewClass extends UIView {
-    private tabs: List<TabViewItemClass> = new List();
-    private _selectedTabIndex: any;
+
+    @ViewProperty()
+    private tabs: List<TabViewItemClass>;
+
+    @ViewProperty()
+    private _selectedTabIndex: int;
 
     public constructor() {
         super();
         this.Appearance.Display = 'flex';
         this.Appearance.Width = '100%';
         this.Appearance.Height = '100%';
+        this._selectedTabIndex = 0;
+        this.tabs = new List();
     }
 
     public Body(): UIView {
         this.SubViews.Add(
             VStack(
-
-                ...ForEach(this.tabs, (tabItem, index) => {
+                // Content
+                ...ForEach(this.tabs)((tabItem: TabViewItemClass, index) => {
                     if (index === this._selectedTabIndex) {
-                        return tabItem._content;
+                        return (
+                            VStack(
+                                tabItem._content as any
+                            )
+                        )
                     }
                 }),
-                HStack(
-                    ...ForEach(this.tabs, tabItem => tabItem.Header)
+                // Header
+                HStack({ alignment: cLeading })(
+                    ...ForEach(this.tabs)(tabItem => tabItem.GetHeader())
                 ).height('auto').width('100%'),
 
             )
@@ -78,8 +97,9 @@ export class TabViewClass extends UIView {
     public setChilds(...args: any[]) {
         const childs = this.DoFlatten(...args);
         foreach(childs, (item: IRenderable) => {
-            if (item instanceof TabViewItemClass) {
-                this.tabs.Add(item);
+            const tabItem = getView(this.controller, item);
+            if (tabItem instanceof TabViewItemClass) {
+                this.tabs.Add(tabItem);
             }
         })
         return this;
@@ -95,6 +115,7 @@ export class TabViewClass extends UIView {
 }
 
 export function TabView(...subViews: UIView[]): TabViewClass {
+    console.log(subViews);
     return viewFunc(TabViewClass, (controller, propertyBag) => {
         return new TabViewClass().setController(controller).PropertyBag(propertyBag).setChilds(...subViews);
     });

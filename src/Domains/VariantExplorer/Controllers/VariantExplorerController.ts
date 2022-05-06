@@ -15,7 +15,7 @@ export class VariantExplorerController extends UIController {
                         PageTitle('\\f13c', 'Variant explorer'),
                         Spacer(),
                         HStack({ spacing: 5 })(
-                            ...ForEach(['Overview', 'Throughput times', 'Activities'], (name) =>
+                            ...ForEach(['Overview', 'Throughput times', 'Activities'])((name) =>
                                 UIButton(
                                     Text(name)
                                 ).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
@@ -24,7 +24,7 @@ export class VariantExplorerController extends UIController {
                     ).alignment(Alignment.leading),
                     HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
                     VStack({ spacing: 20 })(
-                        ...ForEach([1, 2, 3, 4, 5], (index) =>
+                        ...ForEach([1, 2, 3, 4, 5])((index) =>
                             HStack({ alignment: cLeading, spacing: 20 })(
                                 Text('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'),
                                 Gauge(

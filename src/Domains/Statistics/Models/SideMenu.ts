@@ -7,16 +7,19 @@ export const sideMenuModel: MVIPortalSideMenuItem[] = [
     {
         name: 'Overview',
         icon: '\\f0d8',
-        controller: new MultiOverviewController()
+        controller: new MultiOverviewController(),
+        isVisible: () => true
     },
     {
         name: 'Activity',
         icon: '\\f0e7',
-        controller: new ActivityController()
+        controller: new ActivityController(),
+        isVisible: () => true
     },
     {
         name: 'Resource',
         icon: '\\f006',
-        controller: new OverviewController()
+        controller: new OverviewController(),
+        isVisible: () => true
     }
 ]
