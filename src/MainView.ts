@@ -26,12 +26,13 @@ class TestButton extends Button {
 export class MainView extends TForm {
 
     public override InitComponents() {
-        this.Width = 1000;
+        this.Width = 1300;
         this.Height = 700;
         this.Name = 'ProcessMaining::MainForm';
         this.Text = 'Procetra';
         this.Icon = Resources.Icons.ApplicationIcon;
 
+        this.HeaderColor = 'rgb(255,255,255, 20%)';
 
         const testController = new AppController();
         this.Controls.Add(testController);
@@ -47,12 +48,8 @@ export class MainView extends TForm {
 
             if (topMaximized) {
                 TApplication.ApplicationMode = ApplicationModes.Portal;
-
-
-
             } else {
                 TApplication.ApplicationMode = ApplicationModes.Desktop;
-
             }
         });
     }

@@ -2,10 +2,10 @@ import { UIView, VStack, HStack, cTopLeading, cLeading, If, RoundedRectangle, Fo
 import { int, Convert, is } from '@tuval/core';
 import { RegularText } from '../../../UI/Views/Texts';
 
-interface IGridColumn {
+export interface IGridColumn {
     title: string;
     key: string;
-    width: int;
+    width?: int;
     builder?: (row) => UIView
 }
 const columns: IGridColumn[] = [
@@ -142,17 +142,19 @@ const data = [
 
 ]
 
-function GridHeader(columnInfo: IGridColumn[]) {
+export function GridHeader(columnInfo: IGridColumn[]) {
     const width = Convert.ToInt32(100 / columnInfo.length);
     return (
         HStack({ alignment: cLeading })(
             ...ForEach(columnInfo)(cInfo =>
                 RegularText(cInfo.title)
-                    .fontSize('12px')
+                    .fontFamily("'Source Sans Pro', Arial, sans-serif")
+                    .fontSize('18px')
                     .fontWeight('500')
-                    .textTransform('uppercase')
+                    .foregroundColor('#1A1A1A')
+                    //.textTransform('uppercase')
                     .whiteSpace('nowrap')
-                    .width(width + '%')
+                    .width(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
                     .textOverflow('ellipsis')
                     .padding('0 10px')
                     .borderRight('2px solid transparent')
@@ -161,7 +163,7 @@ function GridHeader(columnInfo: IGridColumn[]) {
     )
 }
 
-function GridRow(columnInfo: IGridColumn[], row: any) {
+export function GridRow(columnInfo: IGridColumn[], row: any, onSelectedRow: Function) {
     const width = Convert.ToInt32(100 / columnInfo.length);
     debugger;
     return (
@@ -170,13 +172,12 @@ function GridRow(columnInfo: IGridColumn[], row: any) {
                 VStack({ alignment: cLeading })(
                     is.function(cInfo.builder) ? cInfo.builder(row) :
                         RegularText(row[cInfo.key])
-                            .width('100%')
                             .whiteSpace('nowrap')
                             .textOverflow('ellipsis')
 
-                ).borderTop('1px solid #e4e4e4').padding('5px 10px').width(width + '%')
+                ).borderTop('1px solid #e4e4e4').padding('5px 10px').width(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
             )
-        ).height()
+        ).height().onClick(() => onSelectedRow(row)).cursor('pointer')
     )
 }
 export function CasesGrid(): UIView {
@@ -184,9 +185,8 @@ export function CasesGrid(): UIView {
         VStack({ alignment: cTopLeading })(
             GridHeader(columns),
             ...ForEach(data)((row =>
-                GridRow(columns, row)
+                GridRow(columns, row, () => { })
             ))
         )
     )
-
 }

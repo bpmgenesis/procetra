@@ -14,6 +14,7 @@ import { NewAnalyseController } from '../../NewAnalyse/Controllers/NewAnalyseCon
 export interface MVIDatasetTabModel {
     icon: string;
     name: string;
+    isRight:boolean;
     controller: UIController;
     isVisible: () => boolean
 }
@@ -22,6 +23,7 @@ export const topModels: MVIDatasetTabModel[] = [
     {
         icon: '\\efc2',
         name: 'New Analyse',
+        isRight: true,
         controller: new NewAnalyseController(),
         isVisible: () => TApplication.IsDesktop
     },

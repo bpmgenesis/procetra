@@ -30,7 +30,7 @@ export function Headline5(value: string): UIView {
     )
 }
 
-export function AnimHeadline5(value: string): UIView {
+export function AnimHeadline5(value: string): UITextClass {
     return (
         Text(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').kerning('0px').initial({ fontSize: '1px' }).animate({ fontSize: '25px' })
     )

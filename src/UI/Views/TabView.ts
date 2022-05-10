@@ -1,10 +1,11 @@
-import { UIView, VStack, IRenderable, Alignment, HStack, Filter, IControl, UIController, viewFunc, getView, ForEach, ViewProperty, cLeading } from '@tuval/forms';
+import { UIView, VStack, IRenderable, Alignment, HStack, Filter, IControl, UIController, viewFunc, getView, ForEach, ViewProperty, cLeading, cTrailing } from '@tuval/forms';
 import { List, foreach, Event, int } from '@tuval/core';
 import { Binding } from '../../Domains/Binding';
 
 export interface TabViewItemParameters {
     name: string;
     header: UIView;
+    rightHeader: UIView;
     content: UIView;
 }
 class TabViewItemClass extends UIView {
@@ -12,6 +13,9 @@ class TabViewItemClass extends UIView {
 
     @ViewProperty()
     private headerContent: UIView | IControl;
+
+    @ViewProperty()
+    private rightHeaderContent: UIView | IControl;
 
     @ViewProperty()
     public _content: UIView | IControl;
@@ -22,6 +26,13 @@ class TabViewItemClass extends UIView {
     public GetHeader(): UIView {
         return HStack({ spacing: 5 })(
             this.headerContent as any
+        )
+            .width() //auto
+            .onClick(() => this._onSelected())
+    }
+    public GetRightHeader(): UIView {
+        return HStack({ spacing: 5 })(
+            this.rightHeaderContent as any
         )
             .width() //auto
             .onClick(() => this._onSelected())
@@ -37,6 +48,10 @@ class TabViewItemClass extends UIView {
     }
     public header(content: UIView | IControl): this {
         this.headerContent = content;
+        return this;
+    }
+    public rightHeader(content: UIView | IControl): this {
+        this.rightHeaderContent = content;
         return this;
     }
     public content(content: UIView | IControl): this {
@@ -80,11 +95,16 @@ export class TabViewClass extends UIView {
                         )
                     }
                 }),
-                // Header
-                HStack({ alignment: cLeading })(
-                    ...ForEach(this.tabs)(tabItem => tabItem.GetHeader())
-                ).height('auto').width('100%'),
-
+                HStack(
+                    // Header
+                    HStack({ alignment: cLeading })(
+                        ...ForEach(this.tabs)(tabItem => tabItem.GetHeader())
+                    ).height('auto').width('100%'),
+                    // Right Header
+                    HStack({ alignment: cTrailing })(
+                        ...ForEach(this.tabs)(tabItem => tabItem.GetRightHeader())
+                    ).height('auto').width('100%')
+                ).height()
             )
                 .width('100%')
                 /*  .spacing('10px') */
@@ -123,6 +143,6 @@ export function TabView(...subViews: UIView[]): TabViewClass {
 
 export function TabViewItem(params: TabViewItemParameters): TabViewItemClass {
     return viewFunc(TabViewItemClass, (controller, propertyBag) => {
-        return new TabViewItemClass().setController(controller).PropertyBag(propertyBag).name(params.name).header(params.header).content(params.content);
+        return new TabViewItemClass().setController(controller).PropertyBag(propertyBag).name(params.name).header(params.header).rightHeader(params.rightHeader).content(params.content);
     });
 }

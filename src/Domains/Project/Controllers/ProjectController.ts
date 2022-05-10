@@ -8,6 +8,7 @@ import { Binding } from '../../Binding';
 import { CreateMVIProjectItem, MIProjectItem, MVIProjectItem } from '../Models/MIProjectItem';
 import { MIProject } from '../Models/ProjectModel';
 import { DesktopView } from '../Views/DesktopView';
+import { FilterUIService } from '../../../UI/UIServices/FiltersUIService';
 
 class StackController extends UIController {
     @State()
@@ -98,8 +99,9 @@ export class ProjectControllerClass extends UIController {
 
     //When user click add button that under list
     private OnNewProjectItem() {
-        const connectorDialog = new ConnectorDialog();
-        connectorDialog.ShowDialog();
+        FilterUIService.SelectFilter();
+        /* const connectorDialog = new ConnectorDialog();
+        connectorDialog.ShowDialog(); */
     }
 
     // When user select items froım list

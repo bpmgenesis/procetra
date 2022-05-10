@@ -1,5 +1,6 @@
-import { UIView, UIScene, TwoColumnWithHeaderLayout, VStack, HStack, Icon, Text, Spacer, RoundedRectangle, Fonts, ForEach, Case, cLeading, Alignment, TApplication, cCenter, UIController } from '@tuval/forms';
+import { UIView, UIScene, TwoColumnWithHeaderLayout, VStack, HStack, Icon, Text, Spacer, RoundedRectangle, Fonts, ForEach, Case, cLeading, Alignment, TApplication, cCenter, UIController, cTopLeading, VDivider, UIContextMenu } from '@tuval/forms';
 import { ListView, ListViewItemClass, ListViewItem } from '../../../UI/Views/ListView';
+import { AnimHeadline5, RegularText } from '../../../UI/Views/Texts';
 import { MVIProjectItem } from '../Models/MIProjectItem';
 import { ListFooterButton } from './ListFooterButton';
 
@@ -57,17 +58,52 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
         return UIScene(
             TwoColumnWithHeaderLayout({
                 header: [
-                    /*   Text(this.selectedProject?.project_name).fontSize('24px'),
-                      UIButton(
-                          Text('Close')
-                      ).action(() => this.parentAppController.CLoseProject()) */
+                    HStack({ alignment: cLeading })(
+                        Icon('\\efd5').size(30).marginBottom('10px'),
+                        VStack({ alignment: cLeading })(
+                            AnimHeadline5('Ticket Management').lineHeight(35).whiteSpace('nowrap'),
+                            AnimHeadline5('Ensemble Mining Model').fontSize('14px').textTransform('uppercase'),
+                        ).marginLeft('5px').marginRight('10px').width(),
+                        VDivider().height('80%').backgroundColor('rgb(120,120,120,50%)'),
+                        Icon('\\efde').size(24).marginHorizontal('10px').foregroundColor('#666'),
+                        VStack({ alignment: cLeading })(
+                            RegularText('7.500').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'),
+                            RegularText('EVENTS').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666'),
+                        ).width(),
+                        VDivider().height('80%').backgroundColor('rgb(120,120,120,50%)'),
+                        Icon('\\f033').size(24).marginHorizontal('10px').foregroundColor('#666'),
+                        VStack({ alignment: cLeading })(
+                            RegularText('3.124').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'),
+                            RegularText('CASES').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666'),
+                        ).width(),
+                        Spacer(),
+                        UIContextMenu(
+
+                            HStack({ alignment: cLeading, spacing: 10 })(
+                                Icon('\\f033').size(16),
+                                Text('Test')
+                            )
+                        )(
+                            Icon('\\f04f').size(24),
+                        ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
+                        UIContextMenu(
+
+                            HStack({ alignment: cLeading, spacing: 10 })(
+                                Icon('\\f033').size(16),
+                                Text('Test')
+                            )
+                        )(
+                            Icon('\\f04a').size(24),
+                        ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
+                    )
+                        .height(80)
+                        .shadow('0 0 8px 0 #ccc')
+                        .background('rgb(255,255,255,20%)')
+                        .marginBottom('10px')
+                        .visible(TApplication.IsDesktop)
                 ],
                 left: [
                     VStack({ spacing: 5 })(
-                        HStack(
-                            Icon('\\f112').size(19).marginRight('10px').foregroundColor('#ccc').onClick(() => onCloseProject()),
-                            Text('insan kaynakları süreci').textTransform('uppercase')
-                        ).height(),
                         HStack({ spacing: 10 })(
                             VStack({ spacing: 10 })(
                                 Text('100%'),
@@ -77,7 +113,7 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
                                     .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ duration: 2 })
                                     .background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
                                 VStack(
-                                    Text('Project').textTransform('uppercase'),
+                                    Text('Process').textTransform('uppercase'),
                                     Text('31.123').textTransform('uppercase').fontSize('12px')
                                 ).height()
                             ),
@@ -99,11 +135,11 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
                                     .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 2, duration: 2 })
                                     .background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'),
                                 VStack(
-                                    Text('Current').textTransform('uppercase'),
+                                    Text('Query').textTransform('uppercase'),
                                     Text('31.123').textTransform('uppercase').fontSize('12px')
                                 ).height()
                             )
-                        ).height(500).width(200).padding(20),
+                        ).height(500).width(200).padding(20).visible(true),
 
                         //Project Title
                         HStack(
@@ -137,7 +173,7 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
                             ListFooterButton('\\f0bb')
                         ).height('auto').width('100%')
                     )
-                        .visible(TApplication.IsDesktop)
+                        .visible(false)
                 ],
                 right: [
                     VStack(

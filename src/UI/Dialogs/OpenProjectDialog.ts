@@ -13,7 +13,7 @@ export class OpenProjectDialog extends Dialog {
 
     public override InitComponents() {
         this.Text = 'Open Project';
-        this.Width = 600;
+        this.Width = 1000;
         this.Height = 530;
 
         this.openProjectDialogController = new OpenProjectDialogController();

@@ -18,8 +18,8 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
                     UIContextMenu(
                         ...ForEach(menuItems)(item =>
                             HStack({ alignment: cLeading, spacing: 10 })(
-                                Icon(item.icon).size(16),
-                                Text(item.title)
+                                Icon(item.icon).size(16).foregroundColor(item.iconColor),
+                                Text(item.title).foregroundColor(item.iconColor)
                             ).onClick((e) => { item.onClick(params) })
                         )
                     )(

@@ -31,8 +31,6 @@ export class DatasetController extends UIController {
     private OnNewAnalyse(value: MVIDatasetTabModel) {
         this.tabModels = [...this.tabModels, value];
         this.OnTabSelected(this.tabModels.length - 1);
-
-
     }
 
     private OnTabSelected(index: int) {

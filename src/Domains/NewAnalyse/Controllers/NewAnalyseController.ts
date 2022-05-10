@@ -1,5 +1,5 @@
 import { is } from '@tuval/core';
-import { UIController, UIScene, Text, ForEach, HStack, cTopLeading, VStack, Icon, ScrollView, TextField, State, Context } from '@tuval/forms';
+import { UIController, UIScene, Text, ForEach, HStack, cTopLeading, VStack, Icon, ScrollView, TextField, State, Context, UIContextMenu, cLeading, cTrailing } from '@tuval/forms';
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { RegularText } from '../../../UI/Views/Texts';
 import { AutomationController } from '../../Automation/Controllers/AutomationController';
@@ -11,6 +11,24 @@ import { MonitoringController } from '../../Monitoring/Controllers/MonitoringCon
 import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
 import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
 import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
+
+const menuItems = [
+    {
+        icon: '\\f091',
+        title: 'Add to model',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\f0b2',
+        title: 'Tags',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\f06b',
+        title: 'Help',
+        onClick: (item) => console.log(item)
+    }
+]
 
 export interface MVINewAnalyseModelSelection {
     icon?: string;
@@ -28,7 +46,7 @@ const NewAnalyseTypes: MVINewAnalyseModelSelection[] = [
     },
     {
         icon: '\\f0b3',
-        title: 'New Dashboard',
+        title: 'Dashboard',
         description: 'A new dashboard waiting to be built.',
         controller: new ProcessDashboardController(),
     },
@@ -51,7 +69,7 @@ const NewAnalyseTypes: MVINewAnalyseModelSelection[] = [
         controller: new ProcessStatisticController(),
     },
     {
-        icon: '\\f13b',
+        icon: '\\efdb',
         title: 'Variant Explorer',
         controller: new VariantExplorerController(),
     },
@@ -121,6 +139,18 @@ const NewAnalyseTypes: MVINewAnalyseModelSelection[] = [
     {
         icon: '\\efdf',
         title: 'Durations'
+    },
+    {
+        icon: '\\efe8',
+        title: 'Breakdown'
+    },
+    {
+        icon: '\\f054',
+        title: 'Distribution'
+    },
+    {
+        icon: '\\f068',
+        title: 'Metrics'
     }
 ]
 
@@ -128,10 +158,28 @@ function NewAnalyseModelTitleBox(tag: string, { icon, title, description, contro
     return ({ OnNewAnalyse }) => {
         return (
             VStack(
-                icon && Icon(icon).size(50).foregroundColor('#33333366').marginBottom('20px'),
+                // Menu stack
+                HStack({ alignment: cTrailing })(
+                    UIContextMenu(
+                        ...ForEach(menuItems)(item =>
+                            HStack({ alignment: cLeading, spacing: 10 })(
+                                Icon(item.icon).size(16),
+                                Text(item.title)
+                            ).onClick((e) => { item.onClick(null) })
+                        )
+                    )(
+                        Icon('\\f09e').size(20),
+                    ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s').cornerRadius(5).marginRight('10px')
+                ).height(), //auto
+
+                // Analysis Icon
+                icon && Icon(icon).size(50).foregroundColor('var(--sub-icon-color)').marginBottom('10px'),
+                // Analysis Name
                 RegularText(title).fontSize('18px').searchWords([tag]),
+                // Analysis Description
                 description && RegularText(description).fontSize('12px')
             )
+
                 .marginTop('10px')
                 .marginRight('10px')
                 .cornerRadius(10)
@@ -142,9 +190,14 @@ function NewAnalyseModelTitleBox(tag: string, { icon, title, description, contro
                 .onClick(() => OnNewAnalyse({
                     icon: icon,
                     name: title,
+                    isRight:false,
                     controller: controller,
                     isVisible: () => true
                 }))
+                .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
+                .variable('--sub-icon-color', { default: '#33333366', hover: '#14a9d5' })
+                .variable('--sub-icon-size', { default: '50px', hover: '60px' })
+                .cursor('pointer')
         )
     }
 
@@ -193,7 +246,9 @@ export class NewAnalyseController extends UIController {
         return (
             UIScene(
                 VStack({ alignment: cTopLeading })(
-                    PageTitle('\\f0a1', 'Add New Analyse'),
+                    HStack(
+                        PageTitle('\\f056', 'Mining Modules')
+                    ).height(),
                     searchBox(),
                     ScrollView(
                         HStack({ alignment: cTopLeading, spacing: 10 })(
