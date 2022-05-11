@@ -1,10 +1,10 @@
-import { Bindable } from './../../Domains/ProcessOverview/Controllers/Overview/Bindable';
+import { Bindable } from '../../modules/ProcessOverview/Controllers/Overview/Bindable';
 import { UIView, HStack, Icon, TextField } from '@tuval/forms';
 
-export function RegularTextBox({ value }: { value: Bindable<string> }): UIView {
+export function RegularTextBox({ icon, value }: { icon?: string, value: Bindable<string> }): UIView {
     return (
         HStack(
-            Icon('\\f109')
+            icon && Icon(icon)
                 .size(15)
                 .padding(10),
             TextField().fontSize('1rem')

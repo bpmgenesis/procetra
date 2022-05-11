@@ -1,6 +1,6 @@
 import { Button, FileUpload, TForm, TTabPage, View, TApplication, ApplicationModes, Desktop } from '@tuval/forms';
 import { Resources } from './Resources';
-import { AppController } from './Domains/Application/Controllers/AppController';
+import { AppController } from './domains/Application/Controllers/AppController';
 
 
 

@@ -8,7 +8,7 @@ export class CreateNewProjectDialog extends Dialog {
     public OkButtonClicked: any = new Event();
     projectList: ListBox;
 
-    private createNewProjectDialogController:CreateNewProjectController;
+    private createNewProjectDialogController: CreateNewProjectController;
 
     public override InitComponents() {
         this.Text = 'Open Project';
@@ -19,26 +19,26 @@ export class CreateNewProjectDialog extends Dialog {
         this.createNewProjectDialogController.Bind(this);
         this.Controls.Add(this.createNewProjectDialogController);
 
-      /*   this.projectList = new ListBox();
-        this.projectList.Height = 360;
+        /*   this.projectList = new ListBox();
+          this.projectList.Height = 360;
 
-        this.Controls.Add(this.projectList);
+          this.Controls.Add(this.projectList);
 
-        const btnOK = new Button();
-        btnOK.Text = 'OK';
-        btnOK.Color = 2;
-        btnOK.Clicked = (() => {
-            this.OnOKClick();
+          const btnOK = new Button();
+          btnOK.Text = 'OK';
+          btnOK.Color = 2;
+          btnOK.Clicked = (() => {
+              this.OnOKClick();
 
-        }) as any;
+          }) as any;
 
-        const btnCancel = new Button();
-        btnCancel.Text = 'Cancel';
-        btnCancel.Color = 1;
-        btnCancel.Clicked = (() => {
-            this.Hide();
-        }) as any;
-        this.FooterControls.AddRange([btnOK, btnCancel]); */
+          const btnCancel = new Button();
+          btnCancel.Text = 'Cancel';
+          btnCancel.Color = 1;
+          btnCancel.Clicked = (() => {
+              this.Hide();
+          }) as any;
+          this.FooterControls.AddRange([btnOK, btnCancel]); */
 
     }
 
@@ -49,6 +49,10 @@ export class CreateNewProjectDialog extends Dialog {
 
     public OnOKClick(value: string) {
         this.ShowDialogAsyncResolve(value);
+        this.Hide();
+    }
+
+    public OnCancel() {
         this.Hide();
     }
 

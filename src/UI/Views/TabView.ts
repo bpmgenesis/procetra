@@ -1,6 +1,6 @@
 import { UIView, VStack, IRenderable, Alignment, HStack, Filter, IControl, UIController, viewFunc, getView, ForEach, ViewProperty, cLeading, cTrailing } from '@tuval/forms';
 import { List, foreach, Event, int } from '@tuval/core';
-import { Binding } from '../../Domains/Binding';
+import { Binding } from '../../domains/Binding';
 
 export interface TabViewItemParameters {
     name: string;
@@ -86,7 +86,7 @@ export class TabViewClass extends UIView {
         this.SubViews.Add(
             VStack(
                 // Content
-                ...ForEach(this.tabs)((tabItem: TabViewItemClass, index) => {
+                ...ForEach(this.tabs.ToArray())((tabItem: TabViewItemClass, index) => {
                     if (index === this._selectedTabIndex) {
                         return (
                             VStack(
@@ -98,11 +98,11 @@ export class TabViewClass extends UIView {
                 HStack(
                     // Header
                     HStack({ alignment: cLeading })(
-                        ...ForEach(this.tabs)(tabItem => tabItem.GetHeader())
+                        ...ForEach(this.tabs.ToArray())(tabItem => tabItem.GetHeader())
                     ).height('auto').width('100%'),
                     // Right Header
                     HStack({ alignment: cTrailing })(
-                        ...ForEach(this.tabs)(tabItem => tabItem.GetRightHeader())
+                        ...ForEach(this.tabs.ToArray())(tabItem => tabItem.GetRightHeader())
                     ).height('auto').width('100%')
                 ).height()
             )

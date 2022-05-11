@@ -1,6 +1,6 @@
 import { HttpClient } from '@tuval/core';
 import { ConfigService } from '../Services/ConfigService';
-import { MIProject } from '../Domains/Project/Models/ProjectModel';
+import { MIProject } from '../domains/Project/Models/ProjectModel';
 import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
 
 

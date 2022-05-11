@@ -1,16 +1,16 @@
 import { is } from '@tuval/core';
-import { UIController, UIScene, Text, ForEach, HStack, cTopLeading, VStack, Icon, ScrollView, TextField, State, Context, UIContextMenu, cLeading, cTrailing } from '@tuval/forms';
+import { UIController, UIScene, Text, ForEach, HStack, cTopLeading, VStack, Icon, ScrollView, TextField, State, Context, UIContextMenu, cLeading, cTrailing, cTop } from '@tuval/forms';
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { RegularText } from '../../../UI/Views/Texts';
-import { AutomationController } from '../../Automation/Controllers/AutomationController';
-import { CaseExplorerController } from '../../CaseExplorer/Controllers/CaseExplorerController';
-import { ProcessDashboardController } from '../../Dashboard/Controllers/ProcessDashboardController';
-import { ProcessExplorerController } from '../../Discovery/Controllers/ProcessExplorerController';
-import { LoopsController } from '../../Loops/Controllers/LoopsController';
-import { MonitoringController } from '../../Monitoring/Controllers/MonitoringController';
-import { ProcessOverviewController } from '../../ProcessOverview/Controllers/ProcessOverviewController';
-import { ProcessStatisticController } from '../../Statistics/Controllers/ProcessStatisticController';
-import { VariantExplorerController } from '../../VariantExplorer/Controllers/VariantExplorerController';
+import { AutomationController } from '../../../modules/Automation/Controllers/AutomationController';
+import { CaseExplorerController } from '../../../modules/CaseExplorer/Controllers/CaseExplorerController';
+import { ProcessDashboardController } from '../../../modules/Dashboard/Controllers/ProcessDashboardController';
+import { ProcessExplorerController } from '../../../modules/Discovery/Controllers/ProcessExplorerController';
+import { LoopsController } from '../../../modules/Loops/Controllers/LoopsController';
+import { MonitoringController } from '../../../modules/Monitoring/Controllers/MonitoringController';
+import { ProcessOverviewController } from '../../../modules/ProcessOverview/Controllers/ProcessOverviewController';
+import { ProcessStatisticController } from '../../../modules/Statistics/Controllers/ProcessStatisticController';
+import { VariantExplorerController } from '../../../modules/VariantExplorer/Controllers/VariantExplorerController';
 
 const menuItems = [
     {
@@ -19,7 +19,7 @@ const menuItems = [
         onClick: (item) => console.log(item)
     },
     {
-        icon: '\\f0b2',
+        icon: '\\d2da',
         title: 'Tags',
         onClick: (item) => console.log(item)
     },
@@ -39,61 +39,61 @@ export interface MVINewAnalyseModelSelection {
 const NewAnalyseTypes: MVINewAnalyseModelSelection[] = [
 
     {
-        icon: '\\f0b4',
+        icon: '\\d2dc',
         title: 'Process Overview',
         description: 'An overhead view of your process',
         controller: new ProcessOverviewController(),
     },
     {
-        icon: '\\f0b3',
+        icon: '\\d2db',
         title: 'Dashboard',
         description: 'A new dashboard waiting to be built.',
         controller: new ProcessDashboardController(),
     },
     {
-        icon: '\\f0f8',
+        icon: '\\d320',
         title: 'Discover',
         description: 'To understand and analyze your business',
         controller: new ProcessExplorerController(),
     },
     {
-        icon: '\\f0a1',
+        icon: '\\d2c9',
         title: 'Monitoring',
         description: 'Follow the process indicators',
         controller: new MonitoringController(),
     },
     {
-        icon: '\\f0f2',
+        icon: '\\d31a',
         title: 'Statistics',
         description: 'General statistics of the process',
         controller: new ProcessStatisticController(),
     },
     {
-        icon: '\\efdb',
+        icon: '\\d203',
         title: 'Variant Explorer',
         controller: new VariantExplorerController(),
     },
     {
-        icon: '\\f096',
+        icon: '\\e028',
         title: 'Loops',
         controller: new LoopsController(),
     },
     {
-        icon: '\\f049',
+        icon: '\\d271',
         title: 'Automation',
         controller: new AutomationController(),
     },
     {
-        icon: '\\f033',
+        icon: '\\d25b',
         title: 'Case Explorer',
         controller: new CaseExplorerController(),
     },
     {
-        icon: '\\f07f',
+        icon: '\\d2a7',
         title: 'Difference Analyse'
     },
     {
-        icon: '\\eff0',
+        icon: '\\d218',
         title: 'Benchmarking'
     },
     {
@@ -168,7 +168,7 @@ function NewAnalyseModelTitleBox(tag: string, { icon, title, description, contro
                             ).onClick((e) => { item.onClick(null) })
                         )
                     )(
-                        Icon('\\f09e').size(20),
+                        Icon('\\d2c6').size(20),
                     ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s').cornerRadius(5).marginRight('10px')
                 ).height(), //auto
 
@@ -190,7 +190,7 @@ function NewAnalyseModelTitleBox(tag: string, { icon, title, description, contro
                 .onClick(() => OnNewAnalyse({
                     icon: icon,
                     name: title,
-                    isRight:false,
+                    isRight: false,
                     controller: controller,
                     isVisible: () => true
                 }))
@@ -208,7 +208,7 @@ function searchBox(): any {
         return (
             HStack(
                 HStack(
-                    Icon('\\f004')
+                    Icon('\\d22c')
                         .size(20)
                         .paddingRight('10px')
                         .paddingLeft('10px'),
@@ -229,7 +229,7 @@ function searchBox(): any {
                     //.backgroundColor('rgba(255,255,255,0.3)')
                     .height()
                     .tabIndex(0)
-            ).height().marginVertical(20)
+            ).height()
         )
     }
 
@@ -245,13 +245,13 @@ export class NewAnalyseController extends UIController {
     public LoadView() {
         return (
             UIScene(
-                VStack({ alignment: cTopLeading })(
+                VStack({ alignment: cTopLeading, spacing: 10 })(
                     HStack(
-                        PageTitle('\\f056', 'Mining Modules')
-                    ).height(),
+                        PageTitle('\\d27e', 'Mining Modules')
+                    ).height().paddingTop('20px'),
                     searchBox(),
                     ScrollView(
-                        HStack({ alignment: cTopLeading, spacing: 10 })(
+                        HStack({ alignment: cTop, spacing: 10 })(
                             ...ForEach(NewAnalyseTypes)(item =>
                                 (is.nullOrEmpty(this.searchText) ||
                                     item.title.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1)

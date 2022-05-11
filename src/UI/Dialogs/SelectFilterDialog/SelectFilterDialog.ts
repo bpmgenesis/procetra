@@ -1,7 +1,7 @@
 import { Event } from '@tuval/core';
 import { cTopLeading, cTrailing, Dialog, HStack, State, Text, UIController, UIScene, UIView, VStack } from '@tuval/forms';
 
-import { Bindable } from '../../../Domains/ProcessOverview/Controllers/Overview/Bindable';
+import { Bindable } from '../../../modules/ProcessOverview/Controllers/Overview/Bindable';
 import { AcceptButton, CancelButton } from '../../Views/Buttons';
 import { RegularTextBox } from '../../Views/RegularTextBox';
 import { SelectFilterController } from './Controllers/SelectFilterController';

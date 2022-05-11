@@ -2,11 +2,12 @@ import { IProject } from '../Bussiness/IProject';
 import { IActivityInfoBag, IDataSet } from '../Bussiness/IDataSet';
 import { int } from '@tuval/core';
 import { IActivityInfo } from '../Bussiness/IActivityInfo';
+import { MIProject } from '../domains/Project/Models/ProjectModel';
 
 export type ThreadResult<T> = any;
 
 export interface IProjectService {
-    CreateProject(name: string): Promise<IProject>;
+    CreateProject(name: string): Promise<MIProject>;
     GetProjectById(session_id: string, org_name: string, project_id: string): Promise<any>;
     AddDataSet(dataset: IDataSet): void;
     DataSetFromCvs(projectId: string,datasetId: string, datasetName: string, csv: string, case_column: string, activity_column: string, time_stamp: string, start_date: string, date_format: string): Promise<IDataSet>;

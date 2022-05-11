@@ -11,18 +11,12 @@ import { MIProject } from '../../Project/Models/ProjectModel';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
 import { DatasetController } from '../../Dataset/Controllers/DatasetController';
 
-const newMenuItems = [
-    {
-        icon: '\\efd5',
-        iconColor: 'black',
-        title: 'Add Mining Model',
-        onClick: (item) => console.log(item)
-    }
-]
 export class AnalyseModelsController extends UIController {
     public AnalyseModelSelected: Event<any>;
 
     private menuItems: MVITitleMenu[];
+
+    private newMenuItems: any;
     @State()
     private project: MIProject;
 
@@ -36,52 +30,78 @@ export class AnalyseModelsController extends UIController {
         this.AnalyseModelSelected = new Event();
         this.menuItems = [
             {
-                icon: '\\f0a0',
+                icon: '\\d2c8',
                 iconColor: 'black',
                 title: 'Rename',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\f07c',
+                icon: '\\d2a4',
                 iconColor: 'black',
                 title: 'Permissions',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\eff3',
+                icon: '\\d21b',
                 iconColor: 'black',
                 title: 'Publish',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\f122',
+                icon: '\\d3a4',
                 iconColor: 'black',
                 title: 'Duplicate',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\f0b2',
+                icon: '\\d2da',
                 iconColor: 'black',
                 title: 'Tags',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\f071',
+                icon: '\\d299',
                 iconColor: 'black',
                 title: 'Move To',
                 onClick: (item) => console.log(item)
             },
             {
-                icon: '\\f07e',
+                icon: '\\d2a6',
                 iconColor: 'red',
                 title: 'Delete',
                 onClick: (item) => console.log(item)
             }
         ]
+
+        this.newMenuItems = [
+            {
+                icon: '\\d1fe',
+                iconColor: 'black',
+                title: 'Mining Model',
+                onClick: (item) => this.OnAddEditAnalyseModelName()
+            },
+            {
+                icon: '\\eff3',
+                iconColor: 'black',
+                title: 'Metric',
+                onClick: (item) => console.log(item)
+            },
+            {
+                icon: '\\e97b',
+                iconColor: 'black',
+                title: 'Chart',
+                onClick: (item) => console.log(item)
+            },
+            {
+                icon: '\\e856',
+                iconColor: 'black',
+                title: 'Alert',
+                onClick: (item) => console.log(item)
+            }
+        ];
     }
 
     public OnBindModel(project: MIProject) {
-        debugger;
         this.project = project;
         const session_id = Services.StateService.GetSessionId();
         Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then(analyseModels => {
@@ -114,27 +134,27 @@ export class AnalyseModelsController extends UIController {
                 UIScene(
                     VStack({ alignment: cTopLeading })(
                         HStack({ alignment: cLeading, spacing: 10 })(
-                            Icon('\\f04f').size(30),
-                            AnimHeadline5('Ticket Management').marginVertical(10),
+                            Icon('\\d277').size(30),
+                            AnimHeadline5(this.project?.project_name).marginVertical(10),
                             Spacer(),
                             HStack({ spacing: 5 })(
                                 UIContextMenu(
-                                    ...ForEach(newMenuItems)(item =>
+                                    ...ForEach(this.newMenuItems)((item: any) =>
                                         HStack({ alignment: cLeading, spacing: 10 })(
                                             Icon(item.icon).size(20).foregroundColor(item.iconColor),
                                             Text(item.title).foregroundColor(item.iconColor)
-                                        )
+                                        ).onClick(() => item.onClick(item))
                                     )
                                 )(
-                                    HeadLineButton('', '\\efff'),
+                                    HeadLineButton('', '\\e145'),
                                 ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
-                                HeadLineButton('', '\\f0a0').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f07c').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f122').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f0b2').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f071').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f07e').action(() => this.OnAddEditAnalyseModelName()),
-                                HeadLineButton('', '\\f000').action(() => onCloseProject())
+                                HeadLineButton('', '\\d2c8').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\d2a4').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\d34a').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\d2da').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\d299').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\d2a6').action(() => this.OnAddEditAnalyseModelName()),
+                                HeadLineButton('', '\\e5cd').action(() => onCloseProject())
                             ).width()
                         ).height(), //auto height
                         HStack({ alignment: cLeading, spacing: 10 })(
@@ -148,7 +168,7 @@ export class AnalyseModelsController extends UIController {
                         HDivider().marginVertical(10).height(1).background('rgb(120,120,120,50%)').visible(false),
                         HStack({ alignment: cTopLeading })(
                             ...ForEach(this.model)(item =>
-                                AnalyseModelTileBox(item, this.menuItems).onClick(() => this.AnalyseModelSelected(item))
+                                AnalyseModelTileBox(item, this.menuItems).onDbClick(() => this.AnalyseModelSelected(item))
                             )
                         ).width().height().padding(10).wrap('wrap')
                     )

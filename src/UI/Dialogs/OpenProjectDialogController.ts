@@ -17,21 +17,21 @@ import {
     Spinner
 } from '@tuval/forms';
 
-import { MIProject } from '../../Domains/Project/Models/ProjectModel';
+import { MIProject } from '../../domains/Project/Models/ProjectModel';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { ListView, ListViewItem } from '../Views/ListView';
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
 import { cLeading, RoundedRectangle, cTopLeading, ScrollView, cVertical } from '@tuval/forms';
-import { GridHeader, GridRow, IGridColumn } from '../../Domains/Statistics/Views/CasesGrid';
+import { GridHeader, GridRow, IGridColumn } from '../../modules/Statistics/Views/CasesGrid';
 import { RegularText } from '../Views/Texts';
 
 const columns: IGridColumn[] = [
     {
         key: 'project_name',
         title: 'Name',
-        width: 220
+        width:230
     },
     {
         key: 'flags',
@@ -45,15 +45,22 @@ const columns: IGridColumn[] = [
     {
         key: 'owner',
         title: 'Project owner',
-        width: 150
+        width: 180
     },
     {
         key: 'stats',
         title: 'Stats',
+        width: 100,
         builder: (row) =>
             VStack({ alignment: cLeading })(
-                RegularText('1 set').fontFamily("'Source Sans Pro', Arial, sans-serif !important").foregroundColor('#7f7f7f'),
-                RegularText('10 models').fontFamily("'Source Sans Pro', Arial, sans-serif !important").foregroundColor('#7f7f7f'),
+                HStack({ alignment: cLeading, spacing: 5 })(
+                    RegularText('0').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'),
+                    RegularText('query').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px'),
+                ),
+                HStack({ alignment: cLeading, spacing: 5 })(
+                    RegularText('1.253').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'),
+                    RegularText('cases').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px'),
+                ),
             )
     },
     {
@@ -67,6 +74,7 @@ const columns: IGridColumn[] = [
     {
         key: 'duration',
         title: 'Actions',
+        width: 80,
         builder: (row) =>
             HStack(
                 Icon('\\e3c9').size(24).padding(8),
@@ -135,11 +143,15 @@ export class OpenProjectDialogController extends UIController {
         return (
             UIScene(
                 VStack({ alignment: cTopLeading })(
-                    HStack({ alignment: cLeading })(
+                    HStack({ alignment: cLeading, spacing: 5 })(
                         Icon('\\e241').size(24).foregroundColor('#263238'),
                         RegularText('Project List').fontSize(20)
                     ).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'),
                     ScrollView({ axes: cVertical })(
+                        /*  Text('dfesdfdsf'),
+                         ...ForEach(this.projects)(item =>
+                             Text(item.project_name)
+                         ) */
                         ProjectGrid(this.projects?.map(item => {
                             return {
                                 project_name: item.project_name,
@@ -148,7 +160,7 @@ export class OpenProjectDialogController extends UIController {
                                 updated: '09.05.2022',
                                 tag: item
                             }
-                        }), (row) => this.selectedProject = row.tag)
+                        }), (row) => { this.selectedProject = row.tag; this.OnOK(); })
                     ).padding(15).visible(this.projects != null),
                     VStack(
                         Spinner()
@@ -160,7 +172,7 @@ export class OpenProjectDialogController extends UIController {
                 ).visible(true),
                 VStack(
                     HStack({ alignment: cLeading, spacing: 10 })(
-                        Icon('\\efd5').size(30).foregroundColor(TApplication.IsPortal ? '#ddd' : ''),
+                        Icon('\\d1fd').size(30).foregroundColor(TApplication.IsPortal ? '#ddd' : ''),
                         Text('Select Project').font(Fonts.title).fontFamily('Ubuntu, sans-serif')
                             .fontWeight(TApplication.IsPortal ? '600' : '400').foregroundColor(TApplication.IsPortal ? '#ddd' : '')
                     ).height(),

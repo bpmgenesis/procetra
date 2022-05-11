@@ -551,4532 +551,6 @@ var MiningBrokerClient = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts":
-/*!**************************************************************************!*\
-  !*** ./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AnalyseModelsController": () => (/* binding */ AnalyseModelsController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/HeadLineButton */ "./src/UI/Views/HeadLineButton.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/AnalyseModelTileBox */ "./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/UIServices/AnalyseModelUIService */ "./src/UI/UIServices/AnalyseModelUIService.ts");
-/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-var newMenuItems = [
-    {
-        icon: '\\efd5',
-        iconColor: 'black',
-        title: 'Add Mining Model',
-        onClick: function (item) { return console.log(item); }
-    }
-];
-var AnalyseModelsController = /** @class */ (function (_super) {
-    __extends(AnalyseModelsController, _super);
-    function AnalyseModelsController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    AnalyseModelsController.prototype.InitController = function () {
-        this.AnalyseModelSelected = new _tuval_core__WEBPACK_IMPORTED_MODULE_4__.Event();
-        this.menuItems = [
-            {
-                icon: '\\f0a0',
-                iconColor: 'black',
-                title: 'Rename',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\f07c',
-                iconColor: 'black',
-                title: 'Permissions',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\eff3',
-                iconColor: 'black',
-                title: 'Publish',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\f122',
-                iconColor: 'black',
-                title: 'Duplicate',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\f0b2',
-                iconColor: 'black',
-                title: 'Tags',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\f071',
-                iconColor: 'black',
-                title: 'Move To',
-                onClick: function (item) { return console.log(item); }
-            },
-            {
-                icon: '\\f07e',
-                iconColor: 'red',
-                title: 'Delete',
-                onClick: function (item) { return console.log(item); }
-            }
-        ];
-    };
-    AnalyseModelsController.prototype.OnBindModel = function (project) {
-        var _this = this;
-        debugger;
-        this.project = project;
-        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
-        _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then(function (analyseModels) {
-            _this.model = analyseModels;
-        });
-    };
-    AnalyseModelsController.prototype.OnAddEditAnalyseModelName = function () {
-        var _this = this;
-        _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__.AnalyseModelUIService.AddEditAnalyseModelName().then(function (name) {
-            // Adding to our project
-            var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
-            _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', _this.project.project_id, name).then(function (analyseModelInfo) {
-                debugger;
-                var models = Array.from(_this.model); // for immutable array
-                models.push({ name: analyseModelInfo.name });
-                _this.model = models; // updating state
-                //this.ForceUpdate();
-            });
-        });
-    };
-    AnalyseModelsController.prototype.OnSelectedAnalyseModelChange = function (item) {
-        this.selectedAnalyseModel = item;
-    };
-    AnalyseModelsController.prototype.AnalyseModelView = function () {
-        var _this = this;
-        return function (_a) {
-            var onCloseProject = _a.onCloseProject;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ticket Management').marginVertical(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(newMenuItems)(function (item) {
-                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(20).foregroundColor(item.iconColor), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title).foregroundColor(item.iconColor));
-            }))((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\efff')).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0a0').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f07c').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f122').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f0b2').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f071').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f07e').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\f000').action(function () { return onCloseProject(); })).width()).height(), //auto height
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
-            ).height().visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)').visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_this.model)(function (item) {
-                return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems).onClick(function () { return _this.AnalyseModelSelected(item); });
-            })).width().height().padding(10).wrap('wrap'))));
-        };
-    };
-    AnalyseModelsController.prototype.LoadView = function () {
-        return this.AnalyseModelView();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], AnalyseModelsController.prototype, "project", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], AnalyseModelsController.prototype, "model", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], AnalyseModelsController.prototype, "selectedAnalyseModel", void 0);
-    return AnalyseModelsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts":
-/*!****************************************************************!*\
-  !*** ./src/Domains/AnalyseModels/Views/AnalyseModelTileBox.ts ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AnalyseModelTileBox": () => (/* binding */ AnalyseModelTileBox)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-
-
-function AnalyseModelTileBox(params, menuItems) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0f2').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menuItems)(function (item) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16).foregroundColor(item.iconColor), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title).foregroundColor(item.iconColor)).onClick(function (e) { item.onClick(params); });
-    }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f09e').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width('100%').height().padding(15)))
-        .initial({ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' })
-        .hover({ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px' })
-        .margin('10px')
-        .cornerRadius(5)
-        // .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
-        .minWidth('250px')
-        .minHeight('130px')
-        .maxWidth('250px')
-        .maxHeight('130px')
-        .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.3))
-        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Controllers/AppController.ts":
-/*!**************************************************************!*\
-  !*** ./src/Domains/Application/Controllers/AppController.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AppController": () => (/* binding */ AppController)
-/* harmony export */ });
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Application */ "./src/Application.ts");
-/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Resources */ "./src/Resources.ts");
-/* harmony import */ var _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/UIServices/ProjectUIService */ "./src/UI/UIServices/ProjectUIService.ts");
-/* harmony import */ var _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../AnalyseModels/Controllers/AnalyseModelsController */ "./src/Domains/AnalyseModels/Controllers/AnalyseModelsController.ts");
-/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/Domains/Project/Controllers/ProjectController.ts");
-/* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/Domains/Application/Views/MenuButton.ts");
-/* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/Domains/Application/Views/PortalFilterBarView.ts");
-/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/Domains/Application/Views/RecentProjects.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-
-
-var AppController = /** @class */ (function (_super) {
-    __extends(AppController, _super);
-    function AppController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    AppController.prototype.InitController = function () {
-        this.showAnim = false;
-        this.RequestDesktop = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
-        this.test = 'Press';
-    };
-    AppController.prototype.MainPage = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f064', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f06d', function () { return _this.OnOpenProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f051', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f183', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_7__.MenuButton)('', '\\f04a', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_9__.RecentProjects)())
-            // UIScene içerisine yayılması için
-            .width('100%')));
-    };
-    AppController.prototype.LoadPortalView = function () {
-        var _this = this;
-        var _a;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(_Resources__WEBPACK_IMPORTED_MODULE_3__.Resources.Icons.ApplicationIcon).width(24).height(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(function () { return _this.RequestDesktop(); }))
-            .fontFamily('verdana, arial, tahoma, helvetica, sans-serif')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading)
-            .minHeight('50px')
-            .maxHeight('50px')
-            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_8__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.currentController).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
-            .backgroundColor('white')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
-    };
-    AppController.prototype.onTextChanged = function () {
-        alert(this.test);
-    };
-    AppController.prototype.onCloseProject = function () {
-        this.currentProject = null;
-    };
-    AppController.prototype.getSubView = function () {
-        var _this = this;
-        return function (_a) {
-            var onTextChanged = _a.onTextChanged;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('click me')).cursor('pointer').action(function () { onTextChanged(); _this.test = { fontSize: '50px' }; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Hello')));
-        };
-    };
-    AppController.prototype.getContextView = function () {
-        var _this = this;
-        return function (_a) {
-            var onTextChanged = _a.onTextChanged;
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIMotion)(_this.getSubView()).animate(_this.test)));
-        };
-    };
-    AppController.prototype.LoadView = function () {
-        /*  return (
-             UIScene(
-                 UILink('test'),
-                 UIRoutes('dfsdf')
-             )
-         ) */
-        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
-            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
-                .else(this.currentController));
-        }
-        else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal) {
-            return this.LoadPortalView();
-        }
-    };
-    AppController.prototype.OnNewProject = function () {
-        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.NewProject();
-    };
-    AppController.prototype.OnOpenProject = function () {
-        var _this = this;
-        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_4__.ProjectUIService.OpenProjectDialog().then(function (project) {
-            _this.currentProject = project;
-            // this.controller = ProjectController(this, project);
-            var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_5__.AnalyseModelsController();
-            controller.Bind(project);
-            controller.AnalyseModelSelected.add(function (item) {
-                _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_6__.ProjectController)(_this, project);
-            });
-            _this.currentController = controller;
-        });
-    };
-    AppController.prototype.CLoseProject = function () {
-        this.currentProject = null;
-    };
-    AppController.prototype.LoadRecentFiles = function () {
-        var _this = this;
-        var result = [];
-        _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.Keys().then(function (keys) {
-            (0,_tuval_core__WEBPACK_IMPORTED_MODULE_0__.foreach)(keys, function (key) {
-                _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.GetString(key).then(function (str) {
-                    var obj = JSON.parse(str);
-                    result.push(obj);
-                    /*  const bi: BoxTileItem = new BoxTileItem(key, obj.rowsCount + ' rows');
-                     const dateStr = moment(obj.uploadeddate).format('DD.MM.YYYY');
-                     bi.FooterTitle = TString.Format('Uploaded at {0}', dateStr);
-                     bi.OnClick = () => {
-                         EventBus.Default.fire('P2M.C.ADD_CSV', {
-                             name: key,
-                             csv: Encoding.UTF8.GetString(Convert.FromBase64String(obj.csv)),
-                             caseName: obj.caseName,
-                             activityName: obj.activityName,
-                             timestampName: obj.timestampName,
-                             startDateName: obj.startDateName
-                         });
-                     };
-                     bt.Items.Add(bi); */
-                });
-            });
-            _this.recentFiles = result;
-            console.log(_this.recentFiles);
-        });
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "RequestDesktop", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "currentProject", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "currentController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "recentFiles", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "showAnim", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], AppController.prototype, "test", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
-    ], AppController.prototype, "onTextChanged", null);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
-    ], AppController.prototype, "onCloseProject", null);
-    return AppController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/FilterView.ts":
-/*!*****************************************************!*\
-  !*** ./src/Domains/Application/Views/FilterView.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FilterView": () => (/* binding */ FilterView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-/**
- * Portal menude en tepedeki filtre görünümüdür.
- * @returns
- */
-function FilterView() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f121').size(25).foregroundColor('#55606c'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add Filter').fontFamily('Ubuntu,sans-serif').fontSize('15px').fontWeight('700').foregroundColor('#999')).padding('5px 10px'))
-        .height() //auto
-        .backgroundColor('#141719')
-        .border('1px solid transparent')
-        .cornerRadius(6)));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/MenuButton.ts":
-/*!*****************************************************!*\
-  !*** ./src/Domains/Application/Views/MenuButton.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MenuButton": () => (/* binding */ MenuButton)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-/**
- * Desktop görünümünde ana sayfadaki temel fonksiyon butonlarının görünümüdür.
- * @param title
- * @param icon
- * @param action
- * @returns
- */
-function MenuButton(title, icon, action) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30)))
-        .initial({ scale: 1, boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' })
-        .hover({ scale: 1.1, boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px' })
-        .width(64).height(64)
-        .background('rgb(255,255,255,50%)')
-        .padding(8)
-        .border('solid 1px rgb(120,120,120,20%)')
-        .cornerRadius(12)
-        /* .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px') */
-        .action(function () { return action(); }));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/PortalFilterBarView.ts":
-/*!**************************************************************!*\
-  !*** ./src/Domains/Application/Views/PortalFilterBarView.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PortalFilterBarView": () => (/* binding */ PortalFilterBarView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _TimeLineFilter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TimeLineFilter */ "./src/Domains/Application/Views/TimeLineFilter.ts");
-/* harmony import */ var _FilterView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FilterView */ "./src/Domains/Application/Views/FilterView.ts");
-
-
-
-function PortalFilterBarView(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f148').size(20).foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 3 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0fc').size(10).foregroundColor('#aaa')).onClick(function () { return params.selectProjectAction(); }))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
-        .cursor('pointer')
-        .height()
-        .width(), 
-    /*  Gauge(
-         Range()
-     ).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(40).stroke(7).value(67).height(75), */
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_FilterView__WEBPACK_IMPORTED_MODULE_2__.FilterView)(), (0,_TimeLineFilter__WEBPACK_IMPORTED_MODULE_1__.TimeLineFilter)()
-    /*   HStack(
-          PortalFilterBarWidget({ value: 3 }),
-          VDivider().height('70%').width(1).background('rgb(255,255,255,50%)'),
-          PortalFilterBarWidget({ value: 23 })
-      )
-          .paddingBottom('5px')
-          .width() // auto
-          .spacing(20)
-          .alignment(Alignment.leading) */
-    )
-        .zIndex(3000)
-        .paddingLeft('10px')
-        .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')
-        .height() // auto height
-        .minHeight('50px')
-        .backgroundColor('#212932')
-        .foregroundColor('white')).height();
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/PortalFilterBarWidget.ts":
-/*!****************************************************************!*\
-  !*** ./src/Domains/Application/Views/PortalFilterBarWidget.ts ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PortalFilterBarWidget": () => (/* binding */ PortalFilterBarWidget)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function PortalFilterBarWidget(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontSize('40px').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('AVG').foregroundColor('#AAA'))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Duration').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('15 - 40 monts').foregroundColor('#AAA')))
-        .paddingRight('50px')
-        .width() //auto
-    );
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/RecentProjects.ts":
-/*!*********************************************************!*\
-  !*** ./src/Domains/Application/Views/RecentProjects.ts ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "RecentProjects": () => (/* binding */ RecentProjects)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function RecentProjects() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Recent Projects').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)()).grow().alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Application/Views/TimeLineFilter.ts":
-/*!*********************************************************!*\
-  !*** ./src/Domains/Application/Views/TimeLineFilter.ts ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TimeLineFilter": () => (/* binding */ TimeLineFilter)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function TimeText(value) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).padding('5px 5px').fontFamily('Ubuntu,sans-serif').fontSize('16px').fontWeight('700').foregroundColor('#989898'));
-}
-function TimeLineFilter() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f043').size(20).foregroundColor('#777'), TimeText('1H'), TimeText('8H'), TimeText('24H'), TimeText('3D'), TimeText('7D'), TimeText('All'), TimeText('Custom'))
-        .width() // auto
-    );
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Automation/Controllers/AutomationController.ts":
-/*!********************************************************************!*\
-  !*** ./src/Domains/Automation/Controllers/AutomationController.ts ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AutomationController": () => (/* binding */ AutomationController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-var AutomationController = /** @class */ (function (_super) {
-    __extends(AutomationController, _super);
-    function AutomationController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    AutomationController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f049', 'Automations'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return AutomationController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts":
-/*!************************************************************************!*\
-  !*** ./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CaseExplorerController": () => (/* binding */ CaseExplorerController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var CaseExplorerController = /** @class */ (function (_super) {
-    __extends(CaseExplorerController, _super);
-    function CaseExplorerController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CaseExplorerController.prototype.InitController = function () {
-    };
-    CaseExplorerController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Case explorer')
-            .fontFamily('Proxima Nova').fontSize('22px')
-            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return CaseExplorerController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/CustomPage/Controllers/CustomPageController.ts":
-/*!********************************************************************!*\
-  !*** ./src/Domains/CustomPage/Controllers/CustomPageController.ts ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CustomPageController": () => (/* binding */ CustomPageController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var CustomPageController = /** @class */ (function (_super) {
-    __extends(CustomPageController, _super);
-    function CustomPageController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    CustomPageController.prototype.InitController = function () {
-    };
-    CustomPageController.prototype.LoadView = function () {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Custom page controller');
-    };
-    return CustomPageController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts":
-/*!*************************************************************************!*\
-  !*** ./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts ***!
-  \*************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProcessDashboardController": () => (/* binding */ ProcessDashboardController)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/diagram */ "@tuval/components/diagram");
-/* harmony import */ var _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/graphics */ "@tuval/graphics");
-/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_graphics__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/cg */ "@tuval/cg");
-/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_cg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _Views_PaletteView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Views/PaletteView */ "./src/Domains/Dashboard/Views/PaletteView.ts");
-/* harmony import */ var _Models_MDPalette__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Models/MDPalette */ "./src/Domains/Dashboard/Models/MDPalette.ts");
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Controls_DashboardView_DashboardView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../UI/Controls/DashboardView/DashboardView */ "./src/UI/Controls/DashboardView/DashboardView.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-
-var ProcessDashboardController = /** @class */ (function (_super) {
-    __extends(ProcessDashboardController, _super);
-    function ProcessDashboardController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProcessDashboardController.prototype.InitController = function () {
-        this.svg = new _UI_Controls_DashboardView_DashboardView__WEBPACK_IMPORTED_MODULE_7__.DashboardView();
-        /*  svg.pId = dataset.ProjectId;
-         svg.dId = dataset.Id; */
-        this.svg.beginUpdate();
-        this.svg.RenderingMode = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.ViewRenderingMode.Html;
-        this.svg.ResizeHandleSize = new _tuval_cg__WEBPACK_IMPORTED_MODULE_3__.CGSize(10, 10);
-        this.svg.Width = 1800;
-        this.svg.Height = 1500;
-        this.svg.GridCellSize = new _tuval_cg__WEBPACK_IMPORTED_MODULE_3__.CGSize(20, 20);
-        this.svg.GridLineWidth = 1;
-        this.svg.GridMajorLineWidth = 1;
-        this.svg.GridSnapDrag = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewSnapStyle.Jump;
-        this.svg.GridSnapResize = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewSnapStyle.Jump;
-        this.svg.GridStyle = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewGridStyle.Line;
-        this.svg.GridMajorLineColor = this.svg.GridLineColor.clone();
-        var rect = new _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuRectangle();
-        rect.Left = 50;
-        rect.Top = 50;
-        rect.Width = 150;
-        rect.Height = 105;
-        rect.Pen = _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__.Pens.Black;
-        rect.Brush = _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__.Brushes.White;
-        this.svg.Document.Add(rect);
-        this.palettedata = _Models_MDPalette__WEBPACK_IMPORTED_MODULE_5__.PaletteModel;
-        this.test = 2;
-    };
-    ProcessDashboardController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', 'Dashboard'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width()).height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
-            left: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)(this.svg).position('absolute').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)).overflowX('auto').overflowY('auto').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)
-            ],
-            right: [
-                (0,_Views_PaletteView__WEBPACK_IMPORTED_MODULE_4__.PaletteView)(this.palettedata)
-            ]
-        })).padding('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.State)()
-    ], ProcessDashboardController.prototype, "svg", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.State)()
-    ], ProcessDashboardController.prototype, "test", void 0);
-    return ProcessDashboardController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dashboard/Models/MDPalette.ts":
-/*!***************************************************!*\
-  !*** ./src/Domains/Dashboard/Models/MDPalette.ts ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PaletteModel": () => (/* binding */ PaletteModel)
-/* harmony export */ });
-var PaletteModel = [
-    {
-        name: 'Process analysis',
-        items: [
-            {
-                icon: '\\f0a4',
-                label: 'Performance Explorer'
-            },
-            {
-                icon: '\\f0a4',
-                label: 'Frequency Explorer'
-            },
-            {
-                icon: '\\f13b',
-                label: 'Variant Explorer'
-            },
-            {
-                icon: '\\f13f',
-                label: 'Activity Explorer'
-            },
-            {
-                icon: '\\f13e',
-                label: 'Connection Slider'
-            }
-        ]
-    },
-    {
-        name: 'Resource analysis',
-        items: [
-            {
-                icon: '\\f007',
-                label: 'Performance Explorer'
-            },
-            {
-                icon: '\\f007',
-                label: 'Frequency Explorer'
-            }
-        ]
-    },
-    {
-        name: 'Charts',
-        items: [
-            {
-                icon: '\\f147',
-                label: 'Activity Frequency'
-            },
-            {
-                icon: '\\f147',
-                label: 'Activity Mean Duration'
-            },
-            {
-                icon: '\\f147',
-                label: 'Activity Median Duration'
-            },
-            {
-                icon: '\\f147',
-                label: 'Duration Range'
-            }
-        ]
-    }
-];
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dashboard/Views/PaletteView.ts":
-/*!****************************************************!*\
-  !*** ./src/Domains/Dashboard/Views/PaletteView.ts ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PaletteView": () => (/* binding */ PaletteView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
-
-function PaletteView(paletteData) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(// For better scrolling
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData)(function (paletteCategory) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([
-            /*  HDivider().height('1px').background('#e4e4e4'), */
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteCategory.name)
-                .fontSize(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FontSizeTypes.Small)
-                .textTransform('uppercase')
-                .fontFamily('Proxima Nova')
-                .foregroundColor('#0D6B87')
-                /* .background('#f1f1f1') */
-                .padding(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteCategory.items)(function (paletteItem) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
-            /*  HDivider().height('1px').background('#e4e4e4'), */
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(paletteItem.icon).size(20).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteItem.label)
-                .fontFamily('Proxima Nova'))
-                .cornerRadius()
-                .background({ hover: 'rgb(120,120,120,20%)' })
-                .padding(10));
-        }))).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.5))
-            .cornerRadius(12)
-            .padding() // Default padding 5px
-            .height();
-    } // uto height relative to its content
-    )).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute))
-        .width(270)
-        .overflowX('hidden')
-        .overflowY('auto'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dataset/Controllers/DatasetController.ts":
-/*!**************************************************************!*\
-  !*** ./src/Domains/Dataset/Controllers/DatasetController.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DatasetController": () => (/* binding */ DatasetController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/Domains/Dataset/Views/DatasetTabView.ts");
-/* harmony import */ var _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../Models/MVIDatasetTabModel */ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
-
-
-
-
-var DatasetController = /** @class */ (function (_super) {
-    __extends(DatasetController, _super);
-    function DatasetController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    DatasetController.prototype.InitController = function () {
-        this.selectedTabIndex = 0;
-        this.tabModels = __spreadArray([], _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__.topModels);
-    };
-    DatasetController.prototype.OnNewAnalyse = function (value) {
-        this.tabModels = __spreadArray(__spreadArray([], this.tabModels), [value]);
-        this.OnTabSelected(this.tabModels.length - 1);
-    };
-    DatasetController.prototype.OnTabSelected = function (index) {
-        this.selectedTabIndex = index;
-        var tabModel = this.tabModels[index];
-        if (tabModel != null) {
-            this.currentController = tabModel.controller;
-            if (this.currentController.IsModelBind) {
-                this.currentController.Bind(this.projectItem);
-            }
-        }
-    };
-    DatasetController.prototype.OnBindModel = function (model) {
-        this.projectItem = model;
-        this.selectedTabIndex = 0;
-        this.OnTabSelected(0);
-    };
-    DatasetController.prototype.LoadPortalView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
-    };
-    DatasetController.prototype.LoadDesktopView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__.DatasetTabView)({
-            tabModel: this.tabModels,
-            selectedTabIndex: this.selectedTabIndex,
-            onTabSelected: function (index) { return _this.OnTabSelected(index); }
-        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute));
-    };
-    DatasetController.prototype.LoadView = function () {
-        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
-            return this.LoadDesktopView();
-        }
-        else {
-            return this.LoadPortalView();
-        }
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], DatasetController.prototype, "projectItem", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], DatasetController.prototype, "tabModels", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], DatasetController.prototype, "selectedTabIndex", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], DatasetController.prototype, "currentController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Context)()
-    ], DatasetController.prototype, "OnNewAnalyse", null);
-    return DatasetController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dataset/Models/MVIDatasetTabModel.ts":
-/*!**********************************************************!*\
-  !*** ./src/Domains/Dataset/Models/MVIDatasetTabModel.ts ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "topModels": () => (/* binding */ topModels)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../NewAnalyse/Controllers/NewAnalyseController */ "./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts");
-
-
-var topModels = [
-    {
-        icon: '\\efc2',
-        name: 'New Analyse',
-        isRight: true,
-        controller: new _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__.NewAnalyseController(),
-        isVisible: function () { return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop; }
-    },
-    /*  {
-         icon: '\\f0b4',
-         name: 'Process Overview',
-         controller: new ProcessOverviewController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f0b3',
-         name: 'Dashboard',
-         controller: new ProcessDashboardController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f0f8',
-         name: 'Discovery',
-         controller: new ProcessExplorerController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f0a1',
-         name: 'Monitoring',
-         controller: new MonitoringController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f0f2',
-         name: 'Statistics',
-         controller: new ProcessStatisticController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f13b',
-         name: 'Variant Explorer',
-         controller: new VariantExplorerController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f096',
-         name: 'Loops',
-         controller: new LoopsController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f049',
-         name: 'Automation',
-         controller: new AutomationController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f033',
-         name: 'Case Explorer',
-         controller: new CaseExplorerController(),
-         isVisible: () => true
-     },
-     {
-         icon: '\\f130',
-         name: 'Filter',
-         controller: new FilterController(),
-         isVisible: () => true
-     } */
-];
-
-
-/***/ }),
-
-/***/ "./src/Domains/Dataset/Views/DatasetTabView.ts":
-/*!*****************************************************!*\
-  !*** ./src/Domains/Dataset/Views/DatasetTabView.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DatasetTabView": () => (/* binding */ DatasetTabView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/TabView */ "./src/UI/Views/TabView.ts");
-
-
-function DatasetTabView(datasetTabViewParams) {
-    // const [selectedIndex, setSelectedIndex] = bindState(0);
-    console.log(datasetTabViewParams.tabModel);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel)(function (tabItem, index) {
-        return (0,_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabViewItem)({
-            name: tabItem.name,
-            header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
-                .wrap('wrap')
-                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
-                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
-                .padding(10)
-                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)')).maxWidth('100px').visible(!tabItem.isRight)),
-            rightHeader: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
-                .wrap('wrap')
-                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
-                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
-                .padding(10)
-                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)')).maxWidth('100px').visible(tabItem.isRight)),
-            content: tabItem.controller
-        }).onSelected(function () { datasetTabViewParams.onTabSelected(index); });
-    })).selectedTabIndex(datasetTabViewParams.selectedTabIndex)));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Controllers/FrequencyMapController.ts":
-/*!*********************************************************************!*\
-  !*** ./src/Domains/Discovery/Controllers/FrequencyMapController.ts ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FrequencyMapController": () => (/* binding */ FrequencyMapController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/ActivitySliderView */ "./src/Domains/Discovery/Views/ActivitySliderView.ts");
-/* harmony import */ var _Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ConnectionSliderView */ "./src/Domains/Discovery/Views/ConnectionSliderView.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var FrequencyMapController = /** @class */ (function (_super) {
-    __extends(FrequencyMapController, _super);
-    function FrequencyMapController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    FrequencyMapController.prototype.InitController = function () {
-        this.actionSliderValue = 50;
-        this.connectionSliderValue = 50;
-    };
-    FrequencyMapController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Frequency Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
-            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
-        // auto width
-        )
-            .minWidth('260px')
-            .maxWidth('260px')
-            .overflowY('auto').overflowX('hidden')));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], FrequencyMapController.prototype, "actionSliderValue", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], FrequencyMapController.prototype, "connectionSliderValue", void 0);
-    return FrequencyMapController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Controllers/PerformanceMapController.ts":
-/*!***********************************************************************!*\
-  !*** ./src/Domains/Discovery/Controllers/PerformanceMapController.ts ***!
-  \***********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PerformanceMapController": () => (/* binding */ PerformanceMapController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/ActivitySliderView */ "./src/Domains/Discovery/Views/ActivitySliderView.ts");
-/* harmony import */ var _Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ConnectionSliderView */ "./src/Domains/Discovery/Views/ConnectionSliderView.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var PerformanceMapController = /** @class */ (function (_super) {
-    __extends(PerformanceMapController, _super);
-    function PerformanceMapController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    PerformanceMapController.prototype.InitController = function () {
-        this.actionSliderValue = 50;
-        this.connectionSliderValue = 50;
-    };
-    PerformanceMapController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Performance Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
-            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
-        )
-            .minWidth('260px')
-            .maxWidth('260px')
-            .overflowY('auto').overflowX('hidden')));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], PerformanceMapController.prototype, "actionSliderValue", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], PerformanceMapController.prototype, "connectionSliderValue", void 0);
-    return PerformanceMapController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts":
-/*!************************************************************************!*\
-  !*** ./src/Domains/Discovery/Controllers/ProcessExplorerController.ts ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProcessExplorerController": () => (/* binding */ ProcessExplorerController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FrequencyMapController */ "./src/Domains/Discovery/Controllers/FrequencyMapController.ts");
-/* harmony import */ var _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PerformanceMapController */ "./src/Domains/Discovery/Controllers/PerformanceMapController.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-var sideMenu = [
-    {
-        name: 'Frequency Map',
-        icon: '\\f0a7',
-        controller: new _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__.FrequencyMapController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Performance Map',
-        icon: '\\f0a8',
-        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Resource Map',
-        icon: '\\f098',
-        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
-        isVisible: function () { return true; }
-    }
-];
-var ProcessExplorerController = /** @class */ (function (_super) {
-    __extends(ProcessExplorerController, _super);
-    function ProcessExplorerController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProcessExplorerController.prototype.InitController = function () {
-        this.OnControllerSelected(0);
-    };
-    ProcessExplorerController.prototype.OnControllerSelected = function (index) {
-        this.selectedIndex = index;
-        var controller = sideMenu[index].controller;
-        this.currentController = controller;
-    };
-    ProcessExplorerController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
-            items: sideMenu,
-            selectedAction: function (index) { return _this.OnControllerSelected(index); },
-            second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
-        // Header
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu)(function (item, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
-                .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '')
-                .border('solid 1px gray')
-                .cornerRadius('10px')
-                .padding('3px 10px 3px 10px')
-                .action(function () { return _this.OnControllerSelected(index); });
-        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), 
-        // Body
-        this.currentController)
-            .padding(10)
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProcessExplorerController.prototype, "currentController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProcessExplorerController.prototype, "selectedIndex", void 0);
-    return ProcessExplorerController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Views/ActivitySliderView.ts":
-/*!***********************************************************!*\
-  !*** ./src/Domains/Discovery/Views/ActivitySliderView.ts ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivitySliderView": () => (/* binding */ ActivitySliderView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SliderButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SliderButton */ "./src/Domains/Discovery/Views/SliderButton.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-function ActivitySliderView(sliderValue, onChange) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(25).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activities').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
-        .padding(5)
-        .height(), // auto
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
-        .width() //auto
-        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of activities'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
-        .height() // auto
-    ))
-        .background('rgb(255,255,255,30%)')
-        .padding(10)
-        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Views/ConnectionSliderView.ts":
-/*!*************************************************************!*\
-  !*** ./src/Domains/Discovery/Views/ConnectionSliderView.ts ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ConnectionSliderView": () => (/* binding */ ConnectionSliderView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SliderButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SliderButton */ "./src/Domains/Discovery/Views/SliderButton.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-function ConnectionSliderView(sliderValue, onChange) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f13d').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Connections').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
-        .padding(5)
-        .height(), // auto
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
-        .width() //auto
-        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of connections'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
-        .height() // auto
-    ))
-        .background('rgb(255,255,255,30%)')
-        .padding(10)
-        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Discovery/Views/SliderButton.ts":
-/*!*****************************************************!*\
-  !*** ./src/Domains/Discovery/Views/SliderButton.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SliderButton": () => (/* binding */ SliderButton),
-/* harmony export */   "SliderIconButton": () => (/* binding */ SliderIconButton)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function SliderButton(text) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text))
-        .background('#fff')
-        .foregroundColor('#888')
-        .border('1px solid #ccc')
-        .borderBottom('2px solid #ccc')
-        .padding('4px 10px')
-        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Rounded)
-        .fontSize('12px')
-        .height(25));
-}
-function SliderIconButton(icon, text) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('#888').marginLeft('5px'))
-        .background('#fff')
-        .foregroundColor('#888')
-        .border('1px solid #ccc')
-        .borderBottom('2px solid #ccc')
-        .padding('4px 10px')
-        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Rounded)
-        .fontSize('12px')
-        .height(25));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Loops/Controllers/LoopsController.ts":
-/*!**********************************************************!*\
-  !*** ./src/Domains/Loops/Controllers/LoopsController.ts ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LoopsController": () => (/* binding */ LoopsController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-var LoopsController = /** @class */ (function (_super) {
-    __extends(LoopsController, _super);
-    function LoopsController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    LoopsController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f096', 'Loops'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return LoopsController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Monitoring/Controllers/MonitoringController.ts":
-/*!********************************************************************!*\
-  !*** ./src/Domains/Monitoring/Controllers/MonitoringController.ts ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MonitoringController": () => (/* binding */ MonitoringController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-
-
-var metrics = [
-    {
-        name: 'Unique Variants',
-        chart: {
-            type: 'Column',
-            valueType: 'Numeric',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            dataSource: [
-                { x: 1, yval: 5 },
-                { x: 2, yval: 6 },
-                { x: 3, yval: 5 },
-                { x: 4, yval: 7 },
-                { x: 5, yval: 4 },
-                { x: 6, yval: 3 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 5 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 6 },
-                { x: 11, yval: 5 },
-                { x: 12, yval: 7 },
-                { x: 13, yval: 4 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 4 },
-                { x: 16, yval: 5 },
-                { x: 17, yval: 4 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '57.14 %',
-        subValue: '(+57.1 %)'
-    },
-    {
-        name: 'Cases with (self)loops',
-        chart: {
-            type: 'Line',
-            lineWidth: 5,
-            width: '100%',
-            height: '100%',
-            padding: {
-                left: 10,
-                right: 10
-            },
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 5 },
-                { x: 2, yval: 6 },
-                { x: 3, yval: 5 },
-                { x: 4, yval: 7 },
-                { x: 5, yval: 4 },
-                { x: 6, yval: 3 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 5 },
-                { x: 9, yval: 6 },
-                { x: 10, yval: 5 },
-                { x: 11, yval: 7 },
-                { x: 12, yval: 8 },
-                { x: 13, yval: 4 },
-                { x: 14, yval: 5 },
-                { x: 15, yval: 3 },
-                { x: 16, yval: 4 },
-                { x: 17, yval: 11 },
-                { x: 18, yval: 10 },
-                { x: 19, yval: 2 },
-                { x: 20, yval: 12 },
-                { x: 21, yval: 4 },
-                { x: 22, yval: 7 },
-                { x: 23, yval: 6 },
-                { x: 24, yval: 8 },
-            ],
-            xName: 'x',
-            yName: 'yval',
-            markerSettings: {
-                visible: ['All'],
-                border: {
-                    color: '#00BDAE',
-                    width: 5
-                },
-                fill: 'white',
-                size: 10,
-            }
-        },
-        value: '20.00 %',
-        subValue: '(-75.6 %)'
-    },
-    {
-        name: 'Automation rate',
-        chart: {
-            type: 'Column',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 3 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 4 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 2 },
-                { x: 6, yval: 8 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 6 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 7 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 15 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 14 },
-                { x: 16, yval: 15 },
-                { x: 17, yval: 14 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '2.78 %',
-        subValue: '(+2.8 %)'
-    },
-    {
-        name: 'Cases with long lead time',
-        chart: {
-            lineWidth: 1,
-            type: 'Area',
-            opacity: 1,
-            border: { width: 2 },
-            valueType: 'Category',
-            axisSettings: {
-                lineSettings: {
-                    visible: true
-                }
-            },
-            dataSource: [
-                { x: 1, xval: 'Jan', yval: 34 },
-                { x: 2, xval: 'Feb', yval: 36 },
-                { x: 3, xval: 'Mar', yval: 32 },
-                { x: 4, xval: 'Apr', yval: 35 },
-                { x: 5, xval: 'May', yval: 40 },
-                { x: 6, xval: 'Jun', yval: 38 },
-                { x: 7, xval: 'Jul', yval: 33 },
-                { x: 8, xval: 'Aug', yval: 37 },
-                { x: 9, xval: 'Sep', yval: 34 },
-                { x: 10, xval: 'Oct', yval: 31 },
-                { x: 11, xval: 'Nov', yval: 30 },
-                { x: 12, xval: 'Dec', yval: 29 },
-            ],
-            xName: 'xval', yName: 'yval',
-        },
-        value: '13.33 %',
-        subValue: '(-4.4 %)'
-    },
-    {
-        name: 'Cases with many process steps',
-        chart: {
-            type: 'Column',
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 7 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 9 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 3 },
-                { x: 6, yval: 2 },
-                { x: 7, yval: 5 },
-                { x: 8, yval: 8 },
-                { x: 9, yval: 4 },
-                { x: 10, yval: 8 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 10 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 12 },
-                { x: 16, yval: 5 },
-                { x: 17, yval: 4 },
-                { x: 18, yval: 13 },
-                { x: 19, yval: 17 },
-                { x: 20, yval: 15 },
-                { x: 21, yval: 15 },
-                { x: 22, yval: 16 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '13.33 %',
-        subValue: '(+57.1 %)'
-    },
-    {
-        name: 'Number of resources per process step',
-        chart: {
-            type: 'Area',
-            lineWidth: 5,
-            highPointColor: '#0d88e6',
-            lowPointColor: '#fd7f6f',
-            valueType: 'Numeric',
-            dataSource: [
-                { x: 1, yval: 3 },
-                { x: 2, yval: 7 },
-                { x: 3, yval: 4 },
-                { x: 4, yval: 8 },
-                { x: 5, yval: 2 },
-                { x: 6, yval: 8 },
-                { x: 7, yval: 9 },
-                { x: 8, yval: 6 },
-                { x: 9, yval: 5 },
-                { x: 10, yval: 7 },
-                { x: 11, yval: 8 },
-                { x: 12, yval: 9 },
-                { x: 13, yval: 15 },
-                { x: 14, yval: 3 },
-                { x: 15, yval: 14 },
-                { x: 16, yval: 15 },
-                { x: 17, yval: 14 },
-                { x: 18, yval: 3 },
-                { x: 19, yval: 7 },
-                { x: 20, yval: 5 },
-                { x: 21, yval: 5 },
-                { x: 22, yval: 6 },
-                { x: 23, yval: 5 },
-                { x: 24, yval: 7 },
-            ],
-            xName: 'x',
-            yName: 'yval'
-        },
-        value: '2.63 %',
-        subValue: '(+57.1 %)'
-    }
-];
-var staticticInfos = [
-    {
-        title: 'start time',
-        value: '19.09.2012'
-    },
-    {
-        title: 'end time',
-        value: '19.09.2013'
-    },
-    {
-        title: 'cases',
-        value: '968'
-    },
-    {
-        title: 'variants',
-        value: '79'
-    },
-    {
-        title: 'process step types',
-        value: '12'
-    },
-    {
-        title: 'total process steps',
-        value: '7416'
-    }
-];
-var MonitoringController = /** @class */ (function (_super) {
-    __extends(MonitoringController, _super);
-    function MonitoringController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MonitoringController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a1', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
-            // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(staticticInfos)(function (info) {
-            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
-        })).height(), 
-        // Metrics
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1])(function (indexJ) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1, 2])(function (indexI) {
-                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
-                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__.Sparkline)()
-                    .model(metrics[(indexJ * 3) + indexI].chart)
-                    .padding(10))).height(290);
-            }));
-        })).height()))).padding('10px'))
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return MonitoringController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-function MetricSelectionButtons(overviewTypes, selectedIndex, arg2) {
-    throw new Error('Function not implemented.');
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts":
-/*!********************************************************************!*\
-  !*** ./src/Domains/NewAnalyse/Controllers/NewAnalyseController.ts ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "NewAnalyseController": () => (/* binding */ NewAnalyseController)
-/* harmony export */ });
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Automation/Controllers/AutomationController */ "./src/Domains/Automation/Controllers/AutomationController.ts");
-/* harmony import */ var _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../CaseExplorer/Controllers/CaseExplorerController */ "./src/Domains/CaseExplorer/Controllers/CaseExplorerController.ts");
-/* harmony import */ var _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Dashboard/Controllers/ProcessDashboardController */ "./src/Domains/Dashboard/Controllers/ProcessDashboardController.ts");
-/* harmony import */ var _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Discovery/Controllers/ProcessExplorerController */ "./src/Domains/Discovery/Controllers/ProcessExplorerController.ts");
-/* harmony import */ var _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Loops/Controllers/LoopsController */ "./src/Domains/Loops/Controllers/LoopsController.ts");
-/* harmony import */ var _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Monitoring/Controllers/MonitoringController */ "./src/Domains/Monitoring/Controllers/MonitoringController.ts");
-/* harmony import */ var _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../ProcessOverview/Controllers/ProcessOverviewController */ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts");
-/* harmony import */ var _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Statistics/Controllers/ProcessStatisticController */ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts");
-/* harmony import */ var _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../VariantExplorer/Controllers/VariantExplorerController */ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-var menuItems = [
-    {
-        icon: '\\f091',
-        title: 'Add to model',
-        onClick: function (item) { return console.log(item); }
-    },
-    {
-        icon: '\\f0b2',
-        title: 'Tags',
-        onClick: function (item) { return console.log(item); }
-    },
-    {
-        icon: '\\f06b',
-        title: 'Help',
-        onClick: function (item) { return console.log(item); }
-    }
-];
-var NewAnalyseTypes = [
-    {
-        icon: '\\f0b4',
-        title: 'Process Overview',
-        description: 'An overhead view of your process',
-        controller: new _ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__.ProcessOverviewController(),
-    },
-    {
-        icon: '\\f0b3',
-        title: 'Dashboard',
-        description: 'A new dashboard waiting to be built.',
-        controller: new _Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__.ProcessDashboardController(),
-    },
-    {
-        icon: '\\f0f8',
-        title: 'Discover',
-        description: 'To understand and analyze your business',
-        controller: new _Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__.ProcessExplorerController(),
-    },
-    {
-        icon: '\\f0a1',
-        title: 'Monitoring',
-        description: 'Follow the process indicators',
-        controller: new _Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__.MonitoringController(),
-    },
-    {
-        icon: '\\f0f2',
-        title: 'Statistics',
-        description: 'General statistics of the process',
-        controller: new _Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__.ProcessStatisticController(),
-    },
-    {
-        icon: '\\efdb',
-        title: 'Variant Explorer',
-        controller: new _VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__.VariantExplorerController(),
-    },
-    {
-        icon: '\\f096',
-        title: 'Loops',
-        controller: new _Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__.LoopsController(),
-    },
-    {
-        icon: '\\f049',
-        title: 'Automation',
-        controller: new _Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__.AutomationController(),
-    },
-    {
-        icon: '\\f033',
-        title: 'Case Explorer',
-        controller: new _CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__.CaseExplorerController(),
-    },
-    {
-        icon: '\\f07f',
-        title: 'Difference Analyse'
-    },
-    {
-        icon: '\\eff0',
-        title: 'Benchmarking'
-    },
-    {
-        icon: '\\f143',
-        title: 'Lead Times'
-    },
-    {
-        icon: '\\efe4',
-        title: 'Process Steps'
-    },
-    {
-        icon: '\\eff1',
-        title: 'Complience Analyse'
-    },
-    {
-        icon: '\\eff2',
-        title: 'Comformance Check'
-    },
-    {
-        icon: '\\eff4',
-        title: 'Social'
-    },
-    {
-        icon: '\\f04b',
-        title: 'Process AI'
-    },
-    {
-        icon: '\\f014',
-        title: 'Cost'
-    },
-    {
-        icon: '\\f001',
-        title: 'Forecast'
-    },
-    {
-        icon: '\\effa',
-        title: 'Mosts'
-    },
-    {
-        icon: '\\f01e',
-        title: 'Bottlenecks'
-    },
-    {
-        icon: '\\efdf',
-        title: 'Durations'
-    },
-    {
-        icon: '\\efe8',
-        title: 'Breakdown'
-    },
-    {
-        icon: '\\f054',
-        title: 'Distribution'
-    },
-    {
-        icon: '\\f068',
-        title: 'Metrics'
-    }
-];
-function NewAnalyseModelTitleBox(tag, _a) {
-    var icon = _a.icon, title = _a.title, description = _a.description, controller = _a.controller;
-    return function (_a) {
-        var OnNewAnalyse = _a.OnNewAnalyse;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(
-        // Menu stack
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(menuItems)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title)).onClick(function (e) { item.onClick(null); });
-        }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f09e').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s').cornerRadius(5).marginRight('10px')).height(), //auto
-        // Analysis Icon
-        icon && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(icon).size(50).foregroundColor('var(--sub-icon-color)').marginBottom('10px'), 
-        // Analysis Name
-        (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(title).fontSize('18px').searchWords([tag]), 
-        // Analysis Description
-        description && (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(description).fontSize('12px'))
-            .marginTop('10px')
-            .marginRight('10px')
-            .cornerRadius(10)
-            .width(240).height(150)
-            .backgroundColor('rgba(255,255,255,0.3)')
-            .shadow('rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px')
-            .initial({ opacity: 0 }).animate({ opacity: 1 })
-            .onClick(function () { return OnNewAnalyse({
-            icon: icon,
-            name: title,
-            isRight: false,
-            controller: controller,
-            isVisible: function () { return true; }
-        }); })
-            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
-            .variable('--sub-icon-color', { default: '#33333366', hover: '#14a9d5' })
-            .variable('--sub-icon-size', { default: '50px', hover: '60px' })
-            .cursor('pointer'));
-    };
-}
-function searchBox() {
-    return function (_a) {
-        var onSearchTextChanged = _a.onSearchTextChanged;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f004')
-            .size(20)
-            .paddingRight('10px')
-            .paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1rem')
-            .backgroundColor('transparent')
-            .foregroundColor('#495057')
-            .padding('0.75rem 0.75rem 0.75rem 0rem')
-            .onTextChange(function (text) { setTimeout(function () { return onSearchTextChanged(text); }, 100); }))
-            .width()
-            .initial({ width: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }).animate({ width: '50%' }).focus({ width: '80%', backgroundColor: 'rgba(255,255,255,0.6)' })
-            .paddingRight('5px')
-            .overflow('hidden')
-            .cornerRadius(20)
-            .border({ default: '1px solid #ced4da', focus: 'solid 1px #6366F1' })
-            .shadow({ default: '', focus: '0 0 0 0.2rem #c7d2fe' })
-            //.transition('background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s')
-            //.backgroundColor('rgba(255,255,255,0.3)')
-            .height()
-            .tabIndex(0)).height().marginVertical(20));
-    };
-}
-var NewAnalyseController = /** @class */ (function (_super) {
-    __extends(NewAnalyseController, _super);
-    function NewAnalyseController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    NewAnalyseController.prototype.onSearchTextChanged = function (value) {
-        this.searchText = value;
-    };
-    NewAnalyseController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f056', 'Mining Modules')).height(), searchBox(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(NewAnalyseTypes)(function (item) {
-            return (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(_this.searchText) ||
-                item.title.toLowerCase().indexOf(_this.searchText.toLowerCase()) > -1)
-                && NewAnalyseModelTitleBox(_this.searchText, item);
-        })).wrap('wrap').height().padding(10)))));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], NewAnalyseController.prototype, "searchText", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
-    ], NewAnalyseController.prototype, "onSearchTextChanged", null);
-    return NewAnalyseController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts":
-/*!********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivityController": () => (/* binding */ ActivityController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var ActivityController = /** @class */ (function (_super) {
-    __extends(ActivityController, _super);
-    function ActivityController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ActivityController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activity Controller')));
-    };
-    return ActivityController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts":
-/*!**********************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Bindable": () => (/* binding */ Bindable)
-/* harmony export */ });
-var Bindable = /** @class */ (function () {
-    function Bindable(initValue, controller) {
-        this.value = initValue;
-        this.controller = controller;
-    }
-    Bindable.prototype.get = function () {
-        return this.value;
-    };
-    Bindable.prototype.set = function (value) {
-        this.value = value;
-        this.controller.ForceUpdate();
-    };
-    return Bindable;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts":
-/*!********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "OverviewController": () => (/* binding */ OverviewController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Views/ActivitySection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts");
-/* harmony import */ var _Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Views/HappyPathSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts");
-/* harmony import */ var _Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Views/MetricsSection */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts");
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-var testActivitySectionModel = [
-    {
-        activityName: 'Activity 1',
-        casePercentage: 14,
-        eventCount: 40463
-    },
-    {
-        activityName: 'Activity 2',
-        casePercentage: 14,
-        eventCount: 40463
-    },
-    {
-        activityName: 'Activity 3',
-        casePercentage: 14,
-        eventCount: 40463
-    },
-    {
-        activityName: 'Activity 4',
-        casePercentage: 14,
-        eventCount: 40463
-    },
-    {
-        activityName: 'Activity 5',
-        casePercentage: 14,
-        eventCount: 40463
-    }
-];
-var happyPathBAbsoluteBoxTestModel = {
-    title: 'Happy path in absolute numbers',
-    value: 107688,
-    totalValue: 279020
-};
-var happyPathDiagramModelTest = [
-    {
-        name: 'Test 1'
-    },
-    {
-        name: 'Test 1'
-    },
-    {
-        name: 'Test 1'
-    }
-];
-var happyPathSectionTestModel = {
-    happyPathAbsoluteBoxModel: happyPathBAbsoluteBoxTestModel,
-    happyPathDiagramItems: happyPathDiagramModelTest
-};
-var OverviewController = /** @class */ (function (_super) {
-    __extends(OverviewController, _super);
-    function OverviewController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    OverviewController.prototype.InitController = function () {
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverTimeChart();
-        var map = new Map();
-        // this.map = [];
-        for (var i = 0; i < 100; i++) {
-            map[i] = i;
-        }
-        this.chart.SetChartData(map);
-        this.activitySectionModel = testActivitySectionModel;
-        this.happPathSectionModel = happyPathSectionTestModel;
-        this.metricSectionModel = {
-            metricBoxNodels: [
-                {
-                    title: 'Cases per day',
-                    value: '694',
-                    subTitle: 'Total number of cases per day',
-                    /*  showMenu: new Bindable(false, this), */
-                    chart: {
-                        dataSource: [
-                            { x: 1, xval: 'Jan', yval: 34 },
-                            { x: 2, xval: 'Feb', yval: 36 },
-                            { x: 3, xval: 'Mar', yval: 32 },
-                            { x: 4, xval: 'Apr', yval: 35 },
-                            { x: 5, xval: 'May', yval: 40 },
-                            { x: 6, xval: 'Jun', yval: 38 },
-                            { x: 7, xval: 'Jul', yval: 33 },
-                            { x: 8, xval: 'Aug', yval: 37 },
-                            { x: 9, xval: 'Sep', yval: 34 },
-                            { x: 10, xval: 'Oct', yval: 31 },
-                            { x: 11, xval: 'Nov', yval: 30 },
-                            { x: 12, xval: 'Dec', yval: 29 },
-                        ],
-                        xName: 'xval',
-                        yName: 'yval',
-                    }
-                },
-                {
-                    title: 'Events per day',
-                    value: '4.215',
-                    subTitle: 'Total number of events per day',
-                    /* showMenu: new Bindable(false, this), */
-                    chart: {
-                        dataSource: [
-                            { x: 1, xval: 'Jan', yval: 12 },
-                            { x: 2, xval: 'Feb', yval: 36 },
-                            { x: 3, xval: 'Mar', yval: 56 },
-                            { x: 4, xval: 'Apr', yval: 76 },
-                            { x: 5, xval: 'May', yval: 34 },
-                            { x: 6, xval: 'Jun', yval: 39 },
-                            { x: 7, xval: 'Jul', yval: 50 },
-                            { x: 8, xval: 'Aug', yval: 43 },
-                            { x: 9, xval: 'Sep', yval: 34 },
-                            { x: 10, xval: 'Oct', yval: 17 },
-                            { x: 11, xval: 'Nov', yval: 30 },
-                            { x: 12, xval: 'Dec', yval: 56 },
-                        ],
-                        xName: 'xval', yName: 'yval',
-                    }
-                },
-                {
-                    title: 'Throughput time',
-                    value: '26 DAYS',
-                    subTitle: 'Average case duration from process start to process end without extreme outliers',
-                    /* showMenu: new Bindable(false, this), */
-                    chart: {
-                        dataSource: [
-                            { x: 1, xval: 'Jan', yval: 23 },
-                            { x: 2, xval: 'Feb', yval: 35 },
-                            { x: 3, xval: 'Mar', yval: 43 },
-                            { x: 4, xval: 'Apr', yval: 35 },
-                            { x: 5, xval: 'May', yval: 40 },
-                            { x: 6, xval: 'Jun', yval: 53 },
-                            { x: 7, xval: 'Jul', yval: 33 },
-                            { x: 8, xval: 'Aug', yval: 12 },
-                            { x: 9, xval: 'Sep', yval: 20 },
-                            { x: 10, xval: 'Oct', yval: 31 },
-                            { x: 11, xval: 'Nov', yval: 30 },
-                            { x: 12, xval: 'Dec', yval: 29 },
-                        ],
-                        xName: 'xval', yName: 'yval',
-                    }
-                }
-            ],
-            chart: this.chart
-        };
-    };
-    OverviewController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__.MetricsSection)(this.metricSectionModel), (0,_Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__.HappyPathSection)(this.happPathSectionModel), (0,_Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__.ActivitySection)(this.activitySectionModel)).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "chart", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "metricSectionModel", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "activitySectionModel", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "happPathSectionModel", void 0);
-    return OverviewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts":
-/*!*******************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts ***!
-  \*******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivityBox": () => (/* binding */ ActivityBox)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function ActivityBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.activityName)
-        .padding(10)
-        .fontFamily('Proxima Nova')
-        .fontWeight('500')
-        .fontSize('14px')
-        .foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("In " + params.casePercentage + " of cases").fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.casePercentage + " Events").fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888'))
-        .padding('20px')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .tabIndex(0))
-        /* .border('solid var(--border-width) yellow') */
-        .height('180px')
-        .padding('10px')
-        .maxWidth('25%'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts":
-/*!***********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts ***!
-  \***********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivitySection": () => (/* binding */ ActivitySection)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ActivityBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActivityBox */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts");
-
-
-function ActivitySection(activities) {
-    return (
-    // We want to space 10px between every vertical block
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Other frequent activities')
-        .marginTop('30px')
-        .paddingTop('5px')
-        /*    .height('38px') */
-        .fontFamily('Proxima Nova')
-        .fontSize('20px')
-        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
-        // We prevent this stack to large more than its content
-        .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(activities)(function (activity) {
-        return (0,_ActivityBox__WEBPACK_IMPORTED_MODULE_1__.ActivityBox)({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount });
-    })).height('auto').wrap('wrap').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts":
-/*!********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HappyPathGaugeBox": () => (/* binding */ HappyPathGaugeBox),
-/* harmony export */   "HappyPathBox2": () => (/* binding */ HappyPathBox2),
-/* harmony export */   "HappyPathBox3": () => (/* binding */ HappyPathBox3)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
-
-
-function HappyPathGaugeBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('rgb(118,209,187)').maskColor('rgb(120,120,120,20%)')
-        .radius(80)
-        .stroke(10)
-        .value(67)
-        .height(155)))
-        .height('245px')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .marginHorizontal('2px')
-        .tabIndex(0));
-}
-function HappyPathBox2(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width().initial({ width: 0 }).animate({ width: (params.value / params.totalValue) * 100 + "%" }).__transition({ duration: 1 }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
-        .marginBottom('15px')
-        .fontFamily('Proxima Nova')
-        .fontWeight('500')
-        .fontSize('20px')
-        .foregroundColor('#888888'))
-        .height('245px')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .marginHorizontal('2px')
-        .tabIndex(0));
-}
-function HappyPathBox3() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Happy path in percentages'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#14A9D5').width('20px').height('50%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').width('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.bottom), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').background('gray').width('50%')).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of 279,020 Cases')
-        .marginBottom('15px')
-        .fontFamily('Proxima Nova')
-        .fontSize('20px')
-        .foregroundColor('#888888'))
-        .height('245px')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .marginHorizontal('2px')
-        .tabIndex(0));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts":
-/*!************************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HappyPathDiagram": () => (/* binding */ HappyPathDiagram)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
-
-
-function HappyPathDiagram(items) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items)(function (item, index) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
-            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)(null)
-            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
-            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px'))))
-            .height() // auto
-            .marginTop('20px');
-    })))
-        .backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px').height(154).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .marginHorizontal('2px')
-        .tabIndex(0));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts":
-/*!************************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts ***!
-  \************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HappyPathSection": () => (/* binding */ HappyPathSection)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _HappyPathBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HappyPathBox */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts");
-/* harmony import */ var _HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HappyPathDiagram */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts");
-
-
-
-function HappyPathSection(params) {
-    return (
-    // We want to space 10px between every vertical block
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Happy path')
-        .marginTop('30px')
-        .paddingTop('5px')
-        .height('38px')
-        .fontFamily('Proxima Nova')
-        .fontSize('20px')
-        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathGaugeBox)({ title: 'Happy path in percentages' }), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox2)(params.happyPathAbsoluteBoxModel), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox3)()).height(), //auto height,
-    (0,_HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__.HappyPathDiagram)(params.happyPathDiagramItems)));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricBox.ts":
-/*!*****************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricBox.ts ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PortalMetricBox": () => (/* binding */ PortalMetricBox),
-/* harmony export */   "DesktopMetricBox": () => (/* binding */ DesktopMetricBox),
-/* harmony export */   "MetricBox": () => (/* binding */ MetricBox)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
-/* harmony import */ var _TileSparkLine__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TileSparkLine */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts");
-
-
-
-
-function PortalMetricBox(params, selected) {
-    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), showMenu = _a[0], setShowMenu = _a[1];
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.MetricBoxValueText)(params.value.toString()), 
-    /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
-    /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
-    (0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.CalculationMethodText)('AVG')
-        .onClick(function () { return setShowMenu(true); })
-        .padding()
-        .cornerRadius(5)
-        .cursor('pointer')
-        .border('dashed 1px var(--sub-border-color)')
-        .transition('border .3s')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
-        .paddingLeft('30px')
-        .paddingTop('10px')
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), 
-    /* VStack(
-        Text('Duration').foregroundColor('#b40404'),
-        Text('15 - 40 monts').foregroundColor('#AAA')
-    )
-        .marginLeft('32px')
-        .marginBottom('5px')
-        .alignment(Alignment.leading), */
-    (0,_TileSparkLine__WEBPACK_IMPORTED_MODULE_3__.TileSparkLine)(params.chart)
-        .slFill(selected ? '#b2cfff' : 'rgb(120,120,120,30%)')
-        .slBorder(selected ? { color: '#3C78EF', width: 2 } : { color: 'gray', width: 2 })
-    /*  Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
-     Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'), */
-    )
-        .height(148)
-        .overflow('hidden')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-        .tabIndex(0)
-        // Üzerine geldiğimizde alt text border için.
-        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); })))
-        .backgroundColor('white')
-        .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__.ListBounceAnimation, '.3s')
-        .visible(showMenu)).margin('2px'));
-}
-function DesktopMetricBox(params) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
-        .height('148px')
-        .backgroundColor('rgb(255,255,255,60%)')
-        .cornerRadius('12px')
-        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-        .tabIndex(0)
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-}
-function MetricBox(params, selected) {
-    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
-        return DesktopMetricBox(params);
-    }
-    else {
-        return PortalMetricBox(params, selected);
-    }
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts":
-/*!**********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts ***!
-  \**********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MetricsSection": () => (/* binding */ MetricsSection)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
-/* harmony import */ var _MetricBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MetricBox */ "./src/Domains/ProcessOverview/Controllers/Overview/Views/MetricBox.ts");
-
-
-
-
-
-var data = [
-    { x: new Date(2021, 1, 1), y: 532.2 }, { x: new Date(2021, 2, 1), y: 453.4 },
-    { x: new Date(2021, 3, 1), y: 422.8 }, { x: new Date(2021, 4, 1), y: 531.6 },
-    { x: new Date(2021, 5, 1), y: 642.3 }, { x: new Date(2021, 6, 1), y: 432.5 },
-    { x: new Date(2021, 7, 1), y: 462.9 }, { x: new Date(2021, 8, 1), y: 445.8 },
-    { x: new Date(2021, 9, 1), y: 561.4 }, { x: new Date(2021, 10, 1), y: 433.1 }
-];
-function MetricsSection(params) {
-    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
-    return (
-    // We want to space 10px between every vertical block
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
-        // We prevent this stack to large more than its content
-        .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels)(function (metricBoxModel, index) {
-        return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
-    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
-        .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
-        .fill('#FBCD4E55')
-        .data(data))
-        .xAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        valueType: 'DateTime',
-        labelFormat: 'MMM',
-        majorGridLines: { width: 0 },
-        intervalType: 'Months',
-        edgeLabelPlacement: 'Shift'
-    })
-        .yAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        labelFormat: '{value}',
-        lineStyle: { width: 0 },
-        majorTickLines: { width: 0 },
-        minorTickLines: { width: 0 }
-    })
-        .backgroundColor('transparent')))).height('300px')));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts":
-/*!*********************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts ***!
-  \*********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "TileSparkLine": () => (/* binding */ TileSparkLine)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-
-function TileSparkLine(model) {
-    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.Sparkline)().model(model)
-        .slType('Area')
-        .slWidth('100%')
-        .slHeight('50px')
-        .slPadding({
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0
-    })
-        .slLineWidth(1)
-        .slOpacity(1)
-        .slFill('#b2cfff')
-        .slBorder({ color: '#3C78EF', width: 2 })
-        .slValueType('Category')
-        .marginBottom('-4px'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts":
-/*!******************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/ProcessOverviewController.ts ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProcessOverviewController": () => (/* binding */ ProcessOverviewController)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/OverviewController */ "./src/Domains/ProcessOverview/Controllers/Overview/OverviewController.ts");
-/* harmony import */ var _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThroughputTimes/ThroughputTimesController */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts");
-/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/Domains/ProcessOverview/Controllers/Activity/ActivityController.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-
-function getMax(array) {
-    var max = 0;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].data > max) {
-            max = array[i].data;
-        }
-    }
-    return max;
-}
-var sideMenu = [
-    {
-        name: 'Overview',
-        icon: '\\f0b6',
-        controller: new _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__.OverviewController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Throughput times',
-        icon: '\\f144',
-        controller: new _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__.ThroughputTimesController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Activities',
-        icon: '\\f0d5',
-        controller: new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__.ActivityController(),
-        isVisible: function () { return true; }
-    }
-];
-var ProcessOverviewController = /** @class */ (function (_super) {
-    __extends(ProcessOverviewController, _super);
-    function ProcessOverviewController() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.map = [];
-        return _this;
-    }
-    ProcessOverviewController.prototype.InitController = function () {
-        this.Appearance.OverflowX = 'hidden';
-        this.Appearance.OverflowY = 'auto';
-        this.refresh = '1';
-        this.chart1 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
-        this.chart1.Appearance.Width = '100%';
-        this.chart1.Appearance.Height = '100px';
-        this.chart2 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
-        this.chart2.Appearance.Width = '100%';
-        this.chart2.Appearance.Height = '100px';
-        this.chart3 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
-        this.chart3.Appearance.Width = '100%';
-        this.chart3.Appearance.Height = '100px';
-        this.OnControllerChanged(0);
-    };
-    ProcessOverviewController.prototype.OnControllerChanged = function (index) {
-        this.selectedIndex = index;
-        this.currentController = sideMenu[index].controller;
-    };
-    ProcessOverviewController.prototype.GetView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__.PortalSideMenu)({
-            items: sideMenu,
-            selectedAction: function (index) { return _this.OnControllerChanged(index); },
-            second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
-        // View Buttons Overview, Throuthput Times
-        // Only Desktop
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu)(function (item, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(14).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).paddingLeft('5px'))
-                .action(function () { return _this.OnControllerChanged(index); })
-                .border('solid 1px gray')
-                .cornerRadius('10px')
-                .padding('3px 10px 3px 10px')
-                .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '');
-        })).width() // auto width
-            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop), 
-        // Portal
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('traces').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#999').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('events').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#2ca3c0').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('variants').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#b40404').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')))
-            .width() //auto width
-            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal)).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(// For scrolling
-        this.currentController).overflowX('hidden').overflowY('auto'))
-            .padding(10)
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal ? '#f1f1f1' : ''))));
-    };
-    ProcessOverviewController.prototype.LoadView = function () {
-        return this.GetView();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "chart1", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "chart2", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "chart3", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "chartData", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "map", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "refresh", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "selectedIndex", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
-    ], ProcessOverviewController.prototype, "currentController", void 0);
-    return ProcessOverviewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts":
-/*!**********************************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ThroughputTimesController": () => (/* binding */ ThroughputTimesController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./View/BottleneckSection */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts");
-/* harmony import */ var _View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./View/ThroughputTimeSection */ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts");
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-
-var ThroughputTimesController = /** @class */ (function (_super) {
-    __extends(ThroughputTimesController, _super);
-    function ThroughputTimesController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ThroughputTimesController.prototype.InitController = function () {
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__.EventsOverTimeChart();
-        var map = new Map();
-        // this.map = [];
-        for (var i = 0; i < 100; i++) {
-            map[i] = i;
-        }
-        this.chart.SetChartData(map);
-    };
-    ThroughputTimesController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 })((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(this.chart), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
-            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute)
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return ThroughputTimesController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts":
-/*!*******************************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts ***!
-  \*******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BottleneckSection": () => (/* binding */ BottleneckSection)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-
-
-function BottleneckSection() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Bottlenecks'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
-        // We prevent this stack to large more than its content
-        .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('These connections increase process throughput time considerably'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 15 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(3).backgroundColor('rgb(255, 136, 132)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxMHB4IiB2aWV3Qm94PSIwIDAgMTggMTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4zICgzMzgzOSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+NDY5OEVGQ0UtNDQ0NC00MjU5LUE3NjItMzFGMDBGQjRFRDlFPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tdGhyb3VnaHB1dC10aW1lIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDIyLjAwMDAwMCwgLTExODMuMDAwMDAwKSIgZmlsbD0iIzBCNUY3OCI+CiAgICAgICAgICAgIDxnIGlkPSJNQUlOIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA1NC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJCb3R0bGVuZWNrcyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS4wMDAwMDAsIDEwNDMuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkJvdHRsZW5lY2staXRlbSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4wMDAwMDAsIDY5LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iSGVhZGVyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC4wMDAwMDAsIDExLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkNvbm5lY3Rpb24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxNy4wMDAwMDAsIDExLjAwMDAwMCkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtMjE3LjAwMDAwMCwgLTExLjAwMDAwMCkgdHJhbnNsYXRlKDIxMi4wMDAwMDAsIDIuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQsOS42IEwtMS43NzYzNTY4NGUtMTUsOCBMNSwxOCBMMTAsOCBMNiw5LjYgTDYsMCBMNCwwIEw0LDkuNiBaIiBpZD0iaWNvbi1hcnJvdy1yaWdodCI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4='), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83')).width().height().padding('10px 15px 10px 15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('View cases in…').paddingLeft('15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Throughput time'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('10 work day(s)')).width(), //auto
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Cases affected'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('14%')).width() //auto
-        ).paddingLeft('15px')).padding())
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.5))
-            .shadow({ default: '0 2px 5px 0 rgb(0 0 0 / 5%), 0 1px 3px 0 rgb(0 0 0 / 10%)', hover: '0 2px 10px rgb(0 0 0 / 16%), 0 2px 5px rgb(0 0 0 / 26%)' })
-            .height(122);
-    })).height().padding())
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-    // We want to space 10px between every vertical block
-    );
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts":
-/*!***********************************************************************************************!*\
-  !*** ./src/Domains/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts ***!
-  \***********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ThroughputTimeSection": () => (/* binding */ ThroughputTimeSection)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-
-
-
-function DurationHeadline(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value)
-        .cursor('pointer')
-        .border('dashed 1px var(--sub-border-color)')
-        .transition('border .3s'));
-}
-function DurationText(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value).fontSize(40).foregroundColor('#666'));
-}
-function DurationUnitText(value) {
-    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value).fontSize(20).foregroundColor('#666')
-        .cursor('pointer')
-        .border('dashed 1px var(--sub-border-color)')
-        .transition('border .3s'));
-}
-function ProcessStartEnd() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process start').fontWeight('bold').foregroundColor('#555'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f084').size(20).marginBottom('3px'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process end').fontWeight('bold').foregroundColor('#555'))
-        .cursor('pointer')
-        .border({ default: 'dashed 1px var(--sub-border-color)', hover: 'solid 1px #2ca3c0' })
-        .height() //auto
-        .width() //auto
-    );
-}
-function ThroughputTimeSection(chart) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Throughput Time Search'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
-        // We prevent this stack to large more than its content
-        .height('auto'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('Select any two activities to see throughput time between them'), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(DurationHeadline('Average Throughput time'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(DurationText('24'), DurationUnitText('Days')), ProcessStartEnd())
-        .padding(10)
-        .height()
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(chart))
-        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top))
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
-    // We want to space 10px between every vertical block
-    );
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Project/Controllers/ProjectController.ts":
-/*!**************************************************************!*\
-  !*** ./src/Domains/Project/Controllers/ProjectController.ts ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProjectControllerClass": () => (/* binding */ ProjectControllerClass),
-/* harmony export */   "ProjectController": () => (/* binding */ ProjectController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
-/* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/Domains/Project/Models/MIProjectItem.ts");
-/* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/Domains/Project/Views/DesktopView.ts");
-/* harmony import */ var _UI_UIServices_FiltersUIService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/UIServices/FiltersUIService */ "./src/UI/UIServices/FiltersUIService.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-var StackController = /** @class */ (function (_super) {
-    __extends(StackController, _super);
-    function StackController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    StackController.prototype.InitController = function () {
-        this.array = [1, 2, 3];
-        this.title = 'Hello Controller';
-    };
-    StackController.prototype.LoadView = function () {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.title).foregroundColor('blue').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], StackController.prototype, "title", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], StackController.prototype, "array", void 0);
-    return StackController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-var ProjectControllerClass = /** @class */ (function (_super) {
-    __extends(ProjectControllerClass, _super);
-    function ProjectControllerClass() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProjectControllerClass.prototype.SetParentAppController = function (value) {
-        this.parentAppController = value;
-        return this;
-    };
-    ProjectControllerClass.prototype.$ = function (value) {
-        var _this = this;
-        var propertyName = this.GetLastEnteredPropertyName();
-        return {
-            get: function () {
-                return _this[propertyName];
-            },
-            set: function (value) {
-                _this[propertyName] = value;
-            }
-        };
-        console.log();
-    };
-    ProjectControllerClass.prototype.InitController = function () {
-        this.array = [1, 2, 3, 4, 5, 6];
-        this.stackController = new StackController();
-        this.selectedTab = 'Process Explorer';
-    };
-    ProjectControllerClass.prototype.OnBindModel = function (project) {
-        var _this = this;
-        this.selectedProject = project;
-        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
-        _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjectItems(session_id, 'bpmgenesis', '').then(function (projectItems) {
-            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__.CreateMVIProjectItem)(projectItem); });
-            _this.OnProjectItemSelected(_this.selectedProjectItems[0]);
-        });
-        return this;
-    };
-    //When user click add button that under list
-    ProjectControllerClass.prototype.OnNewProjectItem = function () {
-        _UI_UIServices_FiltersUIService__WEBPACK_IMPORTED_MODULE_4__.FilterUIService.SelectFilter();
-        /* const connectorDialog = new ConnectorDialog();
-        connectorDialog.ShowDialog(); */
-    };
-    // When user select items froım list
-    ProjectControllerClass.prototype.OnProjectItemSelected = function (projectItem) {
-        this.selectedProjectItem = projectItem;
-        this.selectedProjectItemController = projectItem.controller;
-        if (!this.selectedProjectItemController.IsModelBind) {
-            this.selectedProjectItemController.Bind(projectItem);
-        }
-    };
-    ProjectControllerClass.prototype.LoadProjects = function () {
-        var _this = this;
-        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
-        _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then(function (projects) {
-            console.log('Load Project :', projects);
-            _this.projects = projects;
-            _this.ForceUpdate();
-        });
-    };
-    ProjectControllerClass.prototype.LoadDesktopView = function () {
-        return (0,_Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__.DesktopView)({
-            selectedProjectItems: this.selectedProjectItems,
-            selectedProjectItem: this.selectedProjectItem,
-            selectedProjectItemController: this.selectedProjectItemController,
-            NewProjectItemAction: this.OnNewProjectItem.bind(this),
-            ProjectItemSelectedAction: this.OnProjectItemSelected.bind(this)
-        });
-    };
-    ProjectControllerClass.prototype.TestZStack = function () {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Test'))
-            .background((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('yellow').cornerRadius('8px'))));
-    };
-    ProjectControllerClass.prototype.LoadView = function () {
-        return this.LoadDesktopView();
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "parentAppController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "title", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "array", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "projects", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "selectedProject", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "selectedProjectItem", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "selectedProjectItems", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "selectedProjectItemController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "selectedTab", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProjectControllerClass.prototype, "stackController", void 0);
-    return ProjectControllerClass;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-function ProjectController(appController, model) {
-    return new ProjectControllerClass().SetParentAppController(appController).Bind(model);
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Project/Models/MIProjectItem.ts":
-/*!*****************************************************!*\
-  !*** ./src/Domains/Project/Models/MIProjectItem.ts ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CreateMVIProjectItem": () => (/* binding */ CreateMVIProjectItem)
-/* harmony export */ });
-/* harmony import */ var _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../CustomPage/Controllers/CustomPageController */ "./src/Domains/CustomPage/Controllers/CustomPageController.ts");
-/* harmony import */ var _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Dataset/Controllers/DatasetController */ "./src/Domains/Dataset/Controllers/DatasetController.ts");
-
-
-function CreateMVIProjectItem(model) {
-    if (model.type === 'Dataset') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f050',
-            controller: new _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__.DatasetController()
-        };
-    }
-    else if (model.type === 'Dashboard') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f0b3',
-            controller: new _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__.CustomPageController()
-        };
-    }
-    return {};
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Project/Views/DesktopView.ts":
-/*!**************************************************!*\
-  !*** ./src/Domains/Project/Views/DesktopView.ts ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "DesktopView": () => (/* binding */ DesktopView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/ListView */ "./src/UI/Views/ListView.ts");
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _ListFooterButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListFooterButton */ "./src/Domains/Project/Views/ListFooterButton.ts");
-
-
-
-
-function DatasetListView(projectItem) {
-    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(
-    /*  gauge as any */
-    )).padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })(
-    // Filter Icon
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(20), 
-    // Filter Badge
-    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('2')
-        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.center)
-        .fontWeight('bold')
-        .padding('5px')
-        .backgroundColor('#27B764')
-        .width('20px')
-        .height('20px')
-        .cornerRadius('5px')
-        .foregroundColor('white')).width() // auto
-    )).minHeight('80px'));
-}
-function DashboardListView(projectItem) {
-    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)).minHeight('50px'));
-}
-function DesktopView(_a) {
-    var selectedProjectItem = _a.selectedProjectItem, selectedProjectItems = _a.selectedProjectItems, ProjectItemSelectedAction = _a.ProjectItemSelectedAction, NewProjectItemAction = _a.NewProjectItemAction, selectedProjectItemController = _a.selectedProjectItemController;
-    return function (_a) {
-        var onCloseProject = _a.onCloseProject;
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
-            header: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ticket Management').lineHeight(35).whiteSpace('nowrap'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ensemble Mining Model').fontSize('14px').textTransform('uppercase')).marginLeft('5px').marginRight('10px').width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('80%').backgroundColor('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efde').size(24).marginHorizontal('10px').foregroundColor('#666'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('7.500').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('EVENTS').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('80%').backgroundColor('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(24).marginHorizontal('10px').foregroundColor('#666'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('3.124').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('CASES').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Test')))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04f').size(24)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f033').size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Test')))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(24)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'))
-                    .height(80)
-                    .shadow('0 0 8px 0 #ccc')
-                    .background('rgb(255,255,255,20%)')
-                    .marginBottom('10px')
-                    .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop)
-            ],
-            left: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)()
-                    .width(40)
-                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ duration: 2 })
-                    .background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Process').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
-                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 1, duration: 2 })
-                    .background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Model').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
-                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 2, duration: 2 })
-                    .background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Query').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height())).height(500).width(200).padding(20).visible(true), 
-                //Project Title
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
-                    .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
-                    .padding('8px')
-                    .fontWeight('bold')
-                    .foregroundColor('black')).height('auto').visible(false), 
-                // Poject items list view
-                _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(selectedProjectItems)(function (projectItem) {
-                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
-                        'Dataset': DatasetListView(projectItem),
-                        'Dashboard': DashboardListView(projectItem)
-                    })
-                        .borderBottom('solid 1px rgb(200,200,200,10%)')
-                        .cornerRadius('5px')
-                        .transition('all 0.35s')
-                        .shadow((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
-                        .background((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
-                        .onSelected(function () { return ProjectItemSelectedAction(projectItem); });
-                })).width('200px').background('rgb(255,255,255,10%)').grow(), 
-                // Project items buttons
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter, spacing: 5 })((0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\efff').action(function () { return NewProjectItemAction(); }), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\effd'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f04a'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f0bb')).height('auto').width('100%'))
-                    .visible(false)
-            ],
-            right: [
-                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
-                /*  this.TestTabView(), */
-                selectedProjectItemController).grow()
-            ],
-            /*  footer: [
-                 Text('Test').fontSize('24px')
-             ] */
-        }));
-    };
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Project/Views/ListFooterButton.ts":
-/*!*******************************************************!*\
-  !*** ./src/Domains/Project/Views/ListFooterButton.ts ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ListFooterButton": () => (/* binding */ ListFooterButton)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Buttons */ "./src/UI/Views/Buttons.ts");
-
-
-/* export function ListFooterButton(iconContent: string): UIButtonClass {
-    return (
-        UIButton(
-            Icon(iconContent).size(15)
-        )
-            .padding('5px')
-            .backgroundImage('linear-gradient(#f5faff, #ebf0f5)')
-            .background('#EBF0F5')
-            .border('solid 1px #C8D2DC')
-            .cornerRadius('5px')
-            .width('32px')
-            .height('32px')
-            .opacity('0.8')
-    );
-} */
-function ListFooterButton(iconContent) {
-    return ((0,_UI_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.DefaultButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(iconContent).size(15))
-        .border('solid 1px #C8D2DC')
-        .cornerRadius('5px')
-        .width('32px')
-        .height('32px')
-        .opacity('0.8'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts":
-/*!***************************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/Activity/ActivityController.ts ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActivityController": () => (/* binding */ ActivityController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
-/* harmony import */ var _Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Application/Views/PortalFilterBarWidget */ "./src/Domains/Application/Views/PortalFilterBarWidget.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-var overviewTypes = [
-    'Frequency',
-    'Median duration',
-    'Mean duration',
-    'Duration range',
-    'Aggreate duration'
-];
-function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
-    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
-            .action(function () { return onSelectedAction(index); })
-            .height(30)
-            .border('solid 1px #ccc')
-            .padding(5)
-            .paddingLeft('10px')
-            .paddingRight('10px')
-            .cornerRadius(index === 0 ? '15px 0px 0px 15px' : (index === buttons.length - 1 ? '0px 15px 15px 0px' : ''))
-            .background(index === selectedIndex ? 'rgb(120,120,120,20%)' : '');
-    })));
-}
-var ActivityController = /** @class */ (function (_super) {
-    __extends(ActivityController, _super);
-    function ActivityController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ActivityController.prototype.InitController = function () {
-        this.selectedIndex = 0;
-        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__.EventsOverTimeChart();
-        var map = new Map();
-        // this.map = [];
-        for (var i = 0; i < 100; i++) {
-            map[i] = i;
-        }
-        this.chart.SetChartData(map);
-    };
-    ActivityController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__.PortalFilterBarWidget)({ value: 23 })
-        /* UIButton(
-            Icon('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' }),
-        ) */
-        )
-            // We prevent this stack to large more than its content
-            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('Global statistics'), MetricSelectionButtons(overviewTypes, this.selectedIndex, function (index) { return _this.selectedIndex = index; }).visible(false), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(overviewTypes[this.selectedIndex])
-            .fontSize('30px')
-            .cursor('pointer')
-            .border('dashed 1px var(--sub-border-color)')
-            .transition('border .3s'))
-            .padding()
-            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
-                .action(function () { return _this.selectedIndex = index; })
-                .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
-                .width(180)
-                .height(30)
-                .border('solid 1px #ccc')
-                .padding()
-                .cornerRadius(12);
-        })).minWidth('200px').maxWidth('200px'), this.chart))
-            .height(400)
-            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }))));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ActivityController.prototype, "chart", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ActivityController.prototype, "selectedIndex", void 0);
-    return ActivityController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts":
-/*!********************************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts ***!
-  \********************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MultiOverviewController": () => (/* binding */ MultiOverviewController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _OverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OverviewController */ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var ControllerList = /** @class */ (function (_super) {
-    __extends(ControllerList, _super);
-    function ControllerList(parentController) {
-        var _this = _super.call(this) || this;
-        _this.parentController = parentController;
-        return _this;
-    }
-    ControllerList.prototype.Add = function (item) {
-        _super.prototype.Add.call(this, item);
-        this.parentController.ForceUpdate();
-        return 1;
-    };
-    return ControllerList;
-}(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.List));
-var MultiOverviewController = /** @class */ (function (_super) {
-    __extends(MultiOverviewController, _super);
-    function MultiOverviewController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    MultiOverviewController.prototype.InitController = function () {
-        this.controllerList = new ControllerList(this);
-        this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController());
-    };
-    MultiOverviewController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f078').size(20).foregroundColor({ default: 'rgb(51,51,51, 70%)', hover: 'rgb(51,51,51, 90%)' })).action(function () { return _this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController()); })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.controllerList)(function (item) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(item);
-        }))));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], MultiOverviewController.prototype, "controllerList", void 0);
-    return MultiOverviewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts":
-/*!***************************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/Overview/OverviewController.ts ***!
-  \***************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "OverviewController": () => (/* binding */ OverviewController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
-/* harmony import */ var _Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Views/CasesGrid */ "./src/Domains/Statistics/Views/CasesGrid.ts");
-/* harmony import */ var _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/EventsOverTimeChart */ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts");
-/* harmony import */ var _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Views/ActiveCasesOverTime */ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-var datas = [
-    [
-        { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-        { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-        { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-        { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-        { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-        { x: 'Nov', y: 422.8 }
-    ],
-    [
-        { x: new Date(2021, 1, 1), y: 252.2 }, { x: new Date(2021, 2, 1), y: 243.4 },
-        { x: new Date(2021, 3, 1), y: 142.8 }, { x: new Date(2021, 4, 1), y: 331.6 },
-        { x: new Date(2021, 5, 1), y: 262.3 }, { x: new Date(2021, 6, 1), y: 142.5 },
-        { x: new Date(2021, 7, 1), y: 142.9 }, { x: new Date(2021, 8, 1), y: 145.8 },
-        { x: new Date(2021, 9, 1), y: 251.4 }, { x: new Date(2021, 10, 1), y: 143.1 }
-    ]
-];
-var overviewTypes = [
-    {
-        title: 'Events over time',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Active cases over time',
-        builder: _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__.ActiveCasesOverTime,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Case variants',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Events per case',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Case duration',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Case utilization',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Mean activity duration',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    },
-    {
-        title: 'Mean waiting time',
-        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
-        data: [
-            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
-            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
-            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
-            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
-            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
-            { x: 'Nov', y: 422.8 }
-        ]
-    }
-];
-function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
-    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
-            .action(function () { return onSelectedAction(index); })
-            .height(30)
-            .border('solid 1px #ccc')
-            .padding(5)
-            .paddingLeft('10px')
-            .paddingRight('10px')
-            .cornerRadius(index === 0 ? '15px 0px 0px 15px' : (index === buttons.length - 1 ? '0px 15px 15px 0px' : ''))
-            .background(index === selectedIndex ? 'rgb(120,120,120,20%)' : '');
-    })));
-}
-var OverviewController = /** @class */ (function (_super) {
-    __extends(OverviewController, _super);
-    function OverviewController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    OverviewController.prototype.InitController = function () {
-        this.selectedIndex = 0;
-    };
-    OverviewController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
-        // Chart
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(overviewTypes[this.selectedIndex].title)
-            .fontSize('30px')
-            .cursor('pointer')
-            .border('dashed 1px var(--sub-border-color)')
-            .transition('border .3s')
-            .onClick(function () { return _this.showMenu = true; }))
-            .padding()
-            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title))
-                .action(function () { return _this.selectedIndex = index; })
-                .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
-                .width(180)
-                .height(30)
-                .border('solid 1px #ccc')
-                .padding()
-                .cornerRadius(12);
-        })).width(250).padding(10).visible(false), 
-        // Chart here
-        overviewTypes[this.selectedIndex].builder(overviewTypes[this.selectedIndex].data)))
-            .visible(true)
-            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
-                .padding(10)
-                .onClick(function () { _this.selectedIndex = index; _this.showMenu = false; });
-        })))
-            .initial({ y: 20, opacity: 0 }).animate({ y: 0, opacity: 1 }).__transition({ type: "spring", bounce: 0.3 })
-            .overflow('hidden')
-            .backgroundColor('white')
-            // .animation(ListBounceAnimation, '.3s')
-            .visible(this.showMenu))
-            .overflow('hidden')
-            .minHeight('350px'), 
-        // Grid
-        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing, spacing: -2 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Cases (31)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('5px 0 0 5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Variants (8)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('0 5px 5px 0')), (0,_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__.CasesGrid)())))));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "selectedIndex", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], OverviewController.prototype, "showMenu", void 0);
-    return OverviewController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Controllers/ProcessStatisticController.ts":
-/*!**************************************************************************!*\
-  !*** ./src/Domains/Statistics/Controllers/ProcessStatisticController.ts ***!
-  \**************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ProcessStatisticController": () => (/* binding */ ProcessStatisticController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
-/* harmony import */ var _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Models/SideMenu */ "./src/Domains/Statistics/Models/SideMenu.ts");
-/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts");
-/* harmony import */ var _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview/MultiOverviewController */ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-var controllers = [new _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__.MultiOverviewController, new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__.ActivityController];
-var ProcessStatisticController = /** @class */ (function (_super) {
-    __extends(ProcessStatisticController, _super);
-    function ProcessStatisticController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    ProcessStatisticController.prototype.InitController = function () {
-        this.selectedIndex = 0;
-        this.currentController = controllers[0];
-    };
-    ProcessStatisticController.prototype.OnControllerChanged = function (index) {
-        this.selectedIndex = index;
-        this.currentController = _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[index].controller;
-    };
-    ProcessStatisticController.prototype.LoadView = function () {
-        var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
-            items: _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel,
-            selectedAction: function (index) { return _this.OnControllerChanged(index); },
-            second: true
-        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].icon, _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].name + ' statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel)(function (item, index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
-                .action(function () { return _this.OnControllerChanged(index); })
-                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
-                .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop);
-        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
-            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
-    };
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProcessStatisticController.prototype, "currentController", void 0);
-    __decorate([
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
-    ], ProcessStatisticController.prototype, "selectedIndex", void 0);
-    return ProcessStatisticController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Models/SideMenu.ts":
-/*!***************************************************!*\
-  !*** ./src/Domains/Statistics/Models/SideMenu.ts ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "sideMenuModel": () => (/* binding */ sideMenuModel)
-/* harmony export */ });
-/* harmony import */ var _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Controllers/Activity/ActivityController */ "./src/Domains/Statistics/Controllers/Activity/ActivityController.ts");
-/* harmony import */ var _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Controllers/Overview/MultiOverviewController */ "./src/Domains/Statistics/Controllers/Overview/MultiOverviewController.ts");
-/* harmony import */ var _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Controllers/Overview/OverviewController */ "./src/Domains/Statistics/Controllers/Overview/OverviewController.ts");
-
-
-
-var sideMenuModel = [
-    {
-        name: 'Overview',
-        icon: '\\f0d8',
-        controller: new _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__.MultiOverviewController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Activity',
-        icon: '\\f0e7',
-        controller: new _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__.ActivityController(),
-        isVisible: function () { return true; }
-    },
-    {
-        name: 'Resource',
-        icon: '\\f006',
-        controller: new _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__.OverviewController(),
-        isVisible: function () { return true; }
-    }
-];
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Views/ActiveCasesOverTime.ts":
-/*!*************************************************************!*\
-  !*** ./src/Domains/Statistics/Views/ActiveCasesOverTime.ts ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ActiveCasesOverTime": () => (/* binding */ ActiveCasesOverTime)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-
-function ActiveCasesOverTime(data) {
-    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.BarSerie)().xName('x').yName('y')
-        .columnWidth(0.5)
-        .fill('#FFD062')
-        .data(data))
-        .xAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        valueType: 'Category',
-        labelFormat: 'MMM',
-        majorGridLines: { width: 0 },
-        intervalType: 'Months'
-    })
-        .yAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        labelFormat: '{value}',
-        lineStyle: { width: 0 },
-        majorTickLines: { width: 0 },
-        minorTickLines: { width: 0 }
-    })
-        .backgroundColor('transparent'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Views/CasesGrid.ts":
-/*!***************************************************!*\
-  !*** ./src/Domains/Statistics/Views/CasesGrid.ts ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "GridHeader": () => (/* binding */ GridHeader),
-/* harmony export */   "GridRow": () => (/* binding */ GridRow),
-/* harmony export */   "CasesGrid": () => (/* binding */ CasesGrid)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
-var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
-
-
-
-var columns = [
-    {
-        key: 'caseId',
-        title: 'Case ID',
-        width: 120
-    },
-    {
-        key: 'events',
-        title: 'Events',
-        width: 120,
-        builder: function (row) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['events']).marginRight('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width().height(15).background('#7A9BCD').initial({ width: 0 }).animate({ width: '100%' }).__transition({ duration: 1 }));
-        }
-    },
-    {
-        key: 'variant',
-        title: 'Variant',
-        width: 20
-    },
-    {
-        key: 'started',
-        title: 'Started',
-        width: 20
-    },
-    {
-        key: 'finished',
-        title: 'Finished',
-        width: 20
-    },
-    {
-        key: 'duration',
-        title: 'Duration',
-        width: 30,
-        builder: function (row) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['duration']).marginRight('10px').whiteSpace('nowrap'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width('100%').height(15).background('#7A9BCD'));
-        }
-    }
-];
-var data = [
-    {
-        caseId: '1000-2645004',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2653046',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2653046',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691872',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691873',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2653046',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691872',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691873',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2653046',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691872',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    },
-    {
-        caseId: '1000-2691873',
-        events: 5,
-        variant: 'variant 5',
-        started: '12/3/2019 16:17:43',
-        finished: '01/02/2020 10:25:05',
-        duration: '1 day, 18 hours'
-    }
-];
-function GridHeader(columnInfo) {
-    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
-        return (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(cInfo.title)
-            .fontFamily("'Source Sans Pro', Arial, sans-serif")
-            .fontSize('18px')
-            .fontWeight('500')
-            .foregroundColor('#1A1A1A')
-            //.textTransform('uppercase')
-            .whiteSpace('nowrap')
-            .width(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.number(cInfo.width) ? cInfo.width + "px" : width + '%')
-            .textOverflow('ellipsis')
-            .padding('0 10px')
-            .borderRight('2px solid transparent');
-    })).height(40).borderBottom('2px solid #e4e4e4'));
-}
-function GridRow(columnInfo, row, onSelectedRow) {
-    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
-    debugger;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
-        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(cInfo.builder) ? cInfo.builder(row) :
-            (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row[cInfo.key])
-                .whiteSpace('nowrap')
-                .textOverflow('ellipsis')).borderTop('1px solid #e4e4e4').padding('5px 10px').width(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.number(cInfo.width) ? cInfo.width + "px" : width + '%');
-    })).height().onClick(function () { return onSelectedRow(row); }).cursor('pointer'));
-}
-function CasesGrid() {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([GridHeader(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(data)((function (row) {
-        return GridRow(columns, row, function () { });
-    })))));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/Statistics/Views/EventsOverTimeChart.ts":
-/*!*************************************************************!*\
-  !*** ./src/Domains/Statistics/Views/EventsOverTimeChart.ts ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EventsOverViewChart": () => (/* binding */ EventsOverViewChart)
-/* harmony export */ });
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
-/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
-
-function EventsOverViewChart(data) {
-    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y')
-        .columnWidth(0.5)
-        .fill('#FFD062')
-        .data(data))
-        .xAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        valueType: 'Category',
-        labelFormat: 'MMM',
-        majorGridLines: { width: 0 },
-        intervalType: 'Months'
-    })
-        .yAxis({
-        labelStyle: {
-            fontFamily: 'Ubuntu, sans-serif',
-            size: '14px'
-        },
-        labelFormat: '{value}',
-        lineStyle: { width: 0 },
-        majorTickLines: { width: 0 },
-        minorTickLines: { width: 0 }
-    })
-        .backgroundColor('transparent'));
-}
-
-
-/***/ }),
-
-/***/ "./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts":
-/*!******************************************************************************!*\
-  !*** ./src/Domains/VariantExplorer/Controllers/VariantExplorerController.ts ***!
-  \******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "VariantExplorerController": () => (/* binding */ VariantExplorerController)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/VariantActivityShape */ "./src/Domains/VariantExplorer/Views/VariantActivityShape.ts");
-/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-var VariantExplorerController = /** @class */ (function (_super) {
-    __extends(VariantExplorerController, _super);
-    function VariantExplorerController() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    VariantExplorerController.prototype.InitController = function () {
-    };
-    VariantExplorerController.prototype.LoadView = function () {
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
-        })).width()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Satınalma onayının verilmesi'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Gerekli kontrollerin Sağlanması'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('İzin talebi başladı'))).padding(20);
-        }))).padding(10).height())
-            .backgroundColor('#f1f1f1')
-            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
-    };
-    return VariantExplorerController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
-
-
-
-/***/ }),
-
-/***/ "./src/Domains/VariantExplorer/Views/VariantActivityShape.ts":
-/*!*******************************************************************!*\
-  !*** ./src/Domains/VariantExplorer/Views/VariantActivityShape.ts ***!
-  \*******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "VariantActivityShapeView": () => (/* binding */ VariantActivityShapeView)
-/* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-
-function VariantActivityShapeView(text) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
-        .marginLeft('5px')
-        .marginRight('20px'))
-        .width('150px')
-        .height('80px')
-        .clipPath('polygon(0% 0%, 75% 0%, 95% 50%, 75% 100%, 0% 100%)')
-        .background('yellow')).width('auto').height('auto').filter('drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5))'));
-}
-
-
-/***/ }),
-
 /***/ "./src/Icons/NewFile.ts":
 /*!******************************!*\
   !*** ./src/Icons/NewFile.ts ***!
@@ -5139,7 +613,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Resources */ "./src/Resources.ts");
-/* harmony import */ var _Domains_Application_Controllers_AppController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Domains/Application/Controllers/AppController */ "./src/Domains/Application/Controllers/AppController.ts");
+/* harmony import */ var _domains_Application_Controllers_AppController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./domains/Application/Controllers/AppController */ "./src/domains/Application/Controllers/AppController.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5193,7 +667,7 @@ var MainView = /** @class */ (function (_super) {
         this.Text = 'Procetra';
         this.Icon = _Resources__WEBPACK_IMPORTED_MODULE_1__.Resources.Icons.ApplicationIcon;
         this.HeaderColor = 'rgb(255,255,255, 20%)';
-        var testController = new _Domains_Application_Controllers_AppController__WEBPACK_IMPORTED_MODULE_2__.AppController();
+        var testController = new _domains_Application_Controllers_AppController__WEBPACK_IMPORTED_MODULE_2__.AppController();
         this.Controls.Add(testController);
         testController.LoadRecentFiles();
         testController.RequestDesktop.add(function () { return _this.TopMaximize(); });
@@ -5276,8 +750,8 @@ var BrokerProjectService = /** @class */ (function () {
             }
             _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name).then(function (project) {
                 resolve({
-                    Id: project.project_id,
-                    Name: project.project_name
+                    project_id: project.project_id,
+                    project_name: project.project_name
                 });
             });
         });
@@ -6439,9 +1913,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Domains/ProcessOverview/Controllers/Overview/Bindable */ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts");
+/* harmony import */ var _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../modules/ProcessOverview/Controllers/Overview/Bindable */ "./src/modules/ProcessOverview/Controllers/Overview/Bindable.ts");
 /* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Views/Buttons */ "./src/UI/Views/Buttons.ts");
 /* harmony import */ var _Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Views/RegularTextBox */ "./src/UI/Views/RegularTextBox.ts");
+/* harmony import */ var _Views_Texts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/Texts */ "./src/UI/Views/Texts.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6457,6 +1932,7 @@ var __extends = (undefined && undefined.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 
 
 
@@ -6480,6 +1956,9 @@ var AddEditAnalyseModelNameDialog = /** @class */ (function (_super) {
         this.ShowDialogAsyncResolve(value);
         this.Hide();
     };
+    AddEditAnalyseModelNameDialog.prototype.OnCancel = function () {
+        this.Hide();
+    };
     return AddEditAnalyseModelNameDialog;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Dialog));
 
@@ -6489,15 +1968,19 @@ var AddEditAnalyseModelNameController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     AddEditAnalyseModelNameController.prototype.InitController = function () {
-        this.$txtName = new _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__.Bindable('', this);
+        this.$txtName = new _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__.Bindable('', this);
     };
     AddEditAnalyseModelNameController.prototype.OnBindModel = function (dialog) {
         this.dialog = dialog;
     };
     AddEditAnalyseModelNameController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('New Analyse Model').fontSize('24px').fontWeight('700').marginBottom('50px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_3__.RegularTextBox)({ value: this.$txtName })).height(), //auto
-        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.AcceptButton)('OK').action(function () { return _this.dialog.OnOKClick(_this.$txtName.get()); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.CancelButton)('Cancel')))).padding(10));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })(
+        // Icon('\\d1fe').size(24).foregroundColor('#263238'),
+        (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_4__.RegularText)('New Mining Model').fontSize(20).fontFamily("'Source Sans Pro', Arial, sans-serif")).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_3__.RegularTextBox)({ icon: '\\d1fd', value: this.$txtName })).height(), //auto
+        // Select Repository Button
+        //SelectButton('Select Repository'),
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.CancelButton)('Cancel').action(function () { return _this.dialog.OnCancel(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.AcceptButton)('OK').action(function () { return _this.dialog.OnOKClick(_this.$txtName.get()); }))).padding(10))));
     };
     return AddEditAnalyseModelNameController;
 }(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
@@ -6516,10 +1999,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CreateNewProjectController": () => (/* binding */ CreateNewProjectController)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Views/RegularTextBox */ "./src/UI/Views/RegularTextBox.ts");
-/* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Views/Buttons */ "./src/UI/Views/Buttons.ts");
+/* harmony import */ var _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../modules/ProcessOverview/Controllers/Overview/Bindable */ "./src/modules/ProcessOverview/Controllers/Overview/Bindable.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Views/RegularTextBox */ "./src/UI/Views/RegularTextBox.ts");
+/* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Views/Buttons */ "./src/UI/Views/Buttons.ts");
+/* harmony import */ var _Views_Texts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Views/Texts */ "./src/UI/Views/Texts.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -6538,17 +2023,30 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
+
 var CreateNewProjectController = /** @class */ (function (_super) {
     __extends(CreateNewProjectController, _super);
     function CreateNewProjectController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    CreateNewProjectController.prototype.InitController = function () {
+        this.$txtName = new _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_0__.Bindable('', this);
+    };
+    CreateNewProjectController.prototype.OnBindModel = function (dialog) {
+        this.dialog = dialog;
+    };
     CreateNewProjectController.prototype.LoadView = function () {
         var _this = this;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Create new project').fontSize('24px').fontWeight('700').marginBottom('50px')).padding(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_1__.RegularTextBox)({ value: this.$txtName })).padding(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.AcceptButton)('OK').action(function () { return _this.dialog.OnOKClick(_this.$txtName.get()); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_2__.CancelButton)('Cancel')))));
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 5 })(
+        // Icon('\\d1fe').size(24).foregroundColor('#263238'),
+        (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_4__.RegularText)('Create new project').fontSize(20).fontFamily("'Source Sans Pro', Arial, sans-serif")).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_Views_RegularTextBox__WEBPACK_IMPORTED_MODULE_2__.RegularTextBox)({ icon: '\\d277', value: this.$txtName })).height(), //auto
+        // Select Repository Button
+        //SelectButton('Select Repository'),
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_3__.CancelButton)('Cancel').action(function () { return _this.dialog.OnCancel(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_3__.AcceptButton)('OK').action(function () { return _this.dialog.OnOKClick(_this.$txtName.get()); }))).padding(10))));
     };
     return CreateNewProjectController;
-}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
 
 
 
@@ -6604,17 +2102,17 @@ var CreateNewProjectDialog = /** @class */ (function (_super) {
         this.Controls.Add(this.createNewProjectDialogController);
         /*   this.projectList = new ListBox();
           this.projectList.Height = 360;
-  
+
           this.Controls.Add(this.projectList);
-  
+
           const btnOK = new Button();
           btnOK.Text = 'OK';
           btnOK.Color = 2;
           btnOK.Clicked = (() => {
               this.OnOKClick();
-  
+
           }) as any;
-  
+
           const btnCancel = new Button();
           btnCancel.Text = 'Cancel';
           btnCancel.Color = 1;
@@ -6628,6 +2126,9 @@ var CreateNewProjectDialog = /** @class */ (function (_super) {
     };
     CreateNewProjectDialog.prototype.OnOKClick = function (value) {
         this.ShowDialogAsyncResolve(value);
+        this.Hide();
+    };
+    CreateNewProjectDialog.prototype.OnCancel = function () {
         this.Hide();
     };
     return CreateNewProjectDialog;
@@ -6739,7 +2240,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Views_ListView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ListView */ "./src/UI/Views/ListView.ts");
 /* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../Services/Services */ "./src/Services/Services.ts");
 /* harmony import */ var _Services_StateService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../Services/StateService */ "./src/Services/StateService.ts");
-/* harmony import */ var _Domains_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Domains/Statistics/Views/CasesGrid */ "./src/Domains/Statistics/Views/CasesGrid.ts");
+/* harmony import */ var _modules_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../modules/Statistics/Views/CasesGrid */ "./src/modules/Statistics/Views/CasesGrid.ts");
 /* harmony import */ var _Views_Texts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Views/Texts */ "./src/UI/Views/Texts.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -6779,7 +2280,7 @@ var columns = [
     {
         key: 'project_name',
         title: 'Name',
-        width: 220
+        width: 230
     },
     {
         key: 'flags',
@@ -6792,13 +2293,14 @@ var columns = [
     {
         key: 'owner',
         title: 'Project owner',
-        width: 150
+        width: 180
     },
     {
         key: 'stats',
         title: 'Stats',
+        width: 100,
         builder: function (row) {
-            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('1 set').fontFamily("'Source Sans Pro', Arial, sans-serif !important").foregroundColor('#7f7f7f'), (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('10 models').fontFamily("'Source Sans Pro', Arial, sans-serif !important").foregroundColor('#7f7f7f'));
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('0').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'), (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('query').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('1.253').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'), (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('cases').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px')));
         }
     },
     {
@@ -6812,6 +2314,7 @@ var columns = [
     {
         key: 'duration',
         title: 'Actions',
+        width: 80,
         builder: function (row) {
             return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e3c9').size(24).padding(8), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e92b').size(24).padding(8).foregroundColor('#A03B3B'));
         }
@@ -6829,8 +2332,8 @@ var columns = [
 ]
  */
 function ProjectGrid(data, onSelectedRow) {
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([(0,_Domains_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__.GridHeader)(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(data)((function (row) {
-        return (0,_Domains_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__.GridRow)(columns, row, onSelectedRow);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([(0,_modules_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__.GridHeader)(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(data)((function (row) {
+        return (0,_modules_Statistics_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_5__.GridRow)(columns, row, onSelectedRow);
     })))));
 }
 var OpenProjectDialogController = /** @class */ (function (_super) {
@@ -6863,7 +2366,12 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     OpenProjectDialogController.prototype.LoadView = function () {
         var _this = this;
         var _a;
-        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e241').size(24).foregroundColor('#263238'), (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('Project List').fontSize(20)).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(ProjectGrid((_a = this.projects) === null || _a === void 0 ? void 0 : _a.map(function (item) {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e241').size(24).foregroundColor('#263238'), (0,_Views_Texts__WEBPACK_IMPORTED_MODULE_6__.RegularText)('Project List').fontSize(20)).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(
+        /*  Text('dfesdfdsf'),
+         ...ForEach(this.projects)(item =>
+             Text(item.project_name)
+         ) */
+        ProjectGrid((_a = this.projects) === null || _a === void 0 ? void 0 : _a.map(function (item) {
             return {
                 project_name: item.project_name,
                 flags: 'Owner',
@@ -6871,7 +2379,7 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
                 updated: '09.05.2022',
                 tag: item
             };
-        }), function (row) { return _this.selectedProject = row.tag; })).padding(15).visible(this.projects != null), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)()).visible(this.projects == null), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter : _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.AcceptButton)('OK').action(function () { return _this.OnOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.CancelButton)('Cancel').action(function () { return _this.OnCancel(); })).height(50)).visible(true), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\efd5').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
+        }), function (row) { _this.selectedProject = row.tag; _this.OnOK(); })).padding(15).visible(this.projects != null), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spinner)()).visible(this.projects == null), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter : _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing })((0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.AcceptButton)('OK').action(function () { return _this.OnOK(); }), (0,_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.CancelButton)('Cancel').action(function () { return _this.OnCancel(); })).height(50)).visible(true), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d1fd').size(30).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : ''), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Select Project').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).fontFamily('Ubuntu, sans-serif')
             .fontWeight(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '600' : '400').foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#ddd' : '')).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#288ae2' : 'gray'), _Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.projects)(function (project) {
             return (0,_Views_ListView__WEBPACK_IMPORTED_MODULE_2__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(project.project_name).foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#bbb' : '').fontWeight('500'))
                 .minHeight('50px')
@@ -6908,7 +2416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../Domains/ProcessOverview/Controllers/Overview/Bindable */ "./src/Domains/ProcessOverview/Controllers/Overview/Bindable.ts");
+/* harmony import */ var _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../modules/ProcessOverview/Controllers/Overview/Bindable */ "./src/modules/ProcessOverview/Controllers/Overview/Bindable.ts");
 /* harmony import */ var _Views_Buttons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Views/Buttons */ "./src/UI/Views/Buttons.ts");
 /* harmony import */ var _Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Views/Texts */ "./src/UI/Views/Texts.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
@@ -6994,7 +2502,7 @@ var SelectFilterController = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SelectFilterController.prototype.InitController = function () {
-        this.$txtName = new _Domains_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__.Bindable('', this);
+        this.$txtName = new _modules_ProcessOverview_Controllers_Overview_Bindable__WEBPACK_IMPORTED_MODULE_1__.Bindable('', this);
     };
     SelectFilterController.prototype.OnBindModel = function (dialog) {
         this.dialog = dialog;
@@ -7190,6 +2698,7 @@ var ProjectUIService = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SelectButton": () => (/* binding */ SelectButton),
 /* harmony export */   "AcceptButton": () => (/* binding */ AcceptButton),
 /* harmony export */   "CancelButton": () => (/* binding */ CancelButton),
 /* harmony export */   "DefaultButton": () => (/* binding */ DefaultButton)
@@ -7197,6 +2706,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
+function SelectButton(value) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontSize(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '16px' : ''))
+        .height('34px')
+        .padding('15px 15px')
+        .cornerRadius(3)
+        .lineHeight('24px')
+        .minHeight('24px')
+        .shadow({ default: '0 2px 5px 0 rgb(0 0 0 / 26%)', active: '0 4px 8px 0 rgb(0 0 0 / 40%)' })
+        .foregroundColor('rgba(255,255,255,0.87)')
+        .backgroundColor({ default: 'rgb(43,170,181)', hover: 'rgb(127,217,225)' }));
+}
 function AcceptButton(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontSize(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '16px' : ''))
         .foregroundColor(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#eee' : 'white')
@@ -7507,8 +3027,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function RegularTextBox(_a) {
-    var value = _a.value;
-    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109')
+    var icon = _a.icon, value = _a.value;
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(icon && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon)
         .size(15)
         .padding(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextField)().fontSize('1rem')
         .foregroundColor('#495057')
@@ -7640,15 +3160,15 @@ var TabViewClass = /** @class */ (function (_super) {
     }
     TabViewClass.prototype.Body = function () {
         var _this = this;
-        this.SubViews.Add(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs)(function (tabItem, index) {
+        this.SubViews.Add(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, __spreadArray(__spreadArray([], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs.ToArray())(function (tabItem, index) {
             if (index === _this._selectedTabIndex) {
                 return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(tabItem._content));
             }
         })), [(0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(
             // Header
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs)(function (tabItem) { return tabItem.GetHeader(); })).height('auto').width('100%'), 
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs.ToArray())(function (tabItem) { return tabItem.GetHeader(); })).height('auto').width('100%'), 
             // Right Header
-            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs)(function (tabItem) { return tabItem.GetRightHeader(); })).height('auto').width('100%')).height()])).width('100%')
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.tabs.ToArray())(function (tabItem) { return tabItem.GetRightHeader(); })).height('auto').width('100%')).height()])).width('100%')
             /*  .spacing('10px') */
             .paddingLeft('5px')
             .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
@@ -7903,6 +3423,4671 @@ var _Types = {
     TdiConnectionSlider: Symbol('TdiConnectionSlider'),
     TdiPerformanceProcessExplorerShape: Symbol('TdiPerformanceProcessExplorerShape'),
 };
+
+
+/***/ }),
+
+/***/ "./src/domains/AnalyseModels/Controllers/AnalyseModelsController.ts":
+/*!**************************************************************************!*\
+  !*** ./src/domains/AnalyseModels/Controllers/AnalyseModelsController.ts ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AnalyseModelsController": () => (/* binding */ AnalyseModelsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/HeadLineButton */ "./src/UI/Views/HeadLineButton.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/AnalyseModelTileBox */ "./src/domains/AnalyseModels/Views/AnalyseModelTileBox.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/UIServices/AnalyseModelUIService */ "./src/UI/UIServices/AnalyseModelUIService.ts");
+/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var AnalyseModelsController = /** @class */ (function (_super) {
+    __extends(AnalyseModelsController, _super);
+    function AnalyseModelsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AnalyseModelsController.prototype.InitController = function () {
+        var _this = this;
+        this.AnalyseModelSelected = new _tuval_core__WEBPACK_IMPORTED_MODULE_4__.Event();
+        this.menuItems = [
+            {
+                icon: '\\d2c8',
+                iconColor: 'black',
+                title: 'Rename',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d2a4',
+                iconColor: 'black',
+                title: 'Permissions',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d21b',
+                iconColor: 'black',
+                title: 'Publish',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d3a4',
+                iconColor: 'black',
+                title: 'Duplicate',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d2da',
+                iconColor: 'black',
+                title: 'Tags',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d299',
+                iconColor: 'black',
+                title: 'Move To',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\d2a6',
+                iconColor: 'red',
+                title: 'Delete',
+                onClick: function (item) { return console.log(item); }
+            }
+        ];
+        this.newMenuItems = [
+            {
+                icon: '\\d1fe',
+                iconColor: 'black',
+                title: 'Mining Model',
+                onClick: function (item) { return _this.OnAddEditAnalyseModelName(); }
+            },
+            {
+                icon: '\\eff3',
+                iconColor: 'black',
+                title: 'Metric',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\e97b',
+                iconColor: 'black',
+                title: 'Chart',
+                onClick: function (item) { return console.log(item); }
+            },
+            {
+                icon: '\\e856',
+                iconColor: 'black',
+                title: 'Alert',
+                onClick: function (item) { return console.log(item); }
+            }
+        ];
+    };
+    AnalyseModelsController.prototype.OnBindModel = function (project) {
+        var _this = this;
+        this.project = project;
+        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
+        _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then(function (analyseModels) {
+            _this.model = analyseModels;
+        });
+    };
+    AnalyseModelsController.prototype.OnAddEditAnalyseModelName = function () {
+        var _this = this;
+        _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_5__.AnalyseModelUIService.AddEditAnalyseModelName().then(function (name) {
+            // Adding to our project
+            var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.StateService.GetSessionId();
+            _Services_Services__WEBPACK_IMPORTED_MODULE_6__.Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', _this.project.project_id, name).then(function (analyseModelInfo) {
+                debugger;
+                var models = Array.from(_this.model); // for immutable array
+                models.push({ name: analyseModelInfo.name });
+                _this.model = models; // updating state
+                //this.ForceUpdate();
+            });
+        });
+    };
+    AnalyseModelsController.prototype.OnSelectedAnalyseModelChange = function (item) {
+        this.selectedAnalyseModel = item;
+    };
+    AnalyseModelsController.prototype.AnalyseModelView = function () {
+        var _this = this;
+        return function (_a) {
+            var _b;
+            var onCloseProject = _a.onCloseProject;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d277').size(30), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)((_b = _this.project) === null || _b === void 0 ? void 0 : _b.project_name).marginVertical(10), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_this.newMenuItems)(function (item) {
+                return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(20).foregroundColor(item.iconColor), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title).foregroundColor(item.iconColor)).onClick(function () { return item.onClick(item); });
+            }))((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\e145')).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d2c8').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d2a4').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d34a').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d2da').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d299').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\d2a6').action(function () { return _this.OnAddEditAnalyseModelName(); }), (0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('', '\\e5cd').action(function () { return onCloseProject(); })).width()).height(), //auto height
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f109').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Analyse Models'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_HeadLineButton__WEBPACK_IMPORTED_MODULE_1__.HeadLineButton)('New Analyse Model').action(function () { return _this.OnAddEditAnalyseModelName(); })).width() //auto width
+            ).height().visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().marginVertical(10).height(1).background('rgb(120,120,120,50%)').visible(false), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_this.model)(function (item) {
+                return (0,_Views_AnalyseModelTileBox__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelTileBox)(item, _this.menuItems).onDbClick(function () { return _this.AnalyseModelSelected(item); });
+            })).width().height().padding(10).wrap('wrap'))));
+        };
+    };
+    AnalyseModelsController.prototype.LoadView = function () {
+        return this.AnalyseModelView();
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "project", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "model", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], AnalyseModelsController.prototype, "selectedAnalyseModel", void 0);
+    return AnalyseModelsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/domains/AnalyseModels/Views/AnalyseModelTileBox.ts":
+/*!****************************************************************!*\
+  !*** ./src/domains/AnalyseModels/Views/AnalyseModelTileBox.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AnalyseModelTileBox": () => (/* binding */ AnalyseModelTileBox)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+
+
+function AnalyseModelTileBox(params, menuItems) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)(
+    // Icon('\\d271').size(100).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'),
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d1fd').size(100).foregroundColor('rgb(120,120,120,10%)').right('-13px').bottom('-2px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d31a').size(20), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(params.name).fontSize('18px').lineHeight('20px').multilineTextAlignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TextAlignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menuItems)(function (item) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(16).foregroundColor(item.iconColor), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.title).foregroundColor(item.iconColor)).onClick(function (e) { item.onClick(params); });
+    }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d2c6').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width('100%').height().padding(15)))
+        .initial({ boxShadow: 'rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px' })
+        .hover({ boxShadow: 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px' })
+        .margin('10px')
+        .cornerRadius(5)
+        // .shadow('rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px')
+        .minWidth('250px')
+        .minHeight('130px')
+        .maxWidth('250px')
+        .maxHeight('130px')
+        .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.3))
+        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }));
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Controllers/AppController.ts":
+/*!**************************************************************!*\
+  !*** ./src/domains/Application/Controllers/AppController.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AppController": () => (/* binding */ AppController)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Application__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Application */ "./src/Application.ts");
+/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Resources */ "./src/Resources.ts");
+/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
+/* harmony import */ var _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../UI/UIServices/ProjectUIService */ "./src/UI/UIServices/ProjectUIService.ts");
+/* harmony import */ var _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../AnalyseModels/Controllers/AnalyseModelsController */ "./src/domains/AnalyseModels/Controllers/AnalyseModelsController.ts");
+/* harmony import */ var _Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Project/Controllers/ProjectController */ "./src/domains/Project/Controllers/ProjectController.ts");
+/* harmony import */ var _Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Views/MenuButton */ "./src/domains/Application/Views/MenuButton.ts");
+/* harmony import */ var _Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Views/PortalFilterBarView */ "./src/domains/Application/Views/PortalFilterBarView.ts");
+/* harmony import */ var _Views_RecentProjects__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../Views/RecentProjects */ "./src/domains/Application/Views/RecentProjects.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+var AppController = /** @class */ (function (_super) {
+    __extends(AppController, _super);
+    function AppController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AppController.prototype.InitController = function () {
+        this.showAnim = false;
+        this.RequestDesktop = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
+        this.test = 'Press';
+    };
+    AppController.prototype.MainPage = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ spacing: 10 })((0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__.MenuButton)('', '\\d28c', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__.MenuButton)('', '\\d295', function () { return _this.OnOpenProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__.MenuButton)('', '\\d279', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__.MenuButton)('', '\\d21d', function () { return _this.OnNewProject(); }), (0,_Views_MenuButton__WEBPACK_IMPORTED_MODULE_8__.MenuButton)('', '\\d272', function () { return _this.OnNewProject(); })).width('120px'), (0,_Views_RecentProjects__WEBPACK_IMPORTED_MODULE_10__.RecentProjects)())
+            // UIScene içerisine yayılması için
+            .width('100%')));
+    };
+    AppController.prototype.LoadPortalView = function () {
+        var _this = this;
+        var _a;
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIImage)(_Resources__WEBPACK_IMPORTED_MODULE_3__.Resources.Icons.ApplicationIcon).width(24).height(24), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Procetra').fontSize('16px').fontWeight('bold').foregroundColor('white'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f080').size(20).marginRight('10px').cursor('pointer').foregroundColor('white').onClick(function () { return _this.RequestDesktop(); }))
+            .fontFamily('verdana, arial, tahoma, helvetica, sans-serif')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.leading)
+            .minHeight('50px')
+            .maxHeight('50px')
+            .background('rgb(208, 63, 64)'), (0,_Views_PortalFilterBarView__WEBPACK_IMPORTED_MODULE_9__.PortalFilterBarView)({ projectName: (_a = this.currentProject) === null || _a === void 0 ? void 0 : _a.project_name, selectProjectAction: function () { return _this.OnOpenProject(); } })).height(), this.currentController).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading))
+            .backgroundColor('white')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Alignment.topLeading);
+    };
+    AppController.prototype.onTextChanged = function () {
+        alert(this.test);
+    };
+    AppController.prototype.onCloseProject = function () {
+        this.currentProject = null;
+    };
+    AppController.prototype.getSubView = function () {
+        var _this = this;
+        return function (_a) {
+            var onTextChanged = _a.onTextChanged;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('click me')).cursor('pointer').action(function () { onTextChanged(); _this.test = { fontSize: '50px' }; }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Hello')));
+        };
+    };
+    AppController.prototype.getContextView = function () {
+        var _this = this;
+        return function (_a) {
+            var onTextChanged = _a.onTextChanged;
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIMotion)(_this.getSubView()).animate(_this.test)));
+        };
+    };
+    AppController.prototype.LoadView = function () {
+        /*  return (
+             UIScene(
+                 UILink('test'),
+                 UIRoutes('dfsdf')
+             )
+         ) */
+        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop) {
+            return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.If)(this.currentProject == null)(this.MainPage())
+                .else(this.currentController));
+        }
+        else if (_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal) {
+            return this.LoadPortalView();
+        }
+    };
+    AppController.prototype.OnNewProject = function () {
+        var _this = this;
+        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_5__.ProjectUIService.NewProject().then(function (name) {
+            var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_4__.Services.StateService.GetSessionId();
+            _Services_Services__WEBPACK_IMPORTED_MODULE_4__.Services.ProjectService.CreateProject(name).then(function (project) {
+                _this.currentProject = project;
+                // this.controller = ProjectController(this, project);
+                var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_6__.AnalyseModelsController();
+                controller.Bind(project);
+                controller.AnalyseModelSelected.add(function (item) {
+                    _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_7__.ProjectController)(_this, project);
+                });
+                _this.currentController = controller;
+            });
+        });
+    };
+    AppController.prototype.OnOpenProject = function () {
+        var _this = this;
+        _UI_UIServices_ProjectUIService__WEBPACK_IMPORTED_MODULE_5__.ProjectUIService.OpenProjectDialog().then(function (project) {
+            _this.currentProject = project;
+            // this.controller = ProjectController(this, project);
+            var controller = new _AnalyseModels_Controllers_AnalyseModelsController__WEBPACK_IMPORTED_MODULE_6__.AnalyseModelsController();
+            controller.Bind(project);
+            controller.AnalyseModelSelected.add(function (item) {
+                _this.currentController = (0,_Project_Controllers_ProjectController__WEBPACK_IMPORTED_MODULE_7__.ProjectController)(_this, project);
+            });
+            _this.currentController = controller;
+        });
+    };
+    AppController.prototype.CLoseProject = function () {
+        this.currentProject = null;
+    };
+    AppController.prototype.LoadRecentFiles = function () {
+        var _this = this;
+        var result = [];
+        _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.Keys().then(function (keys) {
+            (0,_tuval_core__WEBPACK_IMPORTED_MODULE_0__.foreach)(keys, function (key) {
+                _Application__WEBPACK_IMPORTED_MODULE_2__.ProcessMining.RecentlyUploadedFilesStorage.GetString(key).then(function (str) {
+                    var obj = JSON.parse(str);
+                    result.push(obj);
+                    /*  const bi: BoxTileItem = new BoxTileItem(key, obj.rowsCount + ' rows');
+                     const dateStr = moment(obj.uploadeddate).format('DD.MM.YYYY');
+                     bi.FooterTitle = TString.Format('Uploaded at {0}', dateStr);
+                     bi.OnClick = () => {
+                         EventBus.Default.fire('P2M.C.ADD_CSV', {
+                             name: key,
+                             csv: Encoding.UTF8.GetString(Convert.FromBase64String(obj.csv)),
+                             caseName: obj.caseName,
+                             activityName: obj.activityName,
+                             timestampName: obj.timestampName,
+                             startDateName: obj.startDateName
+                         });
+                     };
+                     bt.Items.Add(bi); */
+                });
+            });
+            _this.recentFiles = result;
+            console.log(_this.recentFiles);
+        });
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "RequestDesktop", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "currentProject", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "recentFiles", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "showAnim", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], AppController.prototype, "test", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], AppController.prototype, "onTextChanged", null);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], AppController.prototype, "onCloseProject", null);
+    return AppController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/FilterView.ts":
+/*!*****************************************************!*\
+  !*** ./src/domains/Application/Views/FilterView.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FilterView": () => (/* binding */ FilterView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * Portal menude en tepedeki filtre görünümüdür.
+ * @returns
+ */
+function FilterView() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f121').size(25).foregroundColor('#55606c'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Add Filter').fontFamily('Ubuntu,sans-serif').fontSize('15px').fontWeight('700').foregroundColor('#999')).padding('5px 10px'))
+        .height() //auto
+        .backgroundColor('#141719')
+        .border('1px solid transparent')
+        .cornerRadius(6)));
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/MenuButton.ts":
+/*!*****************************************************!*\
+  !*** ./src/domains/Application/Views/MenuButton.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MenuButton": () => (/* binding */ MenuButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+/**
+ * Desktop görünümünde ana sayfadaki temel fonksiyon butonlarının görünümüdür.
+ * @param title
+ * @param icon
+ * @param action
+ * @returns
+ */
+function MenuButton(title, icon, action) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30)))
+        .initial({ scale: 1, boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' })
+        .hover({ scale: 1.1, boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px' })
+        .width(64).height(64)
+        .background('rgb(255,255,255,50%)')
+        .padding(8)
+        .border('solid 1px rgb(120,120,120,20%)')
+        .cornerRadius(12)
+        /* .shadow('rgba(100, 100, 111, 0.2) 0px 7px 29px 0px') */
+        .action(function () { return action(); }));
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/PortalFilterBarView.ts":
+/*!**************************************************************!*\
+  !*** ./src/domains/Application/Views/PortalFilterBarView.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PortalFilterBarView": () => (/* binding */ PortalFilterBarView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TimeLineFilter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TimeLineFilter */ "./src/domains/Application/Views/TimeLineFilter.ts");
+/* harmony import */ var _FilterView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FilterView */ "./src/domains/Application/Views/FilterView.ts");
+
+
+
+function PortalFilterBarView(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f148').size(20).foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 3 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0fc').size(10).foregroundColor('#aaa')).onClick(function () { return params.selectProjectAction(); }))
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)
+        .cursor('pointer')
+        .height()
+        .width(), 
+    /*  Gauge(
+         Range()
+     ).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(40).stroke(7).value(67).height(75), */
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_FilterView__WEBPACK_IMPORTED_MODULE_2__.FilterView)(), (0,_TimeLineFilter__WEBPACK_IMPORTED_MODULE_1__.TimeLineFilter)()
+    /*   HStack(
+          PortalFilterBarWidget({ value: 3 }),
+          VDivider().height('70%').width(1).background('rgb(255,255,255,50%)'),
+          PortalFilterBarWidget({ value: 23 })
+      )
+          .paddingBottom('5px')
+          .width() // auto
+          .spacing(20)
+          .alignment(Alignment.leading) */
+    )
+        .zIndex(3000)
+        .paddingLeft('10px')
+        .shadow('0 1px 5px 1px rgb(0 0 0 / 30%)')
+        .height() // auto height
+        .minHeight('50px')
+        .backgroundColor('#212932')
+        .foregroundColor('white')).height();
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/PortalFilterBarWidget.ts":
+/*!****************************************************************!*\
+  !*** ./src/domains/Application/Views/PortalFilterBarWidget.ts ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PortalFilterBarWidget": () => (/* binding */ PortalFilterBarWidget)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function PortalFilterBarWidget(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontSize('40px').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('AVG').foregroundColor('#AAA'))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Duration').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('15 - 40 monts').foregroundColor('#AAA')))
+        .paddingRight('50px')
+        .width() //auto
+    );
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/RecentProjects.ts":
+/*!*********************************************************!*\
+  !*** ./src/domains/Application/Views/RecentProjects.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RecentProjects": () => (/* binding */ RecentProjects)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function RecentProjects() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Recent Projects').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title).padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)()).grow().alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Application/Views/TimeLineFilter.ts":
+/*!*********************************************************!*\
+  !*** ./src/domains/Application/Views/TimeLineFilter.ts ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TimeLineFilter": () => (/* binding */ TimeLineFilter)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function TimeText(value) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).padding('5px 5px').fontFamily('Ubuntu,sans-serif').fontSize('16px').fontWeight('700').foregroundColor('#989898'));
+}
+function TimeLineFilter() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f043').size(20).foregroundColor('#777'), TimeText('1H'), TimeText('8H'), TimeText('24H'), TimeText('3D'), TimeText('7D'), TimeText('All'), TimeText('Custom'))
+        .width() // auto
+    );
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/CustomPage/Controllers/CustomPageController.ts":
+/*!********************************************************************!*\
+  !*** ./src/domains/CustomPage/Controllers/CustomPageController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CustomPageController": () => (/* binding */ CustomPageController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var CustomPageController = /** @class */ (function (_super) {
+    __extends(CustomPageController, _super);
+    function CustomPageController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CustomPageController.prototype.InitController = function () {
+    };
+    CustomPageController.prototype.LoadView = function () {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Custom page controller');
+    };
+    return CustomPageController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/domains/Dataset/Controllers/DatasetController.ts":
+/*!**************************************************************!*\
+  !*** ./src/domains/Dataset/Controllers/DatasetController.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DatasetController": () => (/* binding */ DatasetController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/DatasetTabView */ "./src/domains/Dataset/Views/DatasetTabView.ts");
+/* harmony import */ var _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Models/MVIDatasetTabModel */ "./src/domains/Dataset/Models/MVIDatasetTabModel.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+
+
+
+
+var DatasetController = /** @class */ (function (_super) {
+    __extends(DatasetController, _super);
+    function DatasetController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    DatasetController.prototype.InitController = function () {
+        this.selectedTabIndex = 0;
+        this.tabModels = __spreadArray([], _Models_MVIDatasetTabModel__WEBPACK_IMPORTED_MODULE_3__.topModels);
+    };
+    DatasetController.prototype.OnNewAnalyse = function (value) {
+        this.tabModels = __spreadArray(__spreadArray([], this.tabModels), [value]);
+        this.OnTabSelected(this.tabModels.length - 1);
+    };
+    DatasetController.prototype.OnTabSelected = function (index) {
+        this.selectedTabIndex = index;
+        var tabModel = this.tabModels[index];
+        if (tabModel != null) {
+            this.currentController = tabModel.controller;
+            if (this.currentController.IsModelBind) {
+                this.currentController.Bind(this.projectItem);
+            }
+        }
+    };
+    DatasetController.prototype.OnBindModel = function (model) {
+        this.projectItem = model;
+        this.selectedTabIndex = 0;
+        this.OnTabSelected(0);
+    };
+    DatasetController.prototype.LoadPortalView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_1__.PortalSideMenu)({ items: this.tabModels, selectedAction: function (index) { return _this.OnTabSelected(index); } }), this.tabModels[this.selectedTabIndex].controller)));
+    };
+    DatasetController.prototype.LoadDesktopView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_Views_DatasetTabView__WEBPACK_IMPORTED_MODULE_2__.DatasetTabView)({
+            tabModel: this.tabModels,
+            selectedTabIndex: this.selectedTabIndex,
+            onTabSelected: function (index) { return _this.OnTabSelected(index); }
+        })).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute));
+    };
+    DatasetController.prototype.LoadView = function () {
+        if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
+            return this.LoadDesktopView();
+        }
+        else {
+            return this.LoadPortalView();
+        }
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], DatasetController.prototype, "projectItem", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], DatasetController.prototype, "tabModels", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], DatasetController.prototype, "selectedTabIndex", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], DatasetController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Context)()
+    ], DatasetController.prototype, "OnNewAnalyse", null);
+    return DatasetController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/domains/Dataset/Models/MVIDatasetTabModel.ts":
+/*!**********************************************************!*\
+  !*** ./src/domains/Dataset/Models/MVIDatasetTabModel.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "topModels": () => (/* binding */ topModels)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../NewAnalyse/Controllers/NewAnalyseController */ "./src/domains/NewAnalyse/Controllers/NewAnalyseController.ts");
+
+
+var topModels = [
+    {
+        icon: '\\d1ea',
+        name: 'New Analysis',
+        isRight: true,
+        controller: new _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__.NewAnalyseController(),
+        isVisible: function () { return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop; }
+    },
+    {
+        icon: '\\ef4f',
+        name: 'Model Filters',
+        isRight: true,
+        controller: new _NewAnalyse_Controllers_NewAnalyseController__WEBPACK_IMPORTED_MODULE_1__.NewAnalyseController(),
+        isVisible: function () { return _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop; }
+    }
+    /*  {
+         icon: '\\f0b4',
+         name: 'Process Overview',
+         controller: new ProcessOverviewController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0b3',
+         name: 'Dashboard',
+         controller: new ProcessDashboardController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0f8',
+         name: 'Discovery',
+         controller: new ProcessExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0a1',
+         name: 'Monitoring',
+         controller: new MonitoringController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f0f2',
+         name: 'Statistics',
+         controller: new ProcessStatisticController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f13b',
+         name: 'Variant Explorer',
+         controller: new VariantExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f096',
+         name: 'Loops',
+         controller: new LoopsController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f049',
+         name: 'Automation',
+         controller: new AutomationController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f033',
+         name: 'Case Explorer',
+         controller: new CaseExplorerController(),
+         isVisible: () => true
+     },
+     {
+         icon: '\\f130',
+         name: 'Filter',
+         controller: new FilterController(),
+         isVisible: () => true
+     } */
+];
+
+
+/***/ }),
+
+/***/ "./src/domains/Dataset/Views/DatasetTabView.ts":
+/*!*****************************************************!*\
+  !*** ./src/domains/Dataset/Views/DatasetTabView.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DatasetTabView": () => (/* binding */ DatasetTabView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/TabView */ "./src/UI/Views/TabView.ts");
+
+
+function DatasetTabView(datasetTabViewParams) {
+    // const [selectedIndex, setSelectedIndex] = bindState(0);
+    console.log(datasetTabViewParams.tabModel);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)(_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(datasetTabViewParams.tabModel)(function (tabItem, index) {
+        return (0,_UI_Views_TabView__WEBPACK_IMPORTED_MODULE_1__.TabViewItem)({
+            name: tabItem.name,
+            header: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 1 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
+                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
+                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
+                .padding(10)
+                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)')).maxWidth('100px').minHeight('78px').visible(!tabItem.isRight)),
+            rightHeader: ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 1 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(tabItem.icon).size(25).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center'))
+                .height(78)
+                .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
+                .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
+                .padding(10)
+                .background(datasetTabViewParams.selectedTabIndex === index, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                .transition('all 0.35s'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('70%').background('rgb(120,120,120,30%)')).maxWidth('100px').minHeight('78px').visible(tabItem.isRight)),
+            content: tabItem.controller
+        }).onSelected(function () { datasetTabViewParams.onTabSelected(index); });
+    })).selectedTabIndex(datasetTabViewParams.selectedTabIndex)));
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/NewAnalyse/Controllers/NewAnalyseController.ts":
+/*!********************************************************************!*\
+  !*** ./src/domains/NewAnalyse/Controllers/NewAnalyseController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NewAnalyseController": () => (/* binding */ NewAnalyseController)
+/* harmony export */ });
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _modules_Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../modules/Automation/Controllers/AutomationController */ "./src/modules/Automation/Controllers/AutomationController.ts");
+/* harmony import */ var _modules_CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../modules/CaseExplorer/Controllers/CaseExplorerController */ "./src/modules/CaseExplorer/Controllers/CaseExplorerController.ts");
+/* harmony import */ var _modules_Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../modules/Dashboard/Controllers/ProcessDashboardController */ "./src/modules/Dashboard/Controllers/ProcessDashboardController.ts");
+/* harmony import */ var _modules_Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../modules/Discovery/Controllers/ProcessExplorerController */ "./src/modules/Discovery/Controllers/ProcessExplorerController.ts");
+/* harmony import */ var _modules_Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../modules/Loops/Controllers/LoopsController */ "./src/modules/Loops/Controllers/LoopsController.ts");
+/* harmony import */ var _modules_Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../modules/Monitoring/Controllers/MonitoringController */ "./src/modules/Monitoring/Controllers/MonitoringController.ts");
+/* harmony import */ var _modules_ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../modules/ProcessOverview/Controllers/ProcessOverviewController */ "./src/modules/ProcessOverview/Controllers/ProcessOverviewController.ts");
+/* harmony import */ var _modules_Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../modules/Statistics/Controllers/ProcessStatisticController */ "./src/modules/Statistics/Controllers/ProcessStatisticController.ts");
+/* harmony import */ var _modules_VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../modules/VariantExplorer/Controllers/VariantExplorerController */ "./src/modules/VariantExplorer/Controllers/VariantExplorerController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+var menuItems = [
+    {
+        icon: '\\f091',
+        title: 'Add to model',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d2da',
+        title: 'Tags',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\f06b',
+        title: 'Help',
+        onClick: function (item) { return console.log(item); }
+    }
+];
+var NewAnalyseTypes = [
+    {
+        icon: '\\d2dc',
+        title: 'Process Overview',
+        description: 'An overhead view of your process',
+        controller: new _modules_ProcessOverview_Controllers_ProcessOverviewController__WEBPACK_IMPORTED_MODULE_10__.ProcessOverviewController(),
+    },
+    {
+        icon: '\\d2db',
+        title: 'Dashboard',
+        description: 'A new dashboard waiting to be built.',
+        controller: new _modules_Dashboard_Controllers_ProcessDashboardController__WEBPACK_IMPORTED_MODULE_6__.ProcessDashboardController(),
+    },
+    {
+        icon: '\\d320',
+        title: 'Discover',
+        description: 'To understand and analyze your business',
+        controller: new _modules_Discovery_Controllers_ProcessExplorerController__WEBPACK_IMPORTED_MODULE_7__.ProcessExplorerController(),
+    },
+    {
+        icon: '\\d2c9',
+        title: 'Monitoring',
+        description: 'Follow the process indicators',
+        controller: new _modules_Monitoring_Controllers_MonitoringController__WEBPACK_IMPORTED_MODULE_9__.MonitoringController(),
+    },
+    {
+        icon: '\\d31a',
+        title: 'Statistics',
+        description: 'General statistics of the process',
+        controller: new _modules_Statistics_Controllers_ProcessStatisticController__WEBPACK_IMPORTED_MODULE_11__.ProcessStatisticController(),
+    },
+    {
+        icon: '\\d203',
+        title: 'Variant Explorer',
+        controller: new _modules_VariantExplorer_Controllers_VariantExplorerController__WEBPACK_IMPORTED_MODULE_12__.VariantExplorerController(),
+    },
+    {
+        icon: '\\e028',
+        title: 'Loops',
+        controller: new _modules_Loops_Controllers_LoopsController__WEBPACK_IMPORTED_MODULE_8__.LoopsController(),
+    },
+    {
+        icon: '\\d271',
+        title: 'Automation',
+        controller: new _modules_Automation_Controllers_AutomationController__WEBPACK_IMPORTED_MODULE_4__.AutomationController(),
+    },
+    {
+        icon: '\\d25b',
+        title: 'Case Explorer',
+        controller: new _modules_CaseExplorer_Controllers_CaseExplorerController__WEBPACK_IMPORTED_MODULE_5__.CaseExplorerController(),
+    },
+    {
+        icon: '\\d2a7',
+        title: 'Difference Analyse'
+    },
+    {
+        icon: '\\d218',
+        title: 'Benchmarking'
+    },
+    {
+        icon: '\\f143',
+        title: 'Lead Times'
+    },
+    {
+        icon: '\\efe4',
+        title: 'Process Steps'
+    },
+    {
+        icon: '\\eff1',
+        title: 'Complience Analyse'
+    },
+    {
+        icon: '\\eff2',
+        title: 'Comformance Check'
+    },
+    {
+        icon: '\\eff4',
+        title: 'Social'
+    },
+    {
+        icon: '\\f04b',
+        title: 'Process AI'
+    },
+    {
+        icon: '\\f014',
+        title: 'Cost'
+    },
+    {
+        icon: '\\f001',
+        title: 'Forecast'
+    },
+    {
+        icon: '\\effa',
+        title: 'Mosts'
+    },
+    {
+        icon: '\\f01e',
+        title: 'Bottlenecks'
+    },
+    {
+        icon: '\\efdf',
+        title: 'Durations'
+    },
+    {
+        icon: '\\efe8',
+        title: 'Breakdown'
+    },
+    {
+        icon: '\\f054',
+        title: 'Distribution'
+    },
+    {
+        icon: '\\f068',
+        title: 'Metrics'
+    }
+];
+function NewAnalyseModelTitleBox(tag, _a) {
+    var icon = _a.icon, title = _a.title, description = _a.description, controller = _a.controller;
+    return function (_a) {
+        var OnNewAnalyse = _a.OnNewAnalyse;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(
+        // Menu stack
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTrailing })(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(menuItems)(function (item) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.title)).onClick(function (e) { item.onClick(null); });
+        }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\d2c6').size(20)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s').cornerRadius(5).marginRight('10px')).height(), //auto
+        // Analysis Icon
+        icon && (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(icon).size(50).foregroundColor('var(--sub-icon-color)').marginBottom('10px'), 
+        // Analysis Name
+        (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(title).fontSize('18px').searchWords([tag]), 
+        // Analysis Description
+        description && (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_3__.RegularText)(description).fontSize('12px'))
+            .marginTop('10px')
+            .marginRight('10px')
+            .cornerRadius(10)
+            .width(240).height(150)
+            .backgroundColor('rgba(255,255,255,0.3)')
+            .shadow('rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px')
+            .initial({ opacity: 0 }).animate({ opacity: 1 })
+            .onClick(function () { return OnNewAnalyse({
+            icon: icon,
+            name: title,
+            isRight: false,
+            controller: controller,
+            isVisible: function () { return true; }
+        }); })
+            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
+            .variable('--sub-icon-color', { default: '#33333366', hover: '#14a9d5' })
+            .variable('--sub-icon-size', { default: '50px', hover: '60px' })
+            .cursor('pointer'));
+    };
+}
+function searchBox() {
+    return function (_a) {
+        var onSearchTextChanged = _a.onSearchTextChanged;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\d22c')
+            .size(20)
+            .paddingRight('10px')
+            .paddingLeft('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TextField)().fontSize('1rem')
+            .backgroundColor('transparent')
+            .foregroundColor('#495057')
+            .padding('0.75rem 0.75rem 0.75rem 0rem')
+            .onTextChange(function (text) { setTimeout(function () { return onSearchTextChanged(text); }, 100); }))
+            .width()
+            .initial({ width: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }).animate({ width: '50%' }).focus({ width: '80%', backgroundColor: 'rgba(255,255,255,0.6)' })
+            .paddingRight('5px')
+            .overflow('hidden')
+            .cornerRadius(20)
+            .border({ default: '1px solid #ced4da', focus: 'solid 1px #6366F1' })
+            .shadow({ default: '', focus: '0 0 0 0.2rem #c7d2fe' })
+            //.transition('background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s')
+            //.backgroundColor('rgba(255,255,255,0.3)')
+            .height()
+            .tabIndex(0)).height());
+    };
+}
+var NewAnalyseController = /** @class */ (function (_super) {
+    __extends(NewAnalyseController, _super);
+    function NewAnalyseController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    NewAnalyseController.prototype.onSearchTextChanged = function (value) {
+        this.searchText = value;
+    };
+    NewAnalyseController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\d27e', 'Mining Modules')).height().paddingTop('20px'), searchBox(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ScrollView)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTop, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(NewAnalyseTypes)(function (item) {
+            return (_tuval_core__WEBPACK_IMPORTED_MODULE_0__.is.nullOrEmpty(_this.searchText) ||
+                item.title.toLowerCase().indexOf(_this.searchText.toLowerCase()) > -1)
+                && NewAnalyseModelTitleBox(_this.searchText, item);
+        })).wrap('wrap').height().padding(10)))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], NewAnalyseController.prototype, "searchText", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Context)()
+    ], NewAnalyseController.prototype, "onSearchTextChanged", null);
+    return NewAnalyseController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/domains/Project/Controllers/ProjectController.ts":
+/*!**************************************************************!*\
+  !*** ./src/domains/Project/Controllers/ProjectController.ts ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProjectControllerClass": () => (/* binding */ ProjectControllerClass),
+/* harmony export */   "ProjectController": () => (/* binding */ ProjectController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Services_Services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Services/Services */ "./src/Services/Services.ts");
+/* harmony import */ var _Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Models/MIProjectItem */ "./src/domains/Project/Models/MIProjectItem.ts");
+/* harmony import */ var _Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Views/DesktopView */ "./src/domains/Project/Views/DesktopView.ts");
+/* harmony import */ var _UI_UIServices_FiltersUIService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/UIServices/FiltersUIService */ "./src/UI/UIServices/FiltersUIService.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var StackController = /** @class */ (function (_super) {
+    __extends(StackController, _super);
+    function StackController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    StackController.prototype.InitController = function () {
+        this.array = [1, 2, 3];
+        this.title = 'Hello Controller';
+    };
+    StackController.prototype.LoadView = function () {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(this.title).foregroundColor('blue').font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], StackController.prototype, "title", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], StackController.prototype, "array", void 0);
+    return StackController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+var ProjectControllerClass = /** @class */ (function (_super) {
+    __extends(ProjectControllerClass, _super);
+    function ProjectControllerClass() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ProjectControllerClass.prototype.SetParentAppController = function (value) {
+        this.parentAppController = value;
+        return this;
+    };
+    ProjectControllerClass.prototype.$ = function (value) {
+        var _this = this;
+        var propertyName = this.GetLastEnteredPropertyName();
+        return {
+            get: function () {
+                return _this[propertyName];
+            },
+            set: function (value) {
+                _this[propertyName] = value;
+            }
+        };
+        console.log();
+    };
+    ProjectControllerClass.prototype.InitController = function () {
+        this.array = [1, 2, 3, 4, 5, 6];
+        this.stackController = new StackController();
+        this.selectedTab = 'Process Explorer';
+    };
+    ProjectControllerClass.prototype.OnBindModel = function (project) {
+        var _this = this;
+        this.selectedProject = project;
+        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
+        _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjectItems(session_id, 'bpmgenesis', '').then(function (projectItems) {
+            _this.selectedProjectItems = projectItems.map(function (projectItem) { return (0,_Models_MIProjectItem__WEBPACK_IMPORTED_MODULE_2__.CreateMVIProjectItem)(projectItem); });
+            _this.OnProjectItemSelected(_this.selectedProjectItems[0]);
+        });
+        return this;
+    };
+    //When user click add button that under list
+    ProjectControllerClass.prototype.OnNewProjectItem = function () {
+        _UI_UIServices_FiltersUIService__WEBPACK_IMPORTED_MODULE_4__.FilterUIService.SelectFilter();
+        /* const connectorDialog = new ConnectorDialog();
+        connectorDialog.ShowDialog(); */
+    };
+    // When user select items froım list
+    ProjectControllerClass.prototype.OnProjectItemSelected = function (projectItem) {
+        this.selectedProjectItem = projectItem;
+        this.selectedProjectItemController = projectItem.controller;
+        if (!this.selectedProjectItemController.IsModelBind) {
+            this.selectedProjectItemController.Bind(projectItem);
+        }
+    };
+    ProjectControllerClass.prototype.LoadProjects = function () {
+        var _this = this;
+        var session_id = _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.StateService.GetSessionId();
+        _Services_Services__WEBPACK_IMPORTED_MODULE_1__.Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then(function (projects) {
+            console.log('Load Project :', projects);
+            _this.projects = projects;
+            _this.ForceUpdate();
+        });
+    };
+    ProjectControllerClass.prototype.LoadDesktopView = function () {
+        return (0,_Views_DesktopView__WEBPACK_IMPORTED_MODULE_3__.DesktopView)({
+            selectedProjectItems: this.selectedProjectItems,
+            selectedProjectItem: this.selectedProjectItem,
+            selectedProjectItemController: this.selectedProjectItemController,
+            NewProjectItemAction: this.OnNewProjectItem.bind(this),
+            ProjectItemSelectedAction: this.OnProjectItemSelected.bind(this)
+        });
+    };
+    ProjectControllerClass.prototype.TestZStack = function () {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Test'))
+            .background((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('yellow').cornerRadius('8px'))));
+    };
+    ProjectControllerClass.prototype.LoadView = function () {
+        return this.LoadDesktopView();
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "parentAppController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "title", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "array", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "projects", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "selectedProject", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "selectedProjectItem", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "selectedProjectItems", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "selectedProjectItemController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "selectedTab", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProjectControllerClass.prototype, "stackController", void 0);
+    return ProjectControllerClass;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+function ProjectController(appController, model) {
+    return new ProjectControllerClass().SetParentAppController(appController).Bind(model);
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Project/Models/MIProjectItem.ts":
+/*!*****************************************************!*\
+  !*** ./src/domains/Project/Models/MIProjectItem.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CreateMVIProjectItem": () => (/* binding */ CreateMVIProjectItem)
+/* harmony export */ });
+/* harmony import */ var _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../CustomPage/Controllers/CustomPageController */ "./src/domains/CustomPage/Controllers/CustomPageController.ts");
+/* harmony import */ var _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Dataset/Controllers/DatasetController */ "./src/domains/Dataset/Controllers/DatasetController.ts");
+
+
+function CreateMVIProjectItem(model) {
+    if (model.type === 'Dataset') {
+        return {
+            project_item_id: model.project_item_id,
+            name: model.name,
+            type: model.type,
+            icon: '\\f050',
+            controller: new _Dataset_Controllers_DatasetController__WEBPACK_IMPORTED_MODULE_1__.DatasetController()
+        };
+    }
+    else if (model.type === 'Dashboard') {
+        return {
+            project_item_id: model.project_item_id,
+            name: model.name,
+            type: model.type,
+            icon: '\\f0b3',
+            controller: new _CustomPage_Controllers_CustomPageController__WEBPACK_IMPORTED_MODULE_0__.CustomPageController()
+        };
+    }
+    return {};
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Project/Views/DesktopView.ts":
+/*!**************************************************!*\
+  !*** ./src/domains/Project/Views/DesktopView.ts ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "DesktopView": () => (/* binding */ DesktopView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/ListView */ "./src/UI/Views/ListView.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _ListFooterButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ListFooterButton */ "./src/domains/Project/Views/ListFooterButton.ts");
+
+
+
+
+function DatasetListView(projectItem) {
+    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(
+    /*  gauge as any */
+    )).padding('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })(
+    // Filter Icon
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f130').size(20), 
+    // Filter Badge
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('2')
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.center)
+        .fontWeight('bold')
+        .padding('5px')
+        .backgroundColor('#27B764')
+        .width('20px')
+        .height('20px')
+        .cornerRadius('5px')
+        .foregroundColor('white')).width() // auto
+    )).minHeight('80px'));
+}
+function DashboardListView(projectItem) {
+    return ((0,_UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListViewItem)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(projectItem.icon).size(20).width('auto'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(projectItem.name)).minHeight('50px'));
+}
+var menu = [
+    {
+        title: 'New'
+    },
+    {
+        title: 'Open'
+    },
+    {
+        title: 'Details'
+    },
+    {
+        title: 'Divider'
+    }
+];
+var modelMenu = [
+    {
+        icon: '\\d2c8',
+        iconColor: 'black',
+        title: 'Rename',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d2a4',
+        iconColor: 'black',
+        title: 'Permissions',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d3a4',
+        iconColor: 'black',
+        title: 'Duplicate',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d2da',
+        iconColor: 'black',
+        title: 'Tags',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d299',
+        iconColor: 'black',
+        title: 'Move To',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '\\d2a6',
+        iconColor: 'red',
+        title: 'Delete',
+        onClick: function (item) { return console.log(item); }
+    }
+];
+var queryMenu = [
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'All cases',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Open',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Save',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Save as',
+        onClick: function (item) { return console.log(item); }
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Export',
+        onClick: function (item) { return console.log(item); }
+    }
+];
+function DesktopView(_a) {
+    var selectedProjectItem = _a.selectedProjectItem, selectedProjectItems = _a.selectedProjectItems, ProjectItemSelectedAction = _a.ProjectItemSelectedAction, NewProjectItemAction = _a.NewProjectItemAction, selectedProjectItemController = _a.selectedProjectItemController;
+    return function (_a) {
+        var onCloseProject = _a.onCloseProject;
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TwoColumnWithHeaderLayout)({
+            header: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d1fd').size(30).marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ticket Management').lineHeight(35).whiteSpace('nowrap'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.AnimHeadline5)('Ensemble Mining Model').fontSize('14px').textTransform('uppercase')).marginLeft('5px').marginRight('10px').width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('80%').backgroundColor('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e153').size(24).foregroundColor('#666'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('7.500').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('EVENTS').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().height('80%').backgroundColor('rgb(120,120,120,50%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d25b').size(24).foregroundColor('#666'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('3.124').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('CASES').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666')).width(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(menu)(function (item) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(item.title));
+                }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Project').fontSize(16).fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e5c5').size(16)).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(modelMenu)(function (menuItem) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title));
+                }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Model').fontSize(16).fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e5c5').size(16)).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'), 
+                // Query Menu
+                _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIContextMenu.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(queryMenu)(function (menuItem) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(menuItem.icon).size(16), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(menuItem.title));
+                }))((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)('Query').fontSize(16).fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\e5c5').size(16)).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')).width() //auto,
+                )
+                    .height(80)
+                    .shadow('0 0 8px 0 #ccc')
+                    .background('rgb(255,255,255,20%)')
+                    .marginBottom('10px')
+                    .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop)
+            ],
+            left: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)()
+                    .width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ duration: 2 })
+                    .background('#14A9D5').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Process').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 1, duration: 2 })
+                    .background('rgb(59,210,115)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Model').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('100%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(40)
+                    .height().initial({ height: '0%' }).animate({ height: '100%' }).__transition({ delay: 2, duration: 2 })
+                    .background('rgb(250,112,3)').cornerRadius(5).shadow('rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Query').textTransform('uppercase'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('31.123').textTransform('uppercase').fontSize('12px')).height())).height(500).width(200).padding(20).visible(true), 
+                //Project Title
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Project Items')
+                    .font(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Fonts.title3)
+                    .padding('8px')
+                    .fontWeight('bold')
+                    .foregroundColor('black')).height('auto').visible(false), 
+                // Poject items list view
+                _UI_Views_ListView__WEBPACK_IMPORTED_MODULE_1__.ListView.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(selectedProjectItems)(function (projectItem) {
+                    return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Case)(projectItem.type, {
+                        'Dataset': DatasetListView(projectItem),
+                        'Dashboard': DashboardListView(projectItem)
+                    })
+                        .borderBottom('solid 1px rgb(200,200,200,10%)')
+                        .cornerRadius('5px')
+                        .transition('all 0.35s')
+                        .shadow((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id ? 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px' : '')
+                        .background((selectedProjectItem === null || selectedProjectItem === void 0 ? void 0 : selectedProjectItem.project_item_id) === projectItem.project_item_id, 'rgb(255,255,255,50%)', 'rgb(255,255,255,10%)')
+                        .onSelected(function () { return ProjectItemSelectedAction(projectItem); });
+                })).width('200px').background('rgb(255,255,255,10%)').grow(), 
+                // Project items buttons
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cCenter, spacing: 5 })((0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\e145').action(function () { return NewProjectItemAction(); }), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\effd'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f04a'), (0,_ListFooterButton__WEBPACK_IMPORTED_MODULE_3__.ListFooterButton)('\\f0bb')).height('auto').width('100%'))
+                    .visible(false)
+            ],
+            right: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+                /*  this.TestTabView(), */
+                selectedProjectItemController).grow()
+            ],
+            /*  footer: [
+                 Text('Test').fontSize('24px')
+             ] */
+        }));
+    };
+}
+
+
+/***/ }),
+
+/***/ "./src/domains/Project/Views/ListFooterButton.ts":
+/*!*******************************************************!*\
+  !*** ./src/domains/Project/Views/ListFooterButton.ts ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ListFooterButton": () => (/* binding */ ListFooterButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/Buttons */ "./src/UI/Views/Buttons.ts");
+
+
+/* export function ListFooterButton(iconContent: string): UIButtonClass {
+    return (
+        UIButton(
+            Icon(iconContent).size(15)
+        )
+            .padding('5px')
+            .backgroundImage('linear-gradient(#f5faff, #ebf0f5)')
+            .background('#EBF0F5')
+            .border('solid 1px #C8D2DC')
+            .cornerRadius('5px')
+            .width('32px')
+            .height('32px')
+            .opacity('0.8')
+    );
+} */
+function ListFooterButton(iconContent) {
+    return ((0,_UI_Views_Buttons__WEBPACK_IMPORTED_MODULE_1__.DefaultButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(iconContent).size(15))
+        .border('solid 1px #C8D2DC')
+        .cornerRadius('5px')
+        .width('32px')
+        .height('32px')
+        .opacity('0.8'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Automation/Controllers/AutomationController.ts":
+/*!********************************************************************!*\
+  !*** ./src/modules/Automation/Controllers/AutomationController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AutomationController": () => (/* binding */ AutomationController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var AutomationController = /** @class */ (function (_super) {
+    __extends(AutomationController, _super);
+    function AutomationController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    AutomationController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f049', 'Automations'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return AutomationController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/CaseExplorer/Controllers/CaseExplorerController.ts":
+/*!************************************************************************!*\
+  !*** ./src/modules/CaseExplorer/Controllers/CaseExplorerController.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "CaseExplorerController": () => (/* binding */ CaseExplorerController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var CaseExplorerController = /** @class */ (function (_super) {
+    __extends(CaseExplorerController, _super);
+    function CaseExplorerController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    CaseExplorerController.prototype.InitController = function () {
+    };
+    CaseExplorerController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\d25b').size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Case explorer')
+            .fontFamily('Proxima Nova').fontSize('22px')
+            .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
+        })).width()), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)')).padding('10px').height()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return CaseExplorerController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Dashboard/Controllers/ProcessDashboardController.ts":
+/*!*************************************************************************!*\
+  !*** ./src/modules/Dashboard/Controllers/ProcessDashboardController.ts ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProcessDashboardController": () => (/* binding */ ProcessDashboardController)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/diagram */ "@tuval/components/diagram");
+/* harmony import */ var _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/graphics */ "@tuval/graphics");
+/* harmony import */ var _tuval_graphics__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_graphics__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @tuval/cg */ "@tuval/cg");
+/* harmony import */ var _tuval_cg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_tuval_cg__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Views_PaletteView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Views/PaletteView */ "./src/modules/Dashboard/Views/PaletteView.ts");
+/* harmony import */ var _Models_MDPalette__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Models/MDPalette */ "./src/modules/Dashboard/Models/MDPalette.ts");
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Controls_DashboardView_DashboardView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../UI/Controls/DashboardView/DashboardView */ "./src/UI/Controls/DashboardView/DashboardView.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+var ProcessDashboardController = /** @class */ (function (_super) {
+    __extends(ProcessDashboardController, _super);
+    function ProcessDashboardController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ProcessDashboardController.prototype.InitController = function () {
+        this.svg = new _UI_Controls_DashboardView_DashboardView__WEBPACK_IMPORTED_MODULE_7__.DashboardView();
+        /*  svg.pId = dataset.ProjectId;
+         svg.dId = dataset.Id; */
+        this.svg.beginUpdate();
+        this.svg.RenderingMode = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.ViewRenderingMode.Html;
+        this.svg.ResizeHandleSize = new _tuval_cg__WEBPACK_IMPORTED_MODULE_3__.CGSize(10, 10);
+        this.svg.Width = 1800;
+        this.svg.Height = 1500;
+        this.svg.GridCellSize = new _tuval_cg__WEBPACK_IMPORTED_MODULE_3__.CGSize(20, 20);
+        this.svg.GridLineWidth = 1;
+        this.svg.GridMajorLineWidth = 1;
+        this.svg.GridSnapDrag = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewSnapStyle.Jump;
+        this.svg.GridSnapResize = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewSnapStyle.Jump;
+        this.svg.GridStyle = _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuViewGridStyle.Line;
+        this.svg.GridMajorLineColor = this.svg.GridLineColor.clone();
+        var rect = new _tuval_components_diagram__WEBPACK_IMPORTED_MODULE_0__.TuRectangle();
+        rect.Left = 50;
+        rect.Top = 50;
+        rect.Width = 150;
+        rect.Height = 105;
+        rect.Pen = _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__.Pens.Black;
+        rect.Brush = _tuval_graphics__WEBPACK_IMPORTED_MODULE_1__.Brushes.White;
+        this.svg.Document.Add(rect);
+        this.palettedata = _Models_MDPalette__WEBPACK_IMPORTED_MODULE_5__.PaletteModel;
+        this.test = 2;
+    };
+    ProcessDashboardController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.cTopLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_6__.PageTitle)('\\f0b3', 'Dashboard'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
+        })).width()).height() /* .height('20px') */, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.TwoColumnLayout2)({
+            left: [
+                (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.VStack)(this.svg).position('absolute').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)).overflowX('auto').overflowY('auto').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading)
+            ],
+            right: [
+                (0,_Views_PaletteView__WEBPACK_IMPORTED_MODULE_4__.PaletteView)(this.palettedata)
+            ]
+        })).padding('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.Alignment.topLeading));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.State)()
+    ], ProcessDashboardController.prototype, "svg", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.State)()
+    ], ProcessDashboardController.prototype, "test", void 0);
+    return ProcessDashboardController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Dashboard/Models/MDPalette.ts":
+/*!***************************************************!*\
+  !*** ./src/modules/Dashboard/Models/MDPalette.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PaletteModel": () => (/* binding */ PaletteModel)
+/* harmony export */ });
+var PaletteModel = [
+    {
+        name: 'Process analysis',
+        items: [
+            {
+                icon: '\\f0a4',
+                label: 'Performance Explorer'
+            },
+            {
+                icon: '\\f0a4',
+                label: 'Frequency Explorer'
+            },
+            {
+                icon: '\\f13b',
+                label: 'Variant Explorer'
+            },
+            {
+                icon: '\\f13f',
+                label: 'Activity Explorer'
+            },
+            {
+                icon: '\\f13e',
+                label: 'Connection Slider'
+            }
+        ]
+    },
+    {
+        name: 'Resource analysis',
+        items: [
+            {
+                icon: '\\f007',
+                label: 'Performance Explorer'
+            },
+            {
+                icon: '\\f007',
+                label: 'Frequency Explorer'
+            }
+        ]
+    },
+    {
+        name: 'Charts',
+        items: [
+            {
+                icon: '\\f147',
+                label: 'Activity Frequency'
+            },
+            {
+                icon: '\\f147',
+                label: 'Activity Mean Duration'
+            },
+            {
+                icon: '\\f147',
+                label: 'Activity Median Duration'
+            },
+            {
+                icon: '\\f147',
+                label: 'Duration Range'
+            }
+        ]
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/modules/Dashboard/Views/PaletteView.ts":
+/*!****************************************************!*\
+  !*** ./src/modules/Dashboard/Views/PaletteView.ts ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PaletteView": () => (/* binding */ PaletteView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+
+function PaletteView(paletteData) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(// For better scrolling
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteData)(function (paletteCategory) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([
+            /*  HDivider().height('1px').background('#e4e4e4'), */
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteCategory.name)
+                .fontSize(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.FontSizeTypes.Small)
+                .textTransform('uppercase')
+                .fontFamily('Proxima Nova')
+                .foregroundColor('#0D6B87')
+                /* .background('#f1f1f1') */
+                .padding(10)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(paletteCategory.items)(function (paletteItem) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })(
+            /*  HDivider().height('1px').background('#e4e4e4'), */
+            (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(paletteItem.icon).size(20).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(paletteItem.label)
+                .fontFamily('Proxima Nova'))
+                .cornerRadius()
+                .background({ hover: 'rgb(120,120,120,20%)' })
+                .padding(10));
+        }))).background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.5))
+            .cornerRadius(12)
+            .padding() // Default padding 5px
+            .height();
+    } // uto height relative to its content
+    )).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute))
+        .width(270)
+        .overflowX('hidden')
+        .overflowY('auto'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Controllers/FrequencyMapController.ts":
+/*!*********************************************************************!*\
+  !*** ./src/modules/Discovery/Controllers/FrequencyMapController.ts ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FrequencyMapController": () => (/* binding */ FrequencyMapController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/ActivitySliderView */ "./src/modules/Discovery/Views/ActivitySliderView.ts");
+/* harmony import */ var _Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ConnectionSliderView */ "./src/modules/Discovery/Views/ConnectionSliderView.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var FrequencyMapController = /** @class */ (function (_super) {
+    __extends(FrequencyMapController, _super);
+    function FrequencyMapController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FrequencyMapController.prototype.InitController = function () {
+        this.actionSliderValue = 50;
+        this.connectionSliderValue = 50;
+    };
+    FrequencyMapController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Frequency Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
+            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
+        // auto width
+        )
+            .minWidth('260px')
+            .maxWidth('260px')
+            .overflowY('auto').overflowX('hidden')));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], FrequencyMapController.prototype, "actionSliderValue", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], FrequencyMapController.prototype, "connectionSliderValue", void 0);
+    return FrequencyMapController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Controllers/PerformanceMapController.ts":
+/*!***********************************************************************!*\
+  !*** ./src/modules/Discovery/Controllers/PerformanceMapController.ts ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PerformanceMapController": () => (/* binding */ PerformanceMapController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/ActivitySliderView */ "./src/modules/Discovery/Views/ActivitySliderView.ts");
+/* harmony import */ var _Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Views/ConnectionSliderView */ "./src/modules/Discovery/Views/ConnectionSliderView.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var PerformanceMapController = /** @class */ (function (_super) {
+    __extends(PerformanceMapController, _super);
+    function PerformanceMapController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    PerformanceMapController.prototype.InitController = function () {
+        this.actionSliderValue = 50;
+        this.connectionSliderValue = 50;
+    };
+    PerformanceMapController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Performance Map')).grow(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(// For scrolling container
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_Views_ActivitySliderView__WEBPACK_IMPORTED_MODULE_1__.ActivitySliderView)(this.actionSliderValue, function (e) { return _this.actionSliderValue = e; }), (0,_Views_ConnectionSliderView__WEBPACK_IMPORTED_MODULE_2__.ConnectionSliderView)(this.connectionSliderValue, function (e) { return _this.connectionSliderValue = e; }))
+            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute) // For scrolling
+        )
+            .minWidth('260px')
+            .maxWidth('260px')
+            .overflowY('auto').overflowX('hidden')));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], PerformanceMapController.prototype, "actionSliderValue", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], PerformanceMapController.prototype, "connectionSliderValue", void 0);
+    return PerformanceMapController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Controllers/ProcessExplorerController.ts":
+/*!************************************************************************!*\
+  !*** ./src/modules/Discovery/Controllers/ProcessExplorerController.ts ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProcessExplorerController": () => (/* binding */ ProcessExplorerController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FrequencyMapController */ "./src/modules/Discovery/Controllers/FrequencyMapController.ts");
+/* harmony import */ var _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PerformanceMapController */ "./src/modules/Discovery/Controllers/PerformanceMapController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var sideMenu = [
+    {
+        name: 'Frequency Map',
+        icon: '\\f0a7',
+        controller: new _FrequencyMapController__WEBPACK_IMPORTED_MODULE_3__.FrequencyMapController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Performance Map',
+        icon: '\\f0a8',
+        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Resource Map',
+        icon: '\\f098',
+        controller: new _PerformanceMapController__WEBPACK_IMPORTED_MODULE_4__.PerformanceMapController(),
+        isVisible: function () { return true; }
+    }
+];
+var ProcessExplorerController = /** @class */ (function (_super) {
+    __extends(ProcessExplorerController, _super);
+    function ProcessExplorerController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ProcessExplorerController.prototype.InitController = function () {
+        this.OnControllerSelected(0);
+    };
+    ProcessExplorerController.prototype.OnControllerSelected = function (index) {
+        this.selectedIndex = index;
+        var controller = sideMenu[index].controller;
+        this.currentController = controller;
+    };
+    ProcessExplorerController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
+            items: sideMenu,
+            selectedAction: function (index) { return _this.OnControllerSelected(index); },
+            second: true
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
+        // Header
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f0a4', 'Process explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(sideMenu)(function (item, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
+                .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '')
+                .border('solid 1px gray')
+                .cornerRadius('10px')
+                .padding('3px 10px 3px 10px')
+                .action(function () { return _this.OnControllerSelected(index); });
+        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), 
+        // Body
+        this.currentController)
+            .padding(10)
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProcessExplorerController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProcessExplorerController.prototype, "selectedIndex", void 0);
+    return ProcessExplorerController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Views/ActivitySliderView.ts":
+/*!***********************************************************!*\
+  !*** ./src/modules/Discovery/Views/ActivitySliderView.ts ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivitySliderView": () => (/* binding */ ActivitySliderView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SliderButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SliderButton */ "./src/modules/Discovery/Views/SliderButton.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function ActivitySliderView(sliderValue, onChange) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(25).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activities').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
+        .padding(5)
+        .height(), // auto
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
+        .width() //auto
+        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of activities'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
+        .height() // auto
+    ))
+        .background('rgb(255,255,255,30%)')
+        .padding(10)
+        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Views/ConnectionSliderView.ts":
+/*!*************************************************************!*\
+  !*** ./src/modules/Discovery/Views/ConnectionSliderView.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ConnectionSliderView": () => (/* binding */ ConnectionSliderView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SliderButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SliderButton */ "./src/modules/Discovery/Views/SliderButton.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function ConnectionSliderView(sliderValue, onChange) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f13d').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Connections').fontSize('16px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('List View'))
+        .padding(5)
+        .height(), // auto
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UISlider)().value(sliderValue).action(function (e) { return onChange(e); }))
+        .width() //auto
+        .padding(15), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(50).stroke(7).value(sliderValue).height(95), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of connections'), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderButton)('Reset').action(function () { return onChange(50); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f087', 'Less').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.max(sliderValue - 10, 0)); }), (0,_SliderButton__WEBPACK_IMPORTED_MODULE_1__.SliderIconButton)('\\f091', 'More').action(function () { onChange(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.TMath.min(sliderValue + 10, 100)); })))
+        .height() // auto
+    ))
+        .background('rgb(255,255,255,30%)')
+        .padding(10)
+        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Medium)
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Discovery/Views/SliderButton.ts":
+/*!*****************************************************!*\
+  !*** ./src/modules/Discovery/Views/SliderButton.ts ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SliderButton": () => (/* binding */ SliderButton),
+/* harmony export */   "SliderIconButton": () => (/* binding */ SliderIconButton)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function SliderButton(text) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text))
+        .background('#fff')
+        .foregroundColor('#888')
+        .border('1px solid #ccc')
+        .borderBottom('2px solid #ccc')
+        .padding('4px 10px')
+        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Rounded)
+        .fontSize('12px')
+        .height(25));
+}
+function SliderIconButton(icon, text) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(14).foregroundColor('#888').marginLeft('5px'))
+        .background('#fff')
+        .foregroundColor('#888')
+        .border('1px solid #ccc')
+        .borderBottom('2px solid #ccc')
+        .padding('4px 10px')
+        .cornerRadius(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.CornerRadiusTypes.Rounded)
+        .fontSize('12px')
+        .height(25));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Loops/Controllers/LoopsController.ts":
+/*!**********************************************************!*\
+  !*** ./src/modules/Loops/Controllers/LoopsController.ts ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "LoopsController": () => (/* binding */ LoopsController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+var LoopsController = /** @class */ (function (_super) {
+    __extends(LoopsController, _super);
+    function LoopsController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    LoopsController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\f096', 'Loops'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })()).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return LoopsController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Monitoring/Controllers/MonitoringController.ts":
+/*!********************************************************************!*\
+  !*** ./src/modules/Monitoring/Controllers/MonitoringController.ts ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MonitoringController": () => (/* binding */ MonitoringController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+
+
+var metrics = [
+    {
+        name: 'Unique Variants',
+        chart: {
+            type: 'Column',
+            valueType: 'Numeric',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 6 },
+                { x: 11, yval: 5 },
+                { x: 12, yval: 7 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 4 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '57.14 %',
+        subValue: '(+57.1 %)'
+    },
+    {
+        name: 'Cases with (self)loops',
+        chart: {
+            type: 'Line',
+            lineWidth: 5,
+            width: '100%',
+            height: '100%',
+            padding: {
+                left: 10,
+                right: 10
+            },
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 5 },
+                { x: 2, yval: 6 },
+                { x: 3, yval: 5 },
+                { x: 4, yval: 7 },
+                { x: 5, yval: 4 },
+                { x: 6, yval: 3 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 5 },
+                { x: 9, yval: 6 },
+                { x: 10, yval: 5 },
+                { x: 11, yval: 7 },
+                { x: 12, yval: 8 },
+                { x: 13, yval: 4 },
+                { x: 14, yval: 5 },
+                { x: 15, yval: 3 },
+                { x: 16, yval: 4 },
+                { x: 17, yval: 11 },
+                { x: 18, yval: 10 },
+                { x: 19, yval: 2 },
+                { x: 20, yval: 12 },
+                { x: 21, yval: 4 },
+                { x: 22, yval: 7 },
+                { x: 23, yval: 6 },
+                { x: 24, yval: 8 },
+            ],
+            xName: 'x',
+            yName: 'yval',
+            markerSettings: {
+                visible: ['All'],
+                border: {
+                    color: '#00BDAE',
+                    width: 5
+                },
+                fill: 'white',
+                size: 10,
+            }
+        },
+        value: '20.00 %',
+        subValue: '(-75.6 %)'
+    },
+    {
+        name: 'Automation rate',
+        chart: {
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '2.78 %',
+        subValue: '(+2.8 %)'
+    },
+    {
+        name: 'Cases with long lead time',
+        chart: {
+            lineWidth: 1,
+            type: 'Area',
+            opacity: 1,
+            border: { width: 2 },
+            valueType: 'Category',
+            axisSettings: {
+                lineSettings: {
+                    visible: true
+                }
+            },
+            dataSource: [
+                { x: 1, xval: 'Jan', yval: 34 },
+                { x: 2, xval: 'Feb', yval: 36 },
+                { x: 3, xval: 'Mar', yval: 32 },
+                { x: 4, xval: 'Apr', yval: 35 },
+                { x: 5, xval: 'May', yval: 40 },
+                { x: 6, xval: 'Jun', yval: 38 },
+                { x: 7, xval: 'Jul', yval: 33 },
+                { x: 8, xval: 'Aug', yval: 37 },
+                { x: 9, xval: 'Sep', yval: 34 },
+                { x: 10, xval: 'Oct', yval: 31 },
+                { x: 11, xval: 'Nov', yval: 30 },
+                { x: 12, xval: 'Dec', yval: 29 },
+            ],
+            xName: 'xval', yName: 'yval',
+        },
+        value: '13.33 %',
+        subValue: '(-4.4 %)'
+    },
+    {
+        name: 'Cases with many process steps',
+        chart: {
+            type: 'Column',
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 7 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 9 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 3 },
+                { x: 6, yval: 2 },
+                { x: 7, yval: 5 },
+                { x: 8, yval: 8 },
+                { x: 9, yval: 4 },
+                { x: 10, yval: 8 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 10 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 12 },
+                { x: 16, yval: 5 },
+                { x: 17, yval: 4 },
+                { x: 18, yval: 13 },
+                { x: 19, yval: 17 },
+                { x: 20, yval: 15 },
+                { x: 21, yval: 15 },
+                { x: 22, yval: 16 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '13.33 %',
+        subValue: '(+57.1 %)'
+    },
+    {
+        name: 'Number of resources per process step',
+        chart: {
+            type: 'Area',
+            lineWidth: 5,
+            highPointColor: '#0d88e6',
+            lowPointColor: '#fd7f6f',
+            valueType: 'Numeric',
+            dataSource: [
+                { x: 1, yval: 3 },
+                { x: 2, yval: 7 },
+                { x: 3, yval: 4 },
+                { x: 4, yval: 8 },
+                { x: 5, yval: 2 },
+                { x: 6, yval: 8 },
+                { x: 7, yval: 9 },
+                { x: 8, yval: 6 },
+                { x: 9, yval: 5 },
+                { x: 10, yval: 7 },
+                { x: 11, yval: 8 },
+                { x: 12, yval: 9 },
+                { x: 13, yval: 15 },
+                { x: 14, yval: 3 },
+                { x: 15, yval: 14 },
+                { x: 16, yval: 15 },
+                { x: 17, yval: 14 },
+                { x: 18, yval: 3 },
+                { x: 19, yval: 7 },
+                { x: 20, yval: 5 },
+                { x: 21, yval: 5 },
+                { x: 22, yval: 6 },
+                { x: 23, yval: 5 },
+                { x: 24, yval: 7 },
+            ],
+            xName: 'x',
+            yName: 'yval'
+        },
+        value: '2.63 %',
+        subValue: '(+57.1 %)'
+    }
+];
+var staticticInfos = [
+    {
+        title: 'start time',
+        value: '19.09.2012'
+    },
+    {
+        title: 'end time',
+        value: '19.09.2013'
+    },
+    {
+        title: 'cases',
+        value: '968'
+    },
+    {
+        title: 'variants',
+        value: '79'
+    },
+    {
+        title: 'process step types',
+        value: '12'
+    },
+    {
+        title: 'total process steps',
+        value: '7416'
+    }
+];
+var MonitoringController = /** @class */ (function (_super) {
+    __extends(MonitoringController, _super);
+    function MonitoringController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MonitoringController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)('\\d2c9', 'Process monitoring'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)())
+            // We prevent this stack to large more than its content
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.SectionSubHeadline)('Global metrics for monitoring.'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(staticticInfos)(function (info) {
+            return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.value).fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(info.title).textTransform('uppercase').fontSize('16px').foregroundColor('#999').fontWeight('600')).padding(20)).maxHeight('120px');
+        })).height(), 
+        // Metrics
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1])(function (indexJ) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([0, 1, 2])(function (indexI) {
+                return (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_3__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.TileBoxHeaderText)(metrics[(indexJ * 3) + indexI].name).paddingTop('30px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_4__.MetricBoxValueText)(metrics[(indexJ * 3) + indexI].value), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(metrics[(indexJ * 3) + indexI].subValue).fontSize('20px').fontWeight('600').foregroundColor('#888')
+                    .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).right('30px')).marginTop('20px').height(), (0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_5__.Sparkline)()
+                    .model(metrics[(indexJ * 3) + indexI].chart)
+                    .padding(10))).height(290);
+            }));
+        })).height()))).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return MonitoringController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+function MetricSelectionButtons(overviewTypes, selectedIndex, arg2) {
+    throw new Error('Function not implemented.');
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Activity/ActivityController.ts":
+/*!********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Activity/ActivityController.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivityController": () => (/* binding */ ActivityController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+var ActivityController = /** @class */ (function (_super) {
+    __extends(ActivityController, _super);
+    function ActivityController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ActivityController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Activity Controller')));
+    };
+    return ActivityController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Bindable.ts":
+/*!**********************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Bindable.ts ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Bindable": () => (/* binding */ Bindable)
+/* harmony export */ });
+var Bindable = /** @class */ (function () {
+    function Bindable(initValue, controller) {
+        this.value = initValue;
+        this.controller = controller;
+    }
+    Bindable.prototype.get = function () {
+        return this.value;
+    };
+    Bindable.prototype.set = function (value) {
+        this.value = value;
+        this.controller.ForceUpdate();
+    };
+    return Bindable;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/OverviewController.ts":
+/*!********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/OverviewController.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OverviewController": () => (/* binding */ OverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Views/ActivitySection */ "./src/modules/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts");
+/* harmony import */ var _Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Views/HappyPathSection */ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts");
+/* harmony import */ var _Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Views/MetricsSection */ "./src/modules/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var testActivitySectionModel = [
+    {
+        activityName: 'Activity 1',
+        casePercentage: 14,
+        eventCount: 40463
+    },
+    {
+        activityName: 'Activity 2',
+        casePercentage: 14,
+        eventCount: 40463
+    },
+    {
+        activityName: 'Activity 3',
+        casePercentage: 14,
+        eventCount: 40463
+    },
+    {
+        activityName: 'Activity 4',
+        casePercentage: 14,
+        eventCount: 40463
+    },
+    {
+        activityName: 'Activity 5',
+        casePercentage: 14,
+        eventCount: 40463
+    }
+];
+var happyPathBAbsoluteBoxTestModel = {
+    title: 'Happy path in absolute numbers',
+    value: 107688,
+    totalValue: 279020
+};
+var happyPathDiagramModelTest = [
+    {
+        name: 'Test 1'
+    },
+    {
+        name: 'Test 1'
+    },
+    {
+        name: 'Test 1'
+    }
+];
+var happyPathSectionTestModel = {
+    happyPathAbsoluteBoxModel: happyPathBAbsoluteBoxTestModel,
+    happyPathDiagramItems: happyPathDiagramModelTest
+};
+var OverviewController = /** @class */ (function (_super) {
+    __extends(OverviewController, _super);
+    function OverviewController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    OverviewController.prototype.InitController = function () {
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverTimeChart();
+        var map = new Map();
+        // this.map = [];
+        for (var i = 0; i < 100; i++) {
+            map[i] = i;
+        }
+        this.chart.SetChartData(map);
+        this.activitySectionModel = testActivitySectionModel;
+        this.happPathSectionModel = happyPathSectionTestModel;
+        this.metricSectionModel = {
+            metricBoxNodels: [
+                {
+                    title: 'Cases per day',
+                    value: '694',
+                    subTitle: 'Total number of cases per day',
+                    /*  showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 34 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 32 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 38 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 37 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval',
+                        yName: 'yval',
+                    }
+                },
+                {
+                    title: 'Events per day',
+                    value: '4.215',
+                    subTitle: 'Total number of events per day',
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 12 },
+                            { x: 2, xval: 'Feb', yval: 36 },
+                            { x: 3, xval: 'Mar', yval: 56 },
+                            { x: 4, xval: 'Apr', yval: 76 },
+                            { x: 5, xval: 'May', yval: 34 },
+                            { x: 6, xval: 'Jun', yval: 39 },
+                            { x: 7, xval: 'Jul', yval: 50 },
+                            { x: 8, xval: 'Aug', yval: 43 },
+                            { x: 9, xval: 'Sep', yval: 34 },
+                            { x: 10, xval: 'Oct', yval: 17 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 56 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+                    }
+                },
+                {
+                    title: 'Throughput time',
+                    value: '26 DAYS',
+                    subTitle: 'Average case duration from process start to process end without extreme outliers',
+                    /* showMenu: new Bindable(false, this), */
+                    chart: {
+                        dataSource: [
+                            { x: 1, xval: 'Jan', yval: 23 },
+                            { x: 2, xval: 'Feb', yval: 35 },
+                            { x: 3, xval: 'Mar', yval: 43 },
+                            { x: 4, xval: 'Apr', yval: 35 },
+                            { x: 5, xval: 'May', yval: 40 },
+                            { x: 6, xval: 'Jun', yval: 53 },
+                            { x: 7, xval: 'Jul', yval: 33 },
+                            { x: 8, xval: 'Aug', yval: 12 },
+                            { x: 9, xval: 'Sep', yval: 20 },
+                            { x: 10, xval: 'Oct', yval: 31 },
+                            { x: 11, xval: 'Nov', yval: 30 },
+                            { x: 12, xval: 'Dec', yval: 29 },
+                        ],
+                        xName: 'xval', yName: 'yval',
+                    }
+                }
+            ],
+            chart: this.chart
+        };
+    };
+    OverviewController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_Views_MetricsSection__WEBPACK_IMPORTED_MODULE_3__.MetricsSection)(this.metricSectionModel), (0,_Views_HappyPathSection__WEBPACK_IMPORTED_MODULE_2__.HappyPathSection)(this.happPathSectionModel), (0,_Views_ActivitySection__WEBPACK_IMPORTED_MODULE_1__.ActivitySection)(this.activitySectionModel)).position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "chart", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "metricSectionModel", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "activitySectionModel", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "happPathSectionModel", void 0);
+    return OverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts":
+/*!*******************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivityBox": () => (/* binding */ ActivityBox)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function ActivityBox(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.activityName)
+        .padding(10)
+        .fontFamily('Proxima Nova')
+        .fontWeight('500')
+        .fontSize('14px')
+        .foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("In " + params.casePercentage + " of cases").fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.casePercentage + " Events").fontFamily('Proxima Nova').fontSize('14px').foregroundColor('#888'))
+        .padding('20px')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .tabIndex(0))
+        /* .border('solid var(--border-width) yellow') */
+        .height('180px')
+        .padding('10px')
+        .maxWidth('25%'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts":
+/*!***********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/ActivitySection.ts ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivitySection": () => (/* binding */ ActivitySection)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ActivityBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActivityBox */ "./src/modules/ProcessOverview/Controllers/Overview/Views/ActivityBox.ts");
+
+
+function ActivitySection(activities) {
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Other frequent activities')
+        .marginTop('30px')
+        .paddingTop('5px')
+        /*    .height('38px') */
+        .fontFamily('Proxima Nova')
+        .fontSize('20px')
+        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+        // We prevent this stack to large more than its content
+        .height('auto'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(activities)(function (activity) {
+        return (0,_ActivityBox__WEBPACK_IMPORTED_MODULE_1__.ActivityBox)({ activityName: activity.activityName, casePercentage: activity.casePercentage, eventCount: activity.eventCount });
+    })).height('auto').wrap('wrap').alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts":
+/*!********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HappyPathGaugeBox": () => (/* binding */ HappyPathGaugeBox),
+/* harmony export */   "HappyPathBox2": () => (/* binding */ HappyPathBox2),
+/* harmony export */   "HappyPathBox3": () => (/* binding */ HappyPathBox3)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+
+
+function HappyPathGaugeBox(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('rgb(118,209,187)').maskColor('rgb(120,120,120,20%)')
+        .radius(80)
+        .stroke(10)
+        .value(67)
+        .height(155)))
+        .height('245px')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .marginHorizontal('2px')
+        .tabIndex(0));
+}
+function HappyPathBox2(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VDivider)().width('1px').background('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width().initial({ width: 0 }).animate({ width: (params.value / params.totalValue) * 100 + "%" }).__transition({ duration: 1 }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').height('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').height('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading)).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)("of " + params.totalValue + " Cases")
+        .marginBottom('15px')
+        .fontFamily('Proxima Nova')
+        .fontWeight('500')
+        .fontSize('20px')
+        .foregroundColor('#888888'))
+        .height('245px')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .marginHorizontal('2px')
+        .tabIndex(0));
+}
+function HappyPathBox3() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Happy path in percentages'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#14A9D5').width('20px').height('50%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('#E4E4E4').width('20px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().background('transparent').width('10px')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.bottom), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').background('gray').width('50%')).padding('30px').width('70%'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('of 279,020 Cases')
+        .marginBottom('15px')
+        .fontFamily('Proxima Nova')
+        .fontSize('20px')
+        .foregroundColor('#888888'))
+        .height('245px')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .marginHorizontal('2px')
+        .tabIndex(0));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts":
+/*!************************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HappyPathDiagram": () => (/* binding */ HappyPathDiagram)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+
+
+function HappyPathDiagram(items) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_1__.TileBoxHeaderText)('Algorithmic happy path'), _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(items)(function (item, index) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name).marginBottom('10px').fontSize('14px').fontWeight('500'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === 0)(null)
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIxM3B4IiB2aWV3Qm94PSIwIDAgMTMgMTMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4xICgzMzgwNCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+OTBDRDYzRDItOENGNy00OERFLTgzQTAtQUUzMTdERTg0MjVDPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tb3ZlcnZpZXciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04NTYuMDAwMDAwLCAtMTE0OC4wMDAwMDApIiBmaWxsPSIjQ0NDQ0NDIj4KICAgICAgICAgICAgPGcgaWQ9Ik1BSU4iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MC4wMDAwMDAsIDU2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCA2NjEuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwMDAwMCwgMjk1LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iTmV3LWhhcHB5LXBhdGgtdml6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMC4wMDAwMDAsIDc2LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlJlY3RhbmdsZS00IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NDIuNTAwMDAwLCA2Ni41MDAwMDApIHJvdGF0ZSgtMjcwLjAwMDAwMCkgdHJhbnNsYXRlKC02NDIuNTAwMDAwLCAtNjYuNTAwMDAwKSAiIHBvaW50cz0iNjQyLjUgNjAgNjQ5IDczIDY0Mi41IDY5Ljc1IDYzNiA3MyI+PC9wb2x5Z29uPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=').marginLeft('-3px')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f0e1').size(30).foregroundColor('#14A9D5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.If)(index === items.length - 1)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)().width('100%'))
+            .else((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().height(3).background('#e4e4e4').marginTop('-1px'))))
+            .height() // auto
+            .marginTop('20px');
+    })))
+        .backgroundColor('rgb(255,255,255,60%)').cornerRadius('12px').height(154).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .marginHorizontal('2px')
+        .tabIndex(0));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts":
+/*!************************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathSection.ts ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "HappyPathSection": () => (/* binding */ HappyPathSection)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _HappyPathBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HappyPathBox */ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathBox.ts");
+/* harmony import */ var _HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HappyPathDiagram */ "./src/modules/ProcessOverview/Controllers/Overview/Views/HappyPathDiagram.ts");
+
+
+
+function HappyPathSection(params) {
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Happy path')
+        .marginTop('30px')
+        .paddingTop('5px')
+        .height('38px')
+        .fontFamily('Proxima Nova')
+        .fontSize('20px')
+        .foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathGaugeBox)({ title: 'Happy path in percentages' }), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox2)(params.happyPathAbsoluteBoxModel), (0,_HappyPathBox__WEBPACK_IMPORTED_MODULE_1__.HappyPathBox3)()).height(), //auto height,
+    (0,_HappyPathDiagram__WEBPACK_IMPORTED_MODULE_2__.HappyPathDiagram)(params.happyPathDiagramItems)));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/MetricBox.ts":
+/*!*****************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/MetricBox.ts ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "PortalMetricBox": () => (/* binding */ PortalMetricBox),
+/* harmony export */   "DesktopMetricBox": () => (/* binding */ DesktopMetricBox),
+/* harmony export */   "MetricBox": () => (/* binding */ MetricBox)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Animations/ListBounce */ "./src/UI/Animations/ListBounce.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _TileSparkLine__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TileSparkLine */ "./src/modules/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts");
+
+
+
+
+function PortalMetricBox(params, selected) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.useState)(false), showMenu = _a[0], setShowMenu = _a[1];
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.MetricBoxValueText)(params.value.toString()), 
+    /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(
+    /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
+    (0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.CalculationMethodText)('AVG')
+        .onClick(function () { return setShowMenu(true); })
+        .padding()
+        .cornerRadius(5)
+        .cursor('pointer')
+        .border('dashed 1px var(--sub-border-color)')
+        .transition('border .3s')).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading))
+        .paddingLeft('30px')
+        .paddingTop('10px')
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), 
+    /* VStack(
+        Text('Duration').foregroundColor('#b40404'),
+        Text('15 - 40 monts').foregroundColor('#AAA')
+    )
+        .marginLeft('32px')
+        .marginBottom('5px')
+        .alignment(Alignment.leading), */
+    (0,_TileSparkLine__WEBPACK_IMPORTED_MODULE_3__.TileSparkLine)(params.chart)
+        .slFill(selected ? '#b2cfff' : 'rgb(120,120,120,30%)')
+        .slBorder(selected ? { color: '#3C78EF', width: 2 } : { color: 'gray', width: 2 })
+    /*  Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
+     Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'), */
+    )
+        .height(148)
+        .overflow('hidden')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+        .tabIndex(0)
+        // Üzerine geldiğimizde alt text border için.
+        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Mean').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Median').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Max').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Min').cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' }).padding(10).onClick(function () { return setShowMenu(false); })))
+        .backgroundColor('white')
+        .animation(_UI_Animations_ListBounce__WEBPACK_IMPORTED_MODULE_1__.ListBounceAnimation, '.3s')
+        .visible(showMenu)).margin('2px'));
+}
+function DesktopMetricBox(params) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_2__.TileBoxHeaderText)(params.title), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'))
+        .height('148px')
+        .backgroundColor('rgb(255,255,255,60%)')
+        .cornerRadius('12px')
+        .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
+        .tabIndex(0)
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+}
+function MetricBox(params, selected) {
+    if (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.ApplicationMode === _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ApplicationModes.Desktop) {
+        return DesktopMetricBox(params);
+    }
+    else {
+        return PortalMetricBox(params, selected);
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/MetricsSection.ts ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MetricsSection": () => (/* binding */ MetricsSection)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../UI/Views/Title */ "./src/UI/Views/Title.ts");
+/* harmony import */ var _MetricBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MetricBox */ "./src/modules/ProcessOverview/Controllers/Overview/Views/MetricBox.ts");
+
+
+
+
+
+var data = [
+    { x: new Date(2021, 1, 1), y: 532.2 }, { x: new Date(2021, 2, 1), y: 453.4 },
+    { x: new Date(2021, 3, 1), y: 422.8 }, { x: new Date(2021, 4, 1), y: 531.6 },
+    { x: new Date(2021, 5, 1), y: 642.3 }, { x: new Date(2021, 6, 1), y: 432.5 },
+    { x: new Date(2021, 7, 1), y: 462.9 }, { x: new Date(2021, 8, 1), y: 445.8 },
+    { x: new Date(2021, 9, 1), y: 561.4 }, { x: new Date(2021, 10, 1), y: 433.1 }
+];
+function MetricsSection(params) {
+    var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
+    return (
+    // We want to space 10px between every vertical block
+    (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+        // We prevent this stack to large more than its content
+        .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(params.metricBoxNodels)(function (metricBoxModel, index) {
+        return (0,_MetricBox__WEBPACK_IMPORTED_MODULE_4__.MetricBox)(metricBoxModel, selectedIndex === index).onClick(function () { return setSelectedIndex(index); });
+    })).height(150), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading })((0,_UI_Views_Title__WEBPACK_IMPORTED_MODULE_3__.TileBoxHeaderText)('Daily cases per month').marginBottom('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y').border({ color: '#FBCD4E', width: 3 })
+        .marker({ visible: true, width: 10, height: 10, fill: '#FBB90A', border: { color: 'white' } })
+        .fill('#FBCD4E55')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'DateTime',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months',
+        edgeLabelPlacement: 'Shift'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent')))).height('300px')));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/Overview/Views/TileSparkLine.ts ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TileSparkLine": () => (/* binding */ TileSparkLine)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function TileSparkLine(model) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.Sparkline)().model(model)
+        .slType('Area')
+        .slWidth('100%')
+        .slHeight('50px')
+        .slPadding({
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0
+    })
+        .slLineWidth(1)
+        .slOpacity(1)
+        .slFill('#b2cfff')
+        .slBorder({ color: '#3C78EF', width: 2 })
+        .slValueType('Category')
+        .marginBottom('-4px'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/ProcessOverviewController.ts":
+/*!******************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/ProcessOverviewController.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProcessOverviewController": () => (/* binding */ ProcessOverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Overview/OverviewController */ "./src/modules/ProcessOverview/Controllers/Overview/OverviewController.ts");
+/* harmony import */ var _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThroughputTimes/ThroughputTimesController */ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts");
+/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/modules/ProcessOverview/Controllers/Activity/ActivityController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+function getMax(array) {
+    var max = 0;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].data > max) {
+            max = array[i].data;
+        }
+    }
+    return max;
+}
+var sideMenu = [
+    {
+        name: 'Overview',
+        icon: '\\d2de',
+        controller: new _Overview_OverviewController__WEBPACK_IMPORTED_MODULE_4__.OverviewController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Throughput times',
+        icon: '\\d36c',
+        controller: new _ThroughputTimes_ThroughputTimesController__WEBPACK_IMPORTED_MODULE_5__.ThroughputTimesController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Activities',
+        icon: '\\d2fd',
+        controller: new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_6__.ActivityController(),
+        isVisible: function () { return true; }
+    }
+];
+var ProcessOverviewController = /** @class */ (function (_super) {
+    __extends(ProcessOverviewController, _super);
+    function ProcessOverviewController() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.map = [];
+        return _this;
+    }
+    ProcessOverviewController.prototype.InitController = function () {
+        this.Appearance.OverflowX = 'hidden';
+        this.Appearance.OverflowY = 'auto';
+        this.refresh = '1';
+        this.chart1 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
+        this.chart1.Appearance.Width = '100%';
+        this.chart1.Appearance.Height = '100px';
+        this.chart2 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
+        this.chart2.Appearance.Width = '100%';
+        this.chart2.Appearance.Height = '100px';
+        this.chart3 = new _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.TvChart();
+        this.chart3.Appearance.Width = '100%';
+        this.chart3.Appearance.Height = '100px';
+        this.OnControllerChanged(0);
+    };
+    ProcessOverviewController.prototype.OnControllerChanged = function (index) {
+        this.selectedIndex = index;
+        this.currentController = sideMenu[index].controller;
+    };
+    ProcessOverviewController.prototype.GetView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_3__.PortalSideMenu)({
+            items: sideMenu,
+            selectedAction: function (index) { return _this.OnControllerChanged(index); },
+            second: true
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_1__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)(sideMenu[this.selectedIndex].icon, sideMenu[this.selectedIndex].name), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Spacer)(), 
+        // View Buttons Overview, Throuthput Times
+        // Only Desktop
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.ForEach)(sideMenu)(function (item, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Icon)(item.icon).size(14).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)(item.name).paddingLeft('5px'))
+                .action(function () { return _this.OnControllerChanged(index); })
+                .border('solid 1px gray')
+                .cornerRadius('10px')
+                .padding('3px 10px 3px 10px')
+                .background(_this.selectedIndex === index ? 'rgb(120,120,120,20%)' : '');
+        })).width() // auto width
+            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsDesktop), 
+        // Portal
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HStack)({ spacing: 30 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('traces').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#999').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('events').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#2ca3c0').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('variants').foregroundColor('#495057').textTransform('uppercase').fontWeight('700').fontSize('14px').fontFamily('Roboto, sans-serif'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.Text)('0').foregroundColor('#b40404').fontWeight('700').fontSize('27px').fontFamily('Roboto, sans-serif')))
+            .width() //auto width
+            .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal)).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.VStack)(// For scrolling
+        this.currentController).overflowX('hidden').overflowY('auto'))
+            .padding(10)
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.TApplication.IsPortal ? '#f1f1f1' : ''))));
+    };
+    ProcessOverviewController.prototype.LoadView = function () {
+        return this.GetView();
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "chart1", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "chart2", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "chart3", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "chartData", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "map", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "refresh", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "selectedIndex", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.State)()
+    ], ProcessOverviewController.prototype, "currentController", void 0);
+    return ProcessOverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts":
+/*!**********************************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/ThroughputTimes/ThroughputTimesController.ts ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ThroughputTimesController": () => (/* binding */ ThroughputTimesController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./View/BottleneckSection */ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts");
+/* harmony import */ var _View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./View/ThroughputTimeSection */ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+
+var ThroughputTimesController = /** @class */ (function (_super) {
+    __extends(ThroughputTimesController, _super);
+    function ThroughputTimesController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ThroughputTimesController.prototype.InitController = function () {
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__.EventsOverTimeChart();
+        var map = new Map();
+        // this.map = [];
+        for (var i = 0; i < 100; i++) {
+            map[i] = i;
+        }
+        this.chart.SetChartData(map);
+    };
+    ThroughputTimesController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 })((0,_View_ThroughputTimeSection__WEBPACK_IMPORTED_MODULE_2__.ThroughputTimeSection)(this.chart), (0,_View_BottleneckSection__WEBPACK_IMPORTED_MODULE_1__.BottleneckSection)())
+            .position(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.PositionTypes.Absolute)
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return ThroughputTimesController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts":
+/*!*******************************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/BottleneckSection.ts ***!
+  \*******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BottleneckSection": () => (/* binding */ BottleneckSection)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+
+
+function BottleneckSection() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Bottlenecks'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+        // We prevent this stack to large more than its content
+        .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('These connections increase process throughput time considerably'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 15 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width(3).backgroundColor('rgb(255, 136, 132)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIImage)('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxMHB4IiB2aWV3Qm94PSIwIDAgMTggMTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogc2tldGNodG9vbCA0MC4zICgzMzgzOSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+NDY5OEVGQ0UtNDQ0NC00MjU5LUE3NjItMzFGMDBGQjRFRDlFPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBza2V0Y2h0b29sLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQcm9jZXNzLW1ldHJpY3MiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJQcm9jZXNzLS0tdGhyb3VnaHB1dC10aW1lIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNDIyLjAwMDAwMCwgLTExODMuMDAwMDAwKSIgZmlsbD0iIzBCNUY3OCI+CiAgICAgICAgICAgIDxnIGlkPSJNQUlOIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODcuMDAwMDAwLCA1NC4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJCb3R0bGVuZWNrcyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMS4wMDAwMDAsIDEwNDMuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkJvdHRsZW5lY2staXRlbSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4wMDAwMDAsIDY5LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICA8ZyBpZD0iSGVhZGVyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC4wMDAwMDAsIDExLjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPGcgaWQ9IkNvbm5lY3Rpb24iIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIxNy4wMDAwMDAsIDExLjAwMDAwMCkgcm90YXRlKC05MC4wMDAwMDApIHRyYW5zbGF0ZSgtMjE3LjAwMDAwMCwgLTExLjAwMDAwMCkgdHJhbnNsYXRlKDIxMi4wMDAwMDAsIDIuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQsOS42IEwtMS43NzYzNTY4NGUtMTUsOCBMNSwxOCBMMTAsOCBMNiw5LjYgTDYsMCBMNCwwIEw0LDkuNiBaIiBpZD0iaWNvbi1hcnJvdy1yaWdodCI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4='), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Change Price').fontSize('16px').fontWeight('500').foregroundColor('#1d6c83')).width().height().padding('10px 15px 10px 15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('View cases in…').paddingLeft('15px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Throughput time'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('10 work day(s)')).width(), //auto
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionTitle)('Cases affected'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionContent)('14%')).width() //auto
+        ).paddingLeft('15px')).padding())
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Color.white.opacity(0.5))
+            .shadow({ default: '0 2px 5px 0 rgb(0 0 0 / 5%), 0 1px 3px 0 rgb(0 0 0 / 10%)', hover: '0 2px 10px rgb(0 0 0 / 16%), 0 2px 5px rgb(0 0 0 / 26%)' })
+            .height(122);
+    })).height().padding())
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+    // We want to space 10px between every vertical block
+    );
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts":
+/*!***********************************************************************************************!*\
+  !*** ./src/modules/ProcessOverview/Controllers/ThroughputTimes/View/ThroughputTimeSection.ts ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ThroughputTimeSection": () => (/* binding */ ThroughputTimeSection)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+
+
+
+function DurationHeadline(value) {
+    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value)
+        .cursor('pointer')
+        .border('dashed 1px var(--sub-border-color)')
+        .transition('border .3s'));
+}
+function DurationText(value) {
+    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value).fontSize(40).foregroundColor('#666'));
+}
+function DurationUnitText(value) {
+    return ((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(value).fontSize(20).foregroundColor('#666')
+        .cursor('pointer')
+        .border('dashed 1px var(--sub-border-color)')
+        .transition('border .3s'));
+}
+function ProcessStartEnd() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process start').fontWeight('bold').foregroundColor('#555'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f084').size(20).marginBottom('3px'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Process end').fontWeight('bold').foregroundColor('#555'))
+        .cursor('pointer')
+        .border({ default: 'dashed 1px var(--sub-border-color)', hover: 'solid 1px #2ca3c0' })
+        .height() //auto
+        .width() //auto
+    );
+}
+function ThroughputTimeSection(chart) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Throughput Time Search'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' })))
+        // We prevent this stack to large more than its content
+        .height('auto'), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('Select any two activities to see throughput time between them'), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(DurationHeadline('Average Throughput time'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)(DurationText('24'), DurationUnitText('Days')), ProcessStartEnd())
+        .padding(10)
+        .height()
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(chart))
+        .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.top))
+        .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)
+    // We want to space 10px between every vertical block
+    );
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Controllers/Activity/ActivityController.ts":
+/*!***************************************************************************!*\
+  !*** ./src/modules/Statistics/Controllers/Activity/ActivityController.ts ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActivityController": () => (/* binding */ ActivityController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart */ "./src/UI/Controls/EventsOverTimeChart/EventsOverTimeChart.ts");
+/* harmony import */ var _domains_Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../domains/Application/Views/PortalFilterBarWidget */ "./src/domains/Application/Views/PortalFilterBarWidget.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var overviewTypes = [
+    'Frequency',
+    'Median duration',
+    'Mean duration',
+    'Duration range',
+    'Aggreate duration'
+];
+function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
+    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
+            .action(function () { return onSelectedAction(index); })
+            .height(30)
+            .border('solid 1px #ccc')
+            .padding(5)
+            .paddingLeft('10px')
+            .paddingRight('10px')
+            .cornerRadius(index === 0 ? '15px 0px 0px 15px' : (index === buttons.length - 1 ? '0px 15px 15px 0px' : ''))
+            .background(index === selectedIndex ? 'rgb(120,120,120,20%)' : '');
+    })));
+}
+var ActivityController = /** @class */ (function (_super) {
+    __extends(ActivityController, _super);
+    function ActivityController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ActivityController.prototype.InitController = function () {
+        this.selectedIndex = 0;
+        this.chart = new _UI_Controls_EventsOverTimeChart_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_3__.EventsOverTimeChart();
+        var map = new Map();
+        // this.map = [];
+        for (var i = 0; i < 100; i++) {
+            map[i] = i;
+        }
+        this.chart.SetChartData(map);
+    };
+    ActivityController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionHeadline)('Overview'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_domains_Application_Views_PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_4__.PortalFilterBarWidget)({ value: 23 })
+        /* UIButton(
+            Icon('\\f04a').size(20).foregroundColor({ default: 'rgb(120,120,120, 50%)', hover: 'rgb(120,120,120, 80%)' }),
+        ) */
+        )
+            // We prevent this stack to large more than its content
+            .height(), (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.SectionSubHeadline)('Global statistics'), MetricSelectionButtons(overviewTypes, this.selectedIndex, function (index) { return _this.selectedIndex = index; }).visible(false), (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(overviewTypes[this.selectedIndex])
+            .fontSize('30px')
+            .cursor('pointer')
+            .border('dashed 1px var(--sub-border-color)')
+            .transition('border .3s'))
+            .padding()
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop, spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name))
+                .action(function () { return _this.selectedIndex = index; })
+                .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
+                .width(180)
+                .height(30)
+                .border('solid 1px #ccc')
+                .padding()
+                .cornerRadius(12);
+        })).minWidth('200px').maxWidth('200px'), this.chart))
+            .height(400)
+            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ActivityController.prototype, "chart", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ActivityController.prototype, "selectedIndex", void 0);
+    return ActivityController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Controllers/Overview/MultiOverviewController.ts":
+/*!********************************************************************************!*\
+  !*** ./src/modules/Statistics/Controllers/Overview/MultiOverviewController.ts ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MultiOverviewController": () => (/* binding */ MultiOverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _OverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OverviewController */ "./src/modules/Statistics/Controllers/Overview/OverviewController.ts");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_2__);
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ControllerList = /** @class */ (function (_super) {
+    __extends(ControllerList, _super);
+    function ControllerList(parentController) {
+        var _this = _super.call(this) || this;
+        _this.parentController = parentController;
+        return _this;
+    }
+    ControllerList.prototype.Add = function (item) {
+        _super.prototype.Add.call(this, item);
+        this.parentController.ForceUpdate();
+        return 1;
+    };
+    return ControllerList;
+}(_tuval_core__WEBPACK_IMPORTED_MODULE_2__.List));
+var MultiOverviewController = /** @class */ (function (_super) {
+    __extends(MultiOverviewController, _super);
+    function MultiOverviewController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    MultiOverviewController.prototype.InitController = function () {
+        this.controllerList = new ControllerList(this);
+        this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController());
+    };
+    MultiOverviewController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Metrics').paddingTop('5px').height(38).fontFamily('Proxima Nova').fontSize(20).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)('\\f078').size(20).foregroundColor({ default: 'rgb(51,51,51, 70%)', hover: 'rgb(51,51,51, 90%)' })).action(function () { return _this.controllerList.Add(new _OverviewController__WEBPACK_IMPORTED_MODULE_1__.OverviewController()); })), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(this.controllerList.ToArray())(function (item) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)(item);
+        }))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], MultiOverviewController.prototype, "controllerList", void 0);
+    return MultiOverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Controllers/Overview/OverviewController.ts":
+/*!***************************************************************************!*\
+  !*** ./src/modules/Statistics/Controllers/Overview/OverviewController.ts ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "OverviewController": () => (/* binding */ OverviewController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+/* harmony import */ var _UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../UI/Views/TileBox */ "./src/UI/Views/TileBox.ts");
+/* harmony import */ var _Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Views/CasesGrid */ "./src/modules/Statistics/Views/CasesGrid.ts");
+/* harmony import */ var _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Views/EventsOverTimeChart */ "./src/modules/Statistics/Views/EventsOverTimeChart.ts");
+/* harmony import */ var _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Views/ActiveCasesOverTime */ "./src/modules/Statistics/Views/ActiveCasesOverTime.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var datas = [
+    [
+        { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+        { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+        { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+        { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+        { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+        { x: 'Nov', y: 422.8 }
+    ],
+    [
+        { x: new Date(2021, 1, 1), y: 252.2 }, { x: new Date(2021, 2, 1), y: 243.4 },
+        { x: new Date(2021, 3, 1), y: 142.8 }, { x: new Date(2021, 4, 1), y: 331.6 },
+        { x: new Date(2021, 5, 1), y: 262.3 }, { x: new Date(2021, 6, 1), y: 142.5 },
+        { x: new Date(2021, 7, 1), y: 142.9 }, { x: new Date(2021, 8, 1), y: 145.8 },
+        { x: new Date(2021, 9, 1), y: 251.4 }, { x: new Date(2021, 10, 1), y: 143.1 }
+    ]
+];
+var overviewTypes = [
+    {
+        title: 'Events over time',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Active cases over time',
+        builder: _Views_ActiveCasesOverTime__WEBPACK_IMPORTED_MODULE_5__.ActiveCasesOverTime,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Case variants',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Events per case',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Case duration',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Case utilization',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Mean activity duration',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    },
+    {
+        title: 'Mean waiting time',
+        builder: _Views_EventsOverTimeChart__WEBPACK_IMPORTED_MODULE_4__.EventsOverViewChart,
+        data: [
+            { x: 'Jan', y: 532.2 }, { x: 'Feb', y: 453.4 },
+            { x: 'Mar', y: 422.8 }, { x: 'Apr', y: 531.6 },
+            { x: 'May', y: 532.2 }, { x: 'Jun', y: 453.4 },
+            { x: 'July', y: 422.8 }, { x: 'Agu', y: 531.6 },
+            { x: 'Sep', y: 532.2 }, { x: 'Oct', y: 453.4 },
+            { x: 'Nov', y: 422.8 }
+        ]
+    }
+];
+function MetricSelectionButtons(buttons, selectedIndex, onSelectedAction) {
+    return (_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(buttons)(function (name, index) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name).fontSize('13px'))
+            .action(function () { return onSelectedAction(index); })
+            .height(30)
+            .border('solid 1px #ccc')
+            .padding(5)
+            .paddingLeft('10px')
+            .paddingRight('10px')
+            .cornerRadius(index === 0 ? '15px 0px 0px 15px' : (index === buttons.length - 1 ? '0px 15px 15px 0px' : ''))
+            .background(index === selectedIndex ? 'rgb(120,120,120,20%)' : '');
+    })));
+}
+var OverviewController = /** @class */ (function (_super) {
+    __extends(OverviewController, _super);
+    function OverviewController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    OverviewController.prototype.InitController = function () {
+        this.selectedIndex = 0;
+    };
+    OverviewController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })(
+        // Chart
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ZStack)((0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)(overviewTypes[this.selectedIndex].title)
+            .fontSize('30px')
+            .cursor('pointer')
+            .border('dashed 1px var(--sub-border-color)')
+            .transition('border .3s')
+            .onClick(function () { return _this.showMenu = true; }))
+            .padding()
+            .height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 10 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title))
+                .action(function () { return _this.selectedIndex = index; })
+                .background(index === _this.selectedIndex ? 'rgb(120,120,120,20%)' : '')
+                .width(180)
+                .height(30)
+                .border('solid 1px #ccc')
+                .padding()
+                .cornerRadius(12);
+        })).width(250).padding(10).visible(false), 
+        // Chart here
+        overviewTypes[this.selectedIndex].builder(overviewTypes[this.selectedIndex].data)))
+            .visible(true)
+            .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.AnimationStack)(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack.apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(overviewTypes)(function (name, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name.title).cursor('pointer').width('100%').height('100%').shadow('inset 0 -1px 0 0 #e4e4e4').backgroundColor({ hover: '#f9f9f9' })
+                .padding(10)
+                .onClick(function () { _this.selectedIndex = index; _this.showMenu = false; });
+        })))
+            .initial({ y: 20, opacity: 0 }).animate({ y: 0, opacity: 1 }).__transition({ type: "spring", bounce: 0.3 })
+            .overflow('hidden')
+            .backgroundColor('white')
+            // .animation(ListBounceAnimation, '.3s')
+            .visible(this.showMenu))
+            .overflow('hidden')
+            .minHeight('350px'), 
+        // Grid
+        (0,_UI_Views_TileBox__WEBPACK_IMPORTED_MODULE_2__.TileBox)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTop })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTrailing, spacing: -2 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Cases (31)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('5px 0 0 5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_1__.RegularText)('Variants (8)').fontSize('13px').fontWeight('600').padding('0 20px').height(30)).background('rgb(255,255,255,30%)').border('solid 2px #ccc').foregroundColor('#444').cornerRadius('0 5px 5px 0')), (0,_Views_CasesGrid__WEBPACK_IMPORTED_MODULE_3__.CasesGrid)())))));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "selectedIndex", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], OverviewController.prototype, "showMenu", void 0);
+    return OverviewController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Controllers/ProcessStatisticController.ts":
+/*!**************************************************************************!*\
+  !*** ./src/modules/Statistics/Controllers/ProcessStatisticController.ts ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ProcessStatisticController": () => (/* binding */ ProcessStatisticController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+/* harmony import */ var _UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PortalSideMenu */ "./src/UI/Views/PortalSideMenu.ts");
+/* harmony import */ var _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Models/SideMenu */ "./src/modules/Statistics/Models/SideMenu.ts");
+/* harmony import */ var _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Activity/ActivityController */ "./src/modules/Statistics/Controllers/Activity/ActivityController.ts");
+/* harmony import */ var _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Overview/MultiOverviewController */ "./src/modules/Statistics/Controllers/Overview/MultiOverviewController.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+var controllers = [new _Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_5__.MultiOverviewController, new _Activity_ActivityController__WEBPACK_IMPORTED_MODULE_4__.ActivityController];
+var ProcessStatisticController = /** @class */ (function (_super) {
+    __extends(ProcessStatisticController, _super);
+    function ProcessStatisticController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ProcessStatisticController.prototype.InitController = function () {
+        this.selectedIndex = 0;
+        this.currentController = controllers[0];
+    };
+    ProcessStatisticController.prototype.OnControllerChanged = function (index) {
+        this.selectedIndex = index;
+        this.currentController = _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[index].controller;
+    };
+    ProcessStatisticController.prototype.LoadView = function () {
+        var _this = this;
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading })((0,_UI_Views_PortalSideMenu__WEBPACK_IMPORTED_MODULE_2__.PortalSideMenu)({
+            items: _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel,
+            selectedAction: function (index) { return _this.OnControllerChanged(index); },
+            second: true
+        }), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_1__.PageTitle)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].icon, _Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel[this.selectedIndex].name + ' statistics'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(_Models_SideMenu__WEBPACK_IMPORTED_MODULE_3__.sideMenuModel)(function (item, index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(item.icon).size(14).foregroundColor('gray').marginRight('5px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(item.name))
+                .action(function () { return _this.OnControllerChanged(index); })
+                .border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
+                .visible(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsDesktop);
+        })).width()).height(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height(1).backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ScrollView)({ axes: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cVertical })(this.currentController)).padding('10px'))
+            .background(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.TApplication.IsPortal ? '#f1f1f1' : '')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading)));
+    };
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProcessStatisticController.prototype, "currentController", void 0);
+    __decorate([
+        (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.State)()
+    ], ProcessStatisticController.prototype, "selectedIndex", void 0);
+    return ProcessStatisticController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Models/SideMenu.ts":
+/*!***************************************************!*\
+  !*** ./src/modules/Statistics/Models/SideMenu.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "sideMenuModel": () => (/* binding */ sideMenuModel)
+/* harmony export */ });
+/* harmony import */ var _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Controllers/Activity/ActivityController */ "./src/modules/Statistics/Controllers/Activity/ActivityController.ts");
+/* harmony import */ var _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Controllers/Overview/MultiOverviewController */ "./src/modules/Statistics/Controllers/Overview/MultiOverviewController.ts");
+/* harmony import */ var _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Controllers/Overview/OverviewController */ "./src/modules/Statistics/Controllers/Overview/OverviewController.ts");
+
+
+
+var sideMenuModel = [
+    {
+        name: 'Overview',
+        icon: '\\f0d8',
+        controller: new _Controllers_Overview_MultiOverviewController__WEBPACK_IMPORTED_MODULE_1__.MultiOverviewController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Activity',
+        icon: '\\f0e7',
+        controller: new _Controllers_Activity_ActivityController__WEBPACK_IMPORTED_MODULE_0__.ActivityController(),
+        isVisible: function () { return true; }
+    },
+    {
+        name: 'Resource',
+        icon: '\\f006',
+        controller: new _Controllers_Overview_OverviewController__WEBPACK_IMPORTED_MODULE_2__.OverviewController(),
+        isVisible: function () { return true; }
+    }
+];
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Views/ActiveCasesOverTime.ts":
+/*!*************************************************************!*\
+  !*** ./src/modules/Statistics/Views/ActiveCasesOverTime.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ActiveCasesOverTime": () => (/* binding */ ActiveCasesOverTime)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function ActiveCasesOverTime(data) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.BarSerie)().xName('x').yName('y')
+        .columnWidth(0.5)
+        .fill('#FFD062')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'Category',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Views/CasesGrid.ts":
+/*!***************************************************!*\
+  !*** ./src/modules/Statistics/Views/CasesGrid.ts ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "GridHeader": () => (/* binding */ GridHeader),
+/* harmony export */   "GridRow": () => (/* binding */ GridRow),
+/* harmony export */   "CasesGrid": () => (/* binding */ CasesGrid)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/Texts */ "./src/UI/Views/Texts.ts");
+var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
+
+
+
+var columns = [
+    {
+        key: 'caseId',
+        title: 'Case ID',
+        width: 120
+    },
+    {
+        key: 'events',
+        title: 'Events',
+        width: 120,
+        builder: function (row) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['events']).marginRight('10px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width().height(15).background('#7A9BCD').initial({ width: 0 }).animate({ width: '100%' }).__transition({ duration: 1 }));
+        }
+    },
+    {
+        key: 'variant',
+        title: 'Variant',
+        width: 20
+    },
+    {
+        key: 'started',
+        title: 'Started',
+        width: 20
+    },
+    {
+        key: 'finished',
+        title: 'Finished',
+        width: 20
+    },
+    {
+        key: 'duration',
+        title: 'Duration',
+        width: 30,
+        builder: function (row) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row['duration']).marginRight('10px').whiteSpace('nowrap'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.RoundedRectangle)().width('100%').height(15).background('#7A9BCD'));
+        }
+    }
+];
+var data = [
+    {
+        caseId: '1000-2645004',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2653046',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691872',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    },
+    {
+        caseId: '1000-2691873',
+        events: 5,
+        variant: 'variant 5',
+        started: '12/3/2019 16:17:43',
+        finished: '01/02/2020 10:25:05',
+        duration: '1 day, 18 hours'
+    }
+];
+function GridHeader(columnInfo) {
+    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
+        return (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(cInfo.title)
+            .fontFamily("'Source Sans Pro', Arial, sans-serif")
+            .fontSize('18px')
+            .fontWeight('500')
+            .foregroundColor('#1A1A1A')
+            //.textTransform('uppercase')
+            .whiteSpace('nowrap')
+            .width(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.number(cInfo.width) ? cInfo.width + "px" : width + '%')
+            .textOverflow('ellipsis')
+            .padding('0 10px')
+            .borderRight('2px solid transparent');
+    })).height(40).borderBottom('2px solid #e4e4e4'));
+}
+function GridRow(columnInfo, row, onSelectedRow) {
+    var width = _tuval_core__WEBPACK_IMPORTED_MODULE_1__.Convert.ToInt32(100 / columnInfo.length);
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(columnInfo)(function (cInfo) {
+        return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.function(cInfo.builder) ? cInfo.builder(row) :
+            (0,_UI_Views_Texts__WEBPACK_IMPORTED_MODULE_2__.RegularText)(row[cInfo.key])
+                .whiteSpace('nowrap')
+                .textOverflow('ellipsis'))
+            .borderTop('1px solid #e4e4e4')
+            .padding('5px 10px')
+            .width(_tuval_core__WEBPACK_IMPORTED_MODULE_1__.is.number(cInfo.width) ? cInfo.width + "px" : width + '%');
+    })).backgroundColor({ hover: '#f5f5f5' })
+        .height()
+        .onClick(function () { return onSelectedRow(row); }).cursor('pointer'));
+}
+function CasesGrid() {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading }).apply(void 0, __spreadArray([GridHeader(columns)], (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(data)((function (row) {
+        return GridRow(columns, row, function () { });
+    })))));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/Statistics/Views/EventsOverTimeChart.ts":
+/*!*************************************************************!*\
+  !*** ./src/modules/Statistics/Views/EventsOverTimeChart.ts ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "EventsOverViewChart": () => (/* binding */ EventsOverViewChart)
+/* harmony export */ });
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/components/charts */ "@tuval/components/charts");
+/* harmony import */ var _tuval_components_charts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__);
+
+function EventsOverViewChart(data) {
+    return ((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.ChartView)()((0,_tuval_components_charts__WEBPACK_IMPORTED_MODULE_0__.AreaSerie)().xName('x').yName('y')
+        .columnWidth(0.5)
+        .fill('#FFD062')
+        .data(data))
+        .xAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        valueType: 'Category',
+        labelFormat: 'MMM',
+        majorGridLines: { width: 0 },
+        intervalType: 'Months'
+    })
+        .yAxis({
+        labelStyle: {
+            fontFamily: 'Ubuntu, sans-serif',
+            size: '14px'
+        },
+        labelFormat: '{value}',
+        lineStyle: { width: 0 },
+        majorTickLines: { width: 0 },
+        minorTickLines: { width: 0 }
+    })
+        .backgroundColor('transparent'));
+}
+
+
+/***/ }),
+
+/***/ "./src/modules/VariantExplorer/Controllers/VariantExplorerController.ts":
+/*!******************************************************************************!*\
+  !*** ./src/modules/VariantExplorer/Controllers/VariantExplorerController.ts ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "VariantExplorerController": () => (/* binding */ VariantExplorerController)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Views/VariantActivityShape */ "./src/modules/VariantExplorer/Views/VariantActivityShape.ts");
+/* harmony import */ var _UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../UI/Views/PageHeader */ "./src/UI/Views/PageHeader.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+var VariantExplorerController = /** @class */ (function (_super) {
+    __extends(VariantExplorerController, _super);
+    function VariantExplorerController() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    VariantExplorerController.prototype.InitController = function () {
+    };
+    VariantExplorerController.prototype.LoadView = function () {
+        return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIScene)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cTopLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_UI_Views_PageHeader__WEBPACK_IMPORTED_MODULE_2__.PageTitle)('\\f13c', 'Variant explorer'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Spacer)(), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 5 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)(['Overview', 'Throughput times', 'Activities'])(function (name) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(name)).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px');
+        })).width()).alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.leading), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HDivider)().height('1px').backgroundColor('rgb(120,120,120,20%)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ spacing: 20 }).apply(void 0, (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.ForEach)([1, 2, 3, 4, 5])(function (index) {
+            return (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 20 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Variant 1').fontSize('24px').fontFamily('Ubuntu, sans-serif').fontWeight('700').minWidth('200px'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Gauge)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Range)()).color('#14a9d5').maskColor('rgb(120,120,120,20%)').radius(30).stroke(7).value(67).height(55), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Satınalma onayının verilmesi'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('Gerekli kontrollerin Sağlanması'), (0,_Views_VariantActivityShape__WEBPACK_IMPORTED_MODULE_1__.VariantActivityShapeView)('İzin talebi başladı'))).padding(20);
+        }))).padding(10).height())
+            .backgroundColor('#f1f1f1')
+            .alignment(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Alignment.topLeading));
+    };
+    return VariantExplorerController;
+}(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIController));
+
+
+
+/***/ }),
+
+/***/ "./src/modules/VariantExplorer/Views/VariantActivityShape.ts":
+/*!*******************************************************************!*\
+  !*** ./src/modules/VariantExplorer/Views/VariantActivityShape.ts ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "VariantActivityShapeView": () => (/* binding */ VariantActivityShapeView)
+/* harmony export */ });
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+
+function VariantActivityShapeView(text) {
+    return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
+        .marginLeft('5px')
+        .marginRight('20px'))
+        .width('150px')
+        .height('80px')
+        .clipPath('polygon(0% 0%, 75% 0%, 95% 50%, 75% 100%, 0% 100%)')
+        .background('yellow')).width('auto').height('auto').filter('drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5))'));
+}
 
 
 /***/ }),

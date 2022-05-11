@@ -1,4 +1,4 @@
-import { MIProject } from '../Domains/Project/Models/ProjectModel';
+import { MIProject } from '../domains/Project/Models/ProjectModel';
 import { IActivityInfo } from "../Bussiness/IActivityInfo";
 import { IDataSet } from "../Bussiness/IDataSet";
 import { IProject } from "../Bussiness/IProject";
@@ -6,11 +6,11 @@ import { Project } from "../Bussiness/Project";
 import { IProjectService } from "./IProjectService";
 import { StateService } from "./StateService";
 import { MiningBrokerClient, ICreateProjectResponse } from '../BrokerClients/MiningBrokerClient';
-import { MIProjectItem } from '../Domains/Project/Models/MIProjectItem';
+import { MIProjectItem } from '../domains/Project/Models/MIProjectItem';
 import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
 
 export class BrokerProjectService implements IProjectService {
-    public CreateProject(name: string): Promise<IProject> {
+    public CreateProject(name: string): Promise<MIProject> {
         return new Promise((resolve, reject) => {
             const session_id = StateService.GetSessionId();
             if (session_id == null) {
@@ -18,8 +18,8 @@ export class BrokerProjectService implements IProjectService {
             }
             MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name).then((project: ICreateProjectResponse) => {
                 resolve({
-                    Id: project.project_id,
-                    Name: project.project_name
+                    project_id: project.project_id,
+                    project_name: project.project_name
                 });
             });
         });

@@ -5,7 +5,7 @@ import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
-import { topModels } from './../Models/MVIDatasetTabModel';
+import { topModels } from '../Models/MVIDatasetTabModel';
 
 export class DatasetController extends UIController {
 

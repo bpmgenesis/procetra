@@ -1,5 +1,21 @@
 import { UIView, UIButton, Text, UIButtonClass, TApplication } from '@tuval/forms';
 
+
+export function SelectButton(value: string): UIButtonClass {
+    return (
+        UIButton(
+            Text(value).fontSize(TApplication.IsPortal ? '16px' : '')
+        )
+            .height('34px')
+            .padding('15px 15px')
+            .cornerRadius(3)
+            .lineHeight('24px')
+            .minHeight('24px')
+            .shadow({ default: '0 2px 5px 0 rgb(0 0 0 / 26%)', active: '0 4px 8px 0 rgb(0 0 0 / 40%)' })
+            .foregroundColor('rgba(255,255,255,0.87)')
+            .backgroundColor({ default: 'rgb(43,170,181)', hover: 'rgb(127,217,225)' })
+    )
+}
 export function AcceptButton(value: string): UIButtonClass {
     return (
         UIButton(

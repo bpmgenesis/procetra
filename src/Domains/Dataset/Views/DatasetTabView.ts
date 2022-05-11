@@ -20,11 +20,10 @@ export function DatasetTabView(datasetTabViewParams: DatasetTabViewParams): UIVi
                         header: (
                             HStack(
                                 VDivider().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'),
-                                HStack({ spacing: 5 })(
+                                VStack({ spacing: 1 })(
                                     Icon(tabItem.icon).size(25).width('auto'),
                                     Text(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center')
                                 )
-                                    .wrap('wrap')
                                     .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
                                     .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                                     .padding(10)
@@ -32,16 +31,16 @@ export function DatasetTabView(datasetTabViewParams: DatasetTabViewParams): UIVi
                                     .transition('all 0.35s'),
 
                                 VDivider().height('70%').background('rgb(120,120,120,30%)')
-                            ).maxWidth('100px').visible(!tabItem.isRight)
+                            ).maxWidth('100px').minHeight('78px').visible(!tabItem.isRight)
                         ),
                         rightHeader: (
                             HStack(
                                 VDivider().visible(index === 0).height('70%').background('rgb(120,120,120,30%)'),
-                                HStack({ spacing: 5 })(
+                                VStack({ spacing: 1 })(
                                     Icon(tabItem.icon).size(25).width('auto'),
                                     Text(tabItem.name.toUpperCase()).fontSize('8pt').textAlign('center')
                                 )
-                                    .wrap('wrap')
+                                    .height(78)
                                     .borderTop(datasetTabViewParams.selectedTabIndex === index ? 'solid 2px blue' : 'solid 2px transparent')
                                     .foregroundColor(datasetTabViewParams.selectedTabIndex === index ? 'gray' : 'rgb(120,120,120,50%)')
                                     .padding(10)
@@ -49,7 +48,7 @@ export function DatasetTabView(datasetTabViewParams: DatasetTabViewParams): UIVi
                                     .transition('all 0.35s'),
 
                                 VDivider().height('70%').background('rgb(120,120,120,30%)')
-                            ).maxWidth('100px').visible(tabItem.isRight)
+                            ).maxWidth('100px').minHeight('78px').visible(tabItem.isRight)
                         ),
                         content: tabItem.controller as any
                     }).onSelected(() => { datasetTabViewParams.onTabSelected(index); }),

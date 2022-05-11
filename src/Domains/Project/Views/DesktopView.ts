@@ -53,48 +53,160 @@ export interface DesctopViewParams {
     NewProjectItemAction: Function,
     selectedProjectItemController: UIController
 }
+
+const menu = [
+    {
+        title: 'New'
+    },
+    {
+        title: 'Open'
+    },
+    {
+        title: 'Details'
+    },
+    {
+        title: 'Divider'
+    }
+]
+
+const modelMenu = [
+    {
+        icon: '\\d2c8',
+        iconColor: 'black',
+        title: 'Rename',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\d2a4',
+        iconColor: 'black',
+        title: 'Permissions',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\d3a4',
+        iconColor: 'black',
+        title: 'Duplicate',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\d2da',
+        iconColor: 'black',
+        title: 'Tags',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\d299',
+        iconColor: 'black',
+        title: 'Move To',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '\\d2a6',
+        iconColor: 'red',
+        title: 'Delete',
+        onClick: (item) => console.log(item)
+    }
+]
+
+const queryMenu = [
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'All cases',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Open',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Save',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Save as',
+        onClick: (item) => console.log(item)
+    },
+    {
+        icon: '',
+        iconColor: 'black',
+        title: 'Export',
+        onClick: (item) => console.log(item)
+    }
+]
 export function DesktopView({ selectedProjectItem, selectedProjectItems, ProjectItemSelectedAction, NewProjectItemAction, selectedProjectItemController }: DesctopViewParams) {
     return ({ onCloseProject }) => {
         return UIScene(
             TwoColumnWithHeaderLayout({
                 header: [
-                    HStack({ alignment: cLeading })(
-                        Icon('\\efd5').size(30).marginBottom('10px'),
+                    HStack({ alignment: cLeading, spacing: 10 })(
+                        Icon('\\d1fd').size(30).marginBottom('10px'),
                         VStack({ alignment: cLeading })(
                             AnimHeadline5('Ticket Management').lineHeight(35).whiteSpace('nowrap'),
                             AnimHeadline5('Ensemble Mining Model').fontSize('14px').textTransform('uppercase'),
                         ).marginLeft('5px').marginRight('10px').width(),
                         VDivider().height('80%').backgroundColor('rgb(120,120,120,50%)'),
-                        Icon('\\efde').size(24).marginHorizontal('10px').foregroundColor('#666'),
+                        Icon('\\e153').size(24).foregroundColor('#666'),
                         VStack({ alignment: cLeading })(
                             RegularText('7.500').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'),
                             RegularText('EVENTS').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666'),
                         ).width(),
                         VDivider().height('80%').backgroundColor('rgb(120,120,120,50%)'),
-                        Icon('\\f033').size(24).marginHorizontal('10px').foregroundColor('#666'),
+                        Icon('\\d25b').size(24).foregroundColor('#666'),
                         VStack({ alignment: cLeading })(
                             RegularText('3.124').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(25).foregroundColor('#666').lineHeight('1em'),
                             RegularText('CASES').fontFamily("'Source Sans Pro', Arial, sans-serif").fontWeight('600').fontSize(14).foregroundColor('#666'),
                         ).width(),
                         Spacer(),
-                        UIContextMenu(
+                        HStack({ spacing: 10 })(
+                            UIContextMenu(
+                                ...ForEach(menu)(item =>
+                                    HStack({ alignment: cLeading, spacing: 10 })(
+                                        RegularText(item.title)
+                                    )
+                                )
 
-                            HStack({ alignment: cLeading, spacing: 10 })(
-                                Icon('\\f033').size(16),
-                                Text('Test')
-                            )
-                        )(
-                            Icon('\\f04f').size(24),
-                        ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
-                        UIContextMenu(
+                            )(
+                                HStack(
+                                    RegularText('Project').fontSize(16).fontWeight('500'),
+                                    Icon('\\e5c5').size(16)
+                                ).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)
+                            ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
+                            UIContextMenu(
+                                ...ForEach(modelMenu)( menuItem =>
+                                    HStack({ alignment: cLeading, spacing: 10 })(
+                                        Icon(menuItem.icon).size(16),
+                                        Text(menuItem.title)
+                                    )
+                                )
+                            )(
+                                HStack(
+                                    RegularText('Model').fontSize(16).fontWeight('500'),
+                                    Icon('\\e5c5').size(16)
+                                ).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)
+                            ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
 
-                            HStack({ alignment: cLeading, spacing: 10 })(
-                                Icon('\\f033').size(16),
-                                Text('Test')
-                            )
-                        )(
-                            Icon('\\f04a').size(24),
-                        ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
+                            // Query Menu
+                            UIContextMenu(
+                                ...ForEach(queryMenu)( menuItem =>
+                                    HStack({ alignment: cLeading, spacing: 10 })(
+                                        Icon(menuItem.icon).size(16),
+                                        Text(menuItem.title)
+                                    )
+                                )
+                            )(
+                                HStack(
+                                    RegularText('Query').fontSize(16).fontWeight('500'),
+                                    Icon('\\e5c5').size(16)
+                                ).padding(5).backgroundColor({ focus: 'rgb(120,120,120,50%)' }).tabIndex(0).cornerRadius(5)
+                            ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s')
+                        ).width() //auto,
                     )
                         .height(80)
                         .shadow('0 0 8px 0 #ccc')
@@ -167,7 +279,7 @@ export function DesktopView({ selectedProjectItem, selectedProjectItems, Project
                         ).width('200px').background('rgb(255,255,255,10%)').grow(),
                         // Project items buttons
                         HStack({ alignment: cCenter, spacing: 5 })(
-                            ListFooterButton('\\efff').action(() => NewProjectItemAction()),
+                            ListFooterButton('\\e145').action(() => NewProjectItemAction()),
                             ListFooterButton('\\effd'),
                             ListFooterButton('\\f04a'),
                             ListFooterButton('\\f0bb')

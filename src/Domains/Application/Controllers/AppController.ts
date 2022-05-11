@@ -22,7 +22,9 @@ import {
 
 import { MVIAnalyseModel } from '../../../../dist_types/types/Domains/AnalyseModels/Models/MVIAnalyseModel';
 import { ProcessMining } from '../../../Application';
+import { IProject } from '../../../Bussiness/IProject';
 import { Resources } from '../../../Resources';
+import { Services } from '../../../Services/Services';
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { AnalyseModelsController } from '../../AnalyseModels/Controllers/AnalyseModelsController';
 import { ProjectController } from '../../Project/Controllers/ProjectController';
@@ -57,11 +59,11 @@ export class AppController extends UIController {
             UIScene(
                 HStack(
                     VStack({ spacing: 10 })(
-                        MenuButton('', '\\f064', () => this.OnNewProject()),
-                        MenuButton('', '\\f06d', () => this.OnOpenProject()),
-                        MenuButton('', '\\f051', () => this.OnNewProject()),
-                        MenuButton('', '\\f183', () => this.OnNewProject()),
-                        MenuButton('', '\\f04a', () => this.OnNewProject())
+                        MenuButton('', '\\d28c', () => this.OnNewProject()),
+                        MenuButton('', '\\d295', () => this.OnOpenProject()),
+                        MenuButton('', '\\d279', () => this.OnNewProject()),
+                        MenuButton('', '\\d21d', () => this.OnNewProject()),
+                        MenuButton('', '\\d272', () => this.OnNewProject())
                     ).width('120px'),
                     RecentProjects()
                 )
@@ -155,7 +157,19 @@ export class AppController extends UIController {
     }
 
     private OnNewProject() {
-        ProjectUIService.NewProject();
+        ProjectUIService.NewProject().then((name: string)=>{
+            const session_id = Services.StateService.GetSessionId();
+            Services.ProjectService.CreateProject(name).then((project:MIProject)=>{
+                this.currentProject = project;
+                // this.controller = ProjectController(this, project);
+                const controller = new AnalyseModelsController();
+                controller.Bind(project);
+                controller.AnalyseModelSelected.add((item: MVIAnalyseModel) => {
+                    this.currentController = ProjectController(this, project);
+                });
+                this.currentController = controller;
+            });
+        });
     }
 
     private OnOpenProject() {

@@ -1,9 +1,9 @@
-import { Event } from '@tuval/core';
-import { cTopLeading, cTrailing, Dialog, HStack, State, Text, UIController, UIScene, UIView, VStack } from '@tuval/forms';
+import { cTopLeading, cTrailing, Dialog, HStack, Text, UIController, UIScene, UIView, VStack, cLeading, Icon } from '@tuval/forms';
 
-import { Bindable } from '../../../Domains/ProcessOverview/Controllers/Overview/Bindable';
-import { AcceptButton, CancelButton } from '../../Views/Buttons';
+import { Bindable } from '../../../modules/ProcessOverview/Controllers/Overview/Bindable';
+import { AcceptButton, CancelButton, SelectButton } from '../../Views/Buttons';
 import { RegularTextBox } from '../../Views/RegularTextBox';
+import { RegularText } from '../../Views/Texts';
 
 
 export class AddEditAnalyseModelNameDialog extends Dialog {
@@ -26,6 +26,10 @@ export class AddEditAnalyseModelNameDialog extends Dialog {
         this.ShowDialogAsyncResolve(value);
         this.Hide();
     }
+
+    public OnCancel() {
+        this.Hide();
+    }
 }
 class AddEditAnalyseModelNameController extends UIController {
 
@@ -43,18 +47,26 @@ class AddEditAnalyseModelNameController extends UIController {
     public LoadView(): UIView {
         return (
             UIScene(
-                VStack({ alignment: cTopLeading })(
-                    Text('New Analyse Model').fontSize('24px').fontWeight('700').marginBottom('50px'),
-                    VStack(
-                        RegularTextBox({ value: this.$txtName })
-                    ).height(), //auto
-                    HStack({ alignment: cTrailing })(
-                        AcceptButton('OK').action(() => this.dialog.OnOKClick(this.$txtName.get())),
-                        CancelButton('Cancel')
-                    )
-                )
-            ).padding(10)
+                VStack({ spacing: 10 })(
+                    HStack({ alignment: cLeading, spacing: 5 })(
+                        // Icon('\\d1fe').size(24).foregroundColor('#263238'),
+                        RegularText('New Mining Model').fontSize(20).fontFamily("'Source Sans Pro', Arial, sans-serif")
+                    ).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'),
+                    VStack({ alignment: cTopLeading, spacing: 20 })(
+                        VStack(
+                            RegularTextBox({ icon: '\\d1fd', value: this.$txtName }),
+                        ).height(), //auto
 
+                        // Select Repository Button
+                        //SelectButton('Select Repository'),
+
+                        HStack(
+                            CancelButton('Cancel').action(() => this.dialog.OnCancel()),
+                            AcceptButton('OK').action(() => this.dialog.OnOKClick(this.$txtName.get()))
+                        )
+                    ).padding(10)
+                )
+            )
         )
     }
 }

@@ -1,5 +1,5 @@
 import { UIController, UIView, UIScene, VStack, cTopLeading, HStack, cTrailing, Text, ScrollView, ForEach, Icon } from '@tuval/forms';
-import { Bindable } from '../../../../Domains/ProcessOverview/Controllers/Overview/Bindable';
+import { Bindable } from '../../../../modules/ProcessOverview/Controllers/Overview/Bindable';
 import { AcceptButton, CancelButton } from '../../../Views/Buttons';
 import { RegularTextBox } from '../../../Views/RegularTextBox';
 import { SelectFilterDialog } from '../SelectFilterDialog';

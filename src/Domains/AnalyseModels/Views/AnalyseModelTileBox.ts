@@ -1,4 +1,4 @@
-import { UIView, VStack, cTopLeading, ZStack, Icon, HStack, Color, UIContextMenu, Spacer, Text, ForEach, cLeading } from '@tuval/forms';
+import { UIView, VStack, cTopLeading, ZStack, Icon, HStack, Color, UIContextMenu, Spacer, Text, ForEach, cLeading, TextAlignment } from '@tuval/forms';
 import { RegularText } from '../../../UI/Views/Texts';
 import { MVIAnalyseModel } from '../Models/MVIAnalyseModel';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
@@ -9,11 +9,11 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
     return (
         VStack({ alignment: cTopLeading })(
             ZStack(
-                Icon('\\f0f1').size(80).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'),
-                Icon('\\f08f').size(90).foregroundColor('rgb(120,120,120,10%)').right('10px').bottom('10px'),
+                // Icon('\\d271').size(100).foregroundColor('rgb(120,120,120,10%)').left('10px').bottom('0'),
+                Icon('\\d1fd').size(100).foregroundColor('rgb(120,120,120,10%)').right('-13px').bottom('-2px'),
                 HStack({ spacing: 10 })(
-                    Icon('\\f0f2').size(20),
-                    RegularText(params.name).fontSize('18px').lineHeight('20px'),
+                    Icon('\\d31a').size(20),
+                    RegularText(params.name).fontSize('18px').lineHeight('20px').multilineTextAlignment(TextAlignment.leading),
                     Spacer(),
                     UIContextMenu(
                         ...ForEach(menuItems)(item =>
@@ -23,7 +23,7 @@ export function AnalyseModelTileBox(params: MVIAnalyseModel, menuItems: MVITitle
                             ).onClick((e) => { item.onClick(params) })
                         )
                     )(
-                        Icon('\\f09e').size(20),
+                        Icon('\\d2c6').size(20),
                     ).cursor('pointer').border('solid 1px var(--sub-border-color)').transition('border .3s'),
                 ).width('100%').height().padding(15)
             )
