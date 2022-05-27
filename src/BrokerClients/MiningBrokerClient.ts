@@ -1,13 +1,17 @@
 import { HttpClient } from '@tuval/core';
 import { ConfigService } from '../Services/ConfigService';
-import { MIProject } from '../domains/Project/Models/ProjectModel';
-import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
+import { MIProject } from '../models/MIProject';
+import { MIMiningModel } from '../UI/Models/MIAnalyseModel';
 
 
 export interface ICreateProjectResponse {
     project_id: string;
     project_name: string;
-    creator: string;
+    admin: string;
+    is_public: boolean;
+    disable_cache: boolean;
+    is_data_loaded: boolean;
+
 }
 
 const separators = [",", ";", "\t"];
@@ -241,12 +245,19 @@ export class MiningBrokerClient {
         });
     }
 
-    public static async CreateProject(session_id: string, org_name: string, project_name: string): Promise<any> {
+    public static async CreateProject(session_id: string, org_name: string,
+        project_name: string,
+        admin: string,
+        is_public: boolean,
+        disable_cache: boolean): Promise<any> {
         return new Promise((resolve, reject) => {
             const form = new FormData();
             form.append('session_id', session_id);
             form.append('org_name', org_name);
             form.append('project_name', project_name);
+            form.append('admin', admin);
+            form.append('is_public', is_public ? "true" : "false");
+            form.append('disable_cache', disable_cache ? "true" : "false");
 
             HttpClient.Post(ConfigService.GetMiningBrokerUrl() + 'CreateProject', form)
                 .then(response => {
@@ -268,12 +279,12 @@ export class MiningBrokerClient {
         });
     }
 
-    public static async GetProjectById(session_id: string, org_name: string, project_id: string): Promise<any> {
+    public static async GetProjectById(session_id: string, org_name: string, project_id: string): Promise<MIProject> {
         return new Promise((resolve, reject) => {
             const form = new FormData();
             form.append('session_id', session_id);
             form.append('org_name', org_name);
-            form.append('project_id', org_name);
+            form.append('project_id', project_id);
 
             HttpClient.Post(ConfigService.GetMiningBrokerUrl() + 'GetProjectById', form)
                 .then(response => {
@@ -312,7 +323,7 @@ export class MiningBrokerClient {
     }
 
     //#region Anayse Models
-    public static async CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIAnalyseModel> {
+    public static async CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIMiningModel> {
         return new Promise((resolve, reject) => {
             const form = new FormData();
             form.append('session_id', session_id);
@@ -326,7 +337,7 @@ export class MiningBrokerClient {
                 });
         });
     }
-    public static async GetAnalyseModels(session_id: string, org_name: string, project_id: string): Promise<MIAnalyseModel[]> {
+    public static async GetAnalyseModels(session_id: string, org_name: string, project_id: string): Promise<MIMiningModel[]> {
         return new Promise((resolve, reject) => {
             const form = new FormData();
             form.append('session_id', session_id);
@@ -340,5 +351,22 @@ export class MiningBrokerClient {
         });
     }
     //#endregion
+
+    public static async CreateMapping(session_id: string, org_name: string, project_id: string, mapping_name:string, mapping_file_name: string,mapping_data: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            const form = new FormData();
+            form.append('session_id', session_id);
+            form.append('org_name', org_name);
+            form.append('project_id', project_id);
+            form.append('mapping_name', mapping_name);
+            form.append('mapping_file_name', mapping_file_name);
+            form.append('mapping_data', mapping_data);
+
+            HttpClient.Post(ConfigService.GetMiningBrokerUrl() + 'CreateMapping', form)
+                .then(response => {
+                    resolve(response.data);
+                });
+        });
+    }
 
 }

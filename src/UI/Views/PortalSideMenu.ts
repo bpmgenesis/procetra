@@ -1,5 +1,5 @@
-import { VStack, ForEach, Icon, UIView, Text, Alignment, TApplication, ApplicationModes, UIController, cTopLeading, bindState } from '@tuval/forms';
 import { int } from '@tuval/core';
+import { bindState, cTopLeading, ForEach, Icon, TApplication, Text, UIController, UIView, VStack } from '@tuval/forms';
 
 export interface PortalSideMenuParams {
     items: MVIPortalSideMenuItem[];

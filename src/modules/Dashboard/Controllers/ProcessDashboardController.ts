@@ -1,20 +1,30 @@
-import { TuRectangle, ViewRenderingMode, TuViewSnapStyle, TuViewGridStyle } from '@tuval/components/diagram';
-import { Pens, Brushes } from '@tuval/graphics';
-import {
-    UIController, UIView, Text, UIScene, VStack,
-    HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, TwoColumnLayout2
-} from '@tuval/forms';
-
-
 import { CGSize } from '@tuval/cg';
-
-import { PaletteView } from '../Views/PaletteView';
-import { PaletteModel } from '../Models/MDPalette';
-import { PageTitle } from '../../../UI/Views/PageHeader';
+import { TuRectangle, TuViewGridStyle, TuViewSnapStyle, ViewRenderingMode } from '@tuval/components/diagram';
 import { int } from '@tuval/core';
+import {
+    cTopLeading,
+    ForEach,
+    HDivider,
+    HStack,
+    Spacer,
+    State,
+    Text,
+    TwoColumnLayout2,
+    UIButton,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+import { Brushes, Pens } from '@tuval/graphics';
+
 import { DashboardView } from '../../../UI/Controls/DashboardView/DashboardView';
+import { PageTitle } from '../../../UI/Views/PageHeader';
+import { PaletteModel } from '../Models/MDPalette';
 import { MIPaletteCategory } from '../Models/MIPaletteCategory';
-import { cTopLeading } from '@tuval/forms';
+import { PaletteView } from '../Views/PaletteView';
+
+
 export class ProcessDashboardController extends UIController {
 
     private palettedata: MIPaletteCategory[];
@@ -76,12 +86,14 @@ export class ProcessDashboardController extends UIController {
                     TwoColumnLayout2(
                         {
                             left: [
-                                VStack(
-                                    VStack(
+                                VStack({alignment:cTopLeading})(
+                                    VStack({alignment:cTopLeading})(
                                         this.svg as any
-                                    ).position('absolute').alignment(Alignment.topLeading)
-                                ).overflowX('auto').overflowY('auto').alignment(Alignment.topLeading)
-
+                                    )
+                                    .position('absolute')
+                                )
+                                .overflowX('auto')
+                                .overflowY('auto')
                             ],
                             right: [
                                 PaletteView(this.palettedata)
@@ -90,7 +102,8 @@ export class ProcessDashboardController extends UIController {
                     )
 
                 ).padding('10px')
-            ).alignment(Alignment.topLeading)
+            )
+            .alignment(cTopLeading)
         )
     }
 }

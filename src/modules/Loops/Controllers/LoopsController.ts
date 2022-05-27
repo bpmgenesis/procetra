@@ -1,4 +1,18 @@
-import { UIController, UIView, Text, UIScene, cTopLeading, HStack, VStack, cLeading, Spacer, HDivider, ScrollView, cVertical, TApplication, Alignment } from '@tuval/forms';
+import {
+    cLeading,
+    cTopLeading,
+    cVertical,
+    HDivider,
+    HStack,
+    ScrollView,
+    Spacer,
+    TApplication,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { PageTitle } from '../../../UI/Views/PageHeader';
 
 export class LoopsController extends UIController {
@@ -19,7 +33,6 @@ export class LoopsController extends UIController {
                 ).padding('10px')
             )
                 .background(TApplication.IsPortal ? '#f1f1f1' : '')
-                .alignment(Alignment.topLeading)
         )
     }
 }

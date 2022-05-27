@@ -2,7 +2,7 @@ import { IProject } from '../Bussiness/IProject';
 import { IActivityInfoBag, IDataSet } from '../Bussiness/IDataSet';
 import { int } from '@tuval/core';
 import { IActivityInfo } from '../Bussiness/IActivityInfo';
-import { MIProject } from '../domains/Project/Models/ProjectModel';
+import { MIProject } from '../models/MIProject';
 
 export type ThreadResult<T> = any;
 

@@ -1,4 +1,4 @@
-import { UIView, VStack, HStack, cTopLeading, cLeading, If, RoundedRectangle, ForEach, Text } from '@tuval/forms';
+import { UIView, VStack, HStack, cTopLeading, cLeading, If, RoundedRectangle, ForEach, Text, FHStack, FVStack, FastText } from '@tuval/forms';
 import { int, Convert, is } from '@tuval/core';
 import { RegularText } from '../../../UI/Views/Texts';
 
@@ -154,7 +154,7 @@ export function GridHeader(columnInfo: IGridColumn[]) {
                     .foregroundColor('#1A1A1A')
                     //.textTransform('uppercase')
                     .whiteSpace('nowrap')
-                    .width(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
+                    .minWidth(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
                     .textOverflow('ellipsis')
                     .padding('0 10px')
                     .borderRight('2px solid transparent')
@@ -169,15 +169,17 @@ export function GridRow(columnInfo: IGridColumn[], row: any, onSelectedRow: Func
 
         HStack({ alignment: cLeading })(
             ...ForEach(columnInfo)(cInfo =>
-                VStack({ alignment: cLeading })(
+                FVStack({ alignment: cLeading })(
                     is.function(cInfo.builder) ? cInfo.builder(row) :
-                        RegularText(row[cInfo.key])
+                        FastText(row[cInfo.key])
+                            .fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('14px').lineHeight('1.42857').foregroundColor('#333')
                             .whiteSpace('nowrap')
                             .textOverflow('ellipsis')
                 )
+                    .width()
                     .borderTop('1px solid #e4e4e4')
                     .padding('5px 10px')
-                    .width(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
+                    .minWidth(is.number(cInfo.width) ? `${cInfo.width}px` : width + '%')
             )
         )
             .backgroundColor({ hover: '#f5f5f5' })

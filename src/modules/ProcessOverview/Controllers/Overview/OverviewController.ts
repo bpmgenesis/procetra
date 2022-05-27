@@ -1,14 +1,13 @@
-import { Bindable } from './Bindable';
-import { MVIActivityBox } from './Views/ActivityBox';
 import { int } from '@tuval/core';
-import { TvChart } from '@tuval/components/charts';
-import { UIController, UIView, VStack, PositionTypes, Alignment, State } from '@tuval/forms';
+import { cTopLeading, PositionTypes, State, UIController, UIView, VStack } from '@tuval/forms';
+
+import { EventsOverTimeChart } from '../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart';
+import { MVIActivityBox } from './Views/ActivityBox';
 import { ActivitySection } from './Views/ActivitySection';
+import { MVIHappyPathAbsoluteBoxModel } from './Views/HappyPathBox';
+import { MVIHappyPathDiagramItem } from './Views/HappyPathDiagram';
 import { HappyPathSection, MVIHappyPathSectionModel } from './Views/HappyPathSection';
 import { MetricsSection, MVIMetricSection } from './Views/MetricsSection';
-import { MVIHappyPathDiagramItem } from './Views/HappyPathDiagram';
-import { MVIHappyPathAbsoluteBoxModel } from './Views/HappyPathBox';
-import { EventsOverTimeChart } from '../../../../UI/Controls/EventsOverTimeChart/EventsOverTimeChart';
 
 
 const testActivitySectionModel: MVIActivityBox[] = [
@@ -177,11 +176,12 @@ export class OverviewController extends UIController {
 
     public LoadView(): UIView {
         return (
-            VStack(
+            VStack({ alignment: cTopLeading })(
                 MetricsSection(this.metricSectionModel),
                 HappyPathSection(this.happPathSectionModel),
                 ActivitySection(this.activitySectionModel)
-            ).position(PositionTypes.Absolute).alignment(Alignment.topLeading)
+            )
+                .position(PositionTypes.Absolute)
         )
     }
 }

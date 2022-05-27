@@ -52,7 +52,6 @@ export class TuDashboardShape extends TuRectangle {
        //   this.dropTarget.Controls.Add(this.GetPreviewControl());
 
         this.dropTarget.Drop.add(((e: DropEventArgs) => {
-            debugger;
             const [projectId, datasetId] = e.nativeEvent.dataTransfer.getData('text').split(';');
             if (!is.nullOrEmpty(projectId) && !is.nullOrEmpty(datasetId)) {
                 this.SetDataSet(projectId, datasetId);
@@ -74,7 +73,6 @@ export class TuDashboardShape extends TuRectangle {
       } */
 
     public SetDataSet(projectId: string, datasetId: string) {
-        debugger;
         const log_id = datasetId;
         MiningBrokerClient.GetActivityOverview(log_id).then(data => {
             (this.Control as any).SetChartData(data);

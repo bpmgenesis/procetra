@@ -1,4 +1,18 @@
-import { UIController, UIView, UIScene, VStack, cTopLeading, HStack, cLeading, Spacer, HDivider, ScrollView, cVertical, TApplication, Alignment } from '@tuval/forms';
+import {
+    cLeading,
+    cTopLeading,
+    cVertical,
+    HDivider,
+    HStack,
+    ScrollView,
+    Spacer,
+    TApplication,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { PageTitle } from '../../../UI/Views/PageHeader';
 
 export class AutomationController extends UIController {
@@ -19,7 +33,7 @@ export class AutomationController extends UIController {
                 ).padding('10px')
             )
                 .background(TApplication.IsPortal ? '#f1f1f1' : '')
-                .alignment(Alignment.topLeading)
+                .alignment(cTopLeading)
         )
     }
 }

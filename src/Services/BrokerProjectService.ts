@@ -1,4 +1,4 @@
-import { MIProject } from '../domains/Project/Models/ProjectModel';
+import { MIProject } from '../models/MIProject';
 import { IActivityInfo } from "../Bussiness/IActivityInfo";
 import { IDataSet } from "../Bussiness/IDataSet";
 import { IProject } from "../Bussiness/IProject";
@@ -6,20 +6,24 @@ import { Project } from "../Bussiness/Project";
 import { IProjectService } from "./IProjectService";
 import { StateService } from "./StateService";
 import { MiningBrokerClient, ICreateProjectResponse } from '../BrokerClients/MiningBrokerClient';
-import { MIProjectItem } from '../domains/Project/Models/MIProjectItem';
-import { MIAnalyseModel } from '../UI/Models/MIAnalyseModel';
+import { MIProjectItem } from '../domains/MiningModel/Models/MIProjectItem';
+import { MIMiningModel } from '../UI/Models/MIAnalyseModel';
 
-export class BrokerProjectService implements IProjectService {
-    public CreateProject(name: string): Promise<MIProject> {
+export class BrokerProjectService/*  implements IProjectService */ {
+    public CreateProject(name: string, admin: string, isPublic: boolean = true, disableCache: boolean = false): Promise<MIProject> {
         return new Promise((resolve, reject) => {
             const session_id = StateService.GetSessionId();
             if (session_id == null) {
                 throw 'Invalid session.'
             }
-            MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name).then((project: ICreateProjectResponse) => {
+            MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name, admin, isPublic, disableCache).then((project: ICreateProjectResponse) => {
                 resolve({
                     project_id: project.project_id,
-                    project_name: project.project_name
+                    project_name: project.project_name,
+                    admin: project.admin,
+                    isPublic: project.is_public,
+                    diableCache: project.disable_cache,
+                    is_data_loaded: project.is_data_loaded
                 });
             });
         });
@@ -87,7 +91,6 @@ export class BrokerProjectService implements IProjectService {
         throw new Error("Method not implemented.");
     }
     GetEventsOverTime(projectId: string, datasetId: string): Promise<any> {
-        debugger;
         return new Promise((resolve, reject) => {
 
         });
@@ -166,12 +169,16 @@ export class BrokerProjectService implements IProjectService {
     //#endregion
 
     //#region Analyse Models
-    public CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIAnalyseModel> {
+    public CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIMiningModel> {
         return MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
     }
-    public GetAnalyseModels(session_id: string, org_name: string, project_id: string,): Promise<MIAnalyseModel[]> {
+    public GetAnalyseModels(session_id: string, org_name: string, project_id: string,): Promise<MIMiningModel[]> {
         return MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
     }
     //#endregion
+
+    public CreateMapping(session_id: string, org_name: string, project_id: string, mapping_name: string, mapping_file_name: string, mapping_data: string): Promise<string> {
+        return MiningBrokerClient.CreateMapping(session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data);
+    }
 
 }

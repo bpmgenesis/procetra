@@ -1,11 +1,24 @@
-import { UIView, Text, VStack, HStack, Icon, Spacer, Alignment, CornerRadiusTypes, Gauge, Range, UISlider } from '@tuval/forms';
-import { SliderButton, SliderIconButton } from './SliderButton';
 import { int, TMath } from '@tuval/core';
+import {
+    CornerRadiusTypes,
+    cTopLeading,
+    Gauge,
+    HStack,
+    Icon,
+    Range,
+    Spacer,
+    Text,
+    UISlider,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
+import { SliderButton, SliderIconButton } from './SliderButton';
 
 
 export function ActivitySliderView(sliderValue: int, onChange: Function): UIView {
     return (
-        VStack(
+        VStack({ alignment: cTopLeading })(
             HStack({ spacing: 10 })(
                 Icon('\\f0e1').size(25).foregroundColor('#14A9D5'),
                 Text('Activities').fontSize('16px').foregroundColor('#333'),
@@ -38,8 +51,6 @@ export function ActivitySliderView(sliderValue: int, onChange: Function): UIView
             .background('rgb(255,255,255,30%)')
             .padding(10)
             .cornerRadius(CornerRadiusTypes.Medium)
-            .alignment(Alignment.topLeading)
-
     )
 
 }

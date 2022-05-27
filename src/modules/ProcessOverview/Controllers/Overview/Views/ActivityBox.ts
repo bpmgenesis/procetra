@@ -1,5 +1,5 @@
 import { int } from '@tuval/core';
-import { UIView, VStack, Text, Alignment, Icon } from '@tuval/forms';
+import { Icon, Text, UIView, VStack } from '@tuval/forms';
 
 export interface MVIActivityBox {
     activityName: string;

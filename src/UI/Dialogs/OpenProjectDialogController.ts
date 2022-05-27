@@ -1,12 +1,18 @@
 import {
-    Alignment,
     cCenter,
+    cLeading,
+    cTopLeading,
     cTrailing,
+    cVertical,
+    FHStack,
     Fonts,
     ForEach,
+    FVStack,
     HDivider,
     HStack,
     Icon,
+    ScrollView,
+    Spinner,
     State,
     TApplication,
     Text,
@@ -14,31 +20,46 @@ import {
     UIScene,
     UIView,
     VStack,
-    Spinner
 } from '@tuval/forms';
 
-import { MIProject } from '../../domains/Project/Models/ProjectModel';
+import { MIProject } from '../../models/MIProject';
+import { GridHeader, GridRow, IGridColumn } from '../../modules/Statistics/Views/CasesGrid';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { ListView, ListViewItem } from '../Views/ListView';
+import { RegularText } from '../Views/Texts';
 import { Services } from './../../Services/Services';
 import { StateService } from './../../Services/StateService';
 import { OpenProjectDialog } from './OpenProjectDialog';
-import { cLeading, RoundedRectangle, cTopLeading, ScrollView, cVertical } from '@tuval/forms';
-import { GridHeader, GridRow, IGridColumn } from '../../modules/Statistics/Views/CasesGrid';
-import { RegularText } from '../Views/Texts';
+
+
+function detectBrowser() {
+    if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+        return 'Opera';
+    } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+        return 'Chrome';
+    } else if (navigator.userAgent.indexOf("Safari") != -1) {
+        return 'Safari';
+    } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+        return 'Firefox';
+    } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!(document as any).documentMode == true)) {
+        return 'IE';//crap
+    } else {
+        return 'Unknown';
+    }
+}
 
 const columns: IGridColumn[] = [
     {
         key: 'project_name',
         title: 'Name',
-        width:230
+        width: 230
     },
     {
         key: 'flags',
         title: 'Flags',
         width: 80,
         builder: (row) =>
-            HStack({ alignment: cCenter })(
+            FHStack({ alignment: cCenter })(
                 RegularText(row['flags']).background('#2ca02c').fontSize(12).cornerRadius(3).textTransform('uppercase').foregroundColor('white').padding('2px 4px').fontFamily("'Source Sans Pro', Arial, sans-serif !important"),
             )
     },
@@ -52,12 +73,12 @@ const columns: IGridColumn[] = [
         title: 'Stats',
         width: 100,
         builder: (row) =>
-            VStack({ alignment: cLeading })(
-                HStack({ alignment: cLeading, spacing: 5 })(
+            FVStack({ alignment: cLeading })(
+                FHStack({ alignment: cLeading, spacing: 5 })(
                     RegularText('0').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'),
                     RegularText('query').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px'),
                 ),
-                HStack({ alignment: cLeading, spacing: 5 })(
+                FHStack({ alignment: cLeading, spacing: 5 })(
                     RegularText('1.253').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#cb5a25').fontSize('14px'),
                     RegularText('cases').fontFamily("'Source Sans Pro', Arial, sans-serif").foregroundColor('#7f7f7f').fontSize('14px'),
                 ),
@@ -76,7 +97,7 @@ const columns: IGridColumn[] = [
         title: 'Actions',
         width: 80,
         builder: (row) =>
-            HStack(
+            FHStack(
                 Icon('\\e3c9').size(24).padding(8),
                 Icon('\\e92b').size(24).padding(8).foregroundColor('#A03B3B'),
             )
@@ -115,7 +136,7 @@ export class OpenProjectDialogController extends UIController {
     public selectedProject: MIProject;
 
     protected InitController() {
-
+        //this.projects = [];
     }
 
     public LoadProjects() {
@@ -124,7 +145,6 @@ export class OpenProjectDialogController extends UIController {
             throw 'Invalid session.';
         }
         Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then((projects: MIProject[]) => {
-
             this.projects = projects;
         });
     }
@@ -137,9 +157,11 @@ export class OpenProjectDialogController extends UIController {
         this.dialog.Hide();
     }
     public OnCancel() {
+        console.log(detectBrowser());
         this.dialog.Hide();
     }
     public LoadView(): UIView {
+        console.log('View loaded');
         return (
             UIScene(
                 VStack({ alignment: cTopLeading })(
@@ -150,20 +172,30 @@ export class OpenProjectDialogController extends UIController {
                     ScrollView({ axes: cVertical })(
                         /*  Text('dfesdfdsf'),
                          ...ForEach(this.projects)(item =>
-                             Text(item.project_name)
+                             HStack(
+                                 ...ForEach([0, 1, 2, 3, 4, 5,6,7,8])(item_n =>
+                                     Text(item.project_name)
+                                 )
+                             )
                          ) */
+
                         ProjectGrid(this.projects?.map(item => {
                             return {
                                 project_name: item.project_name,
                                 flags: 'Owner',
-                                owner: 'stan@bpmgenesis.com',
+                                owner: item.admin,
                                 updated: '09.05.2022',
                                 tag: item
                             }
                         }), (row) => { this.selectedProject = row.tag; this.OnOK(); })
                     ).padding(15).visible(this.projects != null),
                     VStack(
-                        Spinner()
+                        /*  HDivider().height(20),
+                         UISkeleton().height(20).paddingLeft('10').paddingRight('10'),
+                         UISkeleton().height(20).paddingLeft('10').paddingRight('10'),
+                         UISkeleton().height(20).paddingLeft('10').paddingRight('10'), */
+                        Spinner().visible(detectBrowser() !== 'Chrome'),
+                        RegularText('Loading Projects...').fontSize('16px').visible(detectBrowser() === 'Chrome')
                     ).visible(this.projects == null),
                     HStack({ alignment: TApplication.IsPortal ? cCenter : cTrailing })(
                         AcceptButton('OK').action(() => this.OnOK()),

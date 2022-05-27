@@ -1,7 +1,7 @@
-import { HStack, Text, Alignment, UIView, Icon, VStack, Spacer, VDivider, Gauge, Range, cLeading } from '@tuval/forms';
-import { PortalFilterBarWidget } from './PortalFilterBarWidget';
-import { TimeLineFilter } from './TimeLineFilter';
+import { cLeading, HStack, Icon, Spacer, Text, UIView, VStack } from '@tuval/forms';
+
 import { FilterView } from './FilterView';
+import { TimeLineFilter } from './TimeLineFilter';
 
 export interface PortalFilterBarViewParams {
     projectName: string
@@ -10,16 +10,15 @@ export interface PortalFilterBarViewParams {
 
 export function PortalFilterBarView(params: PortalFilterBarViewParams): UIView {
     return (
-        HStack({alignment:cLeading, spacing:10})(
-            Icon('\\f148').size(20).foregroundColor('#aaa'),
-            VStack({ spacing: 3 })(
+        HStack({ alignment: cLeading, spacing: 10 })(
+            Icon('\\d370').size(20).foregroundColor('#aaa'),
+            VStack({ alignment: cLeading, spacing: 3 })(
                 Text('Projects').textTransform('uppercase').fontWeight('700').fontFamily('Ubuntu, sans-serif').fontSize('10px').foregroundColor('#777'),
                 HStack({ spacing: 10 })(
                     Text(params.projectName || 'Select').fontFamily('Ubuntu, sans-serif').fontWeight('700').fontSize('14px').foregroundColor('#aaa'),
-                    Icon('\\f0fc').size(10).foregroundColor('#aaa'),
+                    Icon('\\d324').size(10).foregroundColor('#aaa'),
                 ).onClick(() => params.selectProjectAction())
             )
-                .alignment(Alignment.leading)
                 .cursor('pointer')
                 .height()
                 .width(),

@@ -1,16 +1,34 @@
 import { int } from '@tuval/core';
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, State, ScrollView, TApplication, cVertical, cLeading, cTopLeading } from '@tuval/forms';
+import {
+    cLeading,
+    cTopLeading,
+    cVertical,
+    ForEach,
+    HDivider,
+    HStack,
+    Icon,
+    ScrollView,
+    Spacer,
+    State,
+    TApplication,
+    Text,
+    UIButton,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { sideMenuModel } from '../Models/SideMenu';
 import { ActivityController } from './Activity/ActivityController';
 import { MultiOverviewController } from './Overview/MultiOverviewController';
-import { OverviewController } from './Overview/OverviewController';
 
 
 const controllers = [new MultiOverviewController, new ActivityController]
 
-export class ProcessStatisticController extends UIController {
+export class _ProcessStatisticController extends UIController {
 
     @State()
     private currentController: UIController;
@@ -64,7 +82,6 @@ export class ProcessStatisticController extends UIController {
                     ).padding('10px')
                 )
                     .background(TApplication.IsPortal ? '#f1f1f1' : '')
-                    .alignment(Alignment.topLeading)
             )
         )
     }

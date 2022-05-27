@@ -1,4 +1,5 @@
-import { UIView, VStack, HStack, Text, Spacer, UIButton, Icon, Alignment } from '@tuval/forms';
+import { cTop, cTopLeading, HStack, Icon, Spacer, UIButton, UIView, VStack } from '@tuval/forms';
+
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../../../UI/Views/Texts';
 import { TileBox } from '../../../../../UI/Views/TileBox';
 
@@ -42,7 +43,7 @@ function ProcessStartEnd(): UIView {
 
 export function ThroughputTimeSection(chart: any): UIView {
     return (
-        VStack(
+        VStack({ alignment: cTopLeading })(
             HStack(
                 SectionHeadline('Throughput Time Search'),
                 Spacer(),
@@ -55,7 +56,7 @@ export function ThroughputTimeSection(chart: any): UIView {
             SectionSubHeadline('Select any two activities to see throughput time between them'),
 
             TileBox(
-                VStack(
+                VStack({ alignment: cTop })(
                     DurationHeadline('Average Throughput time'),
                     HStack(
                         DurationText('24'),
@@ -64,17 +65,14 @@ export function ThroughputTimeSection(chart: any): UIView {
                     ProcessStartEnd()
                 )
                     .padding(10)
-                    .height()
-                    .alignment(Alignment.top),
+                    .height(),
                 VStack(
                     chart
                 )
             )
                 .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' })
-                .alignment(Alignment.top)
+                .alignment(cTop)
         )
-
-            .alignment(Alignment.topLeading)
         // We want to space 10px between every vertical block
 
     )

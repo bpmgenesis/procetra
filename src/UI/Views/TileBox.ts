@@ -1,4 +1,4 @@
-import { UIView, VStack, Alignment } from '@tuval/forms';
+import { UIView, VStack } from '@tuval/forms';
 
 export function TileBox(...content: any[]): UIView {
     return (

@@ -1,5 +1,6 @@
 import {
-    Alignment,
+    cTopLeading,
+    cTrailing,
     Fonts,
     ForEach,
     HStack,
@@ -12,11 +13,11 @@ import {
     UIView,
     VStack,
 } from '@tuval/forms';
-import { SymbolBroker } from '../../BrokerClients/SymbolBroker';
 
-import { ConnectorDialog } from './ConnectorDialog';
-import { ListView, ListViewItem } from '../Views/ListView';
+import { SymbolBroker } from '../../BrokerClients/SymbolBroker';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
+import { ListView, ListViewItem } from '../Views/ListView';
+import { ConnectorDialog } from './ConnectorDialog';
 
 interface MIConnectorItems {
     name: string;
@@ -383,7 +384,7 @@ export class ConnectorDialogController extends UIController {
                             Text('Select Item').textAlign('start').font(Fonts.title3),
                             ...ForEach(ListModel)((listModelItem: MIListModel) => {
                                 return (
-                                    VStack(
+                                    VStack({ alignment: cTopLeading })(
                                         Text(listModelItem.name).padding('5px').fontWeight('bold'),
                                         ...ForEach(listModelItem.items)((modelItem: MIConnectorItems) =>
                                             ListViewItem(
@@ -399,7 +400,9 @@ export class ConnectorDialogController extends UIController {
                                                 .backgroundImage(this.selectedModelItem === modelItem ? 'linear-gradient(#25A4FFAA, #028AEBAA)' : '')
                                                 .onSelected(() => { this.selectedModelItem = modelItem; })
                                         )
-                                    ).alignment(Alignment.topLeading).width('100%').height('auto')
+                                    )
+                                        .width('100%')
+                                        .height('auto')
                                 )
                             })
 
@@ -407,7 +410,7 @@ export class ConnectorDialogController extends UIController {
                     ],
                     right: [
                         VStack(
-                            HStack(
+                            HStack({ alignment: cTopLeading })(
                                 ...ForEach(this.selectedModelItem?.items)((item: any/* { name: string, imagePath: string, image: HTMLImageElement } */) =>
                                     VStack(
                                         UIImage(SymbolBroker.GetSymbolUrl(item.imagePath.split('/')[0], item.imagePath.split('/')[1], item.imagePath.split('/')[2])).width('104px'),
@@ -425,14 +428,15 @@ export class ConnectorDialogController extends UIController {
                                 )
                             )
                                 .alignContent('baseline')
-                                .alignment(Alignment.topLeading)
                                 .width('100%')
                                 .wrap('wrap')
                                 .overflowY('auto'),
-                            HStack(
+                            HStack({ alignment: cTrailing })(
                                 AcceptButton('OK').action(() => this.onOK()),
                                 CancelButton('Cancel').action(() => this.onCancel())
-                            ).alignment(Alignment.trailing).width('100%').height(50)
+                            )
+                                .width('100%')
+                                .height(50)
                         ).width('100%')
                     ]
                 })

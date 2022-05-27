@@ -15,7 +15,6 @@ export class DashboardView extends TuView {
     public pId: string;
     public dId: string;
     protected override  DoExternalDrop(evt: DragEventArgs): ITuCollection {
-        debugger;
         const data: IDataObject = evt.Data;
         const type = data.GetData('Type');
 

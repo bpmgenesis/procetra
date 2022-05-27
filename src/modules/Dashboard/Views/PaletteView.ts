@@ -1,7 +1,20 @@
+import {
+    cLeading,
+    Color,
+    cTopLeading,
+    FontSizeTypes,
+    ForEach,
+    HStack,
+    Icon,
+    PositionTypes,
+    Text,
+    UIView,
+    VStack,
+} from '@tuval/forms';
 
-import { UIView, Text, ForEach, VStack, Icon, HStack, Alignment, HDivider, FontSizeTypes, PositionTypes, Color, CornerRadiusTypes, cLeading, cTopLeading } from '@tuval/forms';
 import { MIPaletteCategory } from '../Models/MIPaletteCategory';
 import { MIPaletteItem } from '../Models/MIPaletteItem';
+
 
 
 

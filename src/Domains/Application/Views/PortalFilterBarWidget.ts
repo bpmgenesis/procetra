@@ -1,5 +1,5 @@
 import { int } from '@tuval/core';
-import { VStack, HStack, UIView, Text, Alignment, cLeading } from '@tuval/forms';
+import { cLeading, HStack, Text, UIView, VStack } from '@tuval/forms';
 
 export interface IPortalFilterBarWidgetParams {
     value: int;

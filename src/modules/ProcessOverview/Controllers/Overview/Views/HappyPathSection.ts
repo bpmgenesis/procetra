@@ -1,6 +1,5 @@
-import { TvChart } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, cTopLeading } from '@tuval/forms';
-import { MetricBox } from './MetricBox';
+import { cTopLeading, HStack, Text, UIView, VStack } from '@tuval/forms';
+
 import { HappyPathBox2, HappyPathBox3, HappyPathGaugeBox, MVIHappyPathAbsoluteBoxModel } from './HappyPathBox';
 import { HappyPathDiagram, MVIHappyPathDiagramItem } from './HappyPathDiagram';
 

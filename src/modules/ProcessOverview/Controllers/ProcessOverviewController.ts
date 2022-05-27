@@ -1,7 +1,8 @@
 import { TvChart } from '@tuval/components/charts';
 import { int } from '@tuval/core';
 import {
-    Alignment,
+    cLeading,
+    cTopLeading,
     ForEach,
     HDivider,
     HStack,
@@ -19,10 +20,9 @@ import {
 
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
+import { ActivityController } from './Activity/ActivityController';
 import { OverviewController } from './Overview/OverviewController';
 import { ThroughputTimesController } from './ThroughputTimes/ThroughputTimesController';
-import { cLeading, cTopLeading } from '@tuval/forms';
-import { ActivityController } from './Activity/ActivityController';
 
 
 function getMax(array: any[]) {
@@ -56,7 +56,7 @@ const sideMenu: MVIPortalSideMenuItem[] = [
     }
 ]
 
-export class ProcessOverviewController extends UIController {
+export class _ProcessOverviewController extends UIController {
 
     @State()
     private chart1: TvChart;

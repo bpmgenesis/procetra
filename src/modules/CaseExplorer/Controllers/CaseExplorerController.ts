@@ -1,4 +1,18 @@
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, cLeading, cTopLeading } from '@tuval/forms';
+import {
+    cLeading,
+    cTopLeading,
+    ForEach,
+    HDivider,
+    HStack,
+    Icon,
+    Spacer,
+    Text,
+    UIButton,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
 
 export class CaseExplorerController extends UIController {
     protected InitController(): void {
@@ -26,7 +40,7 @@ export class CaseExplorerController extends UIController {
                     HDivider().height(1).backgroundColor('rgb(120,120,120,20%)'),
 
                 ).padding('10px').height()
-            ).alignment(Alignment.topLeading)
+            ).alignment(cTopLeading)
         )
     }
 }

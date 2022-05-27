@@ -31,7 +31,7 @@ const filtersModel = [
         title: 'Performance filter',
         description: 'Select cases where duration between two activities is faster/slower than defined period of time.',
         iconColor: '#F56D91',
-        icon: '\\f143',
+        icon: '\\d36b',
         background: `linear-gradient(
             90deg,
             hsl(48deg 48% 72%) 0%,

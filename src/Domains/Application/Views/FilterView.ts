@@ -1,4 +1,4 @@
-import { UIView, VStack, HStack, Icon, Text, Alignment, cLeading } from '@tuval/forms';
+import { cLeading, HStack, Icon, Text, UIView, VStack } from '@tuval/forms';
 
 
 /**
@@ -10,7 +10,7 @@ export function FilterView(): UIView {
         VStack(
             VStack(
                 HStack({ alignment: cLeading, spacing: 10 })(
-                    Icon('\\f121').size(25).foregroundColor('#55606c'),
+                    Icon('\\d349').size(25).foregroundColor('#55606c'),
                     Text('Add Filter').fontFamily('Ubuntu,sans-serif').fontSize('15px').fontWeight('700').foregroundColor('#999')
                 ).padding('5px 10px')
             )

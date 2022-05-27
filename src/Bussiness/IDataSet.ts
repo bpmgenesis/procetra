@@ -1,5 +1,5 @@
 import { DateTime } from '@tuval/core';
-import { IActivityInfo } from '../../dist_types/types/Bussiness/IActivityInfo';
+import { IActivityInfo } from './IActivityInfo';
 
 export interface IActivityInfoBag {
     [key: string]: IActivityInfo;

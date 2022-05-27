@@ -1,6 +1,6 @@
-import { int } from '@tuval/core';
-import { TvChart, ChartView, AreaSerie, MyControlBody } from '@tuval/components/charts';
-import { UIView, VStack, HStack, Text, Alignment, Spacer, UIButton, Icon, ForEach, cTopLeading, useState, bindState } from '@tuval/forms';
+import { AreaSerie, ChartView, TvChart } from '@tuval/components/charts';
+import { bindState, cTopLeading, ForEach, HStack, Icon, Spacer, Text, UIButton, UIView, VStack } from '@tuval/forms';
+
 import { TileBox } from '../../../../../UI/Views/TileBox';
 import { TileBoxHeaderText } from '../../../../../UI/Views/Title';
 import { MetricBox, MVIMetricBox } from './MetricBox';

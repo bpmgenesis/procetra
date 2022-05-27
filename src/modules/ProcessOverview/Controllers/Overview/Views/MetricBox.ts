@@ -1,9 +1,20 @@
-import { Sparkline, SparklineModel } from '@tuval/components/charts';
-import { Bindable } from '../Bindable';
-import { UIView, VStack, Text, Alignment, TApplication, ApplicationModes, HStack, ZStack, AnimationStack, useState } from '@tuval/forms';
+import { SparklineModel } from '@tuval/components/charts';
+import {
+    AnimationStack,
+    ApplicationModes,
+    cLeading,
+    cTopLeading,
+    HStack,
+    TApplication,
+    Text,
+    UIView,
+    useState,
+    VStack,
+    ZStack,
+} from '@tuval/forms';
+
 import { ListBounceAnimation } from '../../../../../UI/Animations/ListBounce';
-import { Headline5, Headline4, Overline } from '../../../../../UI/Views/Texts';
-import { CalculationMethodText, TileBoxHeaderText, MetricBoxValueText } from '../../../../../UI/Views/Title';
+import { CalculationMethodText, MetricBoxValueText, TileBoxHeaderText } from '../../../../../UI/Views/Title';
 import { TileSparkLine } from './TileSparkLine';
 
 export interface MVIMetricBox {
@@ -18,12 +29,12 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
     const [showMenu, setShowMenu] = useState(false);
     return (
         ZStack(
-            VStack(
+            VStack({ alignment: cTopLeading })(
                 TileBoxHeaderText(params.title),
-                HStack(
+                HStack({ alignment: cLeading })(
                     MetricBoxValueText(params.value.toString()),
                     /* Text(params.value.toString()).fontSize('40px').fontFamily('Proxima Nova, sans serif').fontWeight('500').foregroundColor('#14a9d5'), */
-                    VStack(
+                    VStack({ alignment: cLeading })(
                         /* Text('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), */
                         CalculationMethodText('AVG')
                             .onClick(() => setShowMenu(true))
@@ -33,11 +44,10 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
                             .border('dashed 1px var(--sub-border-color)')
                             .transition('border .3s')
 
-                    ).alignment(Alignment.leading)
+                    )
                 )
                     .paddingLeft('30px')
-                    .paddingTop('10px')
-                    .alignment(Alignment.leading),
+                    .paddingTop('10px'),
                 /* VStack(
                     Text('Duration').foregroundColor('#b40404'),
                     Text('15 - 40 monts').foregroundColor('#AAA')
@@ -47,7 +57,7 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
                     .alignment(Alignment.leading), */
 
                 TileSparkLine(params.chart)
-                    .slFill(selected ? '#b2cfff': 'rgb(120,120,120,30%)')
+                    .slFill(selected ? '#b2cfff' : 'rgb(120,120,120,30%)')
                     .slBorder(selected ? { color: '#3C78EF', width: 2 } : { color: 'gray', width: 2 })
 
 
@@ -59,7 +69,6 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
                 .backgroundColor('rgb(255,255,255,60%)')
                 .cornerRadius('12px')
                 .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
-                .alignment(Alignment.topLeading)
                 .tabIndex(0)
                 // Üzerine geldiğimizde alt text border için.
                 .variable('--sub-border-color', { default: 'transparent', hover: '#14a9d5' }),
@@ -81,7 +90,7 @@ export function PortalMetricBox(params: MVIMetricBox, selected: boolean): UIView
 }
 export function DesktopMetricBox(params: MVIMetricBox): UIView {
     return (
-        VStack(
+        VStack({ alignment: cTopLeading })(
             TileBoxHeaderText(params.title),
             Text(params.value).padding('10px 30px 0 30px;').fontFamily('Proxima Nova').fontSize('27px').fontWeight('500').foregroundColor('#14a9d5'),
             Text(params.subTitle).paddingLeft('30px').fontFamily('Proxima Nova').fontSize('12px').foregroundColor('#666'),
@@ -91,7 +100,6 @@ export function DesktopMetricBox(params: MVIMetricBox): UIView {
             .cornerRadius('12px')
             .shadow({ default: '0 1px 3px 0 rgb(0 0 0 / 10%), 0 2px 5px 0 rgb(0 0 0 / 5%)', focus: '0 0 3px 1px #00c3ff' })
             .tabIndex(0)
-            .alignment(Alignment.topLeading)
     )
 }
 

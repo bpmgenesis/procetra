@@ -1,12 +1,25 @@
-
-import { UIView, Text, VStack, HStack, Icon, Spacer, Alignment, CornerRadiusTypes, Gauge, Range, UISlider } from '@tuval/forms';
-import { SliderButton, SliderIconButton } from './SliderButton';
 import { int, TMath } from '@tuval/core';
+import {
+    CornerRadiusTypes,
+    cTopLeading,
+    Gauge,
+    HStack,
+    Icon,
+    Range,
+    Spacer,
+    Text,
+    UISlider,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
+import { SliderButton, SliderIconButton } from './SliderButton';
+
 
 
 export function ConnectionSliderView(sliderValue: int, onChange: Function): UIView {
     return (
-        VStack(
+        VStack({ alignment: cTopLeading })(
             HStack({ spacing: 10 })(
                 Icon('\\f13d').size(30).foregroundColor('#14A9D5'),
                 Text('Connections').fontSize('16px').foregroundColor('#333'),
@@ -39,8 +52,6 @@ export function ConnectionSliderView(sliderValue: int, onChange: Function): UIVi
             .background('rgb(255,255,255,30%)')
             .padding(10)
             .cornerRadius(CornerRadiusTypes.Medium)
-            .alignment(Alignment.topLeading)
-
     )
 
 }

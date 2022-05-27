@@ -1,5 +1,18 @@
-import { UIView, VStack, Text, Alignment, HStack, VDivider, RoundedRectangle, HDivider, Gauge, Range } from '@tuval/forms';
 import { int } from '@tuval/core';
+import {
+    cBottom,
+    cLeading,
+    Gauge,
+    HDivider,
+    HStack,
+    Range,
+    RoundedRectangle,
+    Text,
+    UIView,
+    VDivider,
+    VStack,
+} from '@tuval/forms';
+
 import { TileBoxHeaderText } from '../../../../../UI/Views/Title';
 
 export interface MVIHappyPathAbsoluteBoxModel {
@@ -37,12 +50,12 @@ export function HappyPathBox2(params: MVIHappyPathAbsoluteBoxModel): UIView {
             TileBoxHeaderText(params.title),
             HStack(
                 VDivider().width('1px').background('gray'),
-                VStack(
+                VStack({ alignment: cLeading })(
                     RoundedRectangle().background('transparent').height('10px'),
                     RoundedRectangle().background({ default: '#14A9D5', hover: 'gray' }).height('20px').width().initial({ width: 0 }).animate({ width: `${(params.value / params.totalValue) * 100}%` }).__transition({ duration: 1 }),
                     RoundedRectangle().background('#E4E4E4').height('20px'),
                     RoundedRectangle().background('transparent').height('10px'),
-                ).alignment(Alignment.leading)
+                )
             ).padding('30px').width('70%'),
             Text(params.value.toString()).fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'),
             Text(`of ${params.totalValue} Cases`)
@@ -66,12 +79,12 @@ export function HappyPathBox3(): UIView {
         VStack(
             TileBoxHeaderText('Happy path in percentages'),
             VStack(
-                HStack(
+                HStack({ alignment: cBottom })(
                     RoundedRectangle().background('transparent').width('10px'),
                     RoundedRectangle().background('#14A9D5').width('20px').height('50%'),
                     RoundedRectangle().background('#E4E4E4').width('20px'),
                     RoundedRectangle().background('transparent').width('10px'),
-                ).alignment(Alignment.bottom),
+                ),
                 HDivider().height('1px').background('gray').width('50%'),
             ).padding('30px').width('70%'),
             Text('107,688').fontFamily('Proxima Nova').fontWeight('500').fontSize('27px').foregroundColor('#14a9d5'),

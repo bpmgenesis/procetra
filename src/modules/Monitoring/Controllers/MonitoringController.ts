@@ -1,9 +1,25 @@
-import { UIController, UIView, UIScene, VStack, cTopLeading, HStack, cLeading, Spacer, ForEach, UIButton, Text, HDivider, ScrollView, cVertical, TApplication, Alignment, PositionTypes } from '@tuval/forms';
+import { Sparkline } from '@tuval/components/charts';
+import {
+    cLeading,
+    cTopLeading,
+    cVertical,
+    ForEach,
+    HDivider,
+    HStack,
+    PositionTypes,
+    ScrollView,
+    Spacer,
+    TApplication,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { PageTitle } from '../../../UI/Views/PageHeader';
 import { RegularText, SectionHeadline, SectionSubHeadline } from '../../../UI/Views/Texts';
 import { TileBox } from '../../../UI/Views/TileBox';
 import { MetricBoxValueText, TileBoxHeaderText } from '../../../UI/Views/Title';
-import { Sparkline } from '@tuval/components/charts';
 import { MVIMetricData } from '../Models/MVIMetricData';
 
 const metrics: MVIMetricData[] = [
@@ -340,7 +356,7 @@ export class MonitoringController extends UIController {
                 ).padding('10px')
             )
                 .background(TApplication.IsPortal ? '#f1f1f1' : '')
-                .alignment(Alignment.topLeading)
+                .alignment(cTopLeading)
         )
     }
 }

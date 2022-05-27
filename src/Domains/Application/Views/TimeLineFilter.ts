@@ -10,7 +10,7 @@ function TimeText(value: string): UIView {
 export function TimeLineFilter(): UIView {
     return (
         HStack({ spacing: 5 })(
-            Icon('\\f043').size(20).foregroundColor('#777'),
+            Icon('\\d26b').size(20).foregroundColor('#777'),
             TimeText('1H'),
             TimeText('8H'),
             TimeText('24H'),

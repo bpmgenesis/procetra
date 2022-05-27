@@ -2,7 +2,7 @@ import { int } from '@tuval/core';
 import { ApplicationModes, HStack, PositionTypes, State, TApplication, UIController, UIScene, UIView, Context } from '@tuval/forms';
 
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
-import { MVIProjectItem } from '../../Project/Models/MIProjectItem';
+import { MVIProjectItem } from '../../MiningModel/Models/MIProjectItem';
 import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
 import { topModels } from '../Models/MVIDatasetTabModel';

@@ -11,13 +11,11 @@ class TestButton extends Button {
     constructor() {
         super();
         this.Clicked.add(() => {
-            debugger;
             this.Text = 'dfsfsdf';
         });
     }
 
     public ShowText() {
-        debugger;
         this.Text = 'asdsdsadsdasdasd';
     }
 }

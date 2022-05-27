@@ -1,11 +1,32 @@
-import { UIView, VStack, HStack, Spacer, UIButton, Icon, Alignment, RoundedRectangle, UIImage, ForEach, cTopLeading, cTop, Color, Text, cLeading } from '@tuval/forms';
-import { SectionHeadline, SectionSubHeadline, RegularText, SectionTitle, SectionContent } from '../../../../../UI/Views/Texts';
-import { TileBox } from '../../../../../UI/Views/TileBox';
+import {
+    cLeading,
+    Color,
+    cTop,
+    cTopLeading,
+    ForEach,
+    HStack,
+    Icon,
+    RoundedRectangle,
+    Spacer,
+    Text,
+    UIButton,
+    UIImage,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
+import {
+    RegularText,
+    SectionContent,
+    SectionHeadline,
+    SectionSubHeadline,
+    SectionTitle,
+} from '../../../../../UI/Views/Texts';
 
 
 export function BottleneckSection(): UIView {
     return (
-        VStack(
+        VStack({alignment:cTopLeading})(
             HStack(
                 SectionHeadline('Bottlenecks'),
                 Spacer(),
@@ -46,8 +67,6 @@ export function BottleneckSection(): UIView {
                 )
             ).height().padding()
         )
-
-            .alignment(Alignment.topLeading)
         // We want to space 10px between every vertical block
     )
 }

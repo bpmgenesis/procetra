@@ -1,6 +1,7 @@
 import { int } from '@tuval/core';
 import {
-    Alignment,
+    cLeading,
+    cTopLeading,
     ForEach,
     HDivider,
     HStack,
@@ -19,7 +20,6 @@ import { PageTitle } from '../../../UI/Views/PageHeader';
 import { MVIPortalSideMenuItem, PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
 import { FrequencyMapController } from './FrequencyMapController';
 import { PerformanceMapController } from './PerformanceMapController';
-import { cLeading, cTopLeading } from '@tuval/forms';
 
 
 const sideMenu: MVIPortalSideMenuItem[] = [
@@ -66,7 +66,7 @@ export class ProcessExplorerController extends UIController {
     public LoadView(): UIView {
         return (
             UIScene(
-                HStack(
+                HStack({alignment:cTopLeading})(
                     PortalSideMenu(
                         {
                             items: sideMenu,
@@ -100,8 +100,7 @@ export class ProcessExplorerController extends UIController {
 
                     )
                         .padding(10)
-                        .alignment(Alignment.topLeading)
-                ).alignment(Alignment.topLeading)
+                )
             )
         )
     }

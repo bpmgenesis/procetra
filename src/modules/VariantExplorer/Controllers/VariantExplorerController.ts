@@ -1,6 +1,22 @@
-import { UIController, UIView, Text, UIScene, VStack, HStack, Icon, Spacer, ForEach, UIButton, Alignment, HDivider, Gauge, Range, cLeading, cTopLeading } from '@tuval/forms';
-import { VariantActivityShapeView } from '../Views/VariantActivityShape';
+import {
+    cLeading,
+    cTopLeading,
+    ForEach,
+    Gauge,
+    HDivider,
+    HStack,
+    Range,
+    Spacer,
+    Text,
+    UIButton,
+    UIController,
+    UIScene,
+    UIView,
+    VStack,
+} from '@tuval/forms';
+
 import { PageTitle } from '../../../UI/Views/PageHeader';
+import { VariantActivityShapeView } from '../Views/VariantActivityShape';
 
 export class VariantExplorerController extends UIController {
     protected InitController(): void {
@@ -21,7 +37,7 @@ export class VariantExplorerController extends UIController {
                                 ).border('solid 1px gray').cornerRadius('10px').padding('3px 10px 3px 10px')
                             )
                         ).width()
-                    ).alignment(Alignment.leading),
+                    ),
                     HDivider().height('1px').backgroundColor('rgb(120,120,120,20%)'),
                     VStack({ spacing: 20 })(
                         ...ForEach([1, 2, 3, 4, 5])((index) =>
@@ -46,7 +62,7 @@ export class VariantExplorerController extends UIController {
                 ).padding(10).height()
             )
                 .backgroundColor('#f1f1f1')
-                .alignment(Alignment.topLeading)
+                .alignment(cTopLeading)
         )
     }
 }

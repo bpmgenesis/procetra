@@ -1,4 +1,4 @@
-import { UIView, HStack, Alignment, IControl, VStack, cLeading, viewFunc, ViewProperty } from '@tuval/forms';
+import { cLeading, HStack, IControl, UIView, viewFunc, ViewProperty, VStack } from '@tuval/forms';
 
 export class ListViewItemClass extends UIView {
 

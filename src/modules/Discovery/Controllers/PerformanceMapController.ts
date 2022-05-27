@@ -1,5 +1,6 @@
-import { UIController, UIView, HStack, VStack, Text, Alignment, PositionTypes, State, cTopLeading } from '@tuval/forms';
 import { int } from '@tuval/core';
+import { cTopLeading, HStack, PositionTypes, State, Text, UIController, UIView, VStack } from '@tuval/forms';
+
 import { ActivitySliderView } from '../Views/ActivitySliderView';
 import { ConnectionSliderView } from '../Views/ConnectionSliderView';
 
