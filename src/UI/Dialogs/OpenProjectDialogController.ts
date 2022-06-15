@@ -22,13 +22,13 @@ import {
     VStack,
 } from '@tuval/forms';
 
-import { MIProject } from '../../models/MIProject';
+import { IProjectModel } from '@procetra/common';
 import { GridHeader, GridRow, IGridColumn } from '../../modules/Statistics/Views/CasesGrid';
 import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { ListView, ListViewItem } from '../Views/ListView';
 import { RegularText } from '../Views/Texts';
-import { Services } from './../../Services/Services';
-import { StateService } from './../../Services/StateService';
+import { Services } from '@procetra/common';
+import { StateService } from '@procetra/common';
 import { OpenProjectDialog } from './OpenProjectDialog';
 
 
@@ -130,10 +130,10 @@ export class OpenProjectDialogController extends UIController {
     private dialog: OpenProjectDialog;
 
     @State()
-    private projects: MIProject[];
+    private projects: IProjectModel[];
 
     @State()
-    public selectedProject: MIProject;
+    public selectedProject: IProjectModel;
 
     protected InitController() {
         //this.projects = [];
@@ -144,7 +144,7 @@ export class OpenProjectDialogController extends UIController {
         if (session_id == null) {
             throw 'Invalid session.';
         }
-        Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then((projects: MIProject[]) => {
+        Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then((projects: IProjectModel[]) => {
             this.projects = projects;
         });
     }
@@ -210,7 +210,7 @@ export class OpenProjectDialogController extends UIController {
                     ).height(),
                     HDivider().height(1).background(TApplication.IsPortal ? '#288ae2' : 'gray'),
                     ListView(
-                        ...ForEach(this.projects)((project: MIProject) =>
+                        ...ForEach(this.projects)((project: IProjectModel) =>
                             ListViewItem(
                                 Text(project.project_name).foregroundColor(TApplication.IsPortal ? '#bbb' : '').fontWeight('500'),
                             )

@@ -20,9 +20,9 @@ import {
 
 import { ListView, ListViewItem, ListViewItemClass } from '../../../UI/Views/ListView';
 import { AnimHeadline5, RegularText } from '../../../UI/Views/Texts';
-import { MVIMiningModel } from '../../Project/Models/MVIAnalyseModel';
 import { MVIProjectItem } from '../Models/MIProjectItem';
 import { ListFooterButton } from './ListFooterButton';
+import { IMiningModelModel, IProjectModel } from '@procetra/common';
 
 function DatasetListView(projectItem: MVIProjectItem): ListViewItemClass {
     return (
@@ -67,9 +67,10 @@ function DashboardListView(projectItem: MVIProjectItem): ListViewItemClass {
 }
 
 export interface DesctopViewParams {
-    miningModel: MVIMiningModel;
-    selectedProjectItem: MVIProjectItem,
-    selectedProjectItems: MVIProjectItem[],
+    project: IProjectModel;
+    miningModel: IMiningModelModel;
+    /* selectedProjectItem: MVIProjectItem,
+    selectedProjectItems: MVIProjectItem[], */
     ProjectItemSelectedAction: Function,
     NewProjectItemAction: Function,
     selectedProjectItemController: UIController
@@ -164,7 +165,7 @@ const queryMenu = [
         onClick: (item) => console.log(item)
     }
 ]
-export function DesktopView({ miningModel, selectedProjectItem, selectedProjectItems, ProjectItemSelectedAction, NewProjectItemAction, selectedProjectItemController }: DesctopViewParams) {
+export function DesktopView({ project, miningModel,/*  selectedProjectItem, selectedProjectItems, */ ProjectItemSelectedAction, NewProjectItemAction, selectedProjectItemController }: DesctopViewParams) {
     return ({ onCloseProject }) => {
         return UIScene(
             TwoColumnWithHeaderLayout({
@@ -172,7 +173,7 @@ export function DesktopView({ miningModel, selectedProjectItem, selectedProjectI
                     HStack({ alignment: cLeading, spacing: 10 })(
                         Icon('\\d1fd').size(30).marginBottom('10px'),
                         VStack({ alignment: cLeading })(
-                            AnimHeadline5(miningModel?.project?.project_name).lineHeight(35).whiteSpace('nowrap'),
+                            AnimHeadline5(project?.project_name).lineHeight(35).whiteSpace('nowrap'),
                             //AnimHeadline5(miningModel?.name).fontSize('14px').textTransform('uppercase'),
                             HStack({ spacing: 10 })(
                                 UIContextMenu(
@@ -286,7 +287,7 @@ export function DesktopView({ miningModel, selectedProjectItem, selectedProjectI
                                 .fontWeight('bold')
                                 .foregroundColor('black')
                         ).height('auto').visible(false),
-                        // Poject items list view
+                     /*    // Poject items list view
                         ListView(
                             ...ForEach(selectedProjectItems)((projectItem: MVIProjectItem) =>
                                 Case<ListViewItemClass>(projectItem.type, {
@@ -301,7 +302,7 @@ export function DesktopView({ miningModel, selectedProjectItem, selectedProjectI
                                     .onSelected(() => ProjectItemSelectedAction(projectItem))
                             )
 
-                        ).width('200px').background('rgb(255,255,255,10%)').grow(),
+                        ).width('200px').background('rgb(255,255,255,10%)').grow(), */
                         // Project items buttons
                         HStack({ alignment: cCenter, spacing: 5 })(
                             ListFooterButton('\\e145').action(() => NewProjectItemAction()),

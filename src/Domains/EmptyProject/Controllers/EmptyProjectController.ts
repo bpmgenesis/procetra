@@ -3,14 +3,15 @@ import { PageButton } from '@procetra/common';
 import { Resources } from '../../../Resources/Resources';
 import { RegularText } from '../../../UI/Views/Texts';
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
-import { MIProject } from '../../../models/MIProject';
-export class EmptyProjectController extends UIController {
-    private project: MIProject;
+import { IProjectModel } from '@procetra/common';
+
+class EmptyProjectControllerClass extends UIController {
+    private project: IProjectModel;
     private onUploadDataClick() {
         ProjectUIService.UploadDataDialog(this.project);
     }
 
-    public OnBindModel(project: MIProject) {
+    public OnBindModel(project: IProjectModel) {
         this.project = project;
     }
 
@@ -61,4 +62,8 @@ export class EmptyProjectController extends UIController {
             )
         )
     }
+}
+
+export function EmptyProjectController(project: IProjectModel): EmptyProjectControllerClass {
+    return new EmptyProjectControllerClass().Bind(project);
 }

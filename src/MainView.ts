@@ -32,10 +32,12 @@ export class MainView extends TForm {
 
         this.HeaderColor = 'rgb(255,255,255, 20%)';
 
-        const testController = new AppController();
+        const testController = AppController();
         this.Controls.Add(testController);
         testController.LoadRecentFiles();
         testController.RequestDesktop.add(() => this.TopMaximize());
+
+
         // testController.LoadProjects();
         /*   const button = new TestButton();
           button.Text = 'Test';
@@ -50,5 +52,11 @@ export class MainView extends TForm {
                 TApplication.ApplicationMode = ApplicationModes.Desktop;
             }
         });
+    }
+
+    public OnShown(): void {
+        if (TApplication.IsPortal) {
+            setTimeout(() => this.TopMaximize(), 10);
+        }
     }
 }

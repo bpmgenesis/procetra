@@ -5,8 +5,8 @@ import { menuItems } from '../Models/menuItems';
 import { MVINewAnalyseModelSelection } from '../Models/MVINewAnalyseModelSelection';
 import { Badge } from '@procetra/common';
 
-export function NewAnalyseModelTitleBox(tag: string, { icon, title, description, controller, badge }: MVINewAnalyseModelSelection) {
-    return ({ OnNewAnalyse }) => {
+export function NewAnalyseModelTitleBox(tag: string, { id, icon, title, description, controller, badge }: MVINewAnalyseModelSelection) {
+    return ({ OnNewAnalyseAdded }) => {
         return (
             VStack(
                 // Menu stack
@@ -50,7 +50,8 @@ export function NewAnalyseModelTitleBox(tag: string, { icon, title, description,
                 .backgroundColor('rgba(255,255,255,0.3)')
                 .shadow('rgb(0 0 0 / 2%) 0px 1px 3px 0px, rgb(27 31 35 / 15%) 0px 0px 0px 1px')
                 .initial({ opacity: 0 }).animate({ opacity: 1 })
-                .onClick(() => OnNewAnalyse({
+                .onClick(() => OnNewAnalyseAdded({
+                    id: id,
                     icon: icon,
                     name: title,
                     isRight: false,

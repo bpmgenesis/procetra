@@ -1,11 +1,11 @@
 import { instance as container, TStorage, TuvalStorage } from '@tuval/core';
 import { TApplication } from '@tuval/forms';
-import { MiningBrokerClient } from './BrokerClients/MiningBrokerClient';
+import { MiningBrokerClient } from '@procetra/common';
 
 import { BrokerProjectService } from './Services/BrokerProjectService';
 import { MainView } from './MainView';
 import { Resources } from './Resources';
-import { StateService } from './Services/StateService';
+import { StateService } from '@procetra/common';
 
 const manifest = require('./manifest');
 

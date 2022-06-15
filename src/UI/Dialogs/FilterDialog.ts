@@ -4,7 +4,7 @@ import { Event } from '@tuval/core';
 import { Button, ComboBox, Dialog } from '@tuval/forms';
 import { IDataSet } from '../../Bussiness/IDataSet';
 import { IProject } from '../../Bussiness/IProject';
-import { Services } from '../../Services/Services';
+import { Services } from '@procetra/common';
 
 
 export class FilterDialog extends Dialog {

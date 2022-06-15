@@ -5,7 +5,7 @@ import { TuInputEventArgs,TuView,ViewRenderingMode, TuRectangle } from '@tuval/c
 import { ClassInfo, int } from '@tuval/core';
 import { _Types } from '../../../__manifest__/__types__';
 import { _TuDashboardShapeHtmlRenderer } from './TuDashboardShapeHtmlRenderer';
-import { MiningBrokerClient } from '../../../BrokerClients/MiningBrokerClient';
+import { MiningBrokerClient } from '@procetra/common';
 
 
 class SettingsDialog extends Dialog {

@@ -1,16 +1,32 @@
-import { int } from '@tuval/core';
-import { ApplicationModes, HStack, PositionTypes, State, TApplication, UIController, UIScene, UIView, Context } from '@tuval/forms';
+import { IMiningModelModel, IProjectModel, MiningBrokerClient, StateService } from '@procetra/common';
+import { foreach, int } from '@tuval/core';
+import {
+    ApplicationModes,
+    Context,
+    HStack,
+    PositionTypes,
+    Spinner,
+    State,
+    TApplication,
+    UIController,
+    UIScene,
+    UIView,
+} from '@tuval/forms';
 
 import { PortalSideMenu } from '../../../UI/Views/PortalSideMenu';
-import { MVIProjectItem } from '../../MiningModel/Models/MIProjectItem';
-import { MVIDatasetTabModel } from '../Models/MVIDatasetTabModel';
+import { MVINewAnalyseModelSelection } from '../../NewAnalyse/Models/MVINewAnalyseModelSelection';
+import { NewAnalyseTypes } from '../../NewAnalyse/Models/NewAnalyseTypes';
+import { MVIDatasetTabModel, topModels } from '../Models/MVIDatasetTabModel';
 import { DatasetTabView } from '../Views/DatasetTabView';
-import { topModels } from '../Models/MVIDatasetTabModel';
 
-export class DatasetController extends UIController {
+export interface DatasetControllerBindingModel {
+    project: IProjectModel;
+    miningModel: IMiningModelModel;
+}
+export class DatasetControllerClass extends UIController<DatasetControllerBindingModel> {
 
-    @State()
-    private projectItem: MVIProjectItem;
+    private project: IProjectModel;
+    private miningModel: IMiningModelModel;
 
     @State()
     private tabModels: MVIDatasetTabModel[];
@@ -21,16 +37,25 @@ export class DatasetController extends UIController {
     @State()
     private currentController: UIController;
 
+    @State()
+    private DataBinded: boolean;
+
 
     protected InitController(): void {
         this.selectedTabIndex = 0;
         this.tabModels = [...topModels];
     }
 
+    // MARK: On New Analyse Added
     @Context()
-    private OnNewAnalyse(value: MVIDatasetTabModel) {
-        this.tabModels = [...this.tabModels, value];
-        this.OnTabSelected(this.tabModels.length - 1);
+    private OnNewAnalyseAdded(value: MVIDatasetTabModel) {
+        console.log(value);
+
+        MiningBrokerClient.CreateProjectItem(StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id, value.id).then(nodata => {
+            this.tabModels = [...this.tabModels, value];
+            this.OnTabSelected(this.tabModels.length - 1);
+        });
+
     }
 
     private OnTabSelected(index: int) {
@@ -38,16 +63,51 @@ export class DatasetController extends UIController {
         const tabModel = this.tabModels[index];
         if (tabModel != null) {
             this.currentController = tabModel.controller;
-            if (this.currentController.IsModelBind) {
-                this.currentController.Bind(this.projectItem);
-            }
+
+            // if (!this.currentController.IsModelBind) {
+            this.currentController.Bind(this.project);
+            // }
         }
     }
 
-    public OnBindModel(model: MVIProjectItem) {
-        this.projectItem = model;
+    public OnBindModel(bindingModel: DatasetControllerBindingModel) {
+
+        debugger;
+        this.DataBinded = false;
+       // this.tabModels = [...topModels];
+
+        this.BeginUpdate();
+        this.project = bindingModel.project;
+        this.miningModel = bindingModel.miningModel;
         this.selectedTabIndex = 0;
-        this.OnTabSelected(0);
+
+        MiningBrokerClient.GetProjectItems(StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id).then((project_items: any[]) => {
+            const result = [];
+            foreach(project_items, project_item => {
+                const item: MVINewAnalyseModelSelection = NewAnalyseTypes.find(item => item.id === project_item.item_id);
+                if (item != null) {
+                    result.push({
+                        id: item.id,
+                        icon: item.icon,
+                        name: item.title,
+                        isRight: false,
+                        controller: item.controller,
+                        isVisible: () => true
+                    });
+                }
+
+            })
+            this.tabModels = [...topModels, ...result];
+            if (result.length > 0) {
+                this.OnTabSelected(2);
+            } else {
+                this.OnTabSelected(0);
+            }
+
+            this.EndUpdate();
+            this.DataBinded = true;
+        });
+
     }
 
     private LoadPortalView(): UIView {
@@ -73,10 +133,22 @@ export class DatasetController extends UIController {
         )
     }
     public LoadView(): UIView {
-        if (TApplication.ApplicationMode === ApplicationModes.Desktop) {
-            return this.LoadDesktopView();
+        if (this.DataBinded) {
+            if (TApplication.ApplicationMode === ApplicationModes.Desktop) {
+                return this.LoadDesktopView();
+            } else {
+                return this.LoadPortalView();
+            }
         } else {
-            return this.LoadPortalView();
+            return (
+                UIScene(
+                    Spinner()
+                )
+            )
         }
     }
+}
+
+export function DatasetController(project: IProjectModel, miningModel: IMiningModelModel): DatasetControllerClass {
+    return new DatasetControllerClass().Bind({ project, miningModel });
 }

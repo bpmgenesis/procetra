@@ -1,6 +1,7 @@
 import { UIController } from '@tuval/forms';
 import { CustomPageController } from '../../CustomPage/Controllers/CustomPageController';
 import { DatasetController } from '../../Dataset/Controllers/DatasetController';
+import { IProjectModel, IMiningModelModel } from '@procetra/common';
 
 
 export interface MIProjectItem {
@@ -10,27 +11,17 @@ export interface MIProjectItem {
 }
 
 export interface MVIProjectItem extends MIProjectItem {
-   icon: string;
-   controller:UIController;
+    icon: string;
+    controller: UIController;
 }
 
-export function CreateMVIProjectItem(model:MIProjectItem ):MVIProjectItem {
-    if (model.type === 'Dataset') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f050',
-            controller: new DatasetController()
-        }
-    } else  if (model.type === 'Dashboard') {
-        return {
-            project_item_id: model.project_item_id,
-            name: model.name,
-            type: model.type,
-            icon: '\\f0b3',
-            controller: new CustomPageController()
-        }
+export function CreateMVIProjectItem(project: IProjectModel, miningModel: IMiningModelModel): MVIProjectItem {
+    return {
+        project_item_id: '',
+        name: '',
+        type: '',
+        icon: '\\f050',
+        controller: DatasetController(project, miningModel)
     }
-    return {} as any;
+
 }

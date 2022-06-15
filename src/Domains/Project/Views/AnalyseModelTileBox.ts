@@ -14,13 +14,13 @@ import {
     ZStack,
 } from '@tuval/forms';
 
-import { MIMiningModel } from '../../../UI/Models/MIAnalyseModel';
+import { IMiningModelModel } from '@procetra/common';
 import { RegularText } from '../../../UI/Views/Texts';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
 
 
 
-export function AnalyseModelTileBox(params: MIMiningModel, menuItems: MVITitleMenu[]): UIView {
+export function AnalyseModelTileBox(params: IMiningModelModel, menuItems: MVITitleMenu[]): UIView {
     return (
         VStack({ alignment: cTopLeading })(
             ZStack(
@@ -28,7 +28,7 @@ export function AnalyseModelTileBox(params: MIMiningModel, menuItems: MVITitleMe
                 Icon('\\d1fd').size(100).foregroundColor('rgb(120,120,120,10%)').right('-13px').bottom('-2px'),
                 HStack({ spacing: 10 })(
                     Icon('\\d31a').size(20),
-                    RegularText(params.name).fontSize('18px').lineHeight('20px').multilineTextAlignment(TextAlignment.leading),
+                    RegularText(params.model_name).fontSize('18px').lineHeight('20px').multilineTextAlignment(TextAlignment.leading),
                     Spacer(),
                     UIContextMenu(
                         ...ForEach(menuItems)(item =>

@@ -3,7 +3,7 @@ import { NewProjectDialog } from '../Dialogs/NewProjectDialog';
 import { OpenProjectDialog } from '../Dialogs/OpenProjectDialog';
 import { UploadDataDialog } from '../Dialogs/UploadDataDialog/UploadDataDialog';
 import { MapColumnSettingsDialog } from '../Dialogs/MapColumnSettingsDialog/MapColumnSettingDialog';
-import { MIProject } from '../../models/MIProject';
+import { IProjectModel } from '@procetra/common';
 
 export class ProjectUIService {
     public static NewProject(): Promise<any> {
@@ -25,7 +25,7 @@ export class ProjectUIService {
         });
     }
 
-    public static UploadDataDialog(project: MIProject): Promise<any> {
+    public static UploadDataDialog(project: IProjectModel): Promise<any> {
         return new Promise((resolve, reject) => {
             const npd = new UploadDataDialog();
             npd.SetProject(project);

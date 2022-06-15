@@ -1,9 +1,8 @@
-import { MIMiningModel } from "../../../UI/Models/MIAnalyseModel";
-import { MVIMiningModel } from "./MVIAnalyseModel";
+import { IMiningModelModel } from "@procetra/common";
 
 export interface MVITitleMenu {
     title: string;
     icon: string;
     iconColor: string;
-    onClick:(item:MIMiningModel)=> void;
+    onClick: (item: IMiningModelModel) => void;
 }

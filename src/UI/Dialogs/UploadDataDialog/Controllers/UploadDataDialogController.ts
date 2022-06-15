@@ -7,13 +7,13 @@ import { Steps } from '../Views/Steps';
 import { SelectFileController } from './SelectFileController';
 import { MapColumnsController } from './MapColumnsController';
 import { case_id_map_model, event_id_map_model, mapping } from '../Models/MapModels';
-import { Services } from '../../../../Services/Services';
-import { MIProject } from '../../../../models/MIProject';
+import { IProjectModel } from '@procetra/common';
+import { MiningBrokerClient, Services } from '@procetra/common';
 
 
 export class UploadDataDialogController extends UIController {
 
-    private project: MIProject;
+    private project: IProjectModel;
 
     @State()
     private selectedIndex: int;
@@ -24,6 +24,7 @@ export class UploadDataDialogController extends UIController {
     @State()
     private currentController: UIController;
 
+    private fileData: IUploadFileReady;
     private mapping: mapping = { mapping: {} } as any;
 
     private OnPrepareColumnMapping() {
@@ -107,12 +108,29 @@ export class UploadDataDialogController extends UIController {
 
         console.log(this.mapping);
         const session_id = Services.StateService.GetSessionId();
-        Services.ProjectService.CreateMapping(session_id, 'bpmgenesis', this.project.project_id, this.mapColumnsController.mappingName, this.mapColumnsController.mappingFileName, JSON.stringify(this.mapping.mapping));
+
+        Services.ProjectService.CreateMapping(session_id, 'bpmgenesis', this.project.project_id,
+            this.mapColumnsController.mappingName,
+            this.mapColumnsController.mappingFileName,
+            JSON.stringify(this.mapping.mapping));
+
+
+        MiningBrokerClient.ImportCsvFile(this.project.project_id, 'bpmgenesis', this.fileData.GetFileContentAsString(), this.mapping.mapping.case_id.map(item=> item.title).join(';'), this.mapping.mapping.event_id.map(item=> item.title).join(';'),
+        this.mapping.mapping.start_timestamp.title, this.mapping.mapping.end_timestamp.title, '', '').then(() => {
+            MiningBrokerClient.LoadEventData(session_id, this.project.project_id).then(()=>{
+                 MiningBrokerClient.GetHappyPath(session_id, this.project.project_id).then( (info: any[])=>{
+                   console.log(info);
+                });
+            });
+
+        });
+
     }
     protected InitController(): void {
         this.selectedIndex = 0;
         this.selectFileController = new SelectFileController();
         this.selectFileController.OnFileSelected.add((e: IUploadFileReady) => {
+            this.fileData = e;
             this.mapColumnsController = new MapColumnsController();
             this.mapColumnsController.Bind(e);
             this.currentController = this.mapColumnsController;
@@ -122,7 +140,7 @@ export class UploadDataDialogController extends UIController {
         this.currentController = this.selectFileController;
     }
 
-    public OnBindModel(project: MIProject) {
+    public OnBindModel(project: IProjectModel) {
         this.project = project;
     }
 

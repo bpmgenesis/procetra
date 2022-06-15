@@ -22,19 +22,18 @@ import {
 
 import { ProcessMining } from '../../../Application';
 import { Resources } from '../../../Resources';
-import { Services } from '../../../Services/Services';
+import { Services, MiningBrokerClient, IMiningModelModel } from '@procetra/common';
 import { ProjectUIService } from '../../../UI/UIServices/ProjectUIService';
 import { EmptyProjectController } from '../../EmptyProject/Controllers/EmptyProjectController';
 import { MiningModelController } from '../../MiningModel/Controllers/MiningModelController';
-import { MIProject } from '../../../models/MIProject';
+import { IProjectModel } from '@procetra/common';
 import { ProjectController } from '../../Project/Controllers/ProjectController';
-import { MVIMiningModel } from '../../Project/Models/MVIAnalyseModel';
 import { MenuButton } from '../Views/MenuButton';
 import { PortalFilterBarView } from '../Views/PortalFilterBarView';
 import { RecentProjects } from '../Views/RecentProjects';
 import { ForEach } from '@tuval/forms';
 
-export class AppController extends UIController {
+export class AppControllerClass extends UIController {
 
     @State()
     public RequestDesktop: Event<any>;
@@ -143,26 +142,26 @@ export class AppController extends UIController {
     @State()
     private testCounter: int;
     public override LoadView(): UIView {
-       /*  const result: any[] = [];
-        for (let i = 0; i < 1000; i++) {
-            result.push(i);
-        }
+        /*  const result: any[] = [];
+         for (let i = 0; i < 1000; i++) {
+             result.push(i);
+         }
 
-        return UIScene(
-            HStack(
-                Text('Hello world ' + this.testCounter),
-                VStack(
-                    ...ForEach(result)(item =>
-                        HStack(
-                            Text('Test için yapıldı.' + this.testCounter)
-                        )
-                    )
-                ).useCache(true).alias('cache stack')
-            ).alias('normal stack'),
-            UIButton(
-                Text('Increse')
-            ).action(() => { const a = (this.testCounter === undefined ? 0 : this.testCounter); this.testCounter = a + 1; })
-        ) */
+         return UIScene(
+             HStack(
+                 Text('Hello world ' + this.testCounter),
+                 VStack(
+                     ...ForEach(result)(item =>
+                         HStack(
+                             Text('Test için yapıldı.' + this.testCounter)
+                         )
+                     )
+                 ).useCache(true).alias('cache stack')
+             ).alias('normal stack'),
+             UIButton(
+                 Text('Increse')
+             ).action(() => { const a = (this.testCounter === undefined ? 0 : this.testCounter); this.testCounter = a + 1; })
+         ) */
         /*     const result: any[] = [];
          for (let i = 0; i < 10000; i++) {
              result.push(i);
@@ -200,9 +199,9 @@ export class AppController extends UIController {
         ProjectUIService.NewProject().then((name: string) => {
             const session_id = Services.StateService.GetSessionId();
 
-            Services.ProjectService.CreateProject(name, 'api@procetra.com', true, false).then((project: MIProject) => {
+            Services.ProjectService.CreateProject(name, 'api@procetra.com', true, false).then((project: IProjectModel) => {
                 this.currentProject = project;
-                const controller = new EmptyProjectController();
+                const controller = EmptyProjectController(this.currentProject);
                 controller.Bind(project);
                 this.currentController = controller;
             });
@@ -210,23 +209,25 @@ export class AppController extends UIController {
     }
 
     private OnOpenProject() {
-        ProjectUIService.OpenProjectDialog().then((project: MIProject) => {
+        ProjectUIService.OpenProjectDialog().then((project: IProjectModel) => {
+            this.currentController = null;
+            const session_id = Services.StateService.GetSessionId();
             this.currentProject = project;
-
+            debugger;
             if (project.is_data_loaded) {
-                const controller = new ProjectController();
-                controller.Bind(project);
-                controller.AnalyseModelSelected.add((item: MVIMiningModel) => {
-                    item.project = project;
+                MiningBrokerClient.LoadEventData(session_id, project.project_id).then(() => {
+                    const controller = ProjectController(this.currentProject);
+                    controller.Bind(project);
+                    controller.AnalyseModelSelected.add((item: IMiningModelModel) => {
+                        const miningModelController = MiningModelController(this, project, item);
+                        miningModelController.MiningModelClosed.add(() => { this.currentController = controller });
+                        this.currentController = miningModelController;
 
-                    const miningModelController = MiningModelController(this, item);
-                    miningModelController.MiningModelClosed.add(() => { this.currentController = controller });
-                    this.currentController = miningModelController;
-
+                    });
+                    this.currentController = controller;
                 });
-                this.currentController = controller;
             } else {
-                const controller = new EmptyProjectController();
+                const controller = EmptyProjectController(this.currentProject);
                 controller.Bind(project);
                 this.currentController = controller;
             }
@@ -267,3 +268,6 @@ export class AppController extends UIController {
     }
 }
 
+export function AppController(): AppControllerClass {
+    return new AppControllerClass();
+}

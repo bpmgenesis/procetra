@@ -13,8 +13,8 @@ import { IUploadFileReady } from '@tuval/forms';
 
 const infoText = `
 To upload data you must first map the fields (columns) of your data file.
-+ Map __required fields__ (Timeline ID, Timestamp and Event Name) by dragging the corresponding label to the desired column
-+ Map __optional fields__ (columns) that you want to use for filtering your timelines by dragging the New Attribute label to the desired column.
++ Map __required fields__ (Case ID, Timestamp and Event Name) by dragging the corresponding label to the desired column
++ Map __optional fields__ (columns) that you want to use for filtering your cases by dragging the New Attribute label to the desired column.
 + Once you have completed your mapping press the 'Confirm and start upload' button.
 `;
 /* const columns: IGridColumn[] = [

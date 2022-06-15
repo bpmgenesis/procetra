@@ -1,4 +1,4 @@
-import { ConfigService } from '../Services/ConfigService';
+import { ConfigService } from '@procetra/common';
 
 export class SymbolBroker {
     public static GetSymbolUrl(category: string, subCategory: string, name: string): string {

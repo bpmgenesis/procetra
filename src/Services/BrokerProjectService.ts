@@ -1,16 +1,15 @@
-import { MIProject } from '../models/MIProject';
+import { IProjectModel } from '@procetra/common';
 import { IActivityInfo } from "../Bussiness/IActivityInfo";
 import { IDataSet } from "../Bussiness/IDataSet";
 import { IProject } from "../Bussiness/IProject";
 import { Project } from "../Bussiness/Project";
-import { IProjectService } from "./IProjectService";
-import { StateService } from "./StateService";
-import { MiningBrokerClient, ICreateProjectResponse } from '../BrokerClients/MiningBrokerClient';
+import { MiningBrokerClient, ICreateProjectResponse } from '@procetra/common';
 import { MIProjectItem } from '../domains/MiningModel/Models/MIProjectItem';
-import { MIMiningModel } from '../UI/Models/MIAnalyseModel';
+import { IMiningModelModel } from '@procetra/common';
+import { StateService } from '@procetra/common';
 
 export class BrokerProjectService/*  implements IProjectService */ {
-    public CreateProject(name: string, admin: string, isPublic: boolean = true, disableCache: boolean = false): Promise<MIProject> {
+    public CreateProject(name: string, admin: string, isPublic: boolean = true, disableCache: boolean = false): Promise<IProjectModel> {
         return new Promise((resolve, reject) => {
             const session_id = StateService.GetSessionId();
             if (session_id == null) {
@@ -139,7 +138,7 @@ export class BrokerProjectService/*  implements IProjectService */ {
     }
 
     //#region Project Methods
-    public GetProjects(session_id: string, org_name: string): Promise<MIProject[]> {
+    public GetProjects(session_id: string, org_name: string): Promise<IProjectModel[]> {
         return MiningBrokerClient.GetProjects(session_id, org_name);
     }
 
@@ -169,10 +168,10 @@ export class BrokerProjectService/*  implements IProjectService */ {
     //#endregion
 
     //#region Analyse Models
-    public CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<MIMiningModel> {
+    public CreateAnalyseModel(session_id: string, org_name: string, project_id: string, analyse_model_name: string): Promise<IMiningModelModel> {
         return MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
     }
-    public GetAnalyseModels(session_id: string, org_name: string, project_id: string,): Promise<MIMiningModel[]> {
+    public GetAnalyseModels(session_id: string, org_name: string, project_id: string,): Promise<IMiningModelModel[]> {
         return MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
     }
     //#endregion

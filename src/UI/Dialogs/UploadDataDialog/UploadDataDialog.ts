@@ -1,6 +1,6 @@
 import { Event } from '@tuval/core';
 import { Dialog, ListBox } from '@tuval/forms';
-import { MIProject } from '../../../models/MIProject';
+import { IProjectModel } from '@procetra/common';
 import { UploadDataDialogController } from './Controllers/UploadDataDialogController';
 
 export class UploadDataDialog extends Dialog {
@@ -38,7 +38,7 @@ export class UploadDataDialog extends Dialog {
 
     }
 
-    public SetProject(project:MIProject) {
+    public SetProject(project:IProjectModel) {
         this.uploadDataDialogController = new UploadDataDialogController();
         this.uploadDataDialogController.Bind(project);
         this.Controls.Add(this.uploadDataDialogController);

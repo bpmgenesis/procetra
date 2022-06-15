@@ -1,5 +1,5 @@
 import { HttpClient } from '@tuval/core';
-import { ConfigService } from '../../../Services/ConfigService';
+import { ConfigService } from '@procetra/common';
 
 export class EbaProject {
     Name: string;

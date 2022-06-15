@@ -1,39 +1,50 @@
-import { UIController, UIView, Text, HDivider, VStack, cTopLeading, HStack, Icon, cLeading, Spacer, Color, ZStack, ForEach, UIScene, State, UIContextMenu, RenderingTypes, cTop } from '@tuval/forms';
-import { HeadLineButton } from '../../../UI/Views/HeadLineButton';
-import { Headline3, SectionHeadline, SectionSubHeadline, Headline5, RegularText, AnimHeadline5 } from '../../../UI/Views/Texts';
-import { TileBox } from '../../../UI/Views/TileBox';
-import { MVIMiningModel } from '../Models/MVIAnalyseModel';
-import { AnalyseModelTileBox } from '../Views/AnalyseModelTileBox';
+import { IProjectModel, PageButton, Services, IMiningModelModel } from '@procetra/common';
 import { Event } from '@tuval/core';
+import {
+    cLeading,
+    cTop,
+    cTopLeading,
+    ForEach,
+    HDivider,
+    HStack,
+    Icon,
+    RenderingTypes,
+    Spacer,
+    State,
+    Text,
+    UIContextMenu,
+    UIController,
+    UIScene,
+    VStack,
+} from '@tuval/forms';
+
 import { AnalyseModelUIService } from '../../../UI/UIServices/AnalyseModelUIService';
-import { Services } from '../../../Services/Services';
-import { MIProject } from '../../../models/MIProject';
+import { HeadLineButton } from '../../../UI/Views/HeadLineButton';
+import { AnimHeadline5, SectionHeadline } from '../../../UI/Views/Texts';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
-import { DatasetController } from '../../Dataset/Controllers/DatasetController';
-import { MIMiningModel } from '../../../UI/Models/MIAnalyseModel';
-import { PageButton } from '@procetra/common';
+import { AnalyseModelTileBox } from '../Views/AnalyseModelTileBox';
 
 const infoText = `
 To upload data you must first map the fields (columns) of your data file.
-+ Map __required fields__ (Timeline ID, Timestamp and Event Name) by dragging the corresponding label to the desired column
-+ Map __optional fields__ (columns) that you want to use for filtering your timelines by dragging the New Attribute label to the desired column.
++ Map __required fields__ (Case ID, Timestamp and Event Name) by dragging the corresponding label to the desired column
++ Map __optional fields__ (columns) that you want to use for filtering your cases by dragging the New Attribute label to the desired column.
 + Once you have completed your mapping press the 'Confirm and start upload' button.
 `;
 
-export class ProjectController extends UIController {
+export class ProjectControllerClass extends UIController {
     public AnalyseModelSelected: Event<any>;
 
     private menuItems: MVITitleMenu[];
 
     private newMenuItems: any;
     @State()
-    private project: MIProject;
+    private project: IProjectModel;
 
     @State()
-    public model: MIMiningModel[];
+    public model: IMiningModelModel[];
 
     @State()
-    public selectedAnalyseModel: MVIMiningModel;
+    public selectedAnalyseModel: IMiningModelModel;
 
     protected InitController() {
         this.AnalyseModelSelected = new Event();
@@ -110,16 +121,16 @@ export class ProjectController extends UIController {
         ];
     }
 
-    public OnBindModel(project: MIProject) {
+    public OnBindModel(project: IProjectModel) {
         this.project = project;
         const session_id = Services.StateService.GetSessionId();
-        Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then(analyseModels => {
+        Services.ProjectService.GetAnalyseModels(session_id, 'bpmgenesis', project.project_id).then((analyseModels: IMiningModelModel[]) => {
+            console.log(analyseModels)
             this.model = analyseModels;
         });
     }
     private OnAddEditAnalyseModelName(): void {
         AnalyseModelUIService.AddEditAnalyseModelName().then((name: string) => {
-
             // Adding to our project
             const session_id = Services.StateService.GetSessionId();
             Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', this.project.project_id, name).then(analyseModelInfo => {
@@ -132,7 +143,7 @@ export class ProjectController extends UIController {
         });
     }
 
-    private OnSelectedAnalyseModelChange(item: MVIMiningModel): void {
+    private OnSelectedAnalyseModelChange(item: IMiningModelModel): void {
         this.selectedAnalyseModel = item;
     }
 
@@ -198,4 +209,8 @@ export class ProjectController extends UIController {
     public LoadView(): any {
         return this.AnalyseModelView();
     }
+}
+
+export function ProjectController(project: IProjectModel): ProjectControllerClass {
+    return new ProjectControllerClass().Bind(project);
 }
