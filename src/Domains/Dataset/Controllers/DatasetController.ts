@@ -1,4 +1,4 @@
-import { IMiningModelModel, IProjectModel, MiningBrokerClient, StateService } from '@procetra/common';
+import { IMiningModelModel, IProjectModel, MiningBrokerClient, Services } from '@procetra/common';
 import { foreach, int } from '@tuval/core';
 import {
     ApplicationModes,
@@ -51,7 +51,7 @@ export class DatasetControllerClass extends UIController<DatasetControllerBindin
     private OnNewAnalyseAdded(value: MVIDatasetTabModel) {
         console.log(value);
 
-        MiningBrokerClient.CreateProjectItem(StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id, value.id).then(nodata => {
+        MiningBrokerClient.CreateProjectItem(Services.StateService.GetSessionId(), this.project.project_id, this.miningModel.model_id, value.id).then(nodata => {
             this.tabModels = [...this.tabModels, value];
             this.OnTabSelected(this.tabModels.length - 1);
         });
@@ -81,7 +81,7 @@ export class DatasetControllerClass extends UIController<DatasetControllerBindin
         this.miningModel = bindingModel.miningModel;
         this.selectedTabIndex = 0;
 
-        MiningBrokerClient.GetProjectItems(StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id).then((project_items: any[]) => {
+        MiningBrokerClient.GetProjectItems(Services.StateService.GetSessionId(), this.project.project_id, this.miningModel.model_id).then((project_items: any[]) => {
             const result = [];
             foreach(project_items, project_item => {
                 const item: MVINewAnalyseModelSelection = NewAnalyseTypes.find(item => item.id === project_item.item_id);

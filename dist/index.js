@@ -58,6 +58,8 @@ __nested_webpack_require_1024__.r(__webpack_exports__);
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_1024__(/*! @tuval/core */ "@tuval/core");
 /* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_1024__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_1024__(/*! ../Services/ConfigService */ "./src/Services/ConfigService.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_1024__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nested_webpack_require_1024__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_2__);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -94,6 +96,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
 
 
 var separators = [",", ";", "\t"];
@@ -138,13 +141,12 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.ImportCsvFile = function (project_id, org_name, csv, case_column_name, activity_column_name, timestamp_key, start_timestamp_key, resource_key, cost_key) {
+    MiningBrokerClient.ImportCsvFile = function (project_id, csv, case_column_name, activity_column_name, timestamp_key, start_timestamp_key, resource_key, cost_key) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var data = new FormData();
                         data.append('project_id', project_id);
-                        data.append('org_name', org_name);
                         data.append('case_column_name', case_column_name);
                         data.append('activity_column_name', activity_column_name);
                         data.append('timestamp_key', timestamp_key);
@@ -157,7 +159,7 @@ var MiningBrokerClient = /** @class */ (function () {
                         ];
                         var file = new File(parts, 'csv.txt');
                         data.append('file', file, 'test.csv');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'ImportCsvFile', data, {
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'ImportCsvFile', data, {
                             headers: {
                                 "Content-Encoding": "gzip"
                             }
@@ -213,14 +215,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetStartActivities = function (session_id, project_id) {
+    MiningBrokerClient.GetStartActivities = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetStartActivities', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetStartActivities', form)
                             .then(function (response) {
                             resolve(response.data.startActivities);
                         });
@@ -243,14 +244,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetEndActivities = function (session_id, project_id) {
+    MiningBrokerClient.GetEndActivities = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEndActivities', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEndActivities', form)
                             .then(function (response) {
                             resolve(response.data.endActivities);
                         });
@@ -273,15 +273,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetAllVariants = function (session_id, project_id, max_no_variants) {
+    MiningBrokerClient.GetAllVariants = function (project_id, max_no_variants) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllVariants', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllVariants', form)
                             .then(function (response) {
                             resolve(response.data.variants);
                         });
@@ -289,15 +288,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetVariants = function (session_id, project_id, max_no_variants) {
+    MiningBrokerClient.GetVariants = function (project_id, max_no_variants) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetVariants', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetVariants', form)
                             .then(function (response) {
                             resolve(response.data.variants);
                         });
@@ -305,15 +303,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetEventsPerTime = function (session_id, project_id) {
+    MiningBrokerClient.GetEventsPerTime = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEventsPerTime', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEventsPerTime', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -321,15 +318,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetHappyPath = function (session_id, project_id) {
+    MiningBrokerClient.GetHappyPath = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetHappyPath', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetHappyPath', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -337,16 +333,15 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetActivities = function (session_id, project_id, activity_key) {
+    MiningBrokerClient.GetActivities = function (project_id, activity_key) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         form.append('activity_key', activity_key);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetActivities', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetActivities', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -354,16 +349,15 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetThroughputTimes = function (session_id, project_id, activity_key) {
+    MiningBrokerClient.GetThroughputTimes = function (project_id, activity_key) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         form.append('activity_key', activity_key);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetThroughputTimes', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetThroughputTimes', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -371,14 +365,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetLogSummary = function (session_id, project_id) {
+    MiningBrokerClient.GetLogSummary = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetLogSummary', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetLogSummary', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -386,14 +379,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetAllVariantsAndCases = function (session_id, project_id) {
+    MiningBrokerClient.GetAllVariantsAndCases = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllVariantsAndCases', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllVariantsAndCases', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -401,14 +393,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetAllPaths = function (session_id, project_id) {
+    MiningBrokerClient.GetAllPaths = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllPaths', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAllPaths', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -416,14 +407,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetAttributeValues = function (session_id, project_id) {
+    MiningBrokerClient.GetAttributeValues = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAttributeValues', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAttributeValues', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -431,14 +421,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetDailyCasesPerMonth = function (session_id, project_id) {
+    MiningBrokerClient.GetDailyCasesPerMonth = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetDailyCasesPerMonth', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetDailyCasesPerMonth', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -446,15 +435,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetProcessSchema = function (session_id, project_id) {
+    MiningBrokerClient.GetProcessSchema = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
                         // form.append('max_no_variants', '10');
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProcessSchema', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProcessSchema', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -490,14 +478,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetEventDataInfo = function (session_id, project_id) {
+    MiningBrokerClient.GetEventDataInfo = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEventDataInfo', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetEventDataInfo', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -505,14 +492,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.LoadEventData = function (session_id, project_id) {
+    MiningBrokerClient.LoadEventData = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'LoadEventData', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'LoadEventData', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -549,18 +535,16 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.CreateProject = function (session_id, org_name, project_name, admin, is_public, disable_cache) {
+    MiningBrokerClient.CreateProject = function (project_name, admin, is_public, disable_cache) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_name', project_name);
                         form.append('admin', admin);
                         form.append('is_public', is_public ? "true" : "false");
                         form.append('disable_cache', disable_cache ? "true" : "false");
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateProject', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateProject', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -568,14 +552,11 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetProjects = function (session_id, org_name) {
+    MiningBrokerClient.GetProjects = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
-                        var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjects', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjects')
                             .then(function (response) {
                             resolve(response.data.projects);
                         });
@@ -583,15 +564,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetProjectById = function (session_id, org_name, project_id) {
+    MiningBrokerClient.GetProjectById = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjectById', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjectById', form)
                             .then(function (response) {
                             resolve(response.data.projects);
                         });
@@ -599,17 +578,15 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.CreateProjectItem = function (session_id, tenant_id, project_id, model_id, item_id) {
+    MiningBrokerClient.CreateProjectItem = function (project_id, model_id, item_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('tenant_id', tenant_id);
                         form.append('project_id', project_id);
                         form.append('model_id', model_id);
                         form.append('item_id', item_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateProjectItem', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateProjectItem', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -617,16 +594,14 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetProjectItems = function (session_id, org_name, project_id, model_id) {
+    MiningBrokerClient.GetProjectItems = function (project_id, model_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_id', project_id);
                         form.append('model_id', model_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjectItems', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetProjectItems', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -635,16 +610,14 @@ var MiningBrokerClient = /** @class */ (function () {
         });
     };
     //#region Anayse Models
-    MiningBrokerClient.CreateAnalyseModel = function (session_id, org_name, project_id, analyse_model_name) {
+    MiningBrokerClient.CreateAnalyseModel = function (project_id, analyse_model_name) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_id', project_id);
                         form.append('analyse_model_name', analyse_model_name);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateAnalyseModel', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateAnalyseModel', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -652,15 +625,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetAnalyseModels = function (session_id, org_name, project_id) {
+    MiningBrokerClient.GetAnalyseModels = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAnalyseModels', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'GetAnalyseModels', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -669,18 +640,16 @@ var MiningBrokerClient = /** @class */ (function () {
         });
     };
     //#endregion
-    MiningBrokerClient.CreateMapping = function (session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data) {
+    MiningBrokerClient.CreateMapping = function (project_id, mapping_name, mapping_file_name, mapping_data) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
-                        form.append('org_name', org_name);
                         form.append('project_id', project_id);
                         form.append('mapping_name', mapping_name);
                         form.append('mapping_file_name', mapping_file_name);
                         form.append('mapping_data', mapping_data);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateMapping', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'CreateMapping', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -688,14 +657,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetCaseCount = function (session_id, project_id) {
+    MiningBrokerClient.GetCaseCount = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'metrics/GetCaseCount', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'metrics/GetCaseCount', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -703,14 +671,13 @@ var MiningBrokerClient = /** @class */ (function () {
             });
         });
     };
-    MiningBrokerClient.GetEventCount = function (session_id, project_id) {
+    MiningBrokerClient.GetEventCount = function (project_id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         var form = new FormData();
-                        form.append('session_id', session_id);
                         form.append('project_id', project_id);
-                        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.HttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'metrics/GetEventCount', form)
+                        _tuval_forms__WEBPACK_IMPORTED_MODULE_2__.RealmHttpClient.Post(_Services_ConfigService__WEBPACK_IMPORTED_MODULE_1__.ConfigService.GetMiningBrokerUrl() + 'metrics/GetEventCount', form)
                             .then(function (response) {
                             resolve(response.data);
                         });
@@ -729,13 +696,13 @@ var MiningBrokerClient = /** @class */ (function () {
 /*!************************************!*\
   !*** ./src/BrokerClients/index.ts ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_40092__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_37873__) => {
 
-__nested_webpack_require_40092__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_40092__.d(__webpack_exports__, {
+__nested_webpack_require_37873__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_37873__.d(__webpack_exports__, {
 /* harmony export */   "MiningBrokerClient": () => (/* reexport safe */ _MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient)
 /* harmony export */ });
-/* harmony import */ var _MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_40092__(/*! ./MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
+/* harmony import */ var _MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_37873__(/*! ./MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
 
 
 
@@ -745,14 +712,14 @@ __nested_webpack_require_40092__.r(__webpack_exports__);
 /*!************************************!*\
   !*** ./src/ListBounceAnimation.ts ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_40797__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_38578__) => {
 
-__nested_webpack_require_40797__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_40797__.d(__webpack_exports__, {
+__nested_webpack_require_38578__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_38578__.d(__webpack_exports__, {
 /* harmony export */   "ListBounceAnimation": () => (/* binding */ ListBounceAnimation)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_40797__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_40797__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_38578__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_38578__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -794,9 +761,9 @@ var ListBounceAnimation = new ListBounce();
 /*!**********************************!*\
   !*** ./src/Models/MIHappPath.ts ***!
   \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_43127__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_40908__) => {
 
-__nested_webpack_require_43127__.r(__webpack_exports__);
+__nested_webpack_require_40908__.r(__webpack_exports__);
 
 
 
@@ -806,9 +773,9 @@ __nested_webpack_require_43127__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./src/Models/MIMiningModel.ts ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_43434__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_41215__) => {
 
-__nested_webpack_require_43434__.r(__webpack_exports__);
+__nested_webpack_require_41215__.r(__webpack_exports__);
 
 
 
@@ -818,9 +785,9 @@ __nested_webpack_require_43434__.r(__webpack_exports__);
 /*!*********************************!*\
   !*** ./src/Models/MIProject.ts ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_43725__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_41506__) => {
 
-__nested_webpack_require_43725__.r(__webpack_exports__);
+__nested_webpack_require_41506__.r(__webpack_exports__);
 
 
 
@@ -830,12 +797,12 @@ __nested_webpack_require_43725__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./src/Models/index.ts ***!
   \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_44000__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_41781__) => {
 
-__nested_webpack_require_44000__.r(__webpack_exports__);
-/* harmony import */ var _MIProject__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_44000__(/*! ./MIProject */ "./src/Models/MIProject.ts");
-/* harmony import */ var _MIMiningModel__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_44000__(/*! ./MIMiningModel */ "./src/Models/MIMiningModel.ts");
-/* harmony import */ var _MIHappPath__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_44000__(/*! ./MIHappPath */ "./src/Models/MIHappPath.ts");
+__nested_webpack_require_41781__.r(__webpack_exports__);
+/* harmony import */ var _MIProject__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_41781__(/*! ./MIProject */ "./src/Models/MIProject.ts");
+/* harmony import */ var _MIMiningModel__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_41781__(/*! ./MIMiningModel */ "./src/Models/MIMiningModel.ts");
+/* harmony import */ var _MIHappPath__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_41781__(/*! ./MIHappPath */ "./src/Models/MIHappPath.ts");
 
 
 
@@ -847,20 +814,18 @@ __nested_webpack_require_44000__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./src/Services/BrokerProjectService.ts ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_44770__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_42551__) => {
 
-__nested_webpack_require_44770__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_44770__.d(__webpack_exports__, {
+__nested_webpack_require_42551__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_42551__.d(__webpack_exports__, {
 /* harmony export */   "BrokerProjectService": () => (/* binding */ BrokerProjectService)
 /* harmony export */ });
-/* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_44770__(/*! ../BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
-/* harmony import */ var _StateService__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_44770__(/*! ./StateService */ "./src/Services/StateService.ts");
+/* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_42551__(/*! ../BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
 /* import { MIProject } from '@procetra/common';
 import { IActivityInfo } from "../Bussiness/IActivityInfo";
 import { IDataSet } from "../Bussiness/IDataSet";
 import { IProject } from "../Bussiness/IProject";
 import { Project } from "../Bussiness/Project"; */
-
 
 var BrokerProjectService /*  implements IProjectService */ = /** @class */ (function () {
     function BrokerProjectService() {
@@ -869,11 +834,7 @@ var BrokerProjectService /*  implements IProjectService */ = /** @class */ (func
         if (isPublic === void 0) { isPublic = true; }
         if (disableCache === void 0) { disableCache = false; }
         return new Promise(function (resolve, reject) {
-            var session_id = _StateService__WEBPACK_IMPORTED_MODULE_1__.StateService.GetSessionId();
-            if (session_id == null) {
-                throw 'Invalid session.';
-            }
-            _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name, admin, isPublic, disableCache).then(function (project) {
+            _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateProject(name, admin, isPublic, disableCache).then(function (project) {
                 resolve({
                     project_id: project.project_id,
                     project_name: project.project_name,
@@ -989,8 +950,8 @@ var BrokerProjectService /*  implements IProjectService */ = /** @class */ (func
         throw new Error("Method not implemented.");
     };
     //#region Project Methods
-    BrokerProjectService.prototype.GetProjects = function (session_id, org_name) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjects(session_id, org_name);
+    BrokerProjectService.prototype.GetProjects = function (session_id) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjects();
     };
     BrokerProjectService.prototype.GetProjectItems = function (session_id, org_name, project_id) {
         //return MiningBrokerClient.GetProjectItems(session_id, org_name, project_id);
@@ -1009,20 +970,20 @@ var BrokerProjectService /*  implements IProjectService */ = /** @class */ (func
             ]);
         });
     };
-    BrokerProjectService.prototype.GetProjectById = function (session_id, org_name, project_id) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjectById(session_id, org_name, project_id);
+    BrokerProjectService.prototype.GetProjectById = function (project_id) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjectById(project_id);
     };
     //#endregion
     //#region Analyse Models
-    BrokerProjectService.prototype.CreateAnalyseModel = function (session_id, org_name, project_id, analyse_model_name) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
+    BrokerProjectService.prototype.CreateAnalyseModel = function (project_id, analyse_model_name) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateAnalyseModel(project_id, analyse_model_name);
     };
-    BrokerProjectService.prototype.GetAnalyseModels = function (session_id, org_name, project_id) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
+    BrokerProjectService.prototype.GetAnalyseModels = function (project_id) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetAnalyseModels(project_id);
     };
     //#endregion
-    BrokerProjectService.prototype.CreateMapping = function (session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data) {
-        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateMapping(session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data);
+    BrokerProjectService.prototype.CreateMapping = function (project_id, mapping_name, mapping_file_name, mapping_data) {
+        return _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateMapping(project_id, mapping_name, mapping_file_name, mapping_data);
     };
     return BrokerProjectService;
 }());
@@ -1035,14 +996,14 @@ var BrokerProjectService /*  implements IProjectService */ = /** @class */ (func
 /*!***************************************!*\
   !*** ./src/Services/ConfigService.ts ***!
   \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_54271__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_51472__) => {
 
-__nested_webpack_require_54271__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_54271__.d(__webpack_exports__, {
+__nested_webpack_require_51472__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_51472__.d(__webpack_exports__, {
 /* harmony export */   "ConfigService": () => (/* binding */ ConfigService)
 /* harmony export */ });
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_54271__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_54271__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_51472__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_51472__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
 
 var ConfigService = /** @class */ (function () {
     function ConfigService() {
@@ -1066,6 +1027,8 @@ var ConfigService = /** @class */ (function () {
         else {
             url = 'https://bpmgenesis.com/broker/mining/v1/';
         }
+        /*  const url = window.location.origin + '/broker/mining/v1/';
+         console.log(url); */
         return url;
     };
     return ConfigService;
@@ -1079,9 +1042,9 @@ var ConfigService = /** @class */ (function () {
 /*!*****************************************!*\
   !*** ./src/Services/IProjectService.ts ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_55902__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_53206__) => {
 
-__nested_webpack_require_55902__.r(__webpack_exports__);
+__nested_webpack_require_53206__.r(__webpack_exports__);
 
 
 
@@ -1091,16 +1054,14 @@ __nested_webpack_require_55902__.r(__webpack_exports__);
 /*!**********************************!*\
   !*** ./src/Services/Services.ts ***!
   \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_56197__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_53501__) => {
 
-__nested_webpack_require_56197__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_56197__.d(__webpack_exports__, {
+__nested_webpack_require_53501__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_53501__.d(__webpack_exports__, {
 /* harmony export */   "Services": () => (/* binding */ Services)
 /* harmony export */ });
-/* harmony import */ var _StateService__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_56197__(/*! ./StateService */ "./src/Services/StateService.ts");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_56197__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nested_webpack_require_56197__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_1__);
-
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_53501__(/*! @tuval/core */ "@tuval/core");
+/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_53501__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
 
 var Services = /** @class */ (function () {
     function Services() {
@@ -1108,7 +1069,7 @@ var Services = /** @class */ (function () {
     Object.defineProperty(Services, "ProjectService", {
         get: function () {
             try {
-                return _tuval_core__WEBPACK_IMPORTED_MODULE_1__.instance.resolve('IProjectService_Thread');
+                return _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.resolve('IProjectService_Thread');
             }
             catch (_a) {
                 throw 'Project Service Not Found.';
@@ -1119,7 +1080,12 @@ var Services = /** @class */ (function () {
     });
     Object.defineProperty(Services, "StateService", {
         get: function () {
-            return _StateService__WEBPACK_IMPORTED_MODULE_0__.StateService;
+            try {
+                return _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.resolve('IStateService');
+            }
+            catch (_a) {
+                throw 'State Service Not Found.';
+            }
         },
         enumerable: false,
         configurable: true
@@ -1131,160 +1097,22 @@ var Services = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/Services/StateService.ts":
-/*!**************************************!*\
-  !*** ./src/Services/StateService.ts ***!
-  \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_57837__) => {
-
-__nested_webpack_require_57837__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_57837__.d(__webpack_exports__, {
-/* harmony export */   "CurrentProjectChangedArgs": () => (/* binding */ CurrentProjectChangedArgs),
-/* harmony export */   "CurrentDatasetChangedArgs": () => (/* binding */ CurrentDatasetChangedArgs),
-/* harmony export */   "CurrentProjectChangedHandler": () => (/* binding */ CurrentProjectChangedHandler),
-/* harmony export */   "CurrentDatasetChangedHandler": () => (/* binding */ CurrentDatasetChangedHandler),
-/* harmony export */   "StateService": () => (/* binding */ StateService)
-/* harmony export */ });
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_57837__(/*! @tuval/core */ "@tuval/core");
-/* harmony import */ var _tuval_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_57837__.n(_tuval_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_57837__(/*! ../BrokerClients/MiningBrokerClient */ "./src/BrokerClients/MiningBrokerClient.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-var CurrentProjectChangedArgs = /** @class */ (function () {
-    function CurrentProjectChangedArgs(projectId) {
-        this.ProjectId = projectId;
-    }
-    return CurrentProjectChangedArgs;
-}());
-
-var CurrentDatasetChangedArgs = /** @class */ (function () {
-    function CurrentDatasetChangedArgs(projectId, datasetId) {
-        this.ProjectId = projectId;
-        this.DatasetId = datasetId;
-    }
-    return CurrentDatasetChangedArgs;
-}());
-
-var CurrentProjectChangedHandler = /** @class */ (function (_super) {
-    __extends(CurrentProjectChangedHandler, _super);
-    function CurrentProjectChangedHandler() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return CurrentProjectChangedHandler;
-}(_tuval_core__WEBPACK_IMPORTED_MODULE_0__.Delegate));
-
-var CurrentDatasetChangedHandler = /** @class */ (function (_super) {
-    __extends(CurrentDatasetChangedHandler, _super);
-    function CurrentDatasetChangedHandler() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    return CurrentDatasetChangedHandler;
-}(_tuval_core__WEBPACK_IMPORTED_MODULE_0__.Delegate));
-
-var StateService = /** @class */ (function () {
-    function StateService() {
-    }
-    StateService.SetStateVariable = function (key, value) {
-        this.stateBag[key] = value;
-    };
-    StateService.GetStateVariable = function (key) {
-        return this.stateBag[key];
-    };
-    StateService.GetAndDeleteStateVariable = function (key) {
-        var value = this.stateBag[key];
-        delete this.stateBag[key];
-        return value;
-    };
-    StateService.SetCurrentProject = function (projectId) {
-        if (StateService.CurrentProjectId !== projectId) {
-            StateService.CurrentProjectId = projectId;
-            StateService.CurrentProjectChanged(new CurrentProjectChangedArgs(projectId));
-        }
-    };
-    StateService.SetCurrentDataset = function (projectId, datasetId) {
-        if (StateService.CurrentDatasetId !== datasetId) {
-            StateService.SetCurrentProject(projectId);
-            StateService.CurrentDatasetId = datasetId;
-            StateService.CurrentDatasetChanged(new CurrentDatasetChangedArgs(projectId, datasetId));
-        }
-    };
-    StateService.GetCurrentProject = function () {
-        return StateService.CurrentProjectId;
-    };
-    StateService.GetCurrentDataset = function () {
-        return StateService.CurrentDatasetId;
-    };
-    /*  public static SetCurrentActivityInfo(data: any): void {
-         StateService.CurrentActivityOverview = data;
-     } */
-    StateService.GetCurrentActivityInfo = function () {
-        return new Promise(function (resolve, reject) {
-            if (StateService.CurrentActivityOverview != null) {
-                resolve(StateService.CurrentActivityOverview);
-            }
-            else {
-                var log_id = StateService.CurrentDatasetId;
-                _BrokerClients_MiningBrokerClient__WEBPACK_IMPORTED_MODULE_1__.MiningBrokerClient.GetActivityOverview(log_id).then(function (data) {
-                    StateService.CurrentActivityOverview = data;
-                    resolve(data);
-                });
-            }
-        });
-    };
-    StateService.SetSessionId = function (value) {
-        this.SetStateVariable('session_id', value);
-    };
-    StateService.GetSessionId = function () {
-        return this.GetStateVariable('session_id');
-    };
-    StateService.CurrentProjectChanged = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
-    StateService.CurrentDatasetChanged = new _tuval_core__WEBPACK_IMPORTED_MODULE_0__.Event();
-    StateService.stateBag = {};
-    return StateService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/Services/index.ts":
 /*!*******************************!*\
   !*** ./src/Services/index.ts ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_63723__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_55113__) => {
 
-__nested_webpack_require_63723__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_63723__.d(__webpack_exports__, {
+__nested_webpack_require_55113__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_55113__.d(__webpack_exports__, {
 /* harmony export */   "ConfigService": () => (/* reexport safe */ _ConfigService__WEBPACK_IMPORTED_MODULE_0__.ConfigService),
 /* harmony export */   "BrokerProjectService": () => (/* reexport safe */ _BrokerProjectService__WEBPACK_IMPORTED_MODULE_1__.BrokerProjectService),
-/* harmony export */   "Services": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_3__.Services),
-/* harmony export */   "CurrentDatasetChangedArgs": () => (/* reexport safe */ _StateService__WEBPACK_IMPORTED_MODULE_4__.CurrentDatasetChangedArgs),
-/* harmony export */   "CurrentDatasetChangedHandler": () => (/* reexport safe */ _StateService__WEBPACK_IMPORTED_MODULE_4__.CurrentDatasetChangedHandler),
-/* harmony export */   "CurrentProjectChangedArgs": () => (/* reexport safe */ _StateService__WEBPACK_IMPORTED_MODULE_4__.CurrentProjectChangedArgs),
-/* harmony export */   "CurrentProjectChangedHandler": () => (/* reexport safe */ _StateService__WEBPACK_IMPORTED_MODULE_4__.CurrentProjectChangedHandler),
-/* harmony export */   "StateService": () => (/* reexport safe */ _StateService__WEBPACK_IMPORTED_MODULE_4__.StateService)
+/* harmony export */   "Services": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_3__.Services)
 /* harmony export */ });
-/* harmony import */ var _ConfigService__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_63723__(/*! ./ConfigService */ "./src/Services/ConfigService.ts");
-/* harmony import */ var _BrokerProjectService__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_63723__(/*! ./BrokerProjectService */ "./src/Services/BrokerProjectService.ts");
-/* harmony import */ var _IProjectService__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_63723__(/*! ./IProjectService */ "./src/Services/IProjectService.ts");
-/* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_63723__(/*! ./Services */ "./src/Services/Services.ts");
-/* harmony import */ var _StateService__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_63723__(/*! ./StateService */ "./src/Services/StateService.ts");
-
+/* harmony import */ var _ConfigService__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_55113__(/*! ./ConfigService */ "./src/Services/ConfigService.ts");
+/* harmony import */ var _BrokerProjectService__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_55113__(/*! ./BrokerProjectService */ "./src/Services/BrokerProjectService.ts");
+/* harmony import */ var _IProjectService__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_55113__(/*! ./IProjectService */ "./src/Services/IProjectService.ts");
+/* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_55113__(/*! ./Services */ "./src/Services/Services.ts");
 
 
 
@@ -1297,13 +1125,13 @@ __nested_webpack_require_63723__.r(__webpack_exports__);
 /*!****************************!*\
   !*** ./src/Views/Badge.ts ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_65974__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_56479__) => {
 
-__nested_webpack_require_65974__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_65974__.d(__webpack_exports__, {
+__nested_webpack_require_56479__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_56479__.d(__webpack_exports__, {
 /* harmony export */   "Badge": () => (/* binding */ Badge)
 /* harmony export */ });
-/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_65974__(/*! ./RegularText */ "./src/Views/RegularText.ts");
+/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_56479__(/*! ./RegularText */ "./src/Views/RegularText.ts");
 
 function Badge(text, color, backColor) {
     return ((0,_RegularText__WEBPACK_IMPORTED_MODULE_0__.RegularText)(text).padding('0 0.5rem')
@@ -1325,13 +1153,13 @@ function Badge(text, color, backColor) {
 /*!********************************************!*\
   !*** ./src/Views/CalculationMethodText.ts ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_67232__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_57737__) => {
 
-__nested_webpack_require_67232__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_67232__.d(__webpack_exports__, {
+__nested_webpack_require_57737__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_57737__.d(__webpack_exports__, {
 /* harmony export */   "CalculationMethodText": () => (/* binding */ CalculationMethodText)
 /* harmony export */ });
-/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_67232__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
+/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_57737__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
 
 function CalculationMethodText(value) {
     return ((0,_Headline5__WEBPACK_IMPORTED_MODULE_0__.Headline5)(value).fontFamily('Proxima Nova, sans serif').foregroundColor('#AAA'));
@@ -1344,14 +1172,14 @@ function CalculationMethodText(value) {
 /*!***************************************!*\
   !*** ./src/Views/DesktopPageTitle.ts ***!
   \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_68048__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_58553__) => {
 
-__nested_webpack_require_68048__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_68048__.d(__webpack_exports__, {
+__nested_webpack_require_58553__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_58553__.d(__webpack_exports__, {
 /* harmony export */   "DesktopPageTitle": () => (/* binding */ DesktopPageTitle)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_68048__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_68048__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_58553__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_58553__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function DesktopPageTitle(icon, text) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('gray'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
@@ -1370,14 +1198,14 @@ function DesktopPageTitle(icon, text) {
 /*!********************************!*\
   !*** ./src/Views/Headline4.ts ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_69227__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_59732__) => {
 
-__nested_webpack_require_69227__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_69227__.d(__webpack_exports__, {
+__nested_webpack_require_59732__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_59732__.d(__webpack_exports__, {
 /* harmony export */   "Headline4": () => (/* binding */ Headline4)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_69227__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_69227__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_59732__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_59732__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function Headline4(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').fontSize('34.6538px').kerning('0.25px'));
@@ -1390,14 +1218,14 @@ function Headline4(value) {
 /*!********************************!*\
   !*** ./src/Views/Headline5.ts ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_70154__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_60659__) => {
 
-__nested_webpack_require_70154__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_70154__.d(__webpack_exports__, {
+__nested_webpack_require_60659__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_60659__.d(__webpack_exports__, {
 /* harmony export */   "Headline5": () => (/* binding */ Headline5)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_70154__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_70154__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_60659__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_60659__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function Headline5(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('Ubuntu, sans-serif').fontWeight('normal').fontSize('24.4615px').kerning('0px'));
@@ -1410,14 +1238,14 @@ function Headline5(value) {
 /*!*********************************!*\
   !*** ./src/Views/PageButton.ts ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_71082__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_61587__) => {
 
-__nested_webpack_require_71082__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_71082__.d(__webpack_exports__, {
+__nested_webpack_require_61587__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_61587__.d(__webpack_exports__, {
 /* harmony export */   "PageButton": () => (/* binding */ PageButton)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_71082__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_71082__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_61587__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_61587__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PageButton(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.UIButton)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value)
@@ -1438,16 +1266,16 @@ function PageButton(value) {
 /*!********************************!*\
   !*** ./src/Views/PageTitle.ts ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_72412__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_62917__) => {
 
-__nested_webpack_require_72412__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_72412__.d(__webpack_exports__, {
+__nested_webpack_require_62917__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_62917__.d(__webpack_exports__, {
 /* harmony export */   "PageTitle": () => (/* binding */ PageTitle)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_72412__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_72412__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _DesktopPageTitle__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_72412__(/*! ./DesktopPageTitle */ "./src/Views/DesktopPageTitle.ts");
-/* harmony import */ var _PortalPageTitle__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_72412__(/*! ./PortalPageTitle */ "./src/Views/PortalPageTitle.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_62917__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_62917__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _DesktopPageTitle__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_62917__(/*! ./DesktopPageTitle */ "./src/Views/DesktopPageTitle.ts");
+/* harmony import */ var _PortalPageTitle__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_62917__(/*! ./PortalPageTitle */ "./src/Views/PortalPageTitle.ts");
 
 
 
@@ -1467,14 +1295,14 @@ function PageTitle(icon, text) {
 /*!********************************************!*\
   !*** ./src/Views/PortalFilterBarWidget.ts ***!
   \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_73910__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_64415__) => {
 
-__nested_webpack_require_73910__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_73910__.d(__webpack_exports__, {
+__nested_webpack_require_64415__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_64415__.d(__webpack_exports__, {
 /* harmony export */   "PortalFilterBarWidget": () => (/* binding */ PortalFilterBarWidget)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_73910__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_73910__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_64415__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_64415__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalFilterBarWidget(params) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading, spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(params.value.toString()).fontSize('40px').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('monts').foregroundColor('rgb(251,192,1)').fontSize('10px').fontWeight('700'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('AVG').foregroundColor('#AAA'))), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.VStack)({ alignment: _tuval_forms__WEBPACK_IMPORTED_MODULE_0__.cLeading })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('Duration').foregroundColor('rgb(147,205,221)'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)('15 - 40 monts').foregroundColor('#AAA')))
@@ -1490,14 +1318,14 @@ function PortalFilterBarWidget(params) {
 /*!**************************************!*\
   !*** ./src/Views/PortalPageTitle.ts ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_75840__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_66345__) => {
 
-__nested_webpack_require_75840__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_75840__.d(__webpack_exports__, {
+__nested_webpack_require_66345__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_66345__.d(__webpack_exports__, {
 /* harmony export */   "PortalPageTitle": () => (/* binding */ PortalPageTitle)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_75840__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_75840__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_66345__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_66345__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalPageTitle(icon, text) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.HStack)({ spacing: 10 })((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Icon)(icon).size(30).foregroundColor('#333333'), (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(text)
@@ -1517,14 +1345,14 @@ function PortalPageTitle(icon, text) {
 /*!*************************************!*\
   !*** ./src/Views/PortalSideMenu.ts ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_77075__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_67580__) => {
 
-__nested_webpack_require_77075__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_77075__.d(__webpack_exports__, {
+__nested_webpack_require_67580__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_67580__.d(__webpack_exports__, {
 /* harmony export */   "PortalSideMenu": () => (/* binding */ PortalSideMenu)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_77075__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_77075__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_67580__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_67580__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function PortalSideMenu(params) {
     var _a = (0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.bindState)(0), selectedIndex = _a[0], setSelectedIndex = _a[1];
@@ -1554,14 +1382,14 @@ function PortalSideMenu(params) {
 /*!**********************************!*\
   !*** ./src/Views/RegularText.ts ***!
   \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_79565__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_70070__) => {
 
-__nested_webpack_require_79565__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_79565__.d(__webpack_exports__, {
+__nested_webpack_require_70070__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_70070__.d(__webpack_exports__, {
 /* harmony export */   "RegularText": () => (/* binding */ RegularText)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_79565__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_79565__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_70070__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_70070__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function RegularText(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('14px').lineHeight('1.42857').foregroundColor('#333'));
@@ -1574,13 +1402,13 @@ function RegularText(value) {
 /*!*************************************!*\
   !*** ./src/Views/SectionContent.ts ***!
   \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_80560__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_71065__) => {
 
-__nested_webpack_require_80560__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_80560__.d(__webpack_exports__, {
+__nested_webpack_require_71065__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_71065__.d(__webpack_exports__, {
 /* harmony export */   "SectionContent": () => (/* binding */ SectionContent)
 /* harmony export */ });
-/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_80560__(/*! ./RegularText */ "./src/Views/RegularText.ts");
+/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_71065__(/*! ./RegularText */ "./src/Views/RegularText.ts");
 
 function SectionContent(value) {
     return ((0,_RegularText__WEBPACK_IMPORTED_MODULE_0__.RegularText)(value));
@@ -1593,14 +1421,14 @@ function SectionContent(value) {
 /*!**************************************!*\
   !*** ./src/Views/SectionHeadline.ts ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_81298__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_71803__) => {
 
-__nested_webpack_require_81298__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_81298__.d(__webpack_exports__, {
+__nested_webpack_require_71803__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_71803__.d(__webpack_exports__, {
 /* harmony export */   "SectionHeadline": () => (/* binding */ SectionHeadline)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_81298__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_81298__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_71803__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_71803__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function SectionHeadline(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('20px').lineHeight('1.42857').foregroundColor('#333'));
@@ -1613,14 +1441,14 @@ function SectionHeadline(value) {
 /*!*****************************************!*\
   !*** ./src/Views/SectionSubHeadline.ts ***!
   \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_82321__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_72826__) => {
 
-__nested_webpack_require_82321__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_82321__.d(__webpack_exports__, {
+__nested_webpack_require_72826__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_72826__.d(__webpack_exports__, {
 /* harmony export */   "SectionSubHeadline": () => (/* binding */ SectionSubHeadline)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_82321__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_82321__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_72826__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_72826__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function SectionSubHeadline(value) {
     return ((0,_tuval_forms__WEBPACK_IMPORTED_MODULE_0__.Text)(value).fontFamily('"Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif').fontSize('16px').fontWeight('normal').lineHeight('1.42857').foregroundColor('#666666'));
@@ -1633,13 +1461,13 @@ function SectionSubHeadline(value) {
 /*!***********************************!*\
   !*** ./src/Views/SectionTitle.ts ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_83353__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_73858__) => {
 
-__nested_webpack_require_83353__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_83353__.d(__webpack_exports__, {
+__nested_webpack_require_73858__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_73858__.d(__webpack_exports__, {
 /* harmony export */   "SectionTitle": () => (/* binding */ SectionTitle)
 /* harmony export */ });
-/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_83353__(/*! ./RegularText */ "./src/Views/RegularText.ts");
+/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_73858__(/*! ./RegularText */ "./src/Views/RegularText.ts");
 
 function SectionTitle(value) {
     return ((0,_RegularText__WEBPACK_IMPORTED_MODULE_0__.RegularText)(value).fontWeight('500'));
@@ -1652,14 +1480,14 @@ function SectionTitle(value) {
 /*!******************************!*\
   !*** ./src/Views/TileBox.ts ***!
   \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_84071__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_74576__) => {
 
-__nested_webpack_require_84071__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_84071__.d(__webpack_exports__, {
+__nested_webpack_require_74576__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_74576__.d(__webpack_exports__, {
 /* harmony export */   "TileBox": () => (/* binding */ TileBox)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_84071__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_84071__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_74576__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_74576__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
 
 function TileBox() {
     var content = [];
@@ -1680,15 +1508,15 @@ function TileBox() {
 /*!****************************************!*\
   !*** ./src/Views/TileBoxHeaderText.ts ***!
   \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_85361__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_75866__) => {
 
-__nested_webpack_require_85361__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_85361__.d(__webpack_exports__, {
+__nested_webpack_require_75866__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_75866__.d(__webpack_exports__, {
 /* harmony export */   "TileBoxHeaderText": () => (/* binding */ TileBoxHeaderText)
 /* harmony export */ });
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_85361__(/*! @tuval/forms */ "@tuval/forms");
-/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_85361__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_85361__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_75866__(/*! @tuval/forms */ "@tuval/forms");
+/* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nested_webpack_require_75866__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_75866__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
 
 
 function TileBoxHeaderText(value) {
@@ -1707,10 +1535,10 @@ function TileBoxHeaderText(value) {
 /*!****************************!*\
   !*** ./src/Views/index.ts ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_86732__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_77237__) => {
 
-__nested_webpack_require_86732__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_86732__.d(__webpack_exports__, {
+__nested_webpack_require_77237__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_77237__.d(__webpack_exports__, {
 /* harmony export */   "CalculationMethodText": () => (/* reexport safe */ _CalculationMethodText__WEBPACK_IMPORTED_MODULE_0__.CalculationMethodText),
 /* harmony export */   "DesktopPageTitle": () => (/* reexport safe */ _DesktopPageTitle__WEBPACK_IMPORTED_MODULE_1__.DesktopPageTitle),
 /* harmony export */   "Headline4": () => (/* reexport safe */ _Headline4__WEBPACK_IMPORTED_MODULE_2__.Headline4),
@@ -1729,23 +1557,23 @@ __nested_webpack_require_86732__.r(__webpack_exports__);
 /* harmony export */   "PageButton": () => (/* reexport safe */ _PageButton__WEBPACK_IMPORTED_MODULE_15__.PageButton),
 /* harmony export */   "Badge": () => (/* reexport safe */ _Badge__WEBPACK_IMPORTED_MODULE_16__.Badge)
 /* harmony export */ });
-/* harmony import */ var _CalculationMethodText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_86732__(/*! ./CalculationMethodText */ "./src/Views/CalculationMethodText.ts");
-/* harmony import */ var _DesktopPageTitle__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_86732__(/*! ./DesktopPageTitle */ "./src/Views/DesktopPageTitle.ts");
-/* harmony import */ var _Headline4__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_86732__(/*! ./Headline4 */ "./src/Views/Headline4.ts");
-/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_86732__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
-/* harmony import */ var _PageTitle__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_86732__(/*! ./PageTitle */ "./src/Views/PageTitle.ts");
-/* harmony import */ var _PortalPageTitle__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_86732__(/*! ./PortalPageTitle */ "./src/Views/PortalPageTitle.ts");
-/* harmony import */ var _PortalSideMenu__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_86732__(/*! ./PortalSideMenu */ "./src/Views/PortalSideMenu.ts");
-/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_86732__(/*! ./RegularText */ "./src/Views/RegularText.ts");
-/* harmony import */ var _SectionContent__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_86732__(/*! ./SectionContent */ "./src/Views/SectionContent.ts");
-/* harmony import */ var _SectionHeadline__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_86732__(/*! ./SectionHeadline */ "./src/Views/SectionHeadline.ts");
-/* harmony import */ var _SectionSubHeadline__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_86732__(/*! ./SectionSubHeadline */ "./src/Views/SectionSubHeadline.ts");
-/* harmony import */ var _SectionTitle__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_86732__(/*! ./SectionTitle */ "./src/Views/SectionTitle.ts");
-/* harmony import */ var _TileBox__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_86732__(/*! ./TileBox */ "./src/Views/TileBox.ts");
-/* harmony import */ var _TileBoxHeaderText__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_86732__(/*! ./TileBoxHeaderText */ "./src/Views/TileBoxHeaderText.ts");
-/* harmony import */ var _PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_86732__(/*! ./PortalFilterBarWidget */ "./src/Views/PortalFilterBarWidget.ts");
-/* harmony import */ var _PageButton__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_86732__(/*! ./PageButton */ "./src/Views/PageButton.ts");
-/* harmony import */ var _Badge__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_86732__(/*! ./Badge */ "./src/Views/Badge.ts");
+/* harmony import */ var _CalculationMethodText__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_77237__(/*! ./CalculationMethodText */ "./src/Views/CalculationMethodText.ts");
+/* harmony import */ var _DesktopPageTitle__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_77237__(/*! ./DesktopPageTitle */ "./src/Views/DesktopPageTitle.ts");
+/* harmony import */ var _Headline4__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_77237__(/*! ./Headline4 */ "./src/Views/Headline4.ts");
+/* harmony import */ var _Headline5__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_77237__(/*! ./Headline5 */ "./src/Views/Headline5.ts");
+/* harmony import */ var _PageTitle__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_77237__(/*! ./PageTitle */ "./src/Views/PageTitle.ts");
+/* harmony import */ var _PortalPageTitle__WEBPACK_IMPORTED_MODULE_5__ = __nested_webpack_require_77237__(/*! ./PortalPageTitle */ "./src/Views/PortalPageTitle.ts");
+/* harmony import */ var _PortalSideMenu__WEBPACK_IMPORTED_MODULE_6__ = __nested_webpack_require_77237__(/*! ./PortalSideMenu */ "./src/Views/PortalSideMenu.ts");
+/* harmony import */ var _RegularText__WEBPACK_IMPORTED_MODULE_7__ = __nested_webpack_require_77237__(/*! ./RegularText */ "./src/Views/RegularText.ts");
+/* harmony import */ var _SectionContent__WEBPACK_IMPORTED_MODULE_8__ = __nested_webpack_require_77237__(/*! ./SectionContent */ "./src/Views/SectionContent.ts");
+/* harmony import */ var _SectionHeadline__WEBPACK_IMPORTED_MODULE_9__ = __nested_webpack_require_77237__(/*! ./SectionHeadline */ "./src/Views/SectionHeadline.ts");
+/* harmony import */ var _SectionSubHeadline__WEBPACK_IMPORTED_MODULE_10__ = __nested_webpack_require_77237__(/*! ./SectionSubHeadline */ "./src/Views/SectionSubHeadline.ts");
+/* harmony import */ var _SectionTitle__WEBPACK_IMPORTED_MODULE_11__ = __nested_webpack_require_77237__(/*! ./SectionTitle */ "./src/Views/SectionTitle.ts");
+/* harmony import */ var _TileBox__WEBPACK_IMPORTED_MODULE_12__ = __nested_webpack_require_77237__(/*! ./TileBox */ "./src/Views/TileBox.ts");
+/* harmony import */ var _TileBoxHeaderText__WEBPACK_IMPORTED_MODULE_13__ = __nested_webpack_require_77237__(/*! ./TileBoxHeaderText */ "./src/Views/TileBoxHeaderText.ts");
+/* harmony import */ var _PortalFilterBarWidget__WEBPACK_IMPORTED_MODULE_14__ = __nested_webpack_require_77237__(/*! ./PortalFilterBarWidget */ "./src/Views/PortalFilterBarWidget.ts");
+/* harmony import */ var _PageButton__WEBPACK_IMPORTED_MODULE_15__ = __nested_webpack_require_77237__(/*! ./PageButton */ "./src/Views/PageButton.ts");
+/* harmony import */ var _Badge__WEBPACK_IMPORTED_MODULE_16__ = __nested_webpack_require_77237__(/*! ./Badge */ "./src/Views/Badge.ts");
 
 
 
@@ -1793,7 +1621,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __nested_webpack_require_92287__(moduleId) {
+/******/ 	function __nested_webpack_require_82792__(moduleId) {
 /******/ 		// Check if module is in cache
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
@@ -1807,7 +1635,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_92287__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_82792__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -1817,11 +1645,11 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nested_webpack_require_92287__.n = (module) => {
+/******/ 		__nested_webpack_require_82792__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
 /******/ 				() => (module['default']) :
 /******/ 				() => (module);
-/******/ 			__nested_webpack_require_92287__.d(getter, { a: getter });
+/******/ 			__nested_webpack_require_82792__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
@@ -1829,9 +1657,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__nested_webpack_require_92287__.d = (exports, definition) => {
+/******/ 		__nested_webpack_require_82792__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
-/******/ 				if(__nested_webpack_require_92287__.o(definition, key) && !__nested_webpack_require_92287__.o(exports, key)) {
+/******/ 				if(__nested_webpack_require_82792__.o(definition, key) && !__nested_webpack_require_82792__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
@@ -1840,13 +1668,13 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__tuval_forms__;
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__nested_webpack_require_92287__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 		__nested_webpack_require_82792__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__nested_webpack_require_92287__.r = (exports) => {
+/******/ 		__nested_webpack_require_82792__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
@@ -1861,8 +1689,8 @@ var __webpack_exports__ = {};
 /*!**********************!*\
   !*** ./src/index.ts ***!
   \**********************/
-__nested_webpack_require_92287__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_92287__.d(__webpack_exports__, {
+__nested_webpack_require_82792__.r(__webpack_exports__);
+/* harmony export */ __nested_webpack_require_82792__.d(__webpack_exports__, {
 /* harmony export */   "Badge": () => (/* reexport safe */ _Views__WEBPACK_IMPORTED_MODULE_0__.Badge),
 /* harmony export */   "CalculationMethodText": () => (/* reexport safe */ _Views__WEBPACK_IMPORTED_MODULE_0__.CalculationMethodText),
 /* harmony export */   "DesktopPageTitle": () => (/* reexport safe */ _Views__WEBPACK_IMPORTED_MODULE_0__.DesktopPageTitle),
@@ -1882,20 +1710,15 @@ __nested_webpack_require_92287__.r(__webpack_exports__);
 /* harmony export */   "TileBoxHeaderText": () => (/* reexport safe */ _Views__WEBPACK_IMPORTED_MODULE_0__.TileBoxHeaderText),
 /* harmony export */   "BrokerProjectService": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.BrokerProjectService),
 /* harmony export */   "ConfigService": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.ConfigService),
-/* harmony export */   "CurrentDatasetChangedArgs": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.CurrentDatasetChangedArgs),
-/* harmony export */   "CurrentDatasetChangedHandler": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.CurrentDatasetChangedHandler),
-/* harmony export */   "CurrentProjectChangedArgs": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.CurrentProjectChangedArgs),
-/* harmony export */   "CurrentProjectChangedHandler": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.CurrentProjectChangedHandler),
 /* harmony export */   "Services": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.Services),
-/* harmony export */   "StateService": () => (/* reexport safe */ _Services__WEBPACK_IMPORTED_MODULE_2__.StateService),
 /* harmony export */   "MiningBrokerClient": () => (/* reexport safe */ _BrokerClients__WEBPACK_IMPORTED_MODULE_3__.MiningBrokerClient),
 /* harmony export */   "ListBounceAnimation": () => (/* reexport safe */ _ListBounceAnimation__WEBPACK_IMPORTED_MODULE_4__.ListBounceAnimation)
 /* harmony export */ });
-/* harmony import */ var _Views__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_92287__(/*! ./Views */ "./src/Views/index.ts");
-/* harmony import */ var _Models__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_92287__(/*! ./Models */ "./src/Models/index.ts");
-/* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_92287__(/*! ./Services */ "./src/Services/index.ts");
-/* harmony import */ var _BrokerClients__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_92287__(/*! ./BrokerClients */ "./src/BrokerClients/index.ts");
-/* harmony import */ var _ListBounceAnimation__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_92287__(/*! ./ListBounceAnimation */ "./src/ListBounceAnimation.ts");
+/* harmony import */ var _Views__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_82792__(/*! ./Views */ "./src/Views/index.ts");
+/* harmony import */ var _Models__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_82792__(/*! ./Models */ "./src/Models/index.ts");
+/* harmony import */ var _Services__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_82792__(/*! ./Services */ "./src/Services/index.ts");
+/* harmony import */ var _BrokerClients__WEBPACK_IMPORTED_MODULE_3__ = __nested_webpack_require_82792__(/*! ./BrokerClients */ "./src/BrokerClients/index.ts");
+/* harmony import */ var _ListBounceAnimation__WEBPACK_IMPORTED_MODULE_4__ = __nested_webpack_require_82792__(/*! ./ListBounceAnimation */ "./src/ListBounceAnimation.ts");
 
 
 
@@ -5231,9 +5054,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tuval_forms__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tuval_forms__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _procetra_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @procetra/common */ "./node_modules/@procetra/common/index.js");
 /* harmony import */ var _procetra_common__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_procetra_common__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Services_BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Services/BrokerProjectService */ "./src/Services/BrokerProjectService.ts");
-/* harmony import */ var _MainView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MainView */ "./src/MainView.ts");
-/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Resources */ "./src/Resources.ts");
+/* harmony import */ var _MainView__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MainView */ "./src/MainView.ts");
+/* harmony import */ var _Resources__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Resources */ "./src/Resources.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5255,8 +5077,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
-
 
 
 
@@ -5286,24 +5106,21 @@ var ProcessMining = /** @class */ (function (_super) {
     }
     ProcessMining.prototype.InitComponents = function () {
         var _this = this;
-        this.Icon = _Resources__WEBPACK_IMPORTED_MODULE_5__.Resources.Icons.ApplicationIcon;
+        this.Icon = _Resources__WEBPACK_IMPORTED_MODULE_4__.Resources.Icons.ApplicationIcon;
         //container.registerInstance('IProjectService', new LocalProjectService());
-        _procetra_common__WEBPACK_IMPORTED_MODULE_2__.MiningBrokerClient.Login('admin', 'admin').then(function (session_id) {
-            _procetra_common__WEBPACK_IMPORTED_MODULE_2__.StateService.SetSessionId(session_id);
-            var brokerProjectService = new _Services_BrokerProjectService__WEBPACK_IMPORTED_MODULE_3__.BrokerProjectService();
-            _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.registerInstance('IProjectService_Thread', brokerProjectService);
-            var fileExprorer = new _MainView__WEBPACK_IMPORTED_MODULE_4__.MainView();
-            _this.SetMainForm(fileExprorer);
-            _this.Start(); // Uygulamayı başlatıyoruz.
-            //PMAcademyService.Start();
-            _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.SaveFile('/static/tuval-core-wp.js', 'tuval-core-wp').then(function () {
-                _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.GetFile('tuval-core-wp').then(function (url) {
-                    // const thread = make(PMThreadWorker, ['/static/index-wp.js']);
-                    // container.registerInstance('IProjectService_Thread', thread);
-                    /*  thread.load().then(() => {
-                        thread.start();
-                    }); */
-                });
+        var brokerProjectService = new _procetra_common__WEBPACK_IMPORTED_MODULE_2__.BrokerProjectService();
+        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.instance.registerInstance('IProjectService_Thread', brokerProjectService);
+        var fileExprorer = new _MainView__WEBPACK_IMPORTED_MODULE_3__.MainView();
+        this.SetMainForm(fileExprorer);
+        setTimeout(function () { return _this.Start(); }, 100); // Uygulamayı başlatıyoruz.
+        //PMAcademyService.Start();
+        _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.SaveFile('/static/tuval-core-wp.js', 'tuval-core-wp').then(function () {
+            _tuval_core__WEBPACK_IMPORTED_MODULE_0__.TStorage.GetFile('tuval-core-wp').then(function (url) {
+                // const thread = make(PMThreadWorker, ['/static/index-wp.js']);
+                // container.registerInstance('IProjectService_Thread', thread);
+                /*  thread.load().then(() => {
+                    thread.start();
+                }); */
             });
         });
     };
@@ -5799,190 +5616,6 @@ var Resources = {
         RepositoryIcon: _Icons_RepositoryIcon__WEBPACK_IMPORTED_MODULE_14__.RepositoryIcon
     }
 };
-
-
-/***/ }),
-
-/***/ "./src/Services/BrokerProjectService.ts":
-/*!**********************************************!*\
-  !*** ./src/Services/BrokerProjectService.ts ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BrokerProjectService": () => (/* binding */ BrokerProjectService)
-/* harmony export */ });
-/* harmony import */ var _procetra_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @procetra/common */ "./node_modules/@procetra/common/index.js");
-/* harmony import */ var _procetra_common__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_procetra_common__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var BrokerProjectService /*  implements IProjectService */ = /** @class */ (function () {
-    function BrokerProjectService() {
-    }
-    BrokerProjectService.prototype.CreateProject = function (name, admin, isPublic, disableCache) {
-        if (isPublic === void 0) { isPublic = true; }
-        if (disableCache === void 0) { disableCache = false; }
-        return new Promise(function (resolve, reject) {
-            var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_0__.StateService.GetSessionId();
-            if (session_id == null) {
-                throw 'Invalid session.';
-            }
-            _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateProject(session_id, 'bpmgenesis', name, admin, isPublic, disableCache).then(function (project) {
-                resolve({
-                    project_id: project.project_id,
-                    project_name: project.project_name,
-                    admin: project.admin,
-                    isPublic: project.is_public,
-                    diableCache: project.disable_cache,
-                    is_data_loaded: project.is_data_loaded
-                });
-            });
-        });
-    };
-    BrokerProjectService.prototype.AddDataSet = function (dataset) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.DataSetFromCvs = function (projectId, datasetId, datasetName, csv, case_column, activity_column, time_stamp, start_date, date_format) {
-        return new Promise(function (resolve, reject) {
-            var datasetObject = {
-                ProjectId: projectId,
-                Id: datasetId
-            };
-            resolve(datasetObject);
-        });
-    };
-    BrokerProjectService.prototype.DataSetFromXes = function (projectId, datasetName, xes) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CloneDataSet = function (projectId, datasetName) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetById = function (projectId, id) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SaveProject = function (projectId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetProjectListFromStorage = function () {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.LoadProject = function (name) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CloseProject = function (id) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ConvertCsvToJson = function (csv) {
-        return new Promise(function (resolve, reject) {
-            /* const data = CvsToJson.Convert(csv, { parseNumbers: true }); */
-            return resolve(null);
-        });
-    };
-    BrokerProjectService.prototype.GetDatasetAsData = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetEventCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.CasesStartedPerDay = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ActivitiesStartedPerDay = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.ActivitiesPerCase = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetVariantsInfo = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEventsOverTime = function (projectId, datasetId) {
-        return new Promise(function (resolve, reject) {
-        });
-    };
-    BrokerProjectService.prototype.GetStartEvents = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEndEvents = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetTraceCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetEventCount = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetActivities = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetMedianCaseDuration = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetMeanCaseDuration = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetDatasetName = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetActivityInfo = function (projectId, datasetId, activityInfos) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetActivityInfo = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetAverageCostOfDataset = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.GetTotalCostOfDataset = function (projectId, datasetId) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetDatasetFilteredData = function (projectId, datasetId, filteredData) {
-        throw new Error("Method not implemented.");
-    };
-    BrokerProjectService.prototype.SetDatasetCondition = function (projectId, datasetId, condition) {
-        throw new Error("Method not implemented.");
-    };
-    //#region Project Methods
-    BrokerProjectService.prototype.GetProjects = function (session_id, org_name) {
-        return _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjects(session_id, org_name);
-    };
-    BrokerProjectService.prototype.GetProjectItems = function (session_id, org_name, project_id) {
-        //return MiningBrokerClient.GetProjectItems(session_id, org_name, project_id);
-        return new Promise(function (resolve, reject) {
-            resolve([
-                {
-                    project_item_id: '1',
-                    name: 'Test Dataset 2',
-                    type: 'Dataset'
-                },
-                {
-                    project_item_id: '2',
-                    name: 'İnsan kaynakları',
-                    type: 'Dashboard'
-                }
-            ]);
-        });
-    };
-    BrokerProjectService.prototype.GetProjectById = function (session_id, org_name, project_id) {
-        return _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjectById(session_id, org_name, project_id);
-    };
-    //#endregion
-    //#region Analyse Models
-    BrokerProjectService.prototype.CreateAnalyseModel = function (session_id, org_name, project_id, analyse_model_name) {
-        return _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateAnalyseModel(session_id, org_name, project_id, analyse_model_name);
-    };
-    BrokerProjectService.prototype.GetAnalyseModels = function (session_id, org_name, project_id) {
-        return _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetAnalyseModels(session_id, org_name, project_id);
-    };
-    //#endregion
-    BrokerProjectService.prototype.CreateMapping = function (session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data) {
-        return _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateMapping(session_id, org_name, project_id, mapping_name, mapping_file_name, mapping_data);
-    };
-    return BrokerProjectService;
-}());
-
 
 
 /***/ }),
@@ -7085,7 +6718,6 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-
 function detectBrowser() {
     if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
         return 'Opera';
@@ -7176,11 +6808,11 @@ var OpenProjectDialogController = /** @class */ (function (_super) {
     };
     OpenProjectDialogController.prototype.LoadProjects = function () {
         var _this = this;
-        var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_5__.StateService.GetSessionId();
+        var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_5__.Services.StateService.GetSessionId();
         if (session_id == null) {
             throw 'Invalid session.';
         }
-        _procetra_common__WEBPACK_IMPORTED_MODULE_5__.Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then(function (projects) {
+        _procetra_common__WEBPACK_IMPORTED_MODULE_5__.Services.ProjectService.GetProjects(session_id).then(function (projects) {
             _this.projects = projects;
         });
     };
@@ -7812,8 +7444,8 @@ var UploadDataDialogController = /** @class */ (function (_super) {
         });
         console.log(this.mapping);
         var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_7__.Services.StateService.GetSessionId();
-        _procetra_common__WEBPACK_IMPORTED_MODULE_7__.Services.ProjectService.CreateMapping(session_id, 'bpmgenesis', this.project.project_id, this.mapColumnsController.mappingName, this.mapColumnsController.mappingFileName, JSON.stringify(this.mapping.mapping));
-        _procetra_common__WEBPACK_IMPORTED_MODULE_7__.MiningBrokerClient.ImportCsvFile(this.project.project_id, 'bpmgenesis', this.fileData.GetFileContentAsString(), this.mapping.mapping.case_id.map(function (item) { return item.title; }).join(';'), this.mapping.mapping.event_id.map(function (item) { return item.title; }).join(';'), this.mapping.mapping.start_timestamp.title, this.mapping.mapping.end_timestamp.title, '', '').then(function () {
+        _procetra_common__WEBPACK_IMPORTED_MODULE_7__.Services.ProjectService.CreateMapping(session_id, this.project.project_id, this.mapColumnsController.mappingName, this.mapColumnsController.mappingFileName, JSON.stringify(this.mapping.mapping));
+        _procetra_common__WEBPACK_IMPORTED_MODULE_7__.MiningBrokerClient.ImportCsvFile(this.project.project_id, this.fileData.GetFileContentAsString(), this.mapping.mapping.case_id.map(function (item) { return item.title; }).join(';'), this.mapping.mapping.event_id.map(function (item) { return item.title; }).join(';'), this.mapping.mapping.start_timestamp.title, this.mapping.mapping.end_timestamp.title, '', '').then(function () {
             _procetra_common__WEBPACK_IMPORTED_MODULE_7__.MiningBrokerClient.LoadEventData(session_id, _this.project.project_id).then(function () {
                 _procetra_common__WEBPACK_IMPORTED_MODULE_7__.MiningBrokerClient.GetHappyPath(session_id, _this.project.project_id).then(function (info) {
                     console.log(info);
@@ -9406,7 +9038,7 @@ var DatasetControllerClass = /** @class */ (function (_super) {
     DatasetControllerClass.prototype.OnNewAnalyseAdded = function (value) {
         var _this = this;
         console.log(value);
-        _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateProjectItem(_procetra_common__WEBPACK_IMPORTED_MODULE_0__.StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id, value.id).then(function (nodata) {
+        _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.CreateProjectItem(_procetra_common__WEBPACK_IMPORTED_MODULE_0__.Services.StateService.GetSessionId(), this.project.project_id, this.miningModel.model_id, value.id).then(function (nodata) {
             _this.tabModels = __spreadArray(__spreadArray([], _this.tabModels), [value]);
             _this.OnTabSelected(_this.tabModels.length - 1);
         });
@@ -9430,7 +9062,7 @@ var DatasetControllerClass = /** @class */ (function (_super) {
         this.project = bindingModel.project;
         this.miningModel = bindingModel.miningModel;
         this.selectedTabIndex = 0;
-        _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjectItems(_procetra_common__WEBPACK_IMPORTED_MODULE_0__.StateService.GetSessionId(), 'bpmgenesis', this.project.project_id, this.miningModel.model_id).then(function (project_items) {
+        _procetra_common__WEBPACK_IMPORTED_MODULE_0__.MiningBrokerClient.GetProjectItems(_procetra_common__WEBPACK_IMPORTED_MODULE_0__.Services.StateService.GetSessionId(), this.project.project_id, this.miningModel.model_id).then(function (project_items) {
             var result = [];
             (0,_tuval_core__WEBPACK_IMPORTED_MODULE_1__.foreach)(project_items, function (project_item) {
                 var item = _NewAnalyse_Models_NewAnalyseTypes__WEBPACK_IMPORTED_MODULE_4__.NewAnalyseTypes.find(function (item) { return item.id === project_item.item_id; });
@@ -9970,7 +9602,7 @@ var MiningModelControllerClass = /** @class */ (function (_super) {
     MiningModelControllerClass.prototype.LoadProjects = function () {
         var _this = this;
         var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_2__.Services.StateService.GetSessionId();
-        _procetra_common__WEBPACK_IMPORTED_MODULE_2__.Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then(function (projects) {
+        _procetra_common__WEBPACK_IMPORTED_MODULE_2__.Services.ProjectService.GetProjects(session_id).then(function (projects) {
             console.log('Load Project :', projects);
             _this.projects = projects;
             _this.ForceUpdate();
@@ -10930,7 +10562,7 @@ var ProjectControllerClass = /** @class */ (function (_super) {
         _UI_UIServices_AnalyseModelUIService__WEBPACK_IMPORTED_MODULE_3__.AnalyseModelUIService.AddEditAnalyseModelName().then(function (name) {
             // Adding to our project
             var session_id = _procetra_common__WEBPACK_IMPORTED_MODULE_0__.Services.StateService.GetSessionId();
-            _procetra_common__WEBPACK_IMPORTED_MODULE_0__.Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', _this.project.project_id, name).then(function (analyseModelInfo) {
+            _procetra_common__WEBPACK_IMPORTED_MODULE_0__.Services.ProjectService.CreateAnalyseModel(session_id, _this.project.project_id, name).then(function (analyseModelInfo) {
                 var models = Array.from(_this.model); // for immutable array
                 models.push(analyseModelInfo);
                 _this.model = models; // updating state

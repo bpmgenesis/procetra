@@ -133,7 +133,7 @@ export class ProjectControllerClass extends UIController {
         AnalyseModelUIService.AddEditAnalyseModelName().then((name: string) => {
             // Adding to our project
             const session_id = Services.StateService.GetSessionId();
-            Services.ProjectService.CreateAnalyseModel(session_id, 'bpmgenesis', this.project.project_id, name).then(analyseModelInfo => {
+            Services.ProjectService.CreateAnalyseModel(session_id, this.project.project_id, name).then(analyseModelInfo => {
                 const models = Array.from(this.model); // for immutable array
                 models.push(analyseModelInfo);
                 this.model = models; // updating state

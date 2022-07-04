@@ -28,7 +28,6 @@ import { AcceptButton, CancelButton } from '../Views/Buttons';
 import { ListView, ListViewItem } from '../Views/ListView';
 import { RegularText } from '../Views/Texts';
 import { Services } from '@procetra/common';
-import { StateService } from '@procetra/common';
 import { OpenProjectDialog } from './OpenProjectDialog';
 
 
@@ -140,11 +139,11 @@ export class OpenProjectDialogController extends UIController {
     }
 
     public LoadProjects() {
-        const session_id = StateService.GetSessionId();
+        const session_id =Services.StateService.GetSessionId();
         if (session_id == null) {
             throw 'Invalid session.';
         }
-        Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then((projects: IProjectModel[]) => {
+        Services.ProjectService.GetProjects(session_id).then((projects: IProjectModel[]) => {
             this.projects = projects;
         });
     }

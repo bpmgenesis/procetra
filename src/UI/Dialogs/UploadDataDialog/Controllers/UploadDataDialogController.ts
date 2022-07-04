@@ -109,13 +109,13 @@ export class UploadDataDialogController extends UIController {
         console.log(this.mapping);
         const session_id = Services.StateService.GetSessionId();
 
-        Services.ProjectService.CreateMapping(session_id, 'bpmgenesis', this.project.project_id,
+        Services.ProjectService.CreateMapping(session_id, this.project.project_id,
             this.mapColumnsController.mappingName,
             this.mapColumnsController.mappingFileName,
             JSON.stringify(this.mapping.mapping));
 
 
-        MiningBrokerClient.ImportCsvFile(this.project.project_id, 'bpmgenesis', this.fileData.GetFileContentAsString(), this.mapping.mapping.case_id.map(item=> item.title).join(';'), this.mapping.mapping.event_id.map(item=> item.title).join(';'),
+        MiningBrokerClient.ImportCsvFile(this.project.project_id, this.fileData.GetFileContentAsString(), this.mapping.mapping.case_id.map(item=> item.title).join(';'), this.mapping.mapping.event_id.map(item=> item.title).join(';'),
         this.mapping.mapping.start_timestamp.title, this.mapping.mapping.end_timestamp.title, '', '').then(() => {
             MiningBrokerClient.LoadEventData(session_id, this.project.project_id).then(()=>{
                  MiningBrokerClient.GetHappyPath(session_id, this.project.project_id).then( (info: any[])=>{

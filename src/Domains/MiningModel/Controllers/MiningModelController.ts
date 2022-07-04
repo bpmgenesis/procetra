@@ -297,7 +297,7 @@ export class MiningModelControllerClass extends UIController {
      } */
     public LoadProjects(): void {
         const session_id = Services.StateService.GetSessionId();
-        Services.ProjectService.GetProjects(session_id, 'bpmgenesis').then(projects => {
+        Services.ProjectService.GetProjects(session_id).then(projects => {
             console.log('Load Project :', projects);
 
             this.projects = projects;
